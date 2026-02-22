@@ -1791,6 +1791,316 @@
 }
 
 /* ============================================================
+   BUYERS SOCIAL PROOF BAR
+   ============================================================ */
+.lom-hero-buyers {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  margin-bottom: 4px;
+  border-top: 1px solid var(--lom-border);
+}
+
+.lom-hero-buyers__avatars {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.lom-hero-buyers__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lom-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  border: 2px solid white;
+  margin-left: -8px;
+  position: relative;
+}
+
+.lom-hero-buyers__avatar:first-child {
+  margin-left: 0;
+}
+
+.lom-hero-buyers__text {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+}
+
+/* ============================================================
+   PAYMENT ICONS
+   ============================================================ */
+.lom-hero-payments {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.lom-hero-payments__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 46px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-family: var(--lom-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.lom-hero-payments__icon--amex { background: #006fcf; }
+.lom-hero-payments__icon--mc { background: #eb001b; background: linear-gradient(135deg, #eb001b 0%, #f79e1b 100%); }
+.lom-hero-payments__icon--pp { background: #003087; }
+.lom-hero-payments__icon--shop { background: #5a31f4; }
+.lom-hero-payments__icon--visa { background: #1a1f71; }
+
+/* ============================================================
+   TRUST ROW (Safe Payment / Free Shipping / Fast Delivery)
+   ============================================================ */
+.lom-hero-trust-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--lom-border);
+}
+
+.lom-hero-trust-row__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--lom-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+}
+
+.lom-hero-trust-row__item svg {
+  color: var(--lom-sage-dark);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   FEATURED REVIEW CAROUSEL
+   ============================================================ */
+.lom-hero-review-carousel {
+  position: relative;
+  margin-bottom: 12px;
+  min-height: 160px;
+}
+
+.lom-hero-review-card {
+  display: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4aba70 0%, #2ec4a0 50%, #3bb896 100%);
+  padding: 28px 24px;
+  animation: lomReviewFadeIn 0.4s ease;
+}
+
+.lom-hero-review-card.is-active {
+  display: block;
+}
+
+@keyframes lomReviewFadeIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.lom-hero-review-card__inner {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.lom-hero-review-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lom-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.lom-hero-review-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lom-hero-review-card__name {
+  font-family: var(--lom-body);
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lom-hero-review-card__verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1da1f2;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lom-hero-review-card__location {
+  font-family: var(--lom-body);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 2px;
+}
+
+.lom-hero-review-card__stars {
+  color: #ffd700;
+  font-size: 15px;
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+.lom-hero-review-card__text {
+  font-family: var(--lom-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 8px 0 0;
+}
+
+/* Review nav / pagination */
+.lom-hero-review-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.lom-hero-review-nav strong {
+  font-family: var(--lom-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--lom-black);
+}
+
+.lom-hero-review-nav span {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  color: var(--lom-text);
+}
+
+.lom-hero-review-dots {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.lom-hero-review-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lom-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lom-hero-review-dot.is-active {
+  background: var(--lom-charcoal);
+}
+
+/* ============================================================
+   COLLAPSIBLE ACCORDIONS
+   ============================================================ */
+.lom-hero-accordions {
+  border-top: 1px solid var(--lom-border);
+}
+
+.lom-hero-accordion {
+  border-bottom: 1px solid var(--lom-border);
+}
+
+.lom-hero-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--lom-body);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--lom-black);
+  text-align: left;
+}
+
+.lom-hero-accordion__icon {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--lom-text);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.lom-hero-accordion.is-open .lom-hero-accordion__icon {
+  transform: rotate(45deg);
+}
+
+.lom-hero-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.lom-hero-accordion.is-open .lom-hero-accordion__content {
+  max-height: 600px;
+}
+
+.lom-hero-accordion__body {
+  padding: 0 0 20px;
+  font-family: var(--lom-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lom-text);
+}
+
+.lom-hero-accordion__body p {
+  margin: 0 0 12px;
+}
+
+.lom-hero-accordion__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
    ABOUT HERO
    ============================================================ */
 .lom-about-hero {
