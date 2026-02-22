@@ -70,7 +70,7 @@
         "eyebrow": "The Problem",
         "heading": "You Shouldn't Need Chemicals to Feel Better",
         "text": "<p>Headaches, brain fog, afternoon slumps, sinus pressure — modern life is exhausting. And the solutions? Energy drinks that crash. Pills that take 30 minutes. Pharmacy sprays with side effects. None of them are natural. None of them are instant.</p>",
-        "image": "shopify://shop_images/Gemini_Generated_Image_qzgpp5qzgpp5qzgp.png",
+        "image": "shopify://shop_images/13511c564375fc7890aa_thai_4.png",
         "reverse": false,
         "background": "white",
         "button_text": "",
@@ -87,7 +87,7 @@
         "reverse": true,
         "background": "cream",
         "button_text": "Shop Lom Thai",
-        "button_url": "/collections/all"
+        "button_url": "shopify://products/premium-warm-glow-led-bulb"
       }
     },
     "benefits": {
