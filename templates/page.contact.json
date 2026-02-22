@@ -1,22 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "contact": {
       "type": "lom-contact",
-      "settings": {
-        "eyebrow": "Get In Touch",
-        "heading": "We're Here to Help",
-        "subtitle": "Have a question about your order, our products, or wholesale? Our team typically responds within 24 hours.",
-        "form_heading": "Send Us a Message",
-        "button_text": "Send Message",
-        "success_message": "Thanks for reaching out! We'll get back to you within 24 hours."
-      },
       "blocks": {
         "email": {
           "type": "info_card",
           "settings": {
             "icon": "📧",
             "title": "Email Us",
-            "text": "support@lomthai.com\nWe respond within 24 hours"
+            "text": "support@lomthai.com\nWe respond within 24 hours",
+            "link_text": "",
+            "link_url": ""
           }
         },
         "track": {
@@ -26,7 +29,7 @@
             "title": "Track Your Order",
             "text": "Check your order status anytime",
             "link_text": "Track Order",
-            "link_url": "/pages/track-order"
+            "link_url": "shopify://pages/track-my-order"
           }
         },
         "returns": {
@@ -34,7 +37,9 @@
           "settings": {
             "icon": "🔄",
             "title": "Returns & Refunds",
-            "text": "30-day money-back guarantee.\nNo questions asked."
+            "text": "30-day money-back guarantee.\nNo questions asked.",
+            "link_text": "",
+            "link_url": ""
           }
         },
         "shipping": {
@@ -42,11 +47,27 @@
           "settings": {
             "icon": "🚚",
             "title": "Shipping Info",
-            "text": "Free shipping on US & EU orders.\n5-10 business days delivery."
+            "text": "Free shipping on US & EU orders.\n5-10 business days delivery.",
+            "link_text": "",
+            "link_url": ""
           }
         }
       },
-      "block_order": ["email", "track", "returns", "shipping"]
+      "block_order": [
+        "email",
+        "track",
+        "returns",
+        "shipping"
+      ],
+      "settings": {
+        "eyebrow": "Get In Touch",
+        "heading": "We're Here to Help",
+        "subtitle": "Have a question about your order, our products, or wholesale? Our team typically responds within 24 hours.",
+        "form_heading": "Send Us a Message",
+        "button_text": "Send Message",
+        "success_message": "Thanks for reaching out! We'll get back to you within 24 hours.",
+        "faq_url": ""
+      }
     }
   },
   "order": [
