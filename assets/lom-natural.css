@@ -1026,7 +1026,7 @@
 }
 
 /* ============================================================
-   COMPARISON — HIGH CONVERSION REDESIGN
+   COMPARISON — HIGH CONVERSION CARD GRID
    ============================================================ */
 .lom-compare {
   padding: 100px 0;
@@ -1066,117 +1066,98 @@
   background: rgba(122, 158, 126, 0.1);
 }
 
-/* --- Desktop table layout --- */
-.lom-compare__table {
-  border-radius: 24px;
+/* Card grid */
+.lom-compare__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.lom-compare__card {
+  border-radius: 18px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.06),
+    0 4px 20px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.lom-compare__card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.lom-compare__row {
-  display: grid;
-  grid-template-columns: 1.4fr 1.2fr repeat(3, 1fr);
-  align-items: center;
-}
-
-.lom-compare__row--header {
-  background: rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.lom-compare__row:not(.lom-compare__row--header) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  transition: background 0.2s;
-}
-
-.lom-compare__row:not(.lom-compare__row--header):hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
-.lom-compare__row:last-child {
-  border-bottom: none;
-}
-
-.lom-compare__feature-col {
-  padding: 20px 28px;
+.lom-compare__card-feature {
+  padding: 16px 20px;
   font-family: var(--lom-body);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--lom-charcoal);
-}
-
-.lom-compare__brand-col {
-  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   text-align: center;
-  position: relative;
-  background: rgba(122, 158, 126, 0.06);
 }
 
-.lom-compare__row--header .lom-compare__brand-col {
-  background: rgba(122, 158, 126, 0.1);
-  padding: 24px;
+.lom-compare__card-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.lom-compare__brand-badge {
+.lom-compare__card-brand,
+.lom-compare__card-competitor {
+  padding: 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-}
-
-.lom-compare__crown {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.lom-compare__brand-badge strong {
-  font-family: var(--lom-body);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--lom-sage-dark);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.lom-compare__competitor-col {
-  padding: 20px 16px;
-  text-align: center;
-  font-family: var(--lom-body);
-  font-size: 13px;
-  color: var(--lom-text-light);
-}
-
-.lom-compare__row--header .lom-compare__competitor-col {
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--lom-text);
-  padding: 24px 16px;
-}
-
-/* Value badges */
-.lom-compare__val {
-  display: inline-flex;
-  align-items: center;
   gap: 6px;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.lom-compare__card-brand:last-child,
+.lom-compare__card-competitor:last-child {
+  border-right: none;
+}
+
+.lom-compare__card-brand {
+  background: rgba(122, 158, 126, 0.07);
+}
+
+.lom-compare__card-label {
+  font-family: var(--lom-body);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--lom-text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.lom-compare__card-value {
   font-family: var(--lom-body);
   font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--lom-text);
 }
 
-.lom-compare__val--win {
+.lom-compare__card-value--win {
   color: var(--lom-sage-dark);
   font-weight: 700;
-  font-size: 15px;
 }
 
-.lom-compare__val--lose {
+.lom-compare__card-value--lose {
   color: #c0897a;
   opacity: 0.7;
 }
@@ -1210,68 +1191,6 @@
   flex-shrink: 0;
 }
 
-/* --- Mobile card layout --- */
-.lom-compare__mobile {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.lom-compare__mcard {
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-}
-
-.lom-compare__mcard-feature {
-  padding: 14px 20px;
-  font-family: var(--lom-body);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--lom-charcoal);
-  background: rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.lom-compare__mcard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.lom-compare__mcard-item {
-  padding: 14px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.lom-compare__mcard-item--brand {
-  background: rgba(122, 158, 126, 0.06);
-  border-right: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.lom-compare__mcard-label {
-  font-family: var(--lom-body);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--lom-text-light);
-}
-
-.lom-compare__mcard-val {
-  font-family: var(--lom-body);
-  font-size: 15px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
 /* --- Bottom CTA --- */
 .lom-compare__cta {
   text-align: center;
@@ -1293,6 +1212,27 @@
 
   .lom-compare__header {
     margin-bottom: 32px;
+  }
+
+  .lom-compare__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lom-compare__card-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .lom-compare__card-brand,
+  .lom-compare__card-competitor {
+    padding: 12px 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  }
+
+  .lom-compare__card-brand:nth-child(2n),
+  .lom-compare__card-competitor:nth-child(2n+1) {
+    border-right: none;
   }
 
   .lom-compare__cta {

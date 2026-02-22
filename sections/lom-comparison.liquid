@@ -13,85 +13,41 @@
       {% endif %}
     </div>
 
-    {%- comment -%} Desktop: visual table {%- endcomment -%}
-    <div class="lom-compare__table lom-fade-in lom-hide-mobile">
-      {%- comment -%} Header row {%- endcomment -%}
-      <div class="lom-compare__row lom-compare__row--header">
-        <div class="lom-compare__feature-col"></div>
-        <div class="lom-compare__brand-col">
-          <div class="lom-compare__brand-badge">
-            <span class="lom-compare__crown">👑</span>
-            <strong>{{ section.settings.brand_name }}</strong>
-          </div>
-        </div>
-        {% for block in section.blocks %}
-          {% if block.type == 'competitor' %}
-            <div class="lom-compare__competitor-col">
-              <span>{{ block.settings.name }}</span>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-
-      {%- comment -%} Data rows {%- endcomment -%}
+    {%- comment -%} Responsive comparison grid {%- endcomment -%}
+    <div class="lom-compare__grid lom-fade-in">
       {% for block in section.blocks %}
         {% if block.type == 'row' %}
-          <div class="lom-compare__row" {{ block.shopify_attributes }}>
-            <div class="lom-compare__feature-col">
-              {{ block.settings.feature }}
-            </div>
-            <div class="lom-compare__brand-col">
-              <span class="lom-compare__val lom-compare__val--win">
-                {% if block.settings.brand_value contains '✓' or block.settings.brand_value contains 'Yes' or block.settings.brand_value contains 'Seconds' or block.settings.brand_value contains '$0' %}
-                  <span class="lom-compare__check">✓</span>
+          <div class="lom-compare__card" {{ block.shopify_attributes }}>
+            <div class="lom-compare__card-feature">{{ block.settings.feature }}</div>
+            <div class="lom-compare__card-columns">
+              <div class="lom-compare__card-brand">
+                <span class="lom-compare__card-label">{{ section.settings.brand_name }}</span>
+                <span class="lom-compare__card-value lom-compare__card-value--win">
+                  {% assign bv = block.settings.brand_value %}
+                  {% if bv contains '✓' or bv contains 'Yes' or bv contains 'Seconds' %}
+                    <span class="lom-compare__check">✓</span>
+                  {% endif %}
+                  <span>{{ bv | remove: '✓' | strip }}</span>
+                </span>
+              </div>
+              {% assign comp_values = block.settings.competitor_1 | append: '|||' | append: block.settings.competitor_2 | append: '|||' | append: block.settings.competitor_3 %}
+              {% assign comp_array = comp_values | split: '|||' %}
+              {% assign comp_index = 0 %}
+              {% for b in section.blocks %}
+                {% if b.type == 'competitor' %}
+                  <div class="lom-compare__card-competitor">
+                    <span class="lom-compare__card-label">{{ b.settings.name }}</span>
+                    {% assign cv = comp_array[comp_index] %}
+                    <span class="lom-compare__card-value {% if cv contains '✗' or cv contains 'No' %}lom-compare__card-value--lose{% endif %}">
+                      {% if cv contains '✗' or cv contains 'No' %}
+                        <span class="lom-compare__cross">✗</span>
+                      {% endif %}
+                      <span>{{ cv | remove: '✗' | remove: '✓' | strip }}</span>
+                    </span>
+                    {% assign comp_index = comp_index | plus: 1 %}
+                  </div>
                 {% endif %}
-                {{ block.settings.brand_value | remove: '✓' | strip }}
-              </span>
-            </div>
-            <div class="lom-compare__competitor-col">
-              <span class="lom-compare__val {% if block.settings.competitor_1 contains '✗' or block.settings.competitor_1 contains 'No' %}lom-compare__val--lose{% endif %}">
-                {% if block.settings.competitor_1 contains '✗' or block.settings.competitor_1 contains 'No' %}<span class="lom-compare__cross">✗</span>{% endif %}
-                {{ block.settings.competitor_1 | remove: '✗' | remove: '✓' | strip }}
-              </span>
-            </div>
-            <div class="lom-compare__competitor-col">
-              <span class="lom-compare__val {% if block.settings.competitor_2 contains '✗' or block.settings.competitor_2 contains 'No' %}lom-compare__val--lose{% endif %}">
-                {% if block.settings.competitor_2 contains '✗' or block.settings.competitor_2 contains 'No' %}<span class="lom-compare__cross">✗</span>{% endif %}
-                {{ block.settings.competitor_2 | remove: '✗' | remove: '✓' | strip }}
-              </span>
-            </div>
-            <div class="lom-compare__competitor-col">
-              <span class="lom-compare__val {% if block.settings.competitor_3 contains '✗' or block.settings.competitor_3 contains 'No' %}lom-compare__val--lose{% endif %}">
-                {% if block.settings.competitor_3 contains '✗' or block.settings.competitor_3 contains 'No' %}<span class="lom-compare__cross">✗</span>{% endif %}
-                {{ block.settings.competitor_3 | remove: '✗' | remove: '✓' | strip }}
-              </span>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    {%- comment -%} Mobile: stacked cards {%- endcomment -%}
-    <div class="lom-compare__mobile lom-fade-in lom-hide-desktop">
-      {% for block in section.blocks %}
-        {% if block.type == 'row' %}
-          <div class="lom-compare__mcard" {{ block.shopify_attributes }}>
-            <div class="lom-compare__mcard-feature">{{ block.settings.feature }}</div>
-            <div class="lom-compare__mcard-grid">
-              <div class="lom-compare__mcard-item lom-compare__mcard-item--brand">
-                <span class="lom-compare__mcard-label">{{ section.settings.brand_name }}</span>
-                <span class="lom-compare__mcard-val lom-compare__val--win">
-                  {% if block.settings.brand_value contains '✓' %}<span class="lom-compare__check">✓</span>{% endif %}
-                  {{ block.settings.brand_value | remove: '✓' | strip }}
-                </span>
-              </div>
-              <div class="lom-compare__mcard-item">
-                <span class="lom-compare__mcard-label">Others</span>
-                <span class="lom-compare__mcard-val lom-compare__val--lose">
-                  <span class="lom-compare__cross">✗</span>
-                  {{ block.settings.competitor_1 | remove: '✗' | remove: '✓' | strip }}
-                </span>
-              </div>
+              {% endfor %}
             </div>
           </div>
         {% endif %}
@@ -209,7 +165,7 @@
         { "type": "competitor", "settings": { "name": "Energy Drinks" } },
         { "type": "competitor", "settings": { "name": "Pharmacy Sprays" } },
         { "type": "competitor", "settings": { "name": "Coffee" } },
-        { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "15-30 min", "competitor_2": "5-10 min", "competitor_3": "20-45 min" } },
+        { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min" } },
         { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes" } },
         { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
         { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No" } },
