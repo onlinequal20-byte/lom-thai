@@ -1,0 +1,77 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-ingredients">
+  <div class="lom-container">
+    <h2 class="lom-heading lom-fade-in">{{ section.settings.heading }}</h2>
+    {% if section.settings.subtitle != blank %}
+      <p class="lom-heading-subtitle lom-fade-in">{{ section.settings.subtitle }}</p>
+    {% endif %}
+    <div class="lom-ingredients-grid">
+      {% for block in section.blocks %}
+        <div class="lom-ingredient-card lom-fade-in" {{ block.shopify_attributes }}>
+          <div class="lom-ingredient-icon">{{ block.settings.icon }}</div>
+          <h3 class="lom-ingredient-name">{{ block.settings.name }}</h3>
+          <p class="lom-ingredient-benefit">{{ block.settings.benefit }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's Inside"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Five powerful natural ingredients, perfected over a century"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient name",
+          "default": "Menthol"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit",
+          "label": "Benefit description",
+          "default": "Opens airways instantly, delivers cooling relief that wakes you up in seconds"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "icon": "❄️", "name": "Menthol", "benefit": "Opens airways instantly, delivers cooling relief that wakes you up in seconds" } },
+        { "type": "ingredient", "settings": { "icon": "🌸", "name": "Camphor", "benefit": "Soothes headaches and reduces inflammation on contact" } },
+        { "type": "ingredient", "settings": { "icon": "⭐", "name": "Borneol", "benefit": "Traditional Thai remedy for focus and mental clarity" } },
+        { "type": "ingredient", "settings": { "icon": "🌿", "name": "Eucalyptus Oil", "benefit": "Clears congestion and supports respiratory health naturally" } },
+        { "type": "ingredient", "settings": { "icon": "🍋", "name": "Lemon Oil", "benefit": "Uplifts mood, fights nausea, and enhances alertness" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-showcase">
+  <div class="lom-container">
+    <div class="lom-showcase-content lom-fade-in">
+      <div class="lom-showcase-image">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.image.alt | default: section.settings.heading }}" loading="lazy">
+        {% elsif collections.all.products.first.images[1] %}
+          <img src="{{ collections.all.products.first.images[1] | image_url: width: 800 }}" alt="{{ collections.all.products.first.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="lom-showcase-text">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.description }}</p>
+        {% if section.settings.quote != blank %}
+          <div class="lom-showcase-quote">
+            <p>"{{ section.settings.quote }}"</p>
+            <cite>— {{ section.settings.quote_author }}</cite>
+          </div>
+        {% endif %}
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_url }}" class="lom-cta-btn">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Product Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Two Tools, One Stick"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The nasal inhaler delivers a powerful herbal blast that clears your head in seconds. Flip it over and the rollerball soothes temples and pressure points on contact. At $0.03 per use, it lasts months."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Customer quote",
+      "default": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again."
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Quote author",
+      "default": "Marco V., Germany"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Product Showcase"
+    }
+  ]
+}
+{% endschema %}

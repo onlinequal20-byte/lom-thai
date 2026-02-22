@@ -1,0 +1,110 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<header class="lom-header" id="lom-header">
+  <div class="lom-header__inner">
+    {%- comment -%} Left: Navigation {%- endcomment -%}
+    <nav class="lom-header__nav lom-header__nav--left lom-hide-mobile">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}" class="lom-header__link">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+
+    {%- comment -%} Mobile: Hamburger {%- endcomment -%}
+    <button class="lom-header__hamburger lom-hide-desktop" aria-label="Open menu" onclick="document.getElementById('lom-mobile-menu').classList.add('is-open'); document.body.style.overflow='hidden';">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+    {%- comment -%} Center: Logo {%- endcomment -%}
+    <a href="/" class="lom-header__logo">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="{{ 200 | divided_by: section.settings.logo.aspect_ratio | round }}" loading="eager">
+      {% else %}
+        <span class="lom-header__logo-text">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+
+    {%- comment -%} Right: Cart + Account {%- endcomment -%}
+    <div class="lom-header__actions">
+      {% if shop.customer_accounts_enabled %}
+        <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="lom-header__icon" aria-label="Account">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>
+          </svg>
+        </a>
+      {% endif %}
+      <a href="/cart" class="lom-header__icon lom-header__cart" aria-label="Cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="lom-header__cart-count" id="lom-cart-count">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{%- comment -%} Full-screen mobile menu {%- endcomment -%}
+<div class="lom-mobile-menu" id="lom-mobile-menu">
+  <div class="lom-mobile-menu__header">
+    <span class="lom-header__logo-text">{{ shop.name }}</span>
+    <button class="lom-mobile-menu__close" aria-label="Close menu" onclick="document.getElementById('lom-mobile-menu').classList.remove('is-open'); document.body.style.overflow='';">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="lom-mobile-menu__nav">
+    {% for link in section.settings.menu.links %}
+      <a href="{{ link.url }}" class="lom-mobile-menu__link">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+  <div class="lom-mobile-menu__footer">
+    {% if shop.customer_accounts_enabled %}
+      <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="lom-mobile-menu__link lom-mobile-menu__link--small">Account</a>
+    {% endif %}
+    <a href="/pages/about" class="lom-mobile-menu__link lom-mobile-menu__link--small">Our Story</a>
+    <a href="/pages/contact" class="lom-mobile-menu__link lom-mobile-menu__link--small">Contact</a>
+  </div>
+</div>
+
+<script>
+  // Sticky header
+  (function(){
+    var header = document.getElementById('lom-header');
+    var lastScroll = 0;
+    window.addEventListener('scroll', function(){
+      var st = window.pageYOffset;
+      if(st > 80){
+        header.classList.add('is-sticky');
+      } else {
+        header.classList.remove('is-sticky');
+      }
+      lastScroll = st;
+    }, {passive:true});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lom Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Header"
+    }
+  ]
+}
+{% endschema %}

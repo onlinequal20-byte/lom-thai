@@ -1,0 +1,41 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-guarantee">
+  <div class="lom-container">
+    <div class="lom-guarantee__inner lom-reveal">
+      <div class="lom-guarantee__badge">
+        <span class="lom-guarantee__badge-number">30</span>
+        <span class="lom-guarantee__badge-text">Day Guarantee</span>
+      </div>
+      <div class="lom-guarantee__content">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Guarantee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Try It Risk-Free for 30 Days"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, just let us know and we'll refund every penny — no questions asked, no hassle. You have nothing to lose and natural relief to gain."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Guarantee"
+    }
+  ]
+}
+{% endschema %}

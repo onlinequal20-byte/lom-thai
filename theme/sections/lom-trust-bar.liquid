@@ -1,0 +1,52 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-trust-bar">
+  <div class="lom-container">
+    <div class="lom-trust-items">
+      {% for block in section.blocks %}
+        <span class="lom-trust-item" {{ block.shopify_attributes }}>
+          <span>{{ block.settings.icon }}</span>
+          <span>{{ block.settings.text }}</span>
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Trust Bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "100% Natural"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Trust Bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "🚚", "text": "Free US & EU Shipping" } },
+        { "type": "item", "settings": { "icon": "🌿", "text": "100% Natural Ingredients" } },
+        { "type": "item", "settings": { "icon": "✅", "text": "30-Day Money-Back Guarantee" } },
+        { "type": "item", "settings": { "icon": "📦", "text": "50,000+ Sold" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
