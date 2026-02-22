@@ -15,7 +15,11 @@
         "subtitle": "2-in-1 Nasal Inhaler & Roller — Instant natural relief for headaches, fatigue, and congestion",
         "review_count": "2,847",
         "atc_text": "Add to Cart",
-        "show_bundle": true
+        "show_bundle": true,
+        "show_urgency": true,
+        "urgency_text": "Sale ends in",
+        "urgency_subtext": "Order now to lock in this price + free shipping",
+        "urgency_hours": 6
       },
       "blocks": {
         "b1": { "type": "benefit", "settings": { "icon": "⚡", "text": "Works in seconds, not minutes" } },
