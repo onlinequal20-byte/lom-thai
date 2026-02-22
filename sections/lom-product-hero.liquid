@@ -41,6 +41,38 @@
           <p class="lom-product-hero__subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
 
+        {%- comment -%} Urgency timer {%- endcomment -%}
+        {% if section.settings.show_urgency %}
+          <div class="lom-urgency">
+            <div class="lom-urgency__bar">
+              <div class="lom-urgency__progress" id="lom-urgency-progress"></div>
+            </div>
+            <div class="lom-urgency__content">
+              <span class="lom-urgency__icon">🔥</span>
+              <span class="lom-urgency__text">{{ section.settings.urgency_text | default: 'Sale ends in' }}</span>
+              <div class="lom-urgency__timer" id="lom-urgency-timer">
+                <div class="lom-urgency__unit">
+                  <span class="lom-urgency__number" id="lom-timer-hours">00</span>
+                  <span class="lom-urgency__label">hrs</span>
+                </div>
+                <span class="lom-urgency__sep">:</span>
+                <div class="lom-urgency__unit">
+                  <span class="lom-urgency__number" id="lom-timer-minutes">00</span>
+                  <span class="lom-urgency__label">min</span>
+                </div>
+                <span class="lom-urgency__sep">:</span>
+                <div class="lom-urgency__unit">
+                  <span class="lom-urgency__number" id="lom-timer-seconds">00</span>
+                  <span class="lom-urgency__label">sec</span>
+                </div>
+              </div>
+            </div>
+            {% if section.settings.urgency_subtext != blank %}
+              <p class="lom-urgency__subtext">{{ section.settings.urgency_subtext }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+
         <div class="lom-product-hero__price">
           {% if product.compare_at_price > product.price %}
             <span class="lom-product-hero__price-compare">{{ product.compare_at_price | money }}</span>
@@ -140,6 +172,49 @@
 </section>
 
 <script>
+  // Urgency countdown timer
+  (function(){
+    var hoursEl = document.getElementById('lom-timer-hours');
+    var minsEl = document.getElementById('lom-timer-minutes');
+    var secsEl = document.getElementById('lom-timer-seconds');
+    var progressEl = document.getElementById('lom-urgency-progress');
+    if (!hoursEl) return;
+
+    var totalHours = {{ section.settings.urgency_hours | default: 6 }};
+    var storageKey = 'lom_urgency_end';
+    var stored = localStorage.getItem(storageKey);
+    var endTime;
+
+    if (stored && parseInt(stored) > Date.now()) {
+      endTime = parseInt(stored);
+    } else {
+      endTime = Date.now() + (totalHours * 60 * 60 * 1000);
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    var totalMs = totalHours * 60 * 60 * 1000;
+
+    function tick() {
+      var remaining = endTime - Date.now();
+      if (remaining <= 0) {
+        endTime = Date.now() + totalMs;
+        localStorage.setItem(storageKey, endTime);
+        remaining = totalMs;
+      }
+      var h = Math.floor(remaining / 3600000);
+      var m = Math.floor((remaining % 3600000) / 60000);
+      var s = Math.floor((remaining % 60000) / 1000);
+      hoursEl.textContent = h < 10 ? '0' + h : h;
+      minsEl.textContent = m < 10 ? '0' + m : m;
+      secsEl.textContent = s < 10 ? '0' + s : s;
+      if (progressEl) {
+        progressEl.style.width = ((remaining / totalMs) * 100) + '%';
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
   // Bundle selector
   document.querySelectorAll('.lom-product-hero__bundle').forEach(function(b){
     b.addEventListener('click', function(){
@@ -176,6 +251,33 @@
       "id": "show_bundle",
       "label": "Show bundle offers",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_urgency",
+      "label": "Show urgency timer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Urgency text",
+      "default": "Sale ends in"
+    },
+    {
+      "type": "text",
+      "id": "urgency_subtext",
+      "label": "Urgency subtext",
+      "default": "Order now to lock in this price + free shipping"
+    },
+    {
+      "type": "range",
+      "id": "urgency_hours",
+      "label": "Timer hours",
+      "min": 1,
+      "max": 48,
+      "step": 1,
+      "default": 6
     }
   ],
   "blocks": [
