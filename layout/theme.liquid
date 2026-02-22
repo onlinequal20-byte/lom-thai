@@ -381,11 +381,11 @@
     <!-- Lom Thai: Scroll fade-in observer (global) -->
     <script>
       (function(){
-        var els = document.querySelectorAll('.lt-fade-in');
+        var els = document.querySelectorAll('.lom-fade-in,.lt-fade-in');
         if (els.length && 'IntersectionObserver' in window) {
           var obs = new IntersectionObserver(function(entries){
             entries.forEach(function(e){
-              if(e.isIntersecting){e.target.classList.add('lt-visible');obs.unobserve(e.target);}
+              if(e.isIntersecting){e.target.classList.add('lom-visible');e.target.classList.add('lt-visible');obs.unobserve(e.target);}
             });
           },{threshold:0.1});
           els.forEach(function(el){obs.observe(el);});

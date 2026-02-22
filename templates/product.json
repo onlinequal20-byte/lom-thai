@@ -1,12 +1,15 @@
 {
   "sections": {
-    "custom_product_trust": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');:root{--lt-dark:#0a1820;--lt-mid:#152f3d;--lt-accent:#1e5068;--lt-accent-light:#2c7a9e;--lt-light:#7ec4d8;--lt-font:'Inter',sans-serif;--lt-serif:'Playfair Display',Georgia,serif;--lt-page-bg:#e4ecf0}.lt-ptrust{background:linear-gradient(160deg,#071318,#152f3d);padding:12px 20px;font-family:var(--lt-font);text-align:center}.lt-ptrust-inner{display:inline-flex;align-items:center;gap:28px;padding:10px 32px;border-radius:50px;background:rgba(255,255,255,0.04);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06)}.lt-ptrust-item{color:rgba(255,255,255,0.55);font-size:13px;font-weight:500;white-space:nowrap}.lt-ptrust-dot{width:3px;height:3px;border-radius:50%;background:rgba(126,196,216,0.4)}@media(max-width:749px){.lt-ptrust-inner{flex-direction:column;gap:6px;border-radius:16px;padding:12px 20px}.lt-ptrust-dot{display:none}}</style><div class=\"lt-ptrust\"><div class=\"lt-ptrust-inner\"><span class=\"lt-ptrust-item\">Free US &amp; EU Shipping</span><span class=\"lt-ptrust-dot\"></span><span class=\"lt-ptrust-item\">100% Natural Ingredients</span><span class=\"lt-ptrust-dot\"></span><span class=\"lt-ptrust-item\">30-Day Money-Back Guarantee</span><span class=\"lt-ptrust-dot\"></span><span class=\"lt-ptrust-item\">50,000+ Sold</span></div></div>",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+    "trust_bar": {
+      "type": "lom-trust-bar",
+      "settings": {},
+      "blocks": {
+        "shipping": { "type": "item", "settings": { "icon": "🚚", "text": "Free US & EU Shipping" } },
+        "natural": { "type": "item", "settings": { "icon": "🌿", "text": "100% Natural Ingredients" } },
+        "guarantee": { "type": "item", "settings": { "icon": "✅", "text": "30-Day Money-Back Guarantee" } },
+        "sold": { "type": "item", "settings": { "icon": "📦", "text": "50,000+ Sold" } }
+      },
+      "block_order": ["shipping", "natural", "guarantee", "sold"]
     },
     "main": {
       "type": "main-product",
@@ -93,45 +96,80 @@
         "padding_bottom": 12
       }
     },
-    "custom_comparison": {
-      "type": "custom-liquid",
+    "comparison": {
+      "type": "lom-comparison",
       "settings": {
-        "custom_liquid": "<div class=\"lt-compare-outer lt-fade-in\" style=\"background:var(--lt-page-bg);font-family:var(--lt-font)\"><div class=\"lt-compare\"><h2>Why Lom Thai?</h2><div style=\"overflow-x:auto\"><table class=\"lt-compare-table\"><thead><tr><th></th><th class=\"lt-compare-highlight\">Lom Thai</th><th>Energy Drinks</th><th>Pharmacy Sprays</th><th>Coffee</th></tr></thead><tbody><tr><td>Works instantly</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span> Seconds</td><td>15-30 min</td><td>5-10 min</td><td>20-45 min</td></tr><tr><td>100% Natural</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span> Yes</td><td><span class=\"lt-cross\">&#10007;</span> No</td><td><span class=\"lt-cross\">&#10007;</span> No</td><td><span class=\"lt-check\">&#10003;</span> Yes</td></tr><tr><td>No crash/jitters</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td><td><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td></tr><tr><td>Relieves headaches</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td><td><span class=\"lt-cross\">&#10007;</span></td><td><span class=\"lt-cross\">&#10007;</span></td></tr><tr><td>Clears congestion</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td><td><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td></tr><tr><td>Portable & TSA-friendly</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td><td><span class=\"lt-check\">&#10003;</span></td><td><span class=\"lt-cross\">&#10007;</span></td></tr><tr><td>Cost per use</td><td class=\"lt-compare-highlight\"><strong>$0.03</strong></td><td>$2-4</td><td>$0.50</td><td>$3-6</td></tr><tr><td>Lasts months</td><td class=\"lt-compare-highlight\"><span class=\"lt-check\">&#10003;</span></td><td>Single use</td><td>2-4 weeks</td><td>Single use</td></tr></tbody></table></div></div></div>",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+        "heading": "Why Lom Thai?",
+        "subtitle": "",
+        "brand_name": "Lom Thai"
+      },
+      "blocks": {
+        "comp1": { "type": "competitor", "settings": { "name": "Energy Drinks" } },
+        "comp2": { "type": "competitor", "settings": { "name": "Pharmacy Sprays" } },
+        "comp3": { "type": "competitor", "settings": { "name": "Coffee" } },
+        "row1": { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "15-30 min", "competitor_2": "5-10 min", "competitor_3": "20-45 min" } },
+        "row2": { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes" } },
+        "row3": { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✓", "competitor_3": "✗" } },
+        "row4": { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✗", "competitor_3": "✗" } },
+        "row5": { "type": "row", "settings": { "feature": "Clears congestion", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✓", "competitor_3": "✗" } },
+        "row6": { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✓", "competitor_3": "✗" } },
+        "row7": { "type": "row", "settings": { "feature": "Cost per use", "brand_value": "$0.03", "competitor_1": "$2-4", "competitor_2": "$0.50", "competitor_3": "$3-6" } }
+      },
+      "block_order": ["comp1", "comp2", "comp3", "row1", "row2", "row3", "row4", "row5", "row6", "row7"]
     },
-    "custom_ingredients": {
-      "type": "custom-liquid",
+    "ingredients": {
+      "type": "lom-ingredients",
       "settings": {
-        "custom_liquid": "<div class=\"lt-ingredients-outer lt-fade-in\" style=\"background:var(--lt-page-bg);font-family:var(--lt-font)\"><div class=\"lt-ingredients\"><h2>What's Inside</h2><p class=\"lt-ingredients__sub\">Five powerful natural ingredients, perfected over a century</p><div class=\"lt-ingredients__grid\"><div class=\"lt-ingredient-card\"><div class=\"lt-ingredient-card__icon\">&#10052;</div><h3>Menthol</h3><p>Opens airways instantly, delivers cooling relief that wakes you up in seconds</p></div><div class=\"lt-ingredient-card\"><div class=\"lt-ingredient-card__icon\">&#9672;</div><h3>Camphor</h3><p>Soothes headaches and reduces inflammation on contact</p></div><div class=\"lt-ingredient-card\"><div class=\"lt-ingredient-card__icon\">&#9733;</div><h3>Borneol</h3><p>Traditional Thai ingredient for focus and mental clarity</p></div><div class=\"lt-ingredient-card\"><div class=\"lt-ingredient-card__icon\">&#9752;</div><h3>Eucalyptus Oil</h3><p>Clears congestion and supports respiratory health naturally</p></div><div class=\"lt-ingredient-card\"><div class=\"lt-ingredient-card__icon\">&#9788;</div><h3>Lemon Oil</h3><p>Uplifts mood, fights nausea, and enhances alertness</p></div></div></div></div>",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+        "heading": "What's Inside",
+        "subtitle": "Five powerful natural ingredients, perfected over a century"
+      },
+      "blocks": {
+        "menthol": { "type": "ingredient", "settings": { "icon": "❄️", "name": "Menthol", "benefit": "Opens airways instantly, delivers cooling relief that wakes you up in seconds" } },
+        "camphor": { "type": "ingredient", "settings": { "icon": "🌸", "name": "Camphor", "benefit": "Soothes headaches and reduces inflammation on contact" } },
+        "borneol": { "type": "ingredient", "settings": { "icon": "⭐", "name": "Borneol", "benefit": "Traditional Thai remedy for focus and mental clarity" } },
+        "eucalyptus": { "type": "ingredient", "settings": { "icon": "🌿", "name": "Eucalyptus Oil", "benefit": "Clears congestion and supports respiratory health naturally" } },
+        "lemon": { "type": "ingredient", "settings": { "icon": "🍋", "name": "Lemon Oil", "benefit": "Uplifts mood, fights nausea, and enhances alertness" } }
+      },
+      "block_order": ["menthol", "camphor", "borneol", "eucalyptus", "lemon"]
     },
-    "custom_product_faq": {
-      "type": "custom-liquid",
+    "faq": {
+      "type": "lom-faq",
       "settings": {
-        "custom_liquid": "<div class=\"lt-faq-outer-v2 lt-fade-in\" style=\"background:var(--lt-page-bg);font-family:var(--lt-font)\"><div class=\"lt-faq-v2\"><h2>Frequently Asked Questions</h2><details><summary>Is this a drug or medication?</summary><div class=\"lt-faq-answer\">No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils (menthol, camphor, eucalyptus, borneol, lemon). It's not a drug, medication, or supplement. It works through natural inhalation and topical application.</div></details><details><summary>Is it TSA / airport safe?</summary><div class=\"lt-faq-answer\">Yes! Lom Thai is a solid/semi-solid aromatherapy stick well under liquid limits. Thousands of our customers travel with it — it's pocket-sized and flight-friendly. Many people specifically buy it for travel and motion sickness.</div></details><details><summary>How long does one stick last?</summary><div class=\"lt-faq-answer\">Several months with daily use. The concentrated essential oils retain potency for a long time. At $0.03 per use, it's one of the most cost-effective natural remedies available.</div></details><details><summary>How fast does it work?</summary><div class=\"lt-faq-answer\">Seconds. You'll feel the effect immediately upon inhaling. The essential oils reach your nasal passages instantly. The rollerball provides relief within 60 seconds when applied to temples.</div></details><details><summary>Can my kids use it?</summary><div class=\"lt-faq-answer\">We recommend Lom Thai for ages 12+. The menthol concentration is designed for adults and teens. For younger children, consult your pediatrician first.</div></details><details><summary>Can I use it while driving?</summary><div class=\"lt-faq-answer\">Absolutely — that's one of its most popular uses! Thai drivers have relied on ya dom inhalers for decades to stay alert. It fights drowsiness naturally without the crash of caffeine or energy drinks.</div></details><details><summary>What's the difference between the two ends?</summary><div class=\"lt-faq-answer\">The top end is a nasal inhaler — breathe in the aromatic herbal blend for instant alertness and congestion relief. The bottom end has a rollerball applicator — roll the oil blend onto temples, neck, or under your nose for headache and tension relief. Two tools, one stick.</div></details><details><summary>Do you offer international shipping?</summary><div class=\"lt-faq-answer\">Yes! We offer free shipping to the US and EU. Orders typically arrive in 5-10 business days. All orders are backed by our 30-day money-back guarantee.</div></details></div></div>",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+        "heading": "Frequently Asked Questions",
+        "subtitle": ""
+      },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Is this a drug or medication?", "answer": "No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils (menthol, camphor, eucalyptus, borneol, lemon). It's not a drug, medication, or supplement." } },
+        "q2": { "type": "question", "settings": { "question": "Is it TSA / airport safe?", "answer": "Yes! Lom Thai is a solid aromatherapy stick well under liquid limits. Thousands of our customers travel with it — it's pocket-sized and flight-friendly." } },
+        "q3": { "type": "question", "settings": { "question": "How long does one stick last?", "answer": "Several months with daily use. At $0.03 per use, it's one of the most cost-effective natural remedies available." } },
+        "q4": { "type": "question", "settings": { "question": "How fast does it work?", "answer": "Seconds. You'll feel the effect immediately upon inhaling. The rollerball provides relief within 60 seconds when applied to temples." } },
+        "q5": { "type": "question", "settings": { "question": "Can my kids use it?", "answer": "We recommend Lom Thai for ages 12+. The menthol concentration is designed for adults and teens. For younger children, consult your pediatrician first." } },
+        "q6": { "type": "question", "settings": { "question": "Can I use it while driving?", "answer": "Absolutely — that's one of its most popular uses! Thai drivers have relied on ya dom inhalers for decades to stay alert naturally." } },
+        "q7": { "type": "question", "settings": { "question": "What's the difference between the two ends?", "answer": "The top end is a nasal inhaler for instant alertness and congestion relief. The bottom end has a rollerball for headache and tension relief on temples and neck." } },
+        "q8": { "type": "question", "settings": { "question": "Do you offer international shipping?", "answer": "Yes! Free shipping to the US and EU. Orders arrive in 5-10 business days, backed by our 30-day money-back guarantee." } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"]
     },
-    "custom_product_reviews": {
-      "type": "custom-liquid",
+    "reviews": {
+      "type": "lom-reviews",
       "settings": {
-        "custom_liquid": "<div style=\"background:var(--lt-page-bg);padding:0 0 48px;\">{% render 'lom-reviews', mode: 'full', heading: 'Real Results From Real People' %}</div>",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+        "heading": "Real Results From Real People",
+        "subtitle": ""
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "stars": 5, "text": "This thing is magic. Instant relief from my sinus headaches. I carry it everywhere now.", "name": "James K.", "location": "New York, USA" } },
+        "r2": { "type": "review", "settings": { "stars": 5, "text": "My whole family uses these. We bought the 5-pack and everyone has their own. Best natural remedy we've found.", "name": "Anna P.", "location": "Netherlands" } },
+        "r3": { "type": "review", "settings": { "stars": 5, "text": "As a nurse working long shifts, this keeps me going. Natural, portable, and actually works. 10/10.", "name": "Michelle T.", "location": "Texas, USA" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
     }
   },
   "order": [
-    "custom_product_trust",
+    "trust_bar",
     "main",
-    "custom_comparison",
-    "custom_ingredients",
-    "custom_product_faq",
-    "custom_product_reviews"
+    "comparison",
+    "ingredients",
+    "faq",
+    "reviews"
   ]
 }

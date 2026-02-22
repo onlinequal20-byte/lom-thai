@@ -1,0 +1,50 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-newsletter">
+  <div class="lom-container">
+    <h2 class="lom-fade-in">{{ section.settings.heading }}</h2>
+    <p class="lom-fade-in">{{ section.settings.subtitle }}</p>
+    {% form 'customer', class: 'lom-newsletter-form lom-fade-in' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" class="lom-newsletter-input" placeholder="{{ section.settings.placeholder }}" required>
+      <button type="submit" class="lom-newsletter-submit">{{ section.settings.button_text }}</button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join 12,000+ Who Chose Natural Relief"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Wellness tips, new products, and exclusive offers. No spam."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Newsletter"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1164 @@
+/* ============================================
+   LOM THAI - Premium Natural Thai Herbal Inhaler
+   Design: Plant-based, Clean, Trustworthy
+   Philosophy: Aesop meets Wellness
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+  /* Colors */
+  --lt-forest: #1a3c34;
+  --lt-sage: #6b8f71;
+  --lt-sage-light: #8fb396;
+  --lt-cream: #f8f5f0;
+  --lt-warm: #c4937a;
+  --lt-warm-dark: #a87860;
+  --lt-text: #2d2d2d;
+  --lt-text-light: #6b6b6b;
+  --lt-bg: #faf9f7;
+  --lt-card: rgba(255, 255, 255, 0.85);
+  --lt-border: rgba(0, 0, 0, 0.06);
+  --lt-gold: #d4a853;
+
+  /* Typography */
+  --lt-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --lt-serif: 'Playfair Display', Georgia, serif;
+
+  /* Spacing & Layout */
+  --lt-radius: 16px;
+  --lt-radius-sm: 10px;
+  --lt-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Shadows */
+  --lt-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --lt-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --lt-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   GLOBAL RESETS & BASE STYLES
+   ============================================ */
+.lom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lom-section {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .lom-section {
+    padding: 48px 0;
+  }
+}
+
+/* ============================================
+   1. HERO SECTION
+   ============================================ */
+.lom-hero {
+  background: var(--lt-cream);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+/* Subtle botanical pattern */
+.lom-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: radial-gradient(circle at 20% 50%, var(--lt-forest) 1px, transparent 1px),
+                    radial-gradient(circle at 80% 80%, var(--lt-forest) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.lom-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lom-hero-text {
+  max-width: 540px;
+}
+
+.lom-hero-label {
+  display: inline-block;
+  background: var(--lt-sage);
+  color: white;
+  font-family: var(--lt-font);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.lom-hero h1 {
+  font-family: var(--lt-serif);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--lt-forest);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
+}
+
+.lom-hero-subtitle {
+  font-family: var(--lt-font);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--lt-text-light);
+  margin: 0 0 32px 0;
+  max-width: 480px;
+}
+
+.lom-hero-cta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.lom-hero-image {
+  position: relative;
+  text-align: center;
+}
+
+.lom-hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--lt-radius);
+}
+
+@media (max-width: 968px) {
+  .lom-hero-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .lom-hero-image {
+    order: -1;
+  }
+
+  .lom-hero h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lom-hero {
+    padding: 48px 0;
+  }
+
+  .lom-hero h1 {
+    font-size: 36px;
+  }
+
+  .lom-hero-subtitle {
+    font-size: 16px;
+  }
+
+  .lom-hero-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* ============================================
+   2. PROOF BAR
+   ============================================ */
+.lom-proof-bar {
+  background: var(--lt-sage);
+  color: white;
+  padding: 16px 0;
+  text-align: center;
+}
+
+.lom-proof-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  font-family: var(--lt-font);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lom-proof-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lom-proof-separator {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+  .lom-proof-items {
+    gap: 20px;
+    font-size: 13px;
+  }
+
+  .lom-proof-separator {
+    display: none;
+  }
+}
+
+/* ============================================
+   3. PAS SECTION (Problem-Agitate-Solution)
+   ============================================ */
+.lom-pas {
+  background: var(--lt-cream);
+  padding: 80px 0;
+}
+
+.lom-pas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.lom-pas-card {
+  background: white;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius);
+  padding: 40px 32px;
+  text-align: center;
+  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
+}
+
+.lom-pas-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--lt-shadow-md);
+}
+
+.lom-pas-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.lom-pas-card h3 {
+  font-family: var(--lt-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  margin: 0 0 16px 0;
+}
+
+.lom-pas-card p {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lt-text-light);
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .lom-pas-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ============================================
+   4. PRODUCT SHOWCASE
+   ============================================ */
+.lom-showcase {
+  padding: 80px 0;
+  background: var(--lt-bg);
+}
+
+.lom-showcase-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  background: white;
+  border-radius: var(--lt-radius);
+  padding: 48px;
+  box-shadow: var(--lt-shadow-sm);
+}
+
+.lom-showcase-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--lt-radius-sm);
+}
+
+.lom-showcase-text h2 {
+  font-family: var(--lt-serif);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  margin: 0 0 20px 0;
+}
+
+.lom-showcase-text p {
+  font-family: var(--lt-font);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lt-text);
+  margin: 0 0 24px 0;
+}
+
+.lom-showcase-quote {
+  background: var(--lt-cream);
+  border-left: 4px solid var(--lt-sage);
+  padding: 20px 24px;
+  margin: 32px 0 24px 0;
+  border-radius: var(--lt-radius-sm);
+}
+
+.lom-showcase-quote p {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--lt-text);
+  margin: 0 0 8px 0;
+}
+
+.lom-showcase-quote cite {
+  font-family: var(--lt-font);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--lt-sage);
+  display: block;
+}
+
+@media (max-width: 968px) {
+  .lom-showcase-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .lom-showcase-text h2 {
+    font-size: 28px;
+  }
+}
+
+/* ============================================
+   5. HOW IT WORKS (STEPS)
+   ============================================ */
+.lom-steps {
+  padding: 80px 0;
+  background: var(--lt-bg);
+}
+
+.lom-steps-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 48px;
+  position: relative;
+}
+
+/* Connecting line */
+.lom-steps-container::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 16.66%;
+  right: 16.66%;
+  height: 2px;
+  background: linear-gradient(to right, var(--lt-sage-light), var(--lt-sage-light));
+  z-index: 0;
+}
+
+.lom-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lom-step-number {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  background: var(--lt-forest);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lt-serif);
+  font-size: 28px;
+  font-weight: 600;
+  box-shadow: 0 0 0 8px var(--lt-bg);
+}
+
+.lom-step h3 {
+  font-family: var(--lt-font);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  margin: 0 0 12px 0;
+}
+
+.lom-step p {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lt-text-light);
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .lom-steps-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .lom-steps-container::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   6. CREDIBILITY BAR
+   ============================================ */
+.lom-credibility {
+  background: white;
+  padding: 48px 0;
+  border-top: 1px solid var(--lt-border);
+  border-bottom: 1px solid var(--lt-border);
+}
+
+.lom-credibility-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+.lom-credibility-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lom-credibility-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--lt-forest);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.lom-credibility-text {
+  text-align: left;
+}
+
+.lom-credibility-text strong {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lt-text);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.lom-credibility-text span {
+  font-family: var(--lt-font);
+  font-size: 13px;
+  color: var(--lt-text-light);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .lom-credibility-items {
+    gap: 32px;
+  }
+}
+
+/* ============================================
+   7. REVIEWS
+   ============================================ */
+.lom-reviews {
+  padding: 80px 0;
+  background: var(--lt-bg);
+}
+
+.lom-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.lom-review-card {
+  background: white;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius);
+  padding: 32px;
+  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
+}
+
+.lom-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--lt-shadow-md);
+}
+
+.lom-review-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.lom-review-star {
+  color: var(--lt-gold);
+  font-size: 16px;
+}
+
+.lom-review-text {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lt-text);
+  margin: 0 0 20px 0;
+}
+
+.lom-review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--lt-border);
+}
+
+.lom-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--lt-sage-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lt-font);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.lom-review-author-info strong {
+  font-family: var(--lt-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lt-text);
+  display: block;
+}
+
+.lom-review-author-info span {
+  font-family: var(--lt-font);
+  font-size: 13px;
+  color: var(--lt-text-light);
+  display: block;
+}
+
+@media (max-width: 968px) {
+  .lom-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ============================================
+   8. NEWSLETTER
+   ============================================ */
+.lom-newsletter {
+  background: var(--lt-forest);
+  color: var(--lt-cream);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.lom-newsletter h2 {
+  font-family: var(--lt-serif);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--lt-cream);
+  margin: 0 0 12px 0;
+}
+
+.lom-newsletter p {
+  font-family: var(--lt-font);
+  font-size: 16px;
+  color: rgba(248, 245, 240, 0.8);
+  margin: 0 0 32px 0;
+}
+
+.lom-newsletter-form {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+}
+
+.lom-newsletter-input {
+  flex: 1;
+  font-family: var(--lt-font);
+  font-size: 15px;
+  padding: 16px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--lt-radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  transition: border-color var(--lt-transition), background var(--lt-transition);
+}
+
+.lom-newsletter-input::placeholder {
+  color: rgba(248, 245, 240, 0.6);
+}
+
+.lom-newsletter-input:focus {
+  border-color: var(--lt-sage-light);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lom-newsletter-submit {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  background: var(--lt-warm);
+  color: white;
+  border: none;
+  border-radius: var(--lt-radius-sm);
+  cursor: pointer;
+  transition: background var(--lt-transition), transform var(--lt-transition);
+}
+
+.lom-newsletter-submit:hover {
+  background: var(--lt-warm-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .lom-newsletter-form {
+    flex-direction: column;
+  }
+
+  .lom-newsletter h2 {
+    font-size: 28px;
+  }
+}
+
+/* ============================================
+   9. TRUST BAR (Product Page)
+   ============================================ */
+.lom-trust-bar {
+  background: var(--lt-sage);
+  padding: 12px 0;
+}
+
+.lom-trust-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.lom-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--lt-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.lom-trust-item svg,
+.lom-trust-item i {
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .lom-trust-items {
+    gap: 24px;
+  }
+}
+
+/* ============================================
+   10. COMPARISON TABLE
+   ============================================ */
+.lom-compare {
+  padding: 80px 0;
+  background: var(--lt-bg);
+}
+
+.lom-compare-table {
+  width: 100%;
+  background: white;
+  border-radius: var(--lt-radius);
+  overflow: hidden;
+  box-shadow: var(--lt-shadow-sm);
+  margin-top: 48px;
+}
+
+.lom-compare-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lom-compare-table th {
+  font-family: var(--lt-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 20px;
+  text-align: left;
+  border-bottom: 2px solid var(--lt-border);
+  color: var(--lt-text);
+}
+
+.lom-compare-table td {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  padding: 20px;
+  border-bottom: 1px solid var(--lt-border);
+  color: var(--lt-text);
+}
+
+.lom-compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Highlight Lom Thai column */
+.lom-compare-table th:nth-child(2),
+.lom-compare-table td:nth-child(2) {
+  background: rgba(143, 179, 150, 0.1);
+  font-weight: 600;
+}
+
+.lom-compare-table th:nth-child(2) {
+  color: var(--lt-forest);
+}
+
+.lom-compare-checkmark {
+  color: var(--lt-sage);
+  font-size: 18px;
+}
+
+.lom-compare-cross {
+  color: var(--lt-text-light);
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+  .lom-compare-table {
+    overflow-x: auto;
+  }
+
+  .lom-compare-table th,
+  .lom-compare-table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   11. INGREDIENTS
+   ============================================ */
+.lom-ingredients {
+  padding: 80px 0;
+  background: var(--lt-cream);
+}
+
+.lom-ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.lom-ingredient-card {
+  background: white;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius);
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
+}
+
+.lom-ingredient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--lt-shadow-md);
+}
+
+.lom-ingredient-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.lom-ingredient-name {
+  font-family: var(--lt-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  margin: 0 0 8px 0;
+}
+
+.lom-ingredient-benefit {
+  font-family: var(--lt-font);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lt-text-light);
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .lom-ingredients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .lom-ingredients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   12. FAQ ACCORDION
+   ============================================ */
+.lom-faq {
+  padding: 80px 0;
+  background: var(--lt-bg);
+}
+
+.lom-faq-list {
+  max-width: 800px;
+  margin: 48px auto 0;
+}
+
+.lom-faq-item {
+  background: white;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.lom-faq-question {
+  width: 100%;
+  font-family: var(--lt-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  text-align: left;
+  padding: 24px 56px 24px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--lt-transition);
+}
+
+.lom-faq-question:hover {
+  background: var(--lt-cream);
+}
+
+.lom-faq-toggle {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--lt-sage);
+  transition: transform var(--lt-transition);
+}
+
+.lom-faq-item.active .lom-faq-toggle {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.lom-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--lt-transition), padding var(--lt-transition);
+}
+
+.lom-faq-item.active .lom-faq-answer {
+  max-height: 500px;
+  padding: 0 24px 24px 24px;
+}
+
+.lom-faq-answer p {
+  font-family: var(--lt-font);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lt-text-light);
+  margin: 0;
+}
+
+/* ============================================
+   13. SCROLL FADE-IN ANIMATION
+   ============================================ */
+.lom-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.lom-fade-in.lom-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animations */
+.lom-fade-in:nth-child(1) { transition-delay: 0s; }
+.lom-fade-in:nth-child(2) { transition-delay: 0.1s; }
+.lom-fade-in:nth-child(3) { transition-delay: 0.2s; }
+.lom-fade-in:nth-child(4) { transition-delay: 0.3s; }
+.lom-fade-in:nth-child(5) { transition-delay: 0.4s; }
+.lom-fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+/* ============================================
+   14. SOCIAL PROOF MINI (Product Page)
+   ============================================ */
+.lom-social-proof-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--lt-cream);
+  border-radius: var(--lt-radius-sm);
+  margin: 20px 0;
+}
+
+.lom-social-proof-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.lom-social-proof-star {
+  color: var(--lt-gold);
+  font-size: 16px;
+}
+
+.lom-social-proof-text {
+  font-family: var(--lt-font);
+  font-size: 14px;
+  color: var(--lt-text);
+}
+
+.lom-social-proof-text strong {
+  font-weight: 600;
+  color: var(--lt-forest);
+}
+
+/* ============================================
+   15. TRUST BADGES
+   ============================================ */
+.lom-trust-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.lom-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid var(--lt-border);
+  border-radius: 50px;
+  font-family: var(--lt-font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lt-text);
+}
+
+.lom-trust-badge-icon {
+  color: var(--lt-sage);
+  font-size: 16px;
+}
+
+/* ============================================
+   16. CTA BUTTON
+   ============================================ */
+.lom-cta-btn {
+  display: inline-block;
+  font-family: var(--lt-font);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 40px;
+  background: var(--lt-warm);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--lt-transition), transform var(--lt-transition), box-shadow var(--lt-transition);
+  text-align: center;
+}
+
+.lom-cta-btn:hover {
+  background: var(--lt-warm-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 147, 122, 0.3);
+}
+
+.lom-cta-btn:active {
+  transform: translateY(0);
+}
+
+.lom-cta-btn-secondary {
+  background: transparent;
+  color: var(--lt-forest);
+  border: 2px solid var(--lt-forest);
+}
+
+.lom-cta-btn-secondary:hover {
+  background: var(--lt-forest);
+  color: white;
+  box-shadow: 0 6px 20px rgba(26, 60, 52, 0.2);
+}
+
+.lom-cta-btn-large {
+  font-size: 18px;
+  padding: 20px 48px;
+}
+
+.lom-cta-btn-full {
+  width: 100%;
+  display: block;
+}
+
+/* ============================================
+   17. SECTION HEADING
+   ============================================ */
+.lom-heading {
+  font-family: var(--lt-serif);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--lt-forest);
+  text-align: center;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.lom-heading-subtitle {
+  font-family: var(--lt-font);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--lt-text-light);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .lom-heading {
+    font-size: 32px;
+  }
+
+  .lom-heading-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.lom-text-center {
+  text-align: center;
+}
+
+.lom-text-forest {
+  color: var(--lt-forest);
+}
+
+.lom-text-sage {
+  color: var(--lt-sage);
+}
+
+.lom-bg-cream {
+  background: var(--lt-cream);
+}
+
+.lom-bg-white {
+  background: white;
+}
+
+.lom-mt-0 { margin-top: 0; }
+.lom-mt-1 { margin-top: 8px; }
+.lom-mt-2 { margin-top: 16px; }
+.lom-mt-3 { margin-top: 24px; }
+.lom-mt-4 { margin-top: 32px; }
+.lom-mt-5 { margin-top: 48px; }
+
+.lom-mb-0 { margin-bottom: 0; }
+.lom-mb-1 { margin-bottom: 8px; }
+.lom-mb-2 { margin-bottom: 16px; }
+.lom-mb-3 { margin-bottom: 24px; }
+.lom-mb-4 { margin-bottom: 32px; }
+.lom-mb-5 { margin-bottom: 48px; }
+
+/* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+@media (max-width: 768px) {
+  .lom-hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .lom-hide-desktop {
+    display: none;
+  }
+}
+
+/* ============================================
+   END OF LOM THAI CSS
+   ============================================ */
