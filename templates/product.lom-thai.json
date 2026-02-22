@@ -11,7 +11,6 @@
   "sections": {
     "trust_bar": {
       "type": "lom-trust-bar",
-      "settings": {},
       "blocks": {
         "shipping": {
           "type": "item",
@@ -47,7 +46,8 @@
         "natural",
         "guarantee",
         "sold"
-      ]
+      ],
+      "settings": {}
     },
     "main": {
       "type": "main-product",
@@ -67,7 +67,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "bundle_offer": {
@@ -124,10 +125,14 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "color_scheme": "",
         "media_size": "small",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
@@ -136,11 +141,6 @@
     },
     "comparison": {
       "type": "lom-comparison",
-      "settings": {
-        "heading": "Why Lom Thai?",
-        "subtitle": "",
-        "brand_name": "Lom Thai"
-      },
       "blocks": {
         "comp1": {
           "type": "competitor",
@@ -242,14 +242,15 @@
         "row5",
         "row6",
         "row7"
-      ]
+      ],
+      "settings": {
+        "heading": "Why Lom Thai?",
+        "subtitle": "",
+        "brand_name": "Lom Thai"
+      }
     },
     "ingredients": {
       "type": "lom-ingredients",
-      "settings": {
-        "heading": "What's Inside",
-        "subtitle": "Five powerful natural ingredients, perfected over a century"
-      },
       "blocks": {
         "menthol": {
           "type": "ingredient",
@@ -298,14 +299,14 @@
         "borneol",
         "eucalyptus",
         "lemon"
-      ]
+      ],
+      "settings": {
+        "heading": "What's Inside",
+        "subtitle": "Five powerful natural ingredients, perfected over a century"
+      }
     },
     "faq": {
       "type": "lom-faq",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "subtitle": ""
-      },
       "blocks": {
         "q1": {
           "type": "question",
@@ -373,14 +374,14 @@
         "q6",
         "q7",
         "q8"
-      ]
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subtitle": ""
+      }
     },
     "reviews": {
       "type": "lom-reviews",
-      "settings": {
-        "heading": "Real Results From Real People",
-        "subtitle": ""
-      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -414,7 +415,11 @@
         "r1",
         "r2",
         "r3"
-      ]
+      ],
+      "settings": {
+        "heading": "Real Results From Real People",
+        "subtitle": ""
+      }
     }
   },
   "order": [

@@ -14,7 +14,8 @@
     "lom-announce": {
       "type": "lom-announce",
       "settings": {
-        "text": "Free shipping on all US & EU orders — 30-day money-back guarantee"
+        "text": "Free shipping on all US & EU orders — 30-day money-back guarantee",
+        "link": ""
       }
     },
     "lom-header": {
