@@ -422,14 +422,36 @@
         "heading": "Real Results From Real People",
         "subtitle": ""
       }
+    },
+    "ticker": {
+      "type": "lom-social-ticker",
+      "settings": {},
+      "blocks": {
+        "t1": { "type": "item", "settings": { "text": "★★★★★ 2,847+ five-star reviews" } },
+        "t2": { "type": "item", "settings": { "text": "🔥 50,000+ units sold worldwide" } },
+        "t3": { "type": "item", "settings": { "text": "🇺🇸 Free US & EU shipping" } },
+        "t4": { "type": "item", "settings": { "text": "✓ 100% natural ingredients" } },
+        "t5": { "type": "item", "settings": { "text": "🛡️ 30-day money-back guarantee" } },
+        "t6": { "type": "item", "settings": { "text": "✈️ TSA-friendly — take it anywhere" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"]
+    },
+    "guarantee": {
+      "type": "lom-guarantee",
+      "settings": {
+        "heading": "Try It Risk-Free for 30 Days",
+        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
+      }
     }
   },
   "order": [
+    "ticker",
     "trust_bar",
     "main",
     "comparison",
     "ingredients",
-    "faq",
-    "reviews"
+    "reviews",
+    "guarantee",
+    "faq"
   ]
 }

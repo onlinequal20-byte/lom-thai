@@ -136,8 +136,24 @@
           </div>
         {% endif %}
 
+        {%- comment -%} Guarantee badges {%- endcomment -%}
+        <div class="lom-product-hero__guarantees">
+          <div class="lom-product-hero__guarantee">
+            <span class="lom-product-hero__guarantee-icon">🛡️</span>
+            <span>30-Day Guarantee</span>
+          </div>
+          <div class="lom-product-hero__guarantee">
+            <span class="lom-product-hero__guarantee-icon">🚚</span>
+            <span>Free Shipping</span>
+          </div>
+          <div class="lom-product-hero__guarantee">
+            <span class="lom-product-hero__guarantee-icon">🔒</span>
+            <span>Secure Checkout</span>
+          </div>
+        </div>
+
         {%- comment -%} Add to Cart {%- endcomment -%}
-        {% form 'product', product %}
+        {% form 'product', product, id: 'lom-product-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <button type="submit" class="lom-btn-primary lom-btn-full lom-product-hero__atc" {% unless product.available %}disabled{% endunless %}>
             {% if product.available %}
@@ -170,6 +186,19 @@
     </div>
   </div>
 </section>
+
+{%- comment -%} Sticky mobile ATC bar {%- endcomment -%}
+<div class="lom-sticky-atc" id="lom-sticky-atc">
+  <div class="lom-sticky-atc__inner">
+    <div class="lom-sticky-atc__info">
+      <div class="lom-sticky-atc__title">{{ product.title }}</div>
+      <div class="lom-sticky-atc__price">{{ product.price | money }}{% if product.compare_at_price > product.price %} <s style="color:var(--lom-text-light);font-size:12px">{{ product.compare_at_price | money }}</s>{% endif %}</div>
+    </div>
+    <button class="lom-sticky-atc__btn" onclick="document.getElementById('lom-product-form').querySelector('button[type=submit]').click()">
+      Add to Cart
+    </button>
+  </div>
+</div>
 
 <script>
   // Urgency countdown timer
@@ -222,6 +251,23 @@
       this.classList.add('is-active');
     });
   });
+
+  // Sticky mobile ATC
+  (function(){
+    var stickyEl = document.getElementById('lom-sticky-atc');
+    var atcBtn = document.querySelector('.lom-product-hero__atc');
+    if (!stickyEl || !atcBtn) return;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          stickyEl.classList.remove('is-visible');
+        } else {
+          stickyEl.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0 });
+    observer.observe(atcBtn);
+  })();
 </script>
 
 {% schema %}

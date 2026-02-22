@@ -2065,6 +2065,559 @@
 }
 
 /* ============================================================
+   LIQUID GLASS EFFECT
+   ============================================================ */
+.lom-glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.lom-glass--dark {
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.lom-glass--sage {
+  background: rgba(122, 158, 126, 0.12);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(122, 158, 126, 0.25);
+  box-shadow:
+    0 8px 32px rgba(122, 158, 126, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   STICKY MOBILE ATC
+   ============================================================ */
+.lom-sticky-atc {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.lom-sticky-atc.is-visible {
+  transform: translateY(0);
+}
+
+.lom-sticky-atc__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lom-sticky-atc__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lom-sticky-atc__title {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lom-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lom-sticky-atc__price {
+  font-family: var(--lom-body);
+  font-size: 13px;
+  color: var(--lom-text);
+}
+
+.lom-sticky-atc__btn {
+  flex-shrink: 0;
+  font-family: var(--lom-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  background: var(--lom-terracotta);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lom-sticky-atc__btn:hover {
+  background: var(--lom-terracotta-dark);
+}
+
+@media (max-width: 768px) {
+  .lom-sticky-atc {
+    display: block;
+  }
+}
+
+/* ============================================================
+   SOCIAL PROOF TICKER
+   ============================================================ */
+.lom-ticker {
+  background: var(--lom-sage);
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.lom-ticker__track {
+  display: flex;
+  gap: 48px;
+  animation: lomTickerScroll 30s linear infinite;
+  width: max-content;
+}
+
+.lom-ticker__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: var(--lom-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.lom-ticker__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+@keyframes lomTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   GUARANTEE SECTION
+   ============================================================ */
+.lom-guarantee {
+  padding: 80px 0;
+  background: white;
+}
+
+.lom-guarantee__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(122, 158, 126, 0.2);
+  box-shadow:
+    0 12px 40px rgba(122, 158, 126, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.lom-guarantee__badge {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lom-sage), var(--lom-sage-dark));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(122, 158, 126, 0.3);
+}
+
+.lom-guarantee__badge-number {
+  font-family: var(--lom-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lom-guarantee__badge-text {
+  font-family: var(--lom-body);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.lom-guarantee__content h2 {
+  font-family: var(--lom-display);
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--lom-black);
+  margin: 0 0 12px;
+}
+
+.lom-guarantee__content p {
+  font-family: var(--lom-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lom-text);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .lom-guarantee {
+    padding: 48px 0;
+  }
+
+  .lom-guarantee__inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  .lom-guarantee__badge {
+    width: 96px;
+    height: 96px;
+  }
+
+  .lom-guarantee__badge-number {
+    font-size: 26px;
+  }
+}
+
+/* ============================================================
+   REVIEW SUMMARY BAR
+   ============================================================ */
+.lom-reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding: 24px 32px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lom-reviews-summary__score {
+  text-align: center;
+}
+
+.lom-reviews-summary__number {
+  font-family: var(--lom-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--lom-black);
+  line-height: 1;
+}
+
+.lom-reviews-summary__stars {
+  color: var(--lom-gold);
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.lom-reviews-summary__meta {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  color: var(--lom-text);
+  line-height: 1.5;
+}
+
+.lom-reviews-summary__meta strong {
+  display: block;
+  font-size: 16px;
+  color: var(--lom-charcoal);
+}
+
+.lom-review-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   GLASS PRODUCT HERO ENHANCEMENTS
+   ============================================================ */
+.lom-product-hero {
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ece6 50%, #e8f0e9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.lom-product-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 158, 126, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lom-product-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 147, 122, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lom-product-hero__main-image {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.lom-product-hero__thumb {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  width: 72px;
+  height: 72px;
+}
+
+.lom-product-hero__thumb.is-active {
+  border-color: var(--lom-sage);
+  box-shadow: 0 4px 12px rgba(122, 158, 126, 0.2);
+}
+
+.lom-product-hero__bundles .lom-product-hero__bundle {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.lom-product-hero__bundles .lom-product-hero__bundle:hover {
+  border-color: rgba(122, 158, 126, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.lom-product-hero__bundles .lom-product-hero__bundle.is-active {
+  border-color: var(--lom-sage);
+  background: rgba(122, 158, 126, 0.08);
+  box-shadow: 0 4px 20px rgba(122, 158, 126, 0.15);
+}
+
+.lom-product-hero__atc {
+  font-size: 18px;
+  padding: 18px 32px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--lom-terracotta), #d4785a);
+  box-shadow: 0 6px 24px rgba(196, 147, 122, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.lom-product-hero__atc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: lomShimmer 3s infinite;
+}
+
+@keyframes lomShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.lom-product-hero__atc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(196, 147, 122, 0.45);
+}
+
+.lom-urgency {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass effect on ingredient cards */
+.lom-ingredient-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.lom-ingredient-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass effect on review cards */
+.lom-review-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.lom-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass comparison table */
+.lom-compare-table {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+/* Glass PAS cards */
+.lom-pas-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 40px 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.lom-pas-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass Final CTA */
+.lom-final-cta__inner {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  padding: 48px;
+}
+
+/* Guarantee badges inline (near ATC) */
+.lom-product-hero__guarantees {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.lom-product-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-family: var(--lom-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  flex: 1;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.lom-product-hero__guarantee-icon {
+  font-size: 18px;
+}
+
+/* ============================================================
    ANIMATIONS
    ============================================================ */
 .lom-fade-in {
