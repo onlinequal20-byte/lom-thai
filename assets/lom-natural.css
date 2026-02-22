@@ -1026,75 +1026,281 @@
 }
 
 /* ============================================================
-   COMPARISON
+   COMPARISON — HIGH CONVERSION REDESIGN
    ============================================================ */
 .lom-compare {
   padding: 100px 0;
-  background: var(--lom-cream);
-}
-
-.lom-compare-table {
-  background: white;
-  border-radius: 16px;
+  background: linear-gradient(180deg, var(--lom-cream) 0%, #f0ece6 100%);
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  margin-top: 48px;
 }
 
-.lom-compare-table table {
-  width: 100%;
-  border-collapse: collapse;
+.lom-compare::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 158, 126, 0.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.lom-compare-table th {
+.lom-compare__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.lom-compare__eyebrow {
+  display: inline-block;
   font-family: var(--lom-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 20px 16px;
-  border-bottom: 2px solid var(--lom-border);
-  text-align: center;
-  color: var(--lom-text);
-}
-
-.lom-compare-table th:first-child {
-  text-align: left;
-}
-
-.lom-compare-table th:nth-child(2) {
+  letter-spacing: 3px;
+  font-weight: 700;
   color: var(--lom-sage-dark);
-  background: rgba(122, 158, 126, 0.08);
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: rgba(122, 158, 126, 0.1);
 }
 
-.lom-compare-table td {
-  font-size: 14px;
-  padding: 16px;
-  border-bottom: 1px solid var(--lom-border-light);
-  text-align: center;
-  color: var(--lom-text);
+/* --- Desktop table layout --- */
+.lom-compare__table {
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.lom-compare__row {
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr repeat(3, 1fr);
+  align-items: center;
+}
+
+.lom-compare__row--header {
+  background: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.lom-compare__row:not(.lom-compare__row--header) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background 0.2s;
+}
+
+.lom-compare__row:not(.lom-compare__row--header):hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.lom-compare__row:last-child {
+  border-bottom: none;
+}
+
+.lom-compare__feature-col {
+  padding: 20px 28px;
   font-family: var(--lom-body);
-}
-
-.lom-compare-table td:first-child {
-  text-align: left;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--lom-charcoal);
 }
 
-.lom-compare-table td:nth-child(2) {
-  background: rgba(122, 158, 126, 0.05);
-  color: var(--lom-sage-dark);
-  font-weight: 600;
+.lom-compare__brand-col {
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+  background: rgba(122, 158, 126, 0.06);
 }
 
-.lom-compare-checkmark {
-  color: var(--lom-sage);
+.lom-compare__row--header .lom-compare__brand-col {
+  background: rgba(122, 158, 126, 0.1);
+  padding: 24px;
+}
+
+.lom-compare__brand-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.lom-compare__crown {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.lom-compare__brand-badge strong {
+  font-family: var(--lom-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lom-sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lom-compare__competitor-col {
+  padding: 20px 16px;
+  text-align: center;
+  font-family: var(--lom-body);
+  font-size: 13px;
+  color: var(--lom-text-light);
+}
+
+.lom-compare__row--header .lom-compare__competitor-col {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--lom-text);
+  padding: 24px 16px;
+}
+
+/* Value badges */
+.lom-compare__val {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--lom-body);
+  font-size: 14px;
+}
+
+.lom-compare__val--win {
+  color: var(--lom-sage-dark);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.lom-compare__val--lose {
+  color: #c0897a;
+  opacity: 0.7;
+}
+
+.lom-compare__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lom-sage), var(--lom-sage-dark));
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(122, 158, 126, 0.3);
+}
+
+.lom-compare__cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(196, 147, 122, 0.15);
+  color: #b07a68;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* --- Mobile card layout --- */
+.lom-compare__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lom-compare__mcard {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.lom-compare__mcard-feature {
+  padding: 14px 20px;
+  font-family: var(--lom-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lom-charcoal);
+  background: rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.lom-compare__mcard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.lom-compare__mcard-item {
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lom-compare__mcard-item--brand {
+  background: rgba(122, 158, 126, 0.06);
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.lom-compare__mcard-label {
+  font-family: var(--lom-body);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--lom-text-light);
+}
+
+.lom-compare__mcard-val {
+  font-family: var(--lom-body);
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Bottom CTA --- */
+.lom-compare__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.lom-compare__cta-text {
+  font-family: var(--lom-body);
+  font-size: 17px;
+  color: var(--lom-text);
+  margin: 0 0 20px;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .lom-compare {
     padding: 64px 0;
+  }
+
+  .lom-compare__header {
+    margin-bottom: 32px;
+  }
+
+  .lom-compare__cta {
+    margin-top: 32px;
+  }
+
+  .lom-compare__cta-text {
+    font-size: 15px;
   }
 }
 
@@ -2541,17 +2747,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* Glass comparison table */
-.lom-compare-table {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  border-radius: 20px;
-  overflow: hidden;
-  margin-top: 48px;
-}
+/* Glass comparison table - handled in comparison section CSS */
 
 /* Glass PAS cards */
 .lom-pas-card {

@@ -64,20 +64,26 @@
     "comparison": {
       "type": "lom-comparison",
       "settings": {
+        "eyebrow": "The Clear Winner",
         "heading": "Why Lom Thai?",
-        "brand_name": "Lom Thai"
+        "subtitle": "See how we stack up against the alternatives",
+        "brand_name": "Lom Thai",
+        "cta_text": "Join 50,000+ people who chose the natural alternative",
+        "cta_button": "Try Lom Thai Risk-Free"
       },
       "blocks": {
         "c1": { "type": "competitor", "settings": { "name": "Energy Drinks" } },
         "c2": { "type": "competitor", "settings": { "name": "Pharmacy Sprays" } },
         "c3": { "type": "competitor", "settings": { "name": "Coffee" } },
-        "r1": { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "15-30 min", "competitor_2": "5-10 min", "competitor_3": "20-45 min" } },
+        "r1": { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min" } },
         "r2": { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes" } },
-        "r3": { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✓", "competitor_3": "✗" } },
-        "r4": { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓", "competitor_1": "✗", "competitor_2": "✗", "competitor_3": "✗" } },
-        "r5": { "type": "row", "settings": { "feature": "Cost per use", "brand_value": "$0.03", "competitor_1": "$2-4", "competitor_2": "$0.50", "competitor_3": "$3-6" } }
+        "r3": { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
+        "r4": { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No" } },
+        "r5": { "type": "row", "settings": { "feature": "Clears congestion", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
+        "r6": { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
+        "r7": { "type": "row", "settings": { "feature": "Cost per use", "brand_value": "$0.03", "competitor_1": "$2-4", "competitor_2": "$0.50", "competitor_3": "$3-6" } }
       },
-      "block_order": ["c1", "c2", "c3", "r1", "r2", "r3", "r4", "r5"]
+      "block_order": ["c1", "c2", "c3", "r1", "r2", "r3", "r4", "r5", "r6", "r7"]
     },
     "ingredients": {
       "type": "lom-ingredients",

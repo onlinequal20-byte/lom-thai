@@ -246,9 +246,12 @@
         "row7"
       ],
       "settings": {
+        "eyebrow": "The Clear Winner",
         "heading": "Why Lom Thai?",
-        "subtitle": "",
-        "brand_name": "Lom Thai"
+        "subtitle": "See how we stack up against the alternatives",
+        "brand_name": "Lom Thai",
+        "cta_text": "Join 50,000+ people who chose the natural alternative",
+        "cta_button": "Try Lom Thai Risk-Free"
       }
     },
     "ingredients": {
