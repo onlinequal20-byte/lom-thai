@@ -47,6 +47,7 @@
         "guarantee",
         "sold"
       ],
+      "disabled": true,
       "settings": {}
     },
     "main": {
@@ -66,22 +67,23 @@
         },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "bundle_offer": {
           "type": "bundle_offer",
           "settings": {
             "heading": "Bundle & Save"
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
           }
         },
         "collapsible_how_to_use": {
@@ -117,8 +119,8 @@
         "title",
         "price",
         "variant_picker",
-        "bundle_offer",
         "buy_buttons",
+        "bundle_offer",
         "collapsible_how_to_use",
         "collapsible_ingredients",
         "collapsible_shipping"
