@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "about_hero": {
+      "type": "lom-about-hero",
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "From Thai Tradition to Global Wellness",
+        "text": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
+      }
+    },
+    "story_1": {
+      "type": "lom-story",
+      "settings": {
+        "eyebrow": "The Origin",
+        "heading": "A Century-Old Recipe, Perfected by Nature",
+        "text": "<p>In Thailand, ya dom isn't just a product — it's a way of life. From taxi drivers staying alert on long shifts to grandmothers soothing headaches, these herbal inhalers have been a daily essential for over 100 years.</p><p>Lom Thai was born from a simple question: why isn't the rest of the world using this?</p>",
+        "reverse": false,
+        "background": "white"
+      }
+    },
+    "story_2": {
+      "type": "lom-story",
+      "settings": {
+        "eyebrow": "The Mission",
+        "heading": "Making Natural Relief Accessible to Everyone",
+        "text": "<p>We believe you shouldn't have to choose between effectiveness and natural ingredients. Our 2-in-1 inhaler and roller delivers instant relief using five plant-based ingredients — no synthetic chemicals, no side effects, no waiting.</p><p>At $0.03 per use, premium wellness doesn't have to be expensive.</p>",
+        "reverse": true,
+        "background": "cream",
+        "button_text": "Shop Lom Thai",
+        "button_url": "/collections/all"
+      }
+    },
+    "values": {
+      "type": "lom-values",
+      "settings": {
+        "heading": "What We Stand For"
+      },
+      "blocks": {
+        "v1": { "type": "value", "settings": { "icon": "🌿", "title": "100% Natural", "text": "Every ingredient comes from nature. No synthetic chemicals, preservatives, or artificial fragrances. Ever." } },
+        "v2": { "type": "value", "settings": { "icon": "🇹🇭", "title": "Thai Heritage", "text": "Our formula is based on a century-old recipe passed through generations of Thai herbal practitioners." } },
+        "v3": { "type": "value", "settings": { "icon": "♻️", "title": "Sustainable", "text": "Minimal packaging, ethically sourced ingredients, and a product that lasts months instead of days." } },
+        "v4": { "type": "value", "settings": { "icon": "💚", "title": "Accessible Wellness", "text": "Natural relief shouldn't be expensive. At $0.03 per use, we make wellness accessible to everyone." } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"]
+    },
+    "proof": {
+      "type": "lom-social-proof",
+      "settings": { "background": "white" },
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "number": "50,000+", "label": "Sticks Sold" } },
+        "s2": { "type": "stat", "settings": { "number": "4.9/5", "label": "Customer Rating" } },
+        "s3": { "type": "stat", "settings": { "number": "40+", "label": "Countries Shipped" } },
+        "s4": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "final_cta": {
+      "type": "lom-final-cta",
+      "settings": {
+        "heading": "Experience the Tradition",
+        "text": "Join 50,000+ people who chose natural relief. Free shipping. 30-day guarantee.",
+        "button_text": "Shop Now",
+        "button_url": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "about_hero",
+    "story_1",
+    "story_2",
+    "values",
+    "proof",
+    "final_cta"
+  ]
+}

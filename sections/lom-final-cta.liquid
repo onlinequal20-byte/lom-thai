@@ -1,0 +1,62 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-final-cta">
+  <div class="lom-container">
+    <div class="lom-final-cta__inner lom-reveal">
+      <div class="lom-final-cta__image">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 500 }}" alt="{{ section.settings.heading }}" loading="lazy">
+        {% elsif collections.all.products.first.featured_image %}
+          <img src="{{ collections.all.products.first.featured_image | image_url: width: 500 }}" alt="{{ collections.all.products.first.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="lom-final-cta__text">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+        <a href="{{ section.settings.button_url }}" class="lom-btn-primary lom-btn-large">{{ section.settings.button_text }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Final CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Feel the Difference?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Join 50,000+ people who switched to natural relief. Free shipping, 30-day guarantee."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Lom Thai"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Final CTA"
+    }
+  ]
+}
+{% endschema %}

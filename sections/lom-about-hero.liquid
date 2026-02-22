@@ -1,0 +1,51 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-about-hero">
+  <div class="lom-about-hero__bg">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | image_url: width: 1920 }}" alt="{{ section.settings.heading }}" loading="eager">
+    {% endif %}
+    <div class="lom-about-hero__overlay"></div>
+  </div>
+  <div class="lom-container">
+    <div class="lom-about-hero__content lom-reveal">
+      {% if section.settings.eyebrow != blank %}
+        <span class="lom-about-hero__eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom About Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From Thai Tradition to Global Wellness"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subtitle",
+      "default": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    }
+  ],
+  "presets": [{ "name": "Lom About Hero" }]
+}
+{% endschema %}

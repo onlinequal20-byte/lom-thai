@@ -1,0 +1,33 @@
+<div class="lom-announce" id="lom-announce">
+  <div class="lom-announce__inner">
+    {% if section.settings.link != blank %}
+      <a href="{{ section.settings.link }}" class="lom-announce__text">{{ section.settings.text }}</a>
+    {% else %}
+      <span class="lom-announce__text">{{ section.settings.text }}</span>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lom Announcement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Free shipping on all US & EU orders — 30-day money-back guarantee"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link (optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Announcement"
+    }
+  ]
+}
+{% endschema %}

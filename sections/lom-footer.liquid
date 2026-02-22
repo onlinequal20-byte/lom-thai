@@ -1,0 +1,167 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<footer class="lom-footer">
+  {%- comment -%} Top: Brand tagline {%- endcomment -%}
+  <div class="lom-footer__brand">
+    <div class="lom-container">
+      <h2 class="lom-footer__tagline">{{ section.settings.tagline }}</h2>
+      <p class="lom-footer__tagline-sub">{{ section.settings.tagline_sub }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Middle: Columns {%- endcomment -%}
+  <div class="lom-footer__columns">
+    <div class="lom-container">
+      <div class="lom-footer__grid">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'menu' %}
+              <div class="lom-footer__col" {{ block.shopify_attributes }}>
+                <h4 class="lom-footer__col-title">{{ block.settings.title }}</h4>
+                {% if block.settings.menu != blank %}
+                  <ul class="lom-footer__links">
+                    {% for link in block.settings.menu.links %}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            {% when 'newsletter' %}
+              <div class="lom-footer__col lom-footer__col--newsletter" {{ block.shopify_attributes }}>
+                <h4 class="lom-footer__col-title">{{ block.settings.title }}</h4>
+                <p class="lom-footer__newsletter-text">{{ block.settings.text }}</p>
+                {% form 'customer', class: 'lom-footer__newsletter-form' %}
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <div class="lom-footer__newsletter-input-wrap">
+                    <input type="email" name="contact[email]" placeholder="{{ block.settings.placeholder }}" required class="lom-footer__newsletter-input">
+                    <button type="submit" class="lom-footer__newsletter-btn" aria-label="Subscribe">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                  </div>
+                {% endform %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Bottom: Copyright + Social {%- endcomment -%}
+  <div class="lom-footer__bottom">
+    <div class="lom-container">
+      <div class="lom-footer__bottom-inner">
+        <p class="lom-footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+        <div class="lom-footer__social">
+          {% if section.settings.social_instagram != blank %}
+            <a href="{{ section.settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.social_tiktok != blank %}
+            <a href="{{ section.settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13a8.28 8.28 0 005.58 2.16V11.7a4.83 4.83 0 01-3.59-1.42V6.69h3.59z"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.social_facebook != blank %}
+            <a href="{{ section.settings.social_facebook }}" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          {% endif %}
+        </div>
+        <div class="lom-footer__payment">
+          {{ shop.enabled_payment_types | payment_type_svg_tag }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Lom Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "Breathe Better. Naturally."
+    },
+    {
+      "type": "text",
+      "id": "tagline_sub",
+      "label": "Tagline subtitle",
+      "default": "Plant-based relief, perfected over a century in Thailand."
+    },
+    {
+      "type": "url",
+      "id": "social_instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_tiktok",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook",
+      "label": "Facebook URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column title",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Stay Connected"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Join 12,000+ people who chose natural relief. Wellness tips and exclusive offers."
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Input placeholder",
+          "default": "Your email"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Footer",
+      "blocks": [
+        { "type": "menu", "settings": { "title": "Shop" } },
+        { "type": "menu", "settings": { "title": "Help" } },
+        { "type": "menu", "settings": { "title": "About" } },
+        { "type": "newsletter", "settings": { "title": "Stay Connected", "text": "Join 12,000+ people who chose natural relief. Wellness tips and exclusive offers.", "placeholder": "Your email" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

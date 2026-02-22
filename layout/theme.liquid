@@ -378,18 +378,26 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <!-- Lom Thai: Scroll fade-in observer (global) -->
+    <!-- Lom Thai: Scroll reveal observer (global) -->
     <script>
       (function(){
-        var els = document.querySelectorAll('.lom-fade-in,.lt-fade-in');
-        if (els.length && 'IntersectionObserver' in window) {
+        var selectors = '.lom-fade-in,.lom-reveal,.lom-reveal-left,.lom-reveal-right,.lom-scale-in,.lom-stagger,.lt-fade-in';
+        function initObserver(){
+          var els = document.querySelectorAll(selectors);
+          if (!els.length || !('IntersectionObserver' in window)) return;
           var obs = new IntersectionObserver(function(entries){
             entries.forEach(function(e){
-              if(e.isIntersecting){e.target.classList.add('lom-visible');e.target.classList.add('lt-visible');obs.unobserve(e.target);}
+              if(e.isIntersecting){
+                e.target.classList.add('visible','lom-visible','lt-visible','is-visible');
+                obs.unobserve(e.target);
+              }
             });
-          },{threshold:0.1});
+          },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
           els.forEach(function(el){obs.observe(el);});
         }
+        initObserver();
+        // Re-init on Shopify section load (theme editor)
+        document.addEventListener('shopify:section:load', initObserver);
       })();
     </script>
   </body>

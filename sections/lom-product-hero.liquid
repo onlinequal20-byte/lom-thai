@@ -1,0 +1,212 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+{%- assign product = product -%}
+
+<section class="lom-product-hero">
+  <div class="lom-container--wide">
+    <div class="lom-product-hero__grid">
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="lom-product-hero__gallery">
+        <div class="lom-product-hero__main-image" id="lom-main-image">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | default: product.title }}" id="lom-product-img" loading="eager">
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="lom-product-hero__thumbs">
+            {% for image in product.images %}
+              <button class="lom-product-hero__thumb {% if forloop.first %}is-active{% endif %}" onclick="document.getElementById('lom-product-img').src='{{ image | image_url: width: 1200 }}'; document.querySelectorAll('.lom-product-hero__thumb').forEach(function(t){t.classList.remove('is-active')}); this.classList.add('is-active');">
+                <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | default: product.title }}" loading="lazy" width="120">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Product Info {%- endcomment -%}
+      <div class="lom-product-hero__info">
+        <div class="lom-product-hero__breadcrumb">
+          <a href="/">Home</a> / <a href="/collections/all">Shop</a> / <span>{{ product.title }}</span>
+        </div>
+
+        {%- comment -%} Social proof mini {%- endcomment -%}
+        <div class="lom-product-hero__proof">
+          <span class="lom-stars">★★★★★</span>
+          <span>{{ section.settings.review_count }} Reviews</span>
+        </div>
+
+        <h1 class="lom-product-hero__title">{{ product.title }}</h1>
+
+        {% if section.settings.subtitle != blank %}
+          <p class="lom-product-hero__subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+
+        <div class="lom-product-hero__price">
+          {% if product.compare_at_price > product.price %}
+            <span class="lom-product-hero__price-compare">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+          <span class="lom-product-hero__price-current">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            {% assign savings = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+            <span class="lom-product-hero__price-save">Save {{ savings }}%</span>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Variant picker {%- endcomment -%}
+        {% if product.has_only_default_variant == false %}
+          {% for option in product.options_with_values %}
+            <div class="lom-product-hero__option">
+              <label class="lom-product-hero__option-label">{{ option.name }}</label>
+              <div class="lom-product-hero__option-values">
+                {% for value in option.values %}
+                  <button class="lom-product-hero__option-btn {% if option.selected_value == value %}is-active{% endif %}">{{ value }}</button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {%- comment -%} Bundle offer {%- endcomment -%}
+        {% if section.settings.show_bundle %}
+          <div class="lom-product-hero__bundles">
+            <div class="lom-product-hero__bundle is-active" data-quantity="1">
+              <div class="lom-product-hero__bundle-radio"></div>
+              <div class="lom-product-hero__bundle-info">
+                <strong>1x Lom Thai</strong>
+                <span>Try it out</span>
+              </div>
+              <div class="lom-product-hero__bundle-price">{{ product.price | money }}</div>
+            </div>
+            <div class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3">
+              <span class="lom-product-hero__bundle-badge">Most Popular</span>
+              <div class="lom-product-hero__bundle-radio"></div>
+              <div class="lom-product-hero__bundle-info">
+                <strong>3x Lom Thai</strong>
+                <span>One for every bag</span>
+              </div>
+              <div class="lom-product-hero__bundle-price">
+                <small class="lom-product-hero__bundle-was">{{ product.price | times: 3 | money }}</small>
+                {{ product.price | times: 3 | times: 80 | divided_by: 100 | money }}
+              </div>
+            </div>
+            <div class="lom-product-hero__bundle" data-quantity="5">
+              <span class="lom-product-hero__bundle-badge lom-product-hero__bundle-badge--value">Best Value</span>
+              <div class="lom-product-hero__bundle-radio"></div>
+              <div class="lom-product-hero__bundle-info">
+                <strong>5x Lom Thai</strong>
+                <span>Share with family</span>
+              </div>
+              <div class="lom-product-hero__bundle-price">
+                <small class="lom-product-hero__bundle-was">{{ product.price | times: 5 | money }}</small>
+                {{ product.price | times: 5 | times: 70 | divided_by: 100 | money }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {%- comment -%} Add to Cart {%- endcomment -%}
+        {% form 'product', product %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="lom-btn-primary lom-btn-full lom-product-hero__atc" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              {{ section.settings.atc_text | default: 'Add to Cart' }} — {{ product.price | money }}
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        {% endform %}
+
+        {%- comment -%} Trust badges {%- endcomment -%}
+        <div class="lom-product-hero__trust">
+          <span>🚚 Free Shipping</span>
+          <span>🌿 100% Natural</span>
+          <span>✓ 30-Day Guarantee</span>
+        </div>
+
+        {%- comment -%} Key benefits {%- endcomment -%}
+        <div class="lom-product-hero__benefits">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' %}
+              <div class="lom-product-hero__benefit" {{ block.shopify_attributes }}>
+                <span class="lom-product-hero__benefit-icon">{{ block.settings.icon }}</span>
+                <span>{{ block.settings.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Bundle selector
+  document.querySelectorAll('.lom-product-hero__bundle').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.lom-product-hero__bundle').forEach(function(x){x.classList.remove('is-active')});
+      this.classList.add('is-active');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Lom Product Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Product subtitle",
+      "default": "2-in-1 Nasal Inhaler & Roller — Instant natural relief for headaches, fatigue, and congestion"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review count",
+      "default": "2,847"
+    },
+    {
+      "type": "text",
+      "id": "atc_text",
+      "label": "Add to cart text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bundle",
+      "label": "Show bundle offers",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Key benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "default": "⚡"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "default": "Works in seconds, not minutes"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Product Hero",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "⚡", "text": "Works in seconds, not minutes" } },
+        { "type": "benefit", "settings": { "icon": "🌿", "text": "5 natural plant-based ingredients" } },
+        { "type": "benefit", "settings": { "icon": "💰", "text": "Only $0.03 per use — lasts months" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

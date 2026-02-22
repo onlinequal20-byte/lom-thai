@@ -1,63 +1,45 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "lom-footer": {
+      "type": "lom-footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
+        "menu-shop": {
+          "type": "menu",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "title": "Shop"
           }
         },
-        "footer-1": {
-          "type": "link_list",
+        "menu-help": {
+          "type": "menu",
           "settings": {
-            "heading": "Info",
-            "menu": "footer"
+            "title": "Help"
           }
         },
-        "footer-2": {
-          "type": "text",
+        "menu-about": {
+          "type": "menu",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Bringing ancient Thai herbal wellness to the US and Europe. Free shipping on all orders. 100% natural, zero chemicals.</p>"
+            "title": "About"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Stay Connected",
+            "text": "Join 12,000+ people who chose natural relief. Wellness tips and exclusive offers.",
+            "placeholder": "Your email"
           }
         }
       },
-      "block_order": [
-        "footer-0",
-        "footer-1",
-        "footer-2"
-      ],
+      "block_order": ["menu-shop", "menu-help", "menu-about", "newsletter"],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Newsletter",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "tagline": "Breathe Better. Naturally.",
+        "tagline_sub": "Plant-based relief, perfected over a century in Thailand."
       }
     }
   },
   "order": [
-    "footer"
+    "lom-footer"
   ]
 }

@@ -1,0 +1,63 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-social-proof {% if section.settings.background == 'cream' %}lom-bg-cream{% endif %}">
+  <div class="lom-container">
+    <div class="lom-social-proof__items lom-reveal">
+      {% for block in section.blocks %}
+        <div class="lom-social-proof__item" {{ block.shopify_attributes }}>
+          <span class="lom-social-proof__number">{{ block.settings.number }}</span>
+          <span class="lom-social-proof__label">{{ block.settings.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Social Proof",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "cream"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "50,000+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Sticks Sold"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Social Proof",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "50,000+", "label": "Sticks Sold Worldwide" } },
+        { "type": "stat", "settings": { "number": "4.9/5", "label": "Average Rating" } },
+        { "type": "stat", "settings": { "number": "30 Day", "label": "Money-Back Guarantee" } },
+        { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

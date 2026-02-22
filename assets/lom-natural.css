@@ -1,1164 +1,2535 @@
-/* ============================================
-   LOM THAI - Premium Natural Thai Herbal Inhaler
-   Design: Plant-based, Clean, Trustworthy
-   Philosophy: Aesop meets Wellness
-   ============================================ */
+/* ============================================================================
+   LOM THAI - PREMIUM HERBAL INHALER BRAND DESIGN SYSTEM
+   A sophisticated, editorial-driven CSS framework for premium DTC brands
+   Inspired by: Aesop, Alo Yoga, Glossier
+   ============================================================================ */
 
-/* ============================================
-   CSS VARIABLES
-   ============================================ */
+/* ============================================================================
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   ============================================================================ */
+
 :root {
-  /* Colors */
-  --lt-forest: #1a3c34;
-  --lt-sage: #6b8f71;
-  --lt-sage-light: #8fb396;
-  --lt-cream: #f8f5f0;
-  --lt-warm: #c4937a;
-  --lt-warm-dark: #a87860;
-  --lt-text: #2d2d2d;
-  --lt-text-light: #6b6b6b;
-  --lt-bg: #faf9f7;
-  --lt-card: rgba(255, 255, 255, 0.85);
-  --lt-border: rgba(0, 0, 0, 0.06);
-  --lt-gold: #d4a853;
+  /* Color Palette - Premium, Restrained, Intentional */
+  --lom-black: #1a1a1a;
+  --lom-charcoal: #333333;
+  --lom-text: #4a4a4a;
+  --lom-text-light: #888888;
+  --lom-cream: #f7f4ef;
+  --lom-cream-dark: #ede8df;
+  --lom-white: #ffffff;
+  --lom-sage: #7a9e7e;
+  --lom-sage-dark: #5c7e60;
+  --lom-sage-light: #c5d9c7;
+  --lom-terracotta: #c4937a;
+  --lom-terracotta-dark: #a87860;
+  --lom-gold: #c9a96e;
+  --lom-border: #e8e4de;
+  --lom-border-light: #f0ece6;
 
-  /* Typography */
-  --lt-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --lt-serif: 'Playfair Display', Georgia, serif;
+  /* Typography - Serif for Display, Sans for Body */
+  --lom-display: 'Playfair Display', Georgia, serif;
+  --lom-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Spacing & Layout */
-  --lt-radius: 16px;
-  --lt-radius-sm: 10px;
-  --lt-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Spacing Scale - Generous, Premium */
+  --lom-space-xs: 8px;
+  --lom-space-sm: 16px;
+  --lom-space-md: 24px;
+  --lom-space-lg: 32px;
+  --lom-space-xl: 48px;
+  --lom-space-2xl: 64px;
+  --lom-space-3xl: 80px;
+  --lom-space-4xl: 120px;
 
-  /* Shadows */
-  --lt-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --lt-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --lt-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  /* Layout */
+  --lom-container-max: 1280px;
+  --lom-container-padding: 48px;
+  --lom-container-padding-mobile: 24px;
+
+  /* Transitions - Smooth, Premium */
+  --lom-transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --lom-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --lom-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows - Subtle */
+  --lom-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --lom-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --lom-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Border Radius */
+  --lom-radius-sm: 2px;
+  --lom-radius-md: 4px;
+  --lom-radius-lg: 8px;
+  --lom-radius-pill: 50px;
 }
 
-/* ============================================
-   GLOBAL RESETS & BASE STYLES
-   ============================================ */
+/* ============================================================================
+   2. RESET & BASE STYLES
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--lom-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lom-text);
+  background-color: var(--lom-white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--lom-transition-base);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ============================================================================
+   3. TYPOGRAPHY SYSTEM
+   ============================================================================ */
+
+/* Display - Large Serif Headings */
+.lom-display {
+  font-family: var(--lom-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--lom-black);
+}
+
+.lom-display-1 {
+  font-size: clamp(48px, 5vw, 72px);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-display-2 {
+  font-size: clamp(40px, 4vw, 56px);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-display-3 {
+  font-size: clamp(32px, 3vw, 40px);
+  margin-bottom: var(--lom-space-sm);
+}
+
+/* Headings - Sans Serif, Clean */
+.lom-h1 {
+  font-family: var(--lom-body);
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-h2 {
+  font-family: var(--lom-body);
+  font-size: clamp(28px, 2.5vw, 32px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-h3 {
+  font-family: var(--lom-body);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-h4 {
+  font-family: var(--lom-body);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-xs);
+}
+
+/* Body Text */
+.lom-body-lg {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--lom-text);
+}
+
+.lom-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lom-text);
+}
+
+.lom-body-sm {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--lom-text);
+}
+
+/* Caption & Small Text */
+.lom-caption {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lom-text-light);
+}
+
+.lom-eyebrow {
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  margin-bottom: var(--lom-space-sm);
+}
+
+/* Text Utilities */
+.lom-text-center { text-align: center; }
+.lom-text-left { text-align: left; }
+.lom-text-right { text-align: right; }
+.lom-text-light { color: var(--lom-text-light); }
+.lom-text-sage { color: var(--lom-sage); }
+.lom-text-terracotta { color: var(--lom-terracotta); }
+.lom-text-white { color: var(--lom-white); }
+
+.lom-weight-normal { font-weight: 400; }
+.lom-weight-medium { font-weight: 500; }
+.lom-weight-semibold { font-weight: 600; }
+.lom-weight-bold { font-weight: 700; }
+
+/* ============================================================================
+   4. LAYOUT SYSTEM
+   ============================================================================ */
+
+/* Container */
 .lom-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: var(--lom-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--lom-container-padding);
+  padding-right: var(--lom-container-padding);
 }
 
+@media (max-width: 768px) {
+  .lom-container {
+    padding-left: var(--lom-container-padding-mobile);
+    padding-right: var(--lom-container-padding-mobile);
+  }
+}
+
+/* Section Spacing - Generous */
 .lom-section {
-  padding: 80px 0;
+  padding-top: var(--lom-space-4xl);
+  padding-bottom: var(--lom-space-4xl);
 }
 
 @media (max-width: 768px) {
   .lom-section {
-    padding: 48px 0;
+    padding-top: var(--lom-space-3xl);
+    padding-bottom: var(--lom-space-3xl);
   }
 }
 
-/* ============================================
-   1. HERO SECTION
-   ============================================ */
-.lom-hero {
-  background: var(--lt-cream);
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0;
+.lom-section-sm {
+  padding-top: var(--lom-space-2xl);
+  padding-bottom: var(--lom-space-2xl);
 }
 
-/* Subtle botanical pattern */
-.lom-hero::before {
-  content: '';
+.lom-section-lg {
+  padding-top: 160px;
+  padding-bottom: 160px;
+}
+
+@media (max-width: 768px) {
+  .lom-section-lg {
+    padding-top: var(--lom-space-4xl);
+    padding-bottom: var(--lom-space-4xl);
+  }
+}
+
+/* Grid System - 12 Column */
+.lom-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--lom-space-lg);
+}
+
+@media (max-width: 768px) {
+  .lom-grid {
+    gap: var(--lom-space-md);
+  }
+}
+
+.lom-col-1 { grid-column: span 1; }
+.lom-col-2 { grid-column: span 2; }
+.lom-col-3 { grid-column: span 3; }
+.lom-col-4 { grid-column: span 4; }
+.lom-col-5 { grid-column: span 5; }
+.lom-col-6 { grid-column: span 6; }
+.lom-col-7 { grid-column: span 7; }
+.lom-col-8 { grid-column: span 8; }
+.lom-col-9 { grid-column: span 9; }
+.lom-col-10 { grid-column: span 10; }
+.lom-col-11 { grid-column: span 11; }
+.lom-col-12 { grid-column: span 12; }
+
+@media (max-width: 768px) {
+  .lom-col-1, .lom-col-2, .lom-col-3, .lom-col-4,
+  .lom-col-5, .lom-col-6, .lom-col-7, .lom-col-8,
+  .lom-col-9, .lom-col-10, .lom-col-11, .lom-col-12 {
+    grid-column: span 12;
+  }
+}
+
+/* Flex Utilities */
+.lom-flex {
+  display: flex;
+}
+
+.lom-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lom-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lom-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lom-gap-xs { gap: var(--lom-space-xs); }
+.lom-gap-sm { gap: var(--lom-space-sm); }
+.lom-gap-md { gap: var(--lom-space-md); }
+.lom-gap-lg { gap: var(--lom-space-lg); }
+.lom-gap-xl { gap: var(--lom-space-xl); }
+
+/* ============================================================================
+   5. ANNOUNCEMENT BAR
+   ============================================================================ */
+
+.lom-announce {
+  background-color: var(--lom-sage);
+  color: var(--lom-white);
+  text-align: center;
+  padding: 12px var(--lom-space-md);
+  position: relative;
+  z-index: 1000;
+}
+
+.lom-announce-text {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.lom-announce-close {
+  position: absolute;
+  right: var(--lom-space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lom-white);
+  font-size: 18px;
+  opacity: 0.8;
+  transition: opacity var(--lom-transition-fast);
+}
+
+.lom-announce-close:hover {
+  opacity: 1;
+}
+
+/* ============================================================================
+   6. HEADER
+   ============================================================================ */
+
+.lom-header {
+  background-color: var(--lom-white);
+  border-bottom: 1px solid var(--lom-border-light);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: box-shadow var(--lom-transition-base);
+}
+
+.lom-header.scrolled {
+  box-shadow: var(--lom-shadow-sm);
+}
+
+.lom-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--lom-container-padding);
+  max-width: var(--lom-container-max);
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .lom-header-inner {
+    padding: 16px var(--lom-container-padding-mobile);
+  }
+}
+
+/* Logo */
+.lom-header-logo {
+  font-family: var(--lom-display);
+  font-size: 24px;
+  color: var(--lom-black);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .lom-header-logo {
+    font-size: 20px;
+  }
+}
+
+/* Navigation */
+.lom-header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-lg);
+}
+
+@media (max-width: 768px) {
+  .lom-header-nav {
+    display: none;
+  }
+}
+
+.lom-nav-link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--lom-charcoal);
+  transition: color var(--lom-transition-fast);
+}
+
+.lom-nav-link:hover {
+  color: var(--lom-sage-dark);
+}
+
+/* Header Actions */
+.lom-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-md);
+}
+
+.lom-header-icon {
+  font-size: 20px;
+  color: var(--lom-charcoal);
+  transition: color var(--lom-transition-fast);
+  cursor: pointer;
+}
+
+.lom-header-icon:hover {
+  color: var(--lom-sage-dark);
+}
+
+/* Mobile Menu Toggle */
+.lom-menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: var(--lom-charcoal);
+}
+
+@media (max-width: 768px) {
+  .lom-menu-toggle {
+    display: block;
+  }
+}
+
+/* Mobile Menu Overlay */
+.lom-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--lom-white);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  padding: var(--lom-space-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--lom-transition-base);
+}
+
+.lom-mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lom-mobile-menu-close {
+  align-self: flex-end;
+  font-size: 32px;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-2xl);
+}
+
+.lom-mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lom-space-lg);
+}
+
+.lom-mobile-menu-link {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--lom-charcoal);
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================================
+   7. FOOTER
+   ============================================================================ */
+
+.lom-footer {
+  background-color: var(--lom-charcoal);
+  color: var(--lom-cream);
+  padding-top: var(--lom-space-4xl);
+  padding-bottom: var(--lom-space-xl);
+}
+
+.lom-footer-top {
+  text-align: center;
+  margin-bottom: var(--lom-space-3xl);
+  padding-bottom: var(--lom-space-3xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lom-footer-tagline {
+  font-family: var(--lom-display);
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--lom-cream);
+  margin-bottom: var(--lom-space-sm);
+  line-height: 1.3;
+}
+
+.lom-footer-subtitle {
+  font-size: 16px;
+  color: var(--lom-cream-dark);
+  opacity: 0.7;
+}
+
+.lom-footer-middle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--lom-space-xl);
+  margin-bottom: var(--lom-space-3xl);
+  padding-bottom: var(--lom-space-3xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .lom-footer-middle {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--lom-space-lg);
+  }
+}
+
+.lom-footer-column h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--lom-space-md);
+  color: var(--lom-white);
+  font-weight: 600;
+}
+
+.lom-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lom-space-xs);
+}
+
+.lom-footer-link {
+  font-size: 14px;
+  color: var(--lom-cream-dark);
+  transition: color var(--lom-transition-fast);
+}
+
+.lom-footer-link:hover {
+  color: var(--lom-white);
+}
+
+/* Newsletter */
+.lom-newsletter-form {
+  display: flex;
+  gap: var(--lom-space-xs);
+}
+
+.lom-newsletter-input {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid var(--lom-cream-dark);
+  color: var(--lom-cream);
+  font-size: 14px;
+  border-radius: var(--lom-radius-sm);
+  transition: border-color var(--lom-transition-fast);
+}
+
+.lom-newsletter-input::placeholder {
+  color: var(--lom-cream-dark);
+  opacity: 0.6;
+}
+
+.lom-newsletter-input:focus {
+  outline: none;
+  border-color: var(--lom-white);
+}
+
+.lom-newsletter-submit {
+  padding: 12px 24px;
+  background-color: var(--lom-sage);
+  color: var(--lom-white);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--lom-radius-sm);
+  transition: background-color var(--lom-transition-fast);
+}
+
+.lom-newsletter-submit:hover {
+  background-color: var(--lom-sage-dark);
+}
+
+/* Footer Bottom */
+.lom-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--lom-space-md);
+}
+
+@media (max-width: 768px) {
+  .lom-footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.lom-footer-copyright {
+  font-size: 12px;
+  color: var(--lom-cream-dark);
+  opacity: 0.7;
+}
+
+.lom-footer-payment,
+.lom-footer-social {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-sm);
+}
+
+.lom-footer-payment img {
+  height: 20px;
+  opacity: 0.6;
+}
+
+.lom-social-link {
+  font-size: 18px;
+  color: var(--lom-cream-dark);
+  transition: color var(--lom-transition-fast);
+}
+
+.lom-social-link:hover {
+  color: var(--lom-white);
+}
+
+/* ============================================================================
+   8. HERO SECTION
+   ============================================================================ */
+
+.lom-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--lom-cream);
+}
+
+.lom-hero-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.03;
-  background-image: radial-gradient(circle at 20% 50%, var(--lt-forest) 1px, transparent 1px),
-                    radial-gradient(circle at 80% 80%, var(--lt-forest) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-
-.lom-hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.lom-hero-text {
-  max-width: 540px;
-}
-
-.lom-hero-label {
-  display: inline-block;
-  background: var(--lt-sage);
-  color: white;
-  font-family: var(--lt-font);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 8px 20px;
-  border-radius: 50px;
-  margin-bottom: 24px;
-}
-
-.lom-hero h1 {
-  font-family: var(--lt-serif);
-  font-size: 56px;
-  font-weight: 600;
-  line-height: 1.1;
-  color: var(--lt-forest);
-  margin: 0 0 20px 0;
-  letter-spacing: -0.5px;
-}
-
-.lom-hero-subtitle {
-  font-family: var(--lt-font);
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--lt-text-light);
-  margin: 0 0 32px 0;
-  max-width: 480px;
-}
-
-.lom-hero-cta {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.lom-hero-image {
-  position: relative;
-  text-align: center;
-}
-
-.lom-hero-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--lt-radius);
-}
-
-@media (max-width: 968px) {
-  .lom-hero-content {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .lom-hero-image {
-    order: -1;
-  }
-
-  .lom-hero h1 {
-    font-size: 42px;
-  }
-}
-
-@media (max-width: 640px) {
-  .lom-hero {
-    padding: 48px 0;
-  }
-
-  .lom-hero h1 {
-    font-size: 36px;
-  }
-
-  .lom-hero-subtitle {
-    font-size: 16px;
-  }
-
-  .lom-hero-cta {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* ============================================
-   2. PROOF BAR
-   ============================================ */
-.lom-proof-bar {
-  background: var(--lt-sage);
-  color: white;
-  padding: 16px 0;
-  text-align: center;
-}
-
-.lom-proof-items {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 32px;
-  font-family: var(--lt-font);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.lom-proof-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lom-proof-separator {
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-}
-
-@media (max-width: 640px) {
-  .lom-proof-items {
-    gap: 20px;
-    font-size: 13px;
-  }
-
-  .lom-proof-separator {
-    display: none;
-  }
-}
-
-/* ============================================
-   3. PAS SECTION (Problem-Agitate-Solution)
-   ============================================ */
-.lom-pas {
-  background: var(--lt-cream);
-  padding: 80px 0;
-}
-
-.lom-pas-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.lom-pas-card {
-  background: white;
-  border: 1px solid var(--lt-border);
-  border-radius: var(--lt-radius);
-  padding: 40px 32px;
-  text-align: center;
-  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
-}
-
-.lom-pas-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--lt-shadow-md);
-}
-
-.lom-pas-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-}
-
-.lom-pas-card h3 {
-  font-family: var(--lt-serif);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--lt-forest);
-  margin: 0 0 16px 0;
-}
-
-.lom-pas-card p {
-  font-family: var(--lt-font);
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--lt-text-light);
-  margin: 0;
-}
-
-@media (max-width: 968px) {
-  .lom-pas-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-/* ============================================
-   4. PRODUCT SHOWCASE
-   ============================================ */
-.lom-showcase {
-  padding: 80px 0;
-  background: var(--lt-bg);
-}
-
-.lom-showcase-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  background: white;
-  border-radius: var(--lt-radius);
-  padding: 48px;
-  box-shadow: var(--lt-shadow-sm);
-}
-
-.lom-showcase-image img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--lt-radius-sm);
-}
-
-.lom-showcase-text h2 {
-  font-family: var(--lt-serif);
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--lt-forest);
-  margin: 0 0 20px 0;
-}
-
-.lom-showcase-text p {
-  font-family: var(--lt-font);
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--lt-text);
-  margin: 0 0 24px 0;
-}
-
-.lom-showcase-quote {
-  background: var(--lt-cream);
-  border-left: 4px solid var(--lt-sage);
-  padding: 20px 24px;
-  margin: 32px 0 24px 0;
-  border-radius: var(--lt-radius-sm);
-}
-
-.lom-showcase-quote p {
-  font-family: var(--lt-font);
-  font-size: 15px;
-  font-style: italic;
-  color: var(--lt-text);
-  margin: 0 0 8px 0;
-}
-
-.lom-showcase-quote cite {
-  font-family: var(--lt-font);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 600;
-  color: var(--lt-sage);
-  display: block;
-}
-
-@media (max-width: 968px) {
-  .lom-showcase-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px 24px;
-  }
-
-  .lom-showcase-text h2 {
-    font-size: 28px;
-  }
-}
-
-/* ============================================
-   5. HOW IT WORKS (STEPS)
-   ============================================ */
-.lom-steps {
-  padding: 80px 0;
-  background: var(--lt-bg);
-}
-
-.lom-steps-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 48px;
-  position: relative;
-}
-
-/* Connecting line */
-.lom-steps-container::before {
-  content: '';
-  position: absolute;
-  top: 32px;
-  left: 16.66%;
-  right: 16.66%;
-  height: 2px;
-  background: linear-gradient(to right, var(--lt-sage-light), var(--lt-sage-light));
+  object-fit: cover;
   z-index: 0;
 }
 
-.lom-step {
-  text-align: center;
-  position: relative;
+.lom-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   z-index: 1;
 }
 
-.lom-step-number {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 24px;
-  background: var(--lt-forest);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--lt-serif);
-  font-size: 28px;
-  font-weight: 600;
-  box-shadow: 0 0 0 8px var(--lt-bg);
+.lom-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: var(--lom-space-xl);
 }
 
-.lom-step h3 {
-  font-family: var(--lt-font);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--lt-forest);
-  margin: 0 0 12px 0;
+.lom-hero-heading {
+  font-family: var(--lom-display);
+  font-size: clamp(48px, 6vw, 72px);
+  color: var(--lom-white);
+  margin-bottom: var(--lom-space-md);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.lom-step p {
-  font-family: var(--lt-font);
-  font-size: 15px;
+.lom-hero.light .lom-hero-heading {
+  color: var(--lom-black);
+}
+
+.lom-hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--lom-white);
+  margin-bottom: var(--lom-space-xl);
   line-height: 1.6;
-  color: var(--lt-text-light);
-  margin: 0;
+  opacity: 0.95;
 }
 
-@media (max-width: 968px) {
-  .lom-steps-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .lom-steps-container::before {
-    display: none;
-  }
+.lom-hero.light .lom-hero-subtitle {
+  color: var(--lom-text);
 }
 
-/* ============================================
-   6. CREDIBILITY BAR
-   ============================================ */
-.lom-credibility {
-  background: white;
-  padding: 48px 0;
-  border-top: 1px solid var(--lt-border);
-  border-bottom: 1px solid var(--lt-border);
+.lom-hero-cta {
+  display: inline-flex;
+  gap: var(--lom-space-sm);
 }
 
-.lom-credibility-items {
+/* Scroll Indicator */
+.lom-scroll-indicator {
+  position: absolute;
+  bottom: var(--lom-space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 56px;
-  flex-wrap: wrap;
+  gap: var(--lom-space-xs);
+  color: var(--lom-white);
+  animation: lom-bounce 2s infinite;
 }
 
-.lom-credibility-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.lom-hero.light .lom-scroll-indicator {
+  color: var(--lom-charcoal);
 }
 
-.lom-credibility-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--lt-forest);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.lom-scroll-indicator-text {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.lom-scroll-indicator-icon {
   font-size: 20px;
-  flex-shrink: 0;
 }
 
-.lom-credibility-text {
-  text-align: left;
+@keyframes lom-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
 }
 
-.lom-credibility-text strong {
-  font-family: var(--lt-font);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--lt-text);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.lom-credibility-text span {
-  font-family: var(--lt-font);
-  font-size: 13px;
-  color: var(--lt-text-light);
-  display: block;
+/* Split Hero */
+.lom-hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
-  .lom-credibility-items {
-    gap: 32px;
+  .lom-hero-split {
+    grid-template-columns: 1fr;
   }
 }
 
-/* ============================================
-   7. REVIEWS
-   ============================================ */
-.lom-reviews {
-  padding: 80px 0;
-  background: var(--lt-bg);
+.lom-hero-split-content {
+  display: flex;
+  align-items: center;
+  padding: var(--lom-space-4xl);
+  background-color: var(--lom-cream);
 }
 
-.lom-reviews-grid {
+.lom-hero-split-image {
+  background-size: cover;
+  background-position: center;
+}
+
+/* ============================================================================
+   9. BUTTONS
+   ============================================================================ */
+
+.lom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lom-space-xs);
+  font-family: var(--lom-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border-radius: var(--lom-radius-pill);
+  transition: all var(--lom-transition-base);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.lom-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary Button - Terracotta CTA */
+.lom-btn-primary {
+  background-color: var(--lom-terracotta);
+  color: var(--lom-white);
+  box-shadow: var(--lom-shadow-sm);
+}
+
+.lom-btn-primary:hover {
+  background-color: var(--lom-terracotta-dark);
+  box-shadow: var(--lom-shadow-md);
+}
+
+/* Large Primary Button for ATC */
+.lom-btn-primary-lg {
+  background-color: var(--lom-terracotta);
+  color: var(--lom-white);
+  padding: 20px 48px;
+  font-size: 16px;
+  height: 56px;
+  width: 100%;
+  box-shadow: var(--lom-shadow-sm);
+}
+
+.lom-btn-primary-lg:hover {
+  background-color: var(--lom-terracotta-dark);
+  box-shadow: var(--lom-shadow-md);
+}
+
+/* Secondary Button - Outlined */
+.lom-btn-secondary {
+  background-color: transparent;
+  color: var(--lom-charcoal);
+  border: 2px solid var(--lom-charcoal);
+}
+
+.lom-btn-secondary:hover {
+  background-color: var(--lom-charcoal);
+  color: var(--lom-white);
+}
+
+/* Light Secondary */
+.lom-btn-secondary-light {
+  background-color: transparent;
+  color: var(--lom-white);
+  border: 2px solid var(--lom-white);
+}
+
+.lom-btn-secondary-light:hover {
+  background-color: var(--lom-white);
+  color: var(--lom-charcoal);
+}
+
+/* Text Button */
+.lom-btn-text {
+  background: none;
+  color: var(--lom-charcoal);
+  padding: 0;
+  border-radius: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+}
+
+.lom-btn-text:hover {
+  text-decoration-color: currentColor;
+  transform: none;
+}
+
+/* ============================================================================
+   10. FORMS
+   ============================================================================ */
+
+.lom-form-group {
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-xs);
+}
+
+.lom-input,
+.lom-textarea,
+.lom-select {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--lom-body);
+  font-size: 16px;
+  color: var(--lom-text);
+  background-color: var(--lom-white);
+  border: 1px solid var(--lom-border);
+  border-radius: var(--lom-radius-sm);
+  transition: all var(--lom-transition-base);
+}
+
+.lom-input::placeholder,
+.lom-textarea::placeholder {
+  color: var(--lom-text-light);
+}
+
+.lom-input:focus,
+.lom-textarea:focus,
+.lom-select:focus {
+  outline: none;
+  border-color: var(--lom-sage);
+  box-shadow: 0 0 0 3px rgba(122, 158, 126, 0.1);
+}
+
+.lom-input {
+  height: 48px;
+}
+
+.lom-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Checkbox & Radio */
+.lom-checkbox,
+.lom-radio {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-xs);
+  cursor: pointer;
+}
+
+.lom-checkbox input,
+.lom-radio input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--lom-sage);
+}
+
+/* ============================================================================
+   11. PRODUCT PAGE - HERO
+   ============================================================================ */
+
+.lom-product-hero {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: var(--lom-space-2xl);
+  padding: var(--lom-space-3xl) 0;
+}
+
+@media (max-width: 1024px) {
+  .lom-product-hero {
+    grid-template-columns: 1fr;
+    gap: var(--lom-space-xl);
+  }
+}
+
+/* Gallery */
+.lom-product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lom-space-sm);
+}
+
+.lom-product-main-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: var(--lom-radius-md);
+  background-color: var(--lom-cream);
+}
+
+.lom-product-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--lom-transition-slow);
+}
+
+.lom-product-main-image:hover img {
+  transform: scale(1.03);
+}
+
+.lom-product-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--lom-space-sm);
+}
+
+.lom-product-thumbnail {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--lom-radius-sm);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color var(--lom-transition-fast);
+  background-color: var(--lom-cream);
+}
+
+.lom-product-thumbnail.active {
+  border-color: var(--lom-sage);
+}
+
+.lom-product-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product Info */
+.lom-product-info {
+  padding: var(--lom-space-xl);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+@media (max-width: 1024px) {
+  .lom-product-info {
+    position: static;
+    padding: 0;
+  }
+}
+
+.lom-product-breadcrumb {
+  font-size: 12px;
+  color: var(--lom-text-light);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-product-title {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 3vw, 40px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-sm);
+  line-height: 1.2;
+}
+
+.lom-product-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-xs);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-product-stars {
+  color: var(--lom-gold);
+  font-size: 14px;
+}
+
+.lom-product-rating-count {
+  font-size: 14px;
+  color: var(--lom-text-light);
+}
+
+.lom-product-price {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-product-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lom-text);
+  margin-bottom: var(--lom-space-xl);
+  padding-bottom: var(--lom-space-xl);
+  border-bottom: 1px solid var(--lom-border);
+}
+
+/* Variant Selector */
+.lom-product-variants {
+  margin-bottom: var(--lom-space-xl);
+}
+
+.lom-variant-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-variant-options {
+  display: flex;
+  gap: var(--lom-space-xs);
+  flex-wrap: wrap;
+}
+
+.lom-variant-option {
+  padding: 12px 20px;
+  border: 2px solid var(--lom-border);
+  border-radius: var(--lom-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lom-charcoal);
+  cursor: pointer;
+  transition: all var(--lom-transition-fast);
+}
+
+.lom-variant-option:hover {
+  border-color: var(--lom-sage);
+}
+
+.lom-variant-option.active {
+  border-color: var(--lom-sage);
+  background-color: var(--lom-sage-light);
+  color: var(--lom-sage-dark);
+}
+
+/* Quantity */
+.lom-product-quantity {
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-sm);
+  border: 1px solid var(--lom-border);
+  border-radius: var(--lom-radius-sm);
+  width: fit-content;
+}
+
+.lom-quantity-btn {
+  padding: 12px 16px;
+  font-size: 18px;
+  color: var(--lom-charcoal);
+  transition: color var(--lom-transition-fast);
+}
+
+.lom-quantity-btn:hover {
+  color: var(--lom-sage-dark);
+}
+
+.lom-quantity-input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Add to Cart */
+.lom-product-atc-wrapper {
+  margin-bottom: var(--lom-space-md);
+}
+
+/* Trust Badges */
+.lom-trust-badges {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
+  gap: var(--lom-space-md);
+  margin-top: var(--lom-space-xl);
+  padding-top: var(--lom-space-xl);
+  border-top: 1px solid var(--lom-border);
+}
+
+@media (max-width: 768px) {
+  .lom-trust-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lom-trust-badge {
+  text-align: center;
+}
+
+.lom-trust-badge-icon {
+  font-size: 24px;
+  color: var(--lom-sage);
+  margin-bottom: var(--lom-space-xs);
+}
+
+.lom-trust-badge-text {
+  font-size: 12px;
+  color: var(--lom-text);
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   12. BENEFITS STRIP
+   ============================================================================ */
+
+.lom-benefits-strip {
+  background-color: var(--lom-cream);
+  border-top: 1px solid var(--lom-border);
+  border-bottom: 1px solid var(--lom-border);
+  padding: var(--lom-space-lg) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lom-benefits-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.lom-benefits-list {
+  display: flex;
+  gap: var(--lom-space-2xl);
+  padding: 0 var(--lom-container-padding);
+}
+
+@media (max-width: 768px) {
+  .lom-benefits-list {
+    padding: 0 var(--lom-container-padding-mobile);
+  }
+}
+
+.lom-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--lom-space-sm);
+  min-width: 200px;
+}
+
+.lom-benefit-icon {
+  font-size: 20px;
+  color: var(--lom-sage);
+}
+
+.lom-benefit-text {
+  font-size: 13px;
+  color: var(--lom-charcoal);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+   13. STORY SECTION
+   ============================================================================ */
+
+.lom-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--lom-space-4xl);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .lom-story {
+    grid-template-columns: 1fr;
+    gap: var(--lom-space-xl);
+  }
+}
+
+.lom-story.reverse {
+  direction: rtl;
+}
+
+.lom-story.reverse > * {
+  direction: ltr;
+}
+
+.lom-story-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--lom-radius-md);
+}
+
+.lom-story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-story-content {
+  max-width: 560px;
+}
+
+.lom-story-eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-story-heading {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 3vw, 48px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-md);
+  line-height: 1.2;
+}
+
+.lom-story-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--lom-text);
+  margin-bottom: var(--lom-space-xl);
+}
+
+/* ============================================================================
+   14. INGREDIENTS VISUAL
+   ============================================================================ */
+
+.lom-ingredients-visual {
+  text-align: center;
+  padding: var(--lom-space-4xl) 0;
+  background-color: var(--lom-cream);
+}
+
+.lom-ingredients-heading {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 3vw, 48px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-3xl);
+}
+
+.lom-ingredients-diagram {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto var(--lom-space-3xl);
+}
+
+.lom-ingredients-center-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.lom-ingredient-callout {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lom-space-xs);
+}
+
+.lom-ingredient-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--lom-sage);
+  border-radius: 50%;
+  border: 2px solid var(--lom-white);
+}
+
+.lom-ingredient-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  background-color: var(--lom-white);
+  padding: 8px 16px;
+  border-radius: var(--lom-radius-pill);
+  box-shadow: var(--lom-shadow-sm);
+  white-space: nowrap;
+}
+
+/* Grid Version */
+.lom-ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--lom-space-xl);
+}
+
+.lom-ingredient-card {
+  text-align: center;
+  padding: var(--lom-space-lg);
+}
+
+.lom-ingredient-image {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--lom-space-sm);
+  border-radius: 50%;
+  background-color: var(--lom-sage-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lom-ingredient-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-xs);
+}
+
+.lom-ingredient-benefit {
+  font-size: 13px;
+  color: var(--lom-text-light);
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   15. SOCIAL PROOF BAR
+   ============================================================================ */
+
+.lom-social-proof {
+  text-align: center;
+  padding: var(--lom-space-3xl) 0;
+  border-top: 1px solid var(--lom-border);
+  border-bottom: 1px solid var(--lom-border);
+}
+
+.lom-social-proof-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--lom-text-light);
+  margin-bottom: var(--lom-space-lg);
+}
+
+/* Featured In Logos */
+.lom-featured-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lom-space-2xl);
+  flex-wrap: wrap;
+}
+
+.lom-featured-logo {
+  height: 24px;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all var(--lom-transition-base);
+}
+
+.lom-featured-logo:hover {
+  opacity: 0.8;
+  filter: grayscale(0%);
+}
+
+/* Stats */
+.lom-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--lom-space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .lom-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lom-stat {
+  text-align: center;
+  padding: var(--lom-space-lg);
+}
+
+.lom-stat-number {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--lom-sage-dark);
+  margin-bottom: var(--lom-space-xs);
+  line-height: 1;
+}
+
+.lom-stat-label {
+  font-size: 14px;
+  color: var(--lom-text);
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   16. REVIEWS SECTION
+   ============================================================================ */
+
+.lom-reviews-section {
+  padding: var(--lom-space-4xl) 0;
+}
+
+.lom-reviews-header {
+  text-align: center;
+  margin-bottom: var(--lom-space-3xl);
+}
+
+.lom-reviews-title {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 3vw, 48px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lom-space-md);
+  margin-bottom: var(--lom-space-lg);
+}
+
+.lom-reviews-score {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--lom-black);
+}
+
+.lom-reviews-meta {
+  text-align: left;
+}
+
+.lom-reviews-stars {
+  color: var(--lom-gold);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.lom-reviews-count {
+  font-size: 14px;
+  color: var(--lom-text-light);
+}
+
+/* Review Grid */
+.lom-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--lom-space-lg);
 }
 
 .lom-review-card {
-  background: white;
-  border: 1px solid var(--lt-border);
-  border-radius: var(--lt-radius);
-  padding: 32px;
-  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
+  padding: var(--lom-space-lg);
+  border: 1px solid var(--lom-border);
+  border-radius: var(--lom-radius-md);
+  background-color: var(--lom-white);
+  transition: all var(--lom-transition-base);
 }
 
 .lom-review-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--lt-shadow-md);
+  box-shadow: var(--lom-shadow-md);
+  border-color: var(--lom-sage-light);
+}
+
+.lom-review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--lom-space-sm);
 }
 
 .lom-review-stars {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 16px;
+  color: var(--lom-gold);
+  font-size: 14px;
 }
 
-.lom-review-star {
-  color: var(--lt-gold);
-  font-size: 16px;
+.lom-review-date {
+  font-size: 12px;
+  color: var(--lom-text-light);
 }
 
 .lom-review-text {
-  font-family: var(--lt-font);
   font-size: 15px;
-  line-height: 1.6;
-  color: var(--lt-text);
-  margin: 0 0 20px 0;
+  line-height: 1.7;
+  color: var(--lom-text);
+  margin-bottom: var(--lom-space-sm);
 }
 
 .lom-review-author {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid var(--lt-border);
-}
-
-.lom-review-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--lt-sage-light);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--lt-font);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.lom-review-author-info strong {
-  font-family: var(--lt-font);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--lt-text);
-  display: block;
-}
-
-.lom-review-author-info span {
-  font-family: var(--lt-font);
+  gap: var(--lom-space-xs);
   font-size: 13px;
-  color: var(--lt-text-light);
-  display: block;
-}
-
-@media (max-width: 968px) {
-  .lom-reviews-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-/* ============================================
-   8. NEWSLETTER
-   ============================================ */
-.lom-newsletter {
-  background: var(--lt-forest);
-  color: var(--lt-cream);
-  padding: 64px 0;
-  text-align: center;
-}
-
-.lom-newsletter h2 {
-  font-family: var(--lt-serif);
-  font-size: 36px;
+  color: var(--lom-charcoal);
   font-weight: 600;
-  color: var(--lt-cream);
-  margin: 0 0 12px 0;
 }
 
-.lom-newsletter p {
-  font-family: var(--lt-font);
-  font-size: 16px;
-  color: rgba(248, 245, 240, 0.8);
-  margin: 0 0 32px 0;
-}
-
-.lom-newsletter-form {
-  max-width: 520px;
-  margin: 0 auto;
-  display: flex;
-  gap: 12px;
-}
-
-.lom-newsletter-input {
-  flex: 1;
-  font-family: var(--lt-font);
-  font-size: 15px;
-  padding: 16px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--lt-radius-sm);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  outline: none;
-  transition: border-color var(--lt-transition), background var(--lt-transition);
-}
-
-.lom-newsletter-input::placeholder {
-  color: rgba(248, 245, 240, 0.6);
-}
-
-.lom-newsletter-input:focus {
-  border-color: var(--lt-sage-light);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.lom-newsletter-submit {
-  font-family: var(--lt-font);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 16px 32px;
-  background: var(--lt-warm);
-  color: white;
-  border: none;
-  border-radius: var(--lt-radius-sm);
-  cursor: pointer;
-  transition: background var(--lt-transition), transform var(--lt-transition);
-}
-
-.lom-newsletter-submit:hover {
-  background: var(--lt-warm-dark);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 640px) {
-  .lom-newsletter-form {
-    flex-direction: column;
-  }
-
-  .lom-newsletter h2 {
-    font-size: 28px;
-  }
-}
-
-/* ============================================
-   9. TRUST BAR (Product Page)
-   ============================================ */
-.lom-trust-bar {
-  background: var(--lt-sage);
-  padding: 12px 0;
-}
-
-.lom-trust-items {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.lom-trust-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--lt-font);
-  font-size: 14px;
+.lom-review-verified {
+  font-size: 11px;
+  color: var(--lom-sage-dark);
   font-weight: 500;
-  color: white;
 }
 
-.lom-trust-item svg,
-.lom-trust-item i {
-  font-size: 18px;
+/* ============================================================================
+   17. FAQ SECTION
+   ============================================================================ */
+
+.lom-faq-section {
+  padding: var(--lom-space-4xl) 0;
+  background-color: var(--lom-cream);
 }
 
-@media (max-width: 640px) {
-  .lom-trust-items {
-    gap: 24px;
-  }
-}
-
-/* ============================================
-   10. COMPARISON TABLE
-   ============================================ */
-.lom-compare {
-  padding: 80px 0;
-  background: var(--lt-bg);
-}
-
-.lom-compare-table {
-  width: 100%;
-  background: white;
-  border-radius: var(--lt-radius);
-  overflow: hidden;
-  box-shadow: var(--lt-shadow-sm);
-  margin-top: 48px;
-}
-
-.lom-compare-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.lom-compare-table th {
-  font-family: var(--lt-font);
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 20px;
-  text-align: left;
-  border-bottom: 2px solid var(--lt-border);
-  color: var(--lt-text);
-}
-
-.lom-compare-table td {
-  font-family: var(--lt-font);
-  font-size: 15px;
-  padding: 20px;
-  border-bottom: 1px solid var(--lt-border);
-  color: var(--lt-text);
-}
-
-.lom-compare-table tr:last-child td {
-  border-bottom: none;
-}
-
-/* Highlight Lom Thai column */
-.lom-compare-table th:nth-child(2),
-.lom-compare-table td:nth-child(2) {
-  background: rgba(143, 179, 150, 0.1);
-  font-weight: 600;
-}
-
-.lom-compare-table th:nth-child(2) {
-  color: var(--lt-forest);
-}
-
-.lom-compare-checkmark {
-  color: var(--lt-sage);
-  font-size: 18px;
-}
-
-.lom-compare-cross {
-  color: var(--lt-text-light);
-  font-size: 18px;
-  opacity: 0.4;
-}
-
-@media (max-width: 768px) {
-  .lom-compare-table {
-    overflow-x: auto;
-  }
-
-  .lom-compare-table th,
-  .lom-compare-table td {
-    padding: 12px;
-    font-size: 13px;
-  }
-}
-
-/* ============================================
-   11. INGREDIENTS
-   ============================================ */
-.lom-ingredients {
-  padding: 80px 0;
-  background: var(--lt-cream);
-}
-
-.lom-ingredients-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.lom-ingredient-card {
-  background: white;
-  border: 1px solid var(--lt-border);
-  border-radius: var(--lt-radius);
-  padding: 32px 24px;
+.lom-faq-header {
   text-align: center;
-  transition: transform var(--lt-transition), box-shadow var(--lt-transition);
+  margin-bottom: var(--lom-space-3xl);
 }
 
-.lom-ingredient-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--lt-shadow-md);
+.lom-faq-title {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 3vw, 48px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-sm);
 }
 
-.lom-ingredient-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-
-.lom-ingredient-name {
-  font-family: var(--lt-font);
+.lom-faq-subtitle {
   font-size: 16px;
-  font-weight: 600;
-  color: var(--lt-forest);
-  margin: 0 0 8px 0;
-}
-
-.lom-ingredient-benefit {
-  font-family: var(--lt-font);
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--lt-text-light);
-  margin: 0;
-}
-
-@media (max-width: 968px) {
-  .lom-ingredients-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .lom-ingredients-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================================
-   12. FAQ ACCORDION
-   ============================================ */
-.lom-faq {
-  padding: 80px 0;
-  background: var(--lt-bg);
+  color: var(--lom-text);
 }
 
 .lom-faq-list {
   max-width: 800px;
-  margin: 48px auto 0;
+  margin: 0 auto;
 }
 
 .lom-faq-item {
-  background: white;
-  border: 1px solid var(--lt-border);
-  border-radius: var(--lt-radius);
-  margin-bottom: 16px;
-  overflow: hidden;
+  border-bottom: 1px solid var(--lom-border);
+  padding: var(--lom-space-lg) 0;
 }
 
 .lom-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  font-family: var(--lt-font);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--lt-forest);
   text-align: left;
-  padding: 24px 56px 24px 24px;
-  background: transparent;
-  border: none;
   cursor: pointer;
-  position: relative;
-  transition: background var(--lt-transition);
+  gap: var(--lom-space-md);
 }
 
-.lom-faq-question:hover {
-  background: var(--lt-cream);
+.lom-faq-question-text {
+  font-family: var(--lom-display);
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--lom-charcoal);
+  font-weight: 400;
 }
 
 .lom-faq-toggle {
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: var(--lt-sage);
-  transition: transform var(--lt-transition);
+  font-size: 24px;
+  color: var(--lom-sage);
+  transition: transform var(--lom-transition-base);
+  flex-shrink: 0;
 }
 
 .lom-faq-item.active .lom-faq-toggle {
-  transform: translateY(-50%) rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .lom-faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--lt-transition), padding var(--lt-transition);
+  transition: max-height var(--lom-transition-slow);
 }
 
 .lom-faq-item.active .lom-faq-answer {
   max-height: 500px;
-  padding: 0 24px 24px 24px;
+  padding-top: var(--lom-space-md);
 }
 
-.lom-faq-answer p {
-  font-family: var(--lt-font);
+.lom-faq-answer-text {
   font-size: 15px;
-  line-height: 1.6;
-  color: var(--lt-text-light);
-  margin: 0;
+  line-height: 1.8;
+  color: var(--lom-text);
 }
 
-/* ============================================
-   13. SCROLL FADE-IN ANIMATION
-   ============================================ */
-.lom-fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* ============================================================================
+   18. FINAL CTA
+   ============================================================================ */
+
+.lom-final-cta {
+  background-color: var(--lom-cream);
+  padding: var(--lom-space-4xl) 0;
+  border-top: 1px solid var(--lom-border);
 }
 
-.lom-fade-in.lom-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger animations */
-.lom-fade-in:nth-child(1) { transition-delay: 0s; }
-.lom-fade-in:nth-child(2) { transition-delay: 0.1s; }
-.lom-fade-in:nth-child(3) { transition-delay: 0.2s; }
-.lom-fade-in:nth-child(4) { transition-delay: 0.3s; }
-.lom-fade-in:nth-child(5) { transition-delay: 0.4s; }
-.lom-fade-in:nth-child(6) { transition-delay: 0.5s; }
-
-/* ============================================
-   14. SOCIAL PROOF MINI (Product Page)
-   ============================================ */
-.lom-social-proof-mini {
-  display: flex;
+.lom-final-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--lom-space-2xl);
   align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  background: var(--lt-cream);
-  border-radius: var(--lt-radius-sm);
-  margin: 20px 0;
-}
-
-.lom-social-proof-stars {
-  display: flex;
-  gap: 3px;
-}
-
-.lom-social-proof-star {
-  color: var(--lt-gold);
-  font-size: 16px;
-}
-
-.lom-social-proof-text {
-  font-family: var(--lt-font);
-  font-size: 14px;
-  color: var(--lt-text);
-}
-
-.lom-social-proof-text strong {
-  font-weight: 600;
-  color: var(--lt-forest);
-}
-
-/* ============================================
-   15. TRUST BADGES
-   ============================================ */
-.lom-trust-badges {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 24px 0;
-}
-
-.lom-trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: white;
-  border: 1px solid var(--lt-border);
-  border-radius: 50px;
-  font-family: var(--lt-font);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--lt-text);
-}
-
-.lom-trust-badge-icon {
-  color: var(--lt-sage);
-  font-size: 16px;
-}
-
-/* ============================================
-   16. CTA BUTTON
-   ============================================ */
-.lom-cta-btn {
-  display: inline-block;
-  font-family: var(--lt-font);
-  font-size: 16px;
-  font-weight: 600;
-  padding: 16px 40px;
-  background: var(--lt-warm);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background var(--lt-transition), transform var(--lt-transition), box-shadow var(--lt-transition);
-  text-align: center;
-}
-
-.lom-cta-btn:hover {
-  background: var(--lt-warm-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(196, 147, 122, 0.3);
-}
-
-.lom-cta-btn:active {
-  transform: translateY(0);
-}
-
-.lom-cta-btn-secondary {
-  background: transparent;
-  color: var(--lt-forest);
-  border: 2px solid var(--lt-forest);
-}
-
-.lom-cta-btn-secondary:hover {
-  background: var(--lt-forest);
-  color: white;
-  box-shadow: 0 6px 20px rgba(26, 60, 52, 0.2);
-}
-
-.lom-cta-btn-large {
-  font-size: 18px;
-  padding: 20px 48px;
-}
-
-.lom-cta-btn-full {
-  width: 100%;
-  display: block;
-}
-
-/* ============================================
-   17. SECTION HEADING
-   ============================================ */
-.lom-heading {
-  font-family: var(--lt-serif);
-  font-size: 42px;
-  font-weight: 600;
-  color: var(--lt-forest);
-  text-align: center;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.5px;
-}
-
-.lom-heading-subtitle {
-  font-family: var(--lt-font);
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--lt-text-light);
-  text-align: center;
-  max-width: 640px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-  .lom-heading {
-    font-size: 32px;
-  }
-
-  .lom-heading-subtitle {
-    font-size: 16px;
+  .lom-final-cta-inner {
+    grid-template-columns: 1fr;
   }
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-.lom-text-center {
+.lom-final-cta-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: var(--lom-radius-md);
+}
+
+.lom-final-cta-content {
   text-align: center;
 }
 
-.lom-text-forest {
-  color: var(--lt-forest);
+@media (min-width: 769px) {
+  .lom-final-cta-content {
+    text-align: left;
+  }
 }
 
-.lom-text-sage {
-  color: var(--lt-sage);
+.lom-final-cta-heading {
+  font-family: var(--lom-display);
+  font-size: clamp(28px, 3vw, 36px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-sm);
+  line-height: 1.2;
 }
 
-.lom-bg-cream {
-  background: var(--lt-cream);
+.lom-final-cta-price {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  margin-bottom: var(--lom-space-lg);
 }
 
-.lom-bg-white {
-  background: white;
+/* ============================================================================
+   19. COMPARISON TABLE
+   ============================================================================ */
+
+.lom-comparison {
+  overflow-x: auto;
+  margin: var(--lom-space-xl) 0;
 }
 
-.lom-mt-0 { margin-top: 0; }
-.lom-mt-1 { margin-top: 8px; }
-.lom-mt-2 { margin-top: 16px; }
-.lom-mt-3 { margin-top: 24px; }
-.lom-mt-4 { margin-top: 32px; }
-.lom-mt-5 { margin-top: 48px; }
+.lom-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--lom-white);
+}
 
-.lom-mb-0 { margin-bottom: 0; }
-.lom-mb-1 { margin-bottom: 8px; }
-.lom-mb-2 { margin-bottom: 16px; }
-.lom-mb-3 { margin-bottom: 24px; }
-.lom-mb-4 { margin-bottom: 32px; }
-.lom-mb-5 { margin-bottom: 48px; }
+.lom-comparison-table th {
+  padding: var(--lom-space-md);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid var(--lom-border);
+}
 
-/* ============================================
-   RESPONSIVE HELPERS
-   ============================================ */
+.lom-comparison-table th.highlight {
+  background-color: var(--lom-sage-light);
+  color: var(--lom-sage-dark);
+}
+
+.lom-comparison-table td {
+  padding: var(--lom-space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--lom-border-light);
+  font-size: 14px;
+  color: var(--lom-text);
+}
+
+.lom-comparison-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--lom-charcoal);
+}
+
+.lom-comparison-table td.highlight {
+  background-color: rgba(122, 158, 126, 0.05);
+}
+
+.lom-comparison-check {
+  color: var(--lom-sage);
+  font-size: 20px;
+}
+
+.lom-comparison-cross {
+  color: var(--lom-text-light);
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+/* ============================================================================
+   20. ABOUT PAGE
+   ============================================================================ */
+
+.lom-about-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lom-about-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.lom-about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--lom-white);
+}
+
+.lom-about-hero-title {
+  font-family: var(--lom-display);
+  font-size: clamp(40px, 5vw, 64px);
+  margin-bottom: var(--lom-space-sm);
+  line-height: 1.1;
+}
+
+.lom-about-hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  opacity: 0.95;
+}
+
+/* Values */
+.lom-values-section {
+  padding: var(--lom-space-4xl) 0;
+  background-color: var(--lom-cream);
+}
+
+.lom-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--lom-space-2xl);
+}
+
+.lom-value-card {
+  text-align: center;
+  padding: var(--lom-space-xl);
+}
+
+.lom-value-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--lom-space-md);
+  background-color: var(--lom-sage-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--lom-sage-dark);
+}
+
+.lom-value-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-xs);
+}
+
+.lom-value-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--lom-text);
+}
+
+/* Team */
+.lom-team-section {
+  padding: var(--lom-space-4xl) 0;
+}
+
+.lom-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--lom-space-xl);
+}
+
+.lom-team-member {
+  text-align: center;
+}
+
+.lom-team-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--lom-radius-md);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter var(--lom-transition-base);
+}
+
+.lom-team-member:hover .lom-team-photo img {
+  filter: grayscale(0%);
+}
+
+.lom-team-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: 4px;
+}
+
+.lom-team-role {
+  font-size: 13px;
+  color: var(--lom-text-light);
+}
+
+/* ============================================================================
+   21. TRACK ORDER
+   ============================================================================ */
+
+.lom-track {
+  max-width: 600px;
+  margin: var(--lom-space-4xl) auto;
+  padding: var(--lom-space-xl);
+}
+
+.lom-track-header {
+  text-align: center;
+  margin-bottom: var(--lom-space-xl);
+}
+
+.lom-track-title {
+  font-family: var(--lom-display);
+  font-size: clamp(28px, 3vw, 36px);
+  color: var(--lom-black);
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-track-subtitle {
+  font-size: 15px;
+  color: var(--lom-text);
+}
+
+.lom-track-form {
+  margin-bottom: var(--lom-space-xl);
+}
+
+.lom-track-results {
+  background-color: var(--lom-cream);
+  border-radius: var(--lom-radius-md);
+  padding: var(--lom-space-xl);
+}
+
+.lom-track-status {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lom-sage-dark);
+  font-weight: 600;
+  margin-bottom: var(--lom-space-sm);
+}
+
+.lom-track-order-number {
+  font-size: 12px;
+  color: var(--lom-text-light);
+  margin-bottom: var(--lom-space-lg);
+}
+
+.lom-track-timeline {
+  position: relative;
+  padding-left: var(--lom-space-lg);
+}
+
+.lom-track-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-color: var(--lom-border);
+}
+
+.lom-track-event {
+  position: relative;
+  padding-bottom: var(--lom-space-md);
+}
+
+.lom-track-event::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--lom-border);
+  border: 2px solid var(--lom-white);
+}
+
+.lom-track-event.active::before {
+  background-color: var(--lom-sage);
+}
+
+.lom-track-event-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: 4px;
+}
+
+.lom-track-event-date {
+  font-size: 12px;
+  color: var(--lom-text-light);
+}
+
+/* ============================================================================
+   22. CART DRAWER
+   ============================================================================ */
+
+.lom-cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background-color: var(--lom-white);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--lom-transition-base);
+}
+
+.lom-cart.active {
+  transform: translateX(0);
+}
+
+.lom-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--lom-transition-base);
+}
+
+.lom-cart-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lom-cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--lom-space-lg);
+  border-bottom: 1px solid var(--lom-border);
+}
+
+.lom-cart-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--lom-black);
+}
+
+.lom-cart-close {
+  font-size: 24px;
+  color: var(--lom-charcoal);
+  cursor: pointer;
+}
+
+/* Free Shipping Progress */
+.lom-cart-progress {
+  padding: var(--lom-space-md) var(--lom-space-lg);
+  background-color: var(--lom-cream);
+  border-bottom: 1px solid var(--lom-border);
+}
+
+.lom-cart-progress-text {
+  font-size: 12px;
+  color: var(--lom-text);
+  margin-bottom: var(--lom-space-xs);
+  text-align: center;
+}
+
+.lom-cart-progress-bar {
+  height: 4px;
+  background-color: var(--lom-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lom-cart-progress-fill {
+  height: 100%;
+  background-color: var(--lom-sage);
+  transition: width var(--lom-transition-base);
+}
+
+/* Cart Items */
+.lom-cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--lom-space-lg);
+}
+
+.lom-cart-item {
+  display: flex;
+  gap: var(--lom-space-sm);
+  padding-bottom: var(--lom-space-lg);
+  margin-bottom: var(--lom-space-lg);
+  border-bottom: 1px solid var(--lom-border-light);
+}
+
+.lom-cart-item-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: var(--lom-radius-sm);
+  overflow: hidden;
+  background-color: var(--lom-cream);
+}
+
+.lom-cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-cart-item-details {
+  flex: 1;
+}
+
+.lom-cart-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: 4px;
+}
+
+.lom-cart-item-variant {
+  font-size: 12px;
+  color: var(--lom-text-light);
+  margin-bottom: var(--lom-space-xs);
+}
+
+.lom-cart-item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lom-black);
+}
+
+.lom-cart-item-remove {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lom-text-light);
+  cursor: pointer;
+  margin-top: var(--lom-space-xs);
+}
+
+.lom-cart-item-remove:hover {
+  color: var(--lom-terracotta);
+}
+
+/* Empty Cart */
+.lom-cart-empty {
+  text-align: center;
+  padding: var(--lom-space-4xl) var(--lom-space-lg);
+}
+
+.lom-cart-empty-icon {
+  font-size: 48px;
+  color: var(--lom-text-light);
+  margin-bottom: var(--lom-space-md);
+  opacity: 0.3;
+}
+
+.lom-cart-empty-text {
+  font-size: 16px;
+  color: var(--lom-text);
+  margin-bottom: var(--lom-space-lg);
+}
+
+/* Upsell */
+.lom-cart-upsell {
+  padding: var(--lom-space-lg);
+  background-color: var(--lom-cream);
+  border-top: 1px solid var(--lom-border);
+}
+
+.lom-cart-upsell-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: var(--lom-space-sm);
+}
+
+/* Cart Footer */
+.lom-cart-footer {
+  padding: var(--lom-space-lg);
+  border-top: 1px solid var(--lom-border);
+}
+
+.lom-cart-subtotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--lom-space-md);
+}
+
+.lom-cart-subtotal-label {
+  font-size: 14px;
+  color: var(--lom-text);
+}
+
+.lom-cart-subtotal-amount {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--lom-black);
+}
+
+.lom-cart-note {
+  font-size: 12px;
+  color: var(--lom-text-light);
+  text-align: center;
+  margin-bottom: var(--lom-space-md);
+}
+
+/* ============================================================================
+   23. ANIMATIONS
+   ============================================================================ */
+
+/* Reveal on Scroll */
+.lom-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--lom-transition-slow);
+}
+
+.lom-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lom-reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all var(--lom-transition-slow);
+}
+
+.lom-reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lom-reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all var(--lom-transition-slow);
+}
+
+.lom-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger Children */
+.lom-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--lom-transition-slow);
+}
+
+.lom-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+.lom-stagger.visible > *:nth-child(2) { transition-delay: 100ms; }
+.lom-stagger.visible > *:nth-child(3) { transition-delay: 200ms; }
+.lom-stagger.visible > *:nth-child(4) { transition-delay: 300ms; }
+.lom-stagger.visible > *:nth-child(5) { transition-delay: 400ms; }
+.lom-stagger.visible > *:nth-child(6) { transition-delay: 500ms; }
+
+.lom-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In */
+.lom-fade-in {
+  opacity: 0;
+  transition: opacity var(--lom-transition-slow);
+}
+
+.lom-fade-in.visible {
+  opacity: 1;
+}
+
+/* Scale In */
+.lom-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all var(--lom-transition-slow);
+}
+
+.lom-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================================================
+   24. UTILITY CLASSES
+   ============================================================================ */
+
+/* Spacing */
+.lom-mt-xs { margin-top: var(--lom-space-xs); }
+.lom-mt-sm { margin-top: var(--lom-space-sm); }
+.lom-mt-md { margin-top: var(--lom-space-md); }
+.lom-mt-lg { margin-top: var(--lom-space-lg); }
+.lom-mt-xl { margin-top: var(--lom-space-xl); }
+.lom-mt-2xl { margin-top: var(--lom-space-2xl); }
+.lom-mt-3xl { margin-top: var(--lom-space-3xl); }
+.lom-mt-4xl { margin-top: var(--lom-space-4xl); }
+
+.lom-mb-xs { margin-bottom: var(--lom-space-xs); }
+.lom-mb-sm { margin-bottom: var(--lom-space-sm); }
+.lom-mb-md { margin-bottom: var(--lom-space-md); }
+.lom-mb-lg { margin-bottom: var(--lom-space-lg); }
+.lom-mb-xl { margin-bottom: var(--lom-space-xl); }
+.lom-mb-2xl { margin-bottom: var(--lom-space-2xl); }
+.lom-mb-3xl { margin-bottom: var(--lom-space-3xl); }
+.lom-mb-4xl { margin-bottom: var(--lom-space-4xl); }
+
+.lom-py-xs { padding-top: var(--lom-space-xs); padding-bottom: var(--lom-space-xs); }
+.lom-py-sm { padding-top: var(--lom-space-sm); padding-bottom: var(--lom-space-sm); }
+.lom-py-md { padding-top: var(--lom-space-md); padding-bottom: var(--lom-space-md); }
+.lom-py-lg { padding-top: var(--lom-space-lg); padding-bottom: var(--lom-space-lg); }
+.lom-py-xl { padding-top: var(--lom-space-xl); padding-bottom: var(--lom-space-xl); }
+.lom-py-2xl { padding-top: var(--lom-space-2xl); padding-bottom: var(--lom-space-2xl); }
+.lom-py-3xl { padding-top: var(--lom-space-3xl); padding-bottom: var(--lom-space-3xl); }
+.lom-py-4xl { padding-top: var(--lom-space-4xl); padding-bottom: var(--lom-space-4xl); }
+
+.lom-px-xs { padding-left: var(--lom-space-xs); padding-right: var(--lom-space-xs); }
+.lom-px-sm { padding-left: var(--lom-space-sm); padding-right: var(--lom-space-sm); }
+.lom-px-md { padding-left: var(--lom-space-md); padding-right: var(--lom-space-md); }
+.lom-px-lg { padding-left: var(--lom-space-lg); padding-right: var(--lom-space-lg); }
+.lom-px-xl { padding-left: var(--lom-space-xl); padding-right: var(--lom-space-xl); }
+
+/* Background Colors */
+.lom-bg-cream { background-color: var(--lom-cream); }
+.lom-bg-white { background-color: var(--lom-white); }
+.lom-bg-sage { background-color: var(--lom-sage); }
+.lom-bg-sage-light { background-color: var(--lom-sage-light); }
+.lom-bg-charcoal { background-color: var(--lom-charcoal); }
+
+/* Borders */
+.lom-border-top { border-top: 1px solid var(--lom-border); }
+.lom-border-bottom { border-bottom: 1px solid var(--lom-border); }
+.lom-border { border: 1px solid var(--lom-border); }
+
+/* Responsive Utilities */
+.lom-hide-mobile {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .lom-hide-mobile {
     display: none;
   }
 }
 
-@media (min-width: 769px) {
+.lom-hide-desktop {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .lom-hide-desktop {
-    display: none;
+    display: block;
   }
 }
 
-/* ============================================
-   END OF LOM THAI CSS
-   ============================================ */
+/* Max Width Containers */
+.lom-max-w-sm { max-width: 600px; margin-left: auto; margin-right: auto; }
+.lom-max-w-md { max-width: 800px; margin-left: auto; margin-right: auto; }
+.lom-max-w-lg { max-width: 1000px; margin-left: auto; margin-right: auto; }
+
+/* Aspect Ratios */
+.lom-aspect-square { aspect-ratio: 1/1; }
+.lom-aspect-video { aspect-ratio: 16/9; }
+.lom-aspect-portrait { aspect-ratio: 3/4; }
+
+/* ============================================================================
+   25. MISCELLANEOUS COMPONENTS
+   ============================================================================ */
+
+/* Badge */
+.lom-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-radius: var(--lom-radius-pill);
+  background-color: var(--lom-sage-light);
+  color: var(--lom-sage-dark);
+}
+
+.lom-badge-terracotta {
+  background-color: rgba(196, 147, 122, 0.2);
+  color: var(--lom-terracotta-dark);
+}
+
+/* Divider */
+.lom-divider {
+  height: 1px;
+  background-color: var(--lom-border);
+  margin: var(--lom-space-xl) 0;
+}
+
+.lom-divider-lg {
+  height: 1px;
+  background-color: var(--lom-border);
+  margin: var(--lom-space-3xl) 0;
+}
+
+/* Image with Overlay Text */
+.lom-image-text-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--lom-radius-md);
+}
+
+.lom-image-text-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lom-image-text-overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--lom-space-xl);
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: var(--lom-white);
+}
+
+/* Loading Spinner */
+.lom-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--lom-border);
+  border-top-color: var(--lom-sage);
+  border-radius: 50%;
+  animation: lom-spin 0.8s linear infinite;
+}
+
+@keyframes lom-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Alert/Notice */
+.lom-alert {
+  padding: var(--lom-space-md) var(--lom-space-lg);
+  border-radius: var(--lom-radius-md);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lom-alert-success {
+  background-color: rgba(122, 158, 126, 0.1);
+  color: var(--lom-sage-dark);
+  border: 1px solid var(--lom-sage-light);
+}
+
+.lom-alert-error {
+  background-color: rgba(196, 147, 122, 0.1);
+  color: var(--lom-terracotta-dark);
+  border: 1px solid rgba(196, 147, 122, 0.3);
+}
+
+.lom-alert-info {
+  background-color: var(--lom-cream);
+  color: var(--lom-charcoal);
+  border: 1px solid var(--lom-border);
+}
+
+/* ============================================================================
+   END OF LOM THAI DESIGN SYSTEM
+   ============================================================================ */

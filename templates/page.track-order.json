@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "track": {
+      "type": "lom-track-order",
+      "settings": {
+        "heading": "Track Your Order",
+        "text": "Enter your tracking number below to see the latest status of your Lom Thai order.",
+        "placeholder": "Enter your tracking number",
+        "button_text": "Track Order"
+      }
+    }
+  },
+  "order": [
+    "track"
+  ]
+}
