@@ -19,7 +19,7 @@
         "button_text": "Shop Now",
         "button_url": "shopify://products/premium-warm-glow-led-bulb",
         "button_secondary_text": "Our Story",
-        "button_secondary_url": "/pages/about"
+        "button_secondary_url": "shopify://pages/about-us"
       }
     },
     "proof": {
