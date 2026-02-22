@@ -1838,26 +1838,38 @@
    PAYMENT ICONS
    ============================================================ */
 .lom-hero-payments {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.lom-hero-payments::-webkit-scrollbar {
+  display: none;
+}
+
+.lom-hero-payments__track {
+  display: flex;
+  gap: 6px;
+  width: max-content;
 }
 
 .lom-hero-payments__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 28px;
+  flex-shrink: 0;
+  height: 30px;
   border-radius: 4px;
   background: #fff;
   border: 1px solid #ddd;
-  padding: 2px 4px;
+  padding: 3px 5px;
 }
 
-.lom-hero-payments__icon svg {
+.lom-hero-payments__icon .lom-payment-svg {
   display: block;
-  height: 18px;
+  height: 20px;
   width: auto;
 }
 
