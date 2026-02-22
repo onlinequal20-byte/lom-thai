@@ -1,0 +1,137 @@
+{%- style -%}
+  #{{ parent_id }} {
+         --text-size: {{ block.settings.text_size }}px;
+         --text-color: {{ block.settings.text_color }};
+       }
+   #{{ parent_id }} .text_block-{{block.id }} {
+     font-size: var(--text-size) !important;
+     line-height: 100%;
+     color: var(--text-color) !important;
+     --color-highlighted-color:  {{ block.settings.bolded_text_color }};
+     margin: 0;
+     padding-top: {{ block.settings.text_padding_top }}px;
+     padding-bottom: {{ block.settings.text_padding_bottom }}px;
+   }
+   @media (max-width: 990px) {
+       #{{ parent_id }} {
+         --text-size: {{ block.settings.text_mob_size }}px;
+       }
+     }
+     {%- if block.settings.text_use_gradient -%}
+       #{{ parent_id }} .text_block-{{block.id }} strong {
+         background: {% if block.settings.text_gradient_color != blank %}{{ block.settings.text_gradient_color }}{% else %}var(--color-highlighted-color){% endif %};
+         -webkit-background-clip: text;
+         background-clip: text;
+         color: transparent;
+       }
+     {%- endif -%}
+{%- endstyle -%}
+{%- if block.settings.text != blank -%}
+  <{{ block.settings.text_tag }} class="text_block-{{block.id }} {{ class_list }}" {{ block.shopify_attributes }}>
+    {{- block.settings.text -}}
+  </{{ block.settings.text_tag }}>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:blocks.body.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:blocks.body.settings.text.label",
+      "default": "Text"
+    },
+    {
+      "type": "select",
+      "id": "text_tag",
+      "label": "t:blocks.body.settings.text_tag.label",
+      "options": [
+        { "value": "p", "label": "t:blocks.body.settings.text_tag.options.p" },
+        { "value": "h1", "label": "t:blocks.body.settings.text_tag.options.h1" },
+        { "value": "h2", "label": "t:blocks.body.settings.text_tag.options.h2" },
+        { "value": "h3", "label": "t:blocks.body.settings.text_tag.options.h3" },
+        { "value": "h4", "label": "t:blocks.body.settings.text_tag.options.h4" },
+        { "value": "h5", "label": "t:blocks.body.settings.text_tag.options.h5" },
+        { "value": "h6", "label": "t:blocks.body.settings.text_tag.options.h6" }
+      ],
+      "default": "p"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.body.settings.text_size.label",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_mob_size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.body.settings.text_mob_size.label",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:blocks.body.settings.text_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bolded_text_color",
+      "label": "t:blocks.body.settings.bolded_text_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_use_gradient",
+      "label": "t:blocks.body.settings.text_use_gradient.label",
+      "info": "t:blocks.body.settings.text_use_gradient.info",
+      "default": false
+    },
+    {
+      "type": "color_background",
+      "id": "text_gradient_color",
+      "label": "t:blocks.body.settings.text_gradient_color.label",
+      "visible_if": "{{ block.settings.text_use_gradient }}",
+      "default": "linear-gradient(180deg, rgba(234, 56, 133, 1), rgba(95, 77, 188, 1) 100%)"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.body.settings.layout_header.content"
+    },
+    {
+      "type": "range",
+      "id": "text_padding_top",
+      "label": "t:blocks.body.settings.text_padding_top.label",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "text_padding_bottom",
+      "label": "t:blocks.body.settings.text_padding_bottom.label",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.body.presets.name"
+    }
+  ]
+}
+{% endschema %}

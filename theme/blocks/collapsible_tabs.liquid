@@ -1,0 +1,77 @@
+{% style %}
+.product-block-{{ block.id }} {
+  padding-top: {{block.settings.padding_top }}px;
+  padding-bottom: {{block.settings.padding_bottom }}px;
+  display:flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 768px) {
+  .product-block-{{ block.id }} {
+    padding-top: {{block.settings.padding_top_mobile }}px;
+    padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+  }
+}
+{% endstyle %}
+<div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+{% schema %}
+{
+  "name": "t:blocks.collapsible_tabs.name",
+  "tag": null,
+  "settings": [
+    {
+        "type": "header",
+        "content": "t:blocks.collapsible_tabs.settings.padding_header.content"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:blocks.collapsible_tabs.settings.padding_top.label",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:blocks.collapsible_tabs.settings.padding_bottom.label",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:blocks.collapsible_tabs.settings.padding_top_mobile.label",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:blocks.collapsible_tabs.settings.padding_bottom_mobile.label",
+        "default": 10
+      }
+  ],
+  "blocks": [
+    { "type": "_collapsible_tab" }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.collapsible_tabs.presets.name"
+    }
+  ]
+}
+{% endschema %}

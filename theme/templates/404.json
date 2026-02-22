@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_404_MwEiUP": {
+      "type": "main-404",
+      "blocks": {
+        "image_XwYhyJ": {
+          "type": "image",
+          "settings": {
+            "image_icon_color": "#ffffff",
+            "image_background_color": "#ffffff",
+            "image_background_opacity": 15,
+            "use_custom_image": false,
+            "image_border_radius_percentage": 50,
+            "image_size_desktop": 180,
+            "image_size_mobile": 180,
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "heading_gnWUHA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Oops! Page Not Found",
+            "size": 35,
+            "mobile_font_size": 28,
+            "highlighted_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "text_Y738AJ": {
+          "type": "text",
+          "settings": {
+            "text": "he page you’re looking for may have been moved, deleted, or never existed. Let’s get you back on track.",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "buttons_37QLLE": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Continue Shopping",
+            "button_link_1": "/",
+            "button_label_1_size": 14,
+            "button_label_1_size_mobile": 12,
+            "button_1_text_color": "#1d1a2d",
+            "button_1_background_color": "#ffffff",
+            "button_1_border_radius": 6,
+            "button_padding_vertical": 8,
+            "button_width_increase_desktop": 0,
+            "button_width_increase_mobile": 0,
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        }
+      },
+      "block_order": [
+        "image_XwYhyJ",
+        "heading_gnWUHA",
+        "text_Y738AJ",
+        "buttons_37QLLE"
+      ],
+      "settings": {
+        "color_scheme": "gradient-background-1",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "main_404_MwEiUP"
+  ]
+}

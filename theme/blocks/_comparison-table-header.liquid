@@ -1,0 +1,240 @@
+<!--start _comparison-table-header.liquid--><style>
+  {% assign section_id_variable = section.id %}
+  .logo-{{ section_id_variable }} {
+      width: {{ block.settings.logo_width }}px;
+      height: auto;
+    }
+
+    .other-brands-logo-{{ section_id_variable }} {
+      width: {{ block.settings.other_brands_logo_width }}px;
+      height: auto;
+    }
+      @media (max-width: 1024px) {
+      .logo-{{ section_id_variable }} {
+        width: {{ block.settings.mobile_logo_width }}px;
+        height: auto;
+      }
+      .other-brands-logo-{{ section_id_variable }} {
+        width: {{ block.settings.other_brands_mobile_logo_width }}px;
+        height: auto;
+      }
+    }
+    .table-element-scoped-{{ section_id_variable }} thead th:nth-of-type(2) {
+      font-size: {{ block.settings.cell_header_brand_text_size }}px;
+      color: {{ block.settings.cell_header_brand_text_color }};
+    }
+    .table-element-scoped-{{ section_id_variable }} thead th:nth-of-type(3) {
+      font-size: {{ block.settings.cell_header_competitor_text_size }}px;
+      color: {{ block.settings.cell_header_competitor_text_color }};
+      line-height: 100%;
+    }
+</style>
+<thead {{ block.shopify_attributes }}>
+  <tr>
+    <th>
+      {% comment %} Features {% endcomment %}
+    </th>
+    <style>
+      .table-element-scoped-{{ section_id_variable }} .product-column-th {
+        border-right: var(--table-border);
+        border-left: var(--table-border);
+      }
+      .table-element-scoped-{{ section_id_variable }} .other-brands-column-th {
+        vertical-align: bottom;
+      }
+      @media (max-width: 1280px) {
+        .table-element-scoped-{{ section_id_variable }} .product-column-th,.table-element-scoped-{{ section_id_variable }} .other-brands-column-th {
+          min-width: 145px;
+        }
+      }
+      @media (max-width: 1280px and min-width: 1024px) {
+        .table-element-scoped-{{ section_id_variable }} .product-column-th,.table-element-scoped-{{ section_id_variable }} .other-brands-column-th {
+          min-width: 120px;
+        }
+      }
+      @media (max-width: 1024px) {
+        .table-element-scoped-{{ section_id_variable }} .product-column-th {
+          min-width: unset;
+        }
+        .table-element-scoped-{{ section_id_variable }} .other-brands-column-th {
+          min-width: unset;
+        }
+      }
+    </style>
+    <th class="product-column-th" {% if block.settings.logo == blank and block.settings.show_brand_name == false and block.settings.us_label == blank %}style="display: table-cell;"{% endif %}>
+      {%- if block.settings.logo != blank -%}
+        <img
+          class="logo-{{ section_id_variable }}"
+          src="{{ block.settings.logo | image_url }}"
+          alt="{{ shop.name }}"
+          width="100%"
+          height="auto"
+        >
+      {%- endif -%}
+        {% if block.settings.us_label != blank %}
+         <div {% if block.settings.logo != blank %}style="margin-top: 17px;"{% endif %}>
+          {{ block.settings.us_label }}
+          </div>
+        {% elsif block.settings.show_brand_name %}
+          <div {% if block.settings.logo != blank %}style="margin-top: 17px;"{% endif %}>
+            {{ shop.name }}
+          </div>
+        {% endif %}
+    </th>
+    <th class="other-brands-column-th">
+      {%- if block.settings.other_brands_logo != blank -%}
+        <img
+          class="other-brands-logo-{{ section_id_variable }}"
+          src="{{ block.settings.other_brands_logo | image_url }}"
+          alt="{{ block.settings.other_brands_label }}"
+          width="100%"
+          height="auto"
+        >
+      {%- endif -%}
+      {%- if block.settings.other_brands_label != blank -%}
+        <div {% if block.settings.other_brands_logo != blank %}style="margin-top: 17px;"{% endif %}>
+          {{ block.settings.other_brands_label }}
+        </div>
+      {% endif %}
+    </th>
+  </tr>
+</thead><!--end _comparison-table-header.liquid-->
+{% schema %}
+{
+  "name": "t:blocks._comparison_table_header.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks._comparison_table_header.settings.content_header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brand_name",
+      "label": "t:blocks._comparison_table_header.settings.show_brand_name.label",
+      "default": false,
+      "info": "t:blocks._comparison_table_header.settings.show_brand_name.info"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "us_label",
+      "label": "t:blocks._comparison_table_header.settings.us_label.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "other_brands_label",
+      "label": "t:blocks._comparison_table_header.settings.other_brands_label.label",
+      "default": "Others"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._comparison_table_header.settings.logos_header.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:blocks._comparison_table_header.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 150,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.logo_width.label",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "min": 40,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.mobile_logo_width.label",
+      "default": 60
+    },
+    {
+      "type": "image_picker",
+      "id": "other_brands_logo",
+      "label": "t:blocks._comparison_table_header.settings.other_brands_logo.label"
+    },
+    {
+      "type": "range",
+      "id": "other_brands_logo_width",
+      "min": 50,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.other_brands_logo_width.label",
+      "default": 81
+    },
+    {
+      "type": "range",
+      "id": "other_brands_mobile_logo_width",
+      "min": 30,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.other_brands_mobile_logo_width.label",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._comparison_table_header.settings.typography_header.content"
+    },
+    {
+      "type": "range",
+      "id": "cell_header_brand_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.cell_header_brand_text_size.label",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "cell_header_brand_text_color",
+      "label": "t:blocks._comparison_table_header.settings.cell_header_brand_text_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "cell_header_competitor_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._comparison_table_header.settings.cell_header_competitor_text_size.label",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "cell_header_competitor_text_color",
+      "label": "t:blocks._comparison_table_header.settings.cell_header_competitor_text_color.label",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._comparison_table_header.presets.name",
+      "settings": {
+        "us_label": "Our Product",
+        "other_brands_label": "",
+        "logo": "shopify://shop_images/raw-removebg-preview_3_1f56b479-a67c-48ce-9f13-7ba15b64bc90.png",
+        "logo_width": 90,
+        "mobile_logo_width": 60,
+        "other_brands_logo": "shopify://shop_images/ChatGPT_Image_Aug_28_2025_07_03_03_PM_5.png",
+        "other_brands_logo_width": 74,
+        "other_brands_mobile_logo_width": 60,
+        "cell_header_brand_text_size": 16,
+        "cell_header_brand_text_color": "#ffffff",
+        "cell_header_competitor_text_size": 16,
+        "cell_header_competitor_text_color": "#000000"
+      }
+    }
+  ]
+}
+{% endschema %}

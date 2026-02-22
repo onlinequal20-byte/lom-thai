@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "background_gradient": true,
+        "title_size": 28
+      }
+    },
+    "custom_collection_trust": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.lt-coltrust{background:#f5f5f5;padding:12px 20px;text-align:center;font-size:13px;color:#555;letter-spacing:.3px}.lt-coltrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:18px}.lt-coltrust-item{white-space:nowrap}@media(max-width:749px){.lt-coltrust-row{gap:8px;flex-direction:column}.lt-coltrust{font-size:12px;padding:10px 16px}}</style><div class=\"lt-coltrust\"><div class=\"lt-coltrust-row\"><span class=\"lt-coltrust-item\">\ud83c\udf3f 100% Natural</span><span class=\"lt-coltrust-item\">\ud83d\ude9a Free US & EU Shipping</span><span class=\"lt-coltrust-item\">\u2b50 10,000+ Happy Customers</span></div></div>"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "custom_collection_trust",
+    "product-grid"
+  ]
+}

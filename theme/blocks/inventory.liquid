@@ -1,0 +1,167 @@
+{% assign product = closest.product %}
+{%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                  <p
+                    class="product__inventory product-block-{{ block.id }} no-js-hidden {% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                    {{ block.shopify_attributes }}
+                    id="Inventory-{{ section.id }}"
+                    role="status"
+                    style="color: {{ block.settings.inventory_status_color }}; font-size: {{ block.settings.inventory_status_font_size }}px; font-weight: {{ block.settings.inventory_status_font_weight }};"
+                  >
+                    {% style %}
+                      .product-block-{{ block.id }}{
+                        padding-top: {{block.settings.padding_top }}px;
+                        padding-bottom: {{block.settings.padding_bottom }}px;
+                      }
+                      @media screen and (max-width: 768px) {
+                        .product-block-{{ block.id }} {
+                          padding-top: {{block.settings.padding_top_mobile }}px;
+                          padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+                        }
+                      }
+                    {% endstyle %}
+                    {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                      {%- if product.selected_or_first_available_variant.inventory_quantity
+                          <= block.settings.inventory_threshold
+                      -%}
+                        {% render 'icon-inventory-low-stock' %}
+                        {%- if block.settings.show_inventory_quantity -%}
+                          {{-
+                            'products.product.inventory_low_stock_show_count'
+                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                          -}}
+                        {%- else -%}
+                          {{- 'products.product.inventory_low_stock' | t -}}
+                        {%- endif -%}
+                      {%- else -%}
+                        {% render 'icon-inventory-in-stock' %}
+                        {%- if block.settings.show_inventory_quantity -%}
+                          {{ product.selected_or_first_available_variant.inventory_quantity }} {{ block.settings.inventory_status_text }}
+                        {%- else -%}
+                          {{- block.settings.inventory_status_text -}}
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- else -%}
+                      {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+                        {% render 'icon-inventory-in-stock' %}
+                        {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
+                      {%- else -%}
+                        {% render 'icon-inventory-out-of-stock' %}
+                        {{- 'products.product.inventory_out_of_stock' | t -}}
+                      {%- endif -%}
+                    {%- endif -%}
+                  </p>
+                {%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-product.blocks.inventory.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "inventory_threshold",
+      "label": "t:blocks.inventory.settings.inventory_threshold.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "show_inventory_quantity",
+      "label": "t:blocks.inventory.settings.show_inventory_quantity.label",
+      "default": true,
+      "info": "t:blocks.inventory.settings.show_inventory_quantity.info"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.inventory.settings.layout_header.content"
+    },
+    {
+      "type": "range",
+      "id": "inventory_status_font_size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.inventory.settings.inventory_status_font_size.label",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "inventory_status_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "t:blocks.inventory.settings.inventory_status_font_weight.label",
+      "default": 400
+    },
+    {
+      "type": "text",
+      "id": "inventory_status_text",
+      "label": "t:blocks.inventory.settings.inventory_status_text.label",
+      "default": "In stock"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.inventory.settings.styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "inventory_status_color",
+      "label": "t:blocks.inventory.settings.inventory_status_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.inventory.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.inventory.settings.padding_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.inventory.settings.padding_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.inventory.settings.padding_top_mobile.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.inventory.settings.padding_bottom_mobile.label",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.inventory.presets.name",
+      "category": "Product Information" 
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,499 @@
+{% if request.visual_preview_mode %}
+  {% assign section_id_variable = 'id' %}
+  {% assign section_id_selector = '' %}
+{% else %}
+  {% assign section_id_variable = section.id %}
+  {% assign section_id_selector = '#shopify-section-' | append: section.id %}
+{% endif %}
+<style>
+  @media screen and (min-width: 1200px) {
+    {{ section_id_selector }} .reasons-to-buy__container {
+      justify-content: center;
+    }
+  }
+  
+  {{ section_id_selector }} .reasons-to-buy__content {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+  }
+  {{ section_id_selector }} .reasons-to-buy__image-content {
+    display: flex;
+    height: fit-content;
+  }
+  {{ section_id_selector }} .reasons-to-buy__image {
+    display: flex;
+    width: 100%;
+  }
+
+  {{ section_id_selector }} .reasons-to-buy__image img {
+    border-radius: {{ section.settings.image_border_radius }}px;
+    object-fit: cover;
+  }
+
+  {{ section_id_selector }} .reasons-to-buy__points,
+  {{ section_id_selector }} .reasons-to-buy__points p {
+    font-weight: 500;
+    letter-spacing: normal;
+    word-break: normal;
+  }
+
+  {{ section_id_selector }}   .reasons-to-buy__points {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    text-align: left;
+    padding: 2rem;
+  }
+
+  {{ section_id_selector }} .reasons__text {
+    margin-top: 0px;
+  }
+
+  {{ section_id_selector }} .reasons-to-buy__content-inner {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  {{ section_id_selector }} .reasons-to-buy__button {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1200px) {
+    {{ section_id_selector }} .reasons-to-buy__content-inner.reasons-to-buy__reasons-first {
+      flex-direction: row-reverse;
+    }
+
+    {{ section_id_selector }} .reasons-to-buy__content-inner {
+      gap: 4rem;
+    }
+  }
+</style>
+
+{% style %}
+    {%- if request.visual_preview_mode -%}
+      {% comment %} don't want fade-in animation in preview mode because it messes up preview {% endcomment %}
+      {{ section_id_selector }} .animation_section,
+      {{ section_id_selector }} .animation_section * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto !important;
+      }
+    {%- endif -%}
+
+    {{ section_id_selector }} {
+      --section-padding-top: {{ section.settings.padding_top }}px;
+      --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    {{ section_id_selector }} .section__reasons_to_buy {
+      padding: 5px 0;
+    }
+
+    #reasons-to-buy-{{ section_id_variable }} {
+      padding-top: var(--section-padding-top) !important;
+      padding-bottom: var(--section-padding-bottom) !important;
+
+    }
+
+
+
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__container {
+      padding-top: var(--section-padding-top) !important;
+      padding-bottom: var(--section-padding-bottom) !important;
+      display: flex;
+      border-top: 1px solid rgba({{ section.settings.border_color.red }}, {{ section.settings.border_color.green }}, {{ section.settings.border_color.blue }}, {{ section.settings.border_color_opacity | divided_by: 100.0 }});
+      border-bottom: 1px solid rgba({{ section.settings.border_color.red }}, {{ section.settings.border_color.green }}, {{ section.settings.border_color.blue }}, {{ section.settings.border_color_opacity | divided_by: 100.0 }});
+      gap: 48px;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__container > * {
+      flex:1;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 37px;
+    }
+
+
+  @media screen and (max-width: 1200px) {
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__container {
+      gap: 8px;
+      padding-inline: 12px;
+      flex-wrap: wrap;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__main-content {
+      gap: 16px;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__image-content {
+      max-width: 100%;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__image {
+      width: 100%;
+      max-width: 100%;
+    }
+    #reasons-to-buy-{{ section_id_variable }} .reasons-to-buy__image img {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    {{ section_id_selector }} .reasons-to-buy__content-inner {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 1200px) and (min-width: 768px) {
+    {{ section_id_selector }} .reasons-to-buy__container {
+      padding-inline: 0;
+    }
+    {{ section_id_selector }} .reasons-to-buy__image img {
+      aspect-ratio: 1/1;
+    }
+    {{ section_id_selector }} .reasons-to-buy__image-card {
+      width: fit-content !important;
+    }
+    {{ section_id_selector }} .reasons-to-buy__main-content{
+      min-width: 60%; 
+    }
+  }
+  @media screen and (max-width: 768px) {
+    {{ section_id_selector }} .reasons-to-buy__container {
+      flex-direction: column;
+    }
+  }
+  .reasons-to-buy__image-inner {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  .reasons-to-buy__image-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media screen and (min-width: 1200px) {
+    .reasons-to-buy__image-inner {
+      {% if section.settings.image_height == 'adapt' and section.settings.image != blank %}
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      {% endif %}
+      {% if section.settings.image_height == 'small' and section.settings.image != blank %}
+        min-height: 307px;
+      {% elsif section.settings.image_height == 'medium' and section.settings.image != blank %}
+        min-height: 38rem;
+      {% elsif section.settings.image_height == 'large' and section.settings.image != blank %}
+        min-height: 46rem;
+      {% endif %}
+    }
+    .reasons-to-buy__image-inner img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+{% endstyle %}
+<div class="section__reasons_to_buy color-{{ section.settings.color_scheme }}">
+  <div id="reasons-to-buy-{{ section_id_variable }}" class="reasons-to-buy page-width">
+    <div class="reasons-to-buy__container">
+      {% capture 'reasons_blocks' %}
+        {% content_for 'blocks' %}
+      {% endcapture %}
+      {% if reasons_blocks contains '<!-- start _reasons-to-buy-content.liquid -->' %}
+      {% assign reasons_content = reasons_blocks | split: '<!-- start _reasons-to-buy-content.liquid -->' | last | split: '<!-- end _reasons-to-buy-content.liquid -->' | first %}
+      {% endif %}
+      {% if reasons_blocks contains '<!-- start _reasons-to-buy-product-card.liquid -->' %}
+      {% assign reasons_card = reasons_blocks | split: '<!-- start _reasons-to-buy-product-card.liquid -->' | last | split: '<!-- end _reasons-to-buy-product-card.liquid -->' | first %}
+      {% endif %}
+      {% if reasons_blocks contains '<!-- start _reasons-to-buy-stats.liquid -->' %}
+      {% assign reasons_stats = reasons_blocks | split: '<!-- start _reasons-to-buy-stats.liquid -->' | last | split: '<!-- end _reasons-to-buy-stats.liquid -->' | first %}
+      {% endif %}
+      <div class="reasons-to-buy__main-content">
+        {{ reasons_content }}
+        {{ reasons_card }}
+      </div>
+      {%- if section.settings.image != blank -%}
+        <div class="reasons-to-buy__image-content">
+          
+            <div class="reasons-to-buy__image">
+              <div class="reasons-to-buy__image-inner">
+                {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', width: 400 }}
+              </div>
+            </div>
+        
+        </div>
+      {%- endif -%}
+      {{ reasons_stats }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.reasons.name",
+  "class": "section animation_section",
+  "blocks": [
+    {
+      "type": "_reasons-to-buy-content"
+    },
+    {
+      "type": "_reasons-to-buy-product-card"
+    },
+    {
+      "type": "_reasons-to-buy-stats"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.reasons.settings.image.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.reasons.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "small",
+      "label": "t:sections.reasons.settings.image_height.label"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "t:sections.reasons.settings.image_border_radius.label",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "t:sections.reasons.settings.appearance.content"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "t:sections.reasons.settings.border_color.label",
+      "default": "#000000",
+      "info": "t:sections.reasons.settings.border_color.info"
+    },
+    {
+      "type": "range",
+      "id": "border_color_opacity",
+      "label": "t:sections.reasons.settings.border_color_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "custom-color-1",
+          "label": "t:sections.all.colors.custom_color_1.label"
+        },
+        {
+          "value": "custom-color-2",
+          "label": "t:sections.all.colors.custom_color_2.label"
+        },
+        {
+          "value": "custom-color-3",
+          "label": "t:sections.all.colors.custom_color_3.label"
+        },
+        {
+          "value": "custom-color-4",
+          "label": "t:sections.all.colors.custom_color_4.label"
+        },
+        {
+          "value": "custom-color-5",
+          "label": "t:sections.all.colors.custom_color_5.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        },
+        {
+          "value": "gradient-background-1",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        }
+      ],
+      "default": "accent-1",
+      "label": "t:sections.reasons.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.reasons.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/26228274adc8803fd526f9c10f2d3111cffde90e.png",
+        "image_border_radius": 6,
+        "border_color": "#000000",
+        "color_scheme": "accent-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": [
+        {
+          "type": "_reasons-to-buy-content",
+          "settings": {
+            "heading": "The Reason Customers Choose Us <em><strong>Again and Again</strong></em>",
+            "heading_tag": "h3",
+            "heading_size": 40,
+            "reasons_mob_heading_size": 28,
+            "heading_color": "#000000",
+            "bolded_heading_color": "#000000",
+            "heading_use_gradient": true,
+            "heading_gradient_color": "linear-gradient(180deg, rgba(234, 56, 133, 1), rgba(95, 77, 188, 1) 100%)",
+            "headig_padding_top": 0,
+            "headig_padding_bottom": 0,
+            "text": "Delivering quality and consistency that customers rely on.",
+            "text_tag": "p",
+            "text_size": 16,
+            "text_mob_size": 14,
+            "text_color": "#666666",
+            "bolded_text_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "text_padding_top": 0,
+            "text_padding_bottom": 0,
+            "content_alignment": "left",
+            "content_gap": 21,
+            "content_gap_mobile": 14
+          }
+        },
+        {
+          "type": "_reasons-to-buy-product-card",
+          "settings": {
+            "product_url": "",
+            "product_image": "shopify://shop_images/Rectangle_570.png",
+            "product_title": "<p>Lumineux Red Light</p>",
+            "product_description": "<p>For healthy Glowing Skin Management</p>",
+            "product_title_font_size": 21,
+            "product_description_font_size": 14,
+            "card_gradient": "linear-gradient(180deg, rgba(234, 56, 133, 1), rgba(95, 77, 188, 1) 100%)",
+            "product_title_color": "#ffffff",
+            "product_description_color": "#ffffff",
+            "product_description_opacity": 70,
+            "arrow_icon_color": "#ffffff",
+            "text_content_gap": 10,
+            "text_content_gap_mobile": 11,
+            "card_border_radius": 10,
+            "thumbnail_border_radius": 4
+          }
+        },
+        {
+          "type": "_reasons-to-buy-stats",
+          "settings": {
+            "content_alignment": "center",
+            "cards_vertical_spacing": 25,
+            "cards_vertical_spacing_mobile": 14,
+            "percentage_number_font_size": 50,
+            "percentage_number_font_size_mobile": 28,
+            "block_heading_size": 24,
+            "block_heading_size_mobile": 14,
+            "block_body_size": 12,
+            "block_body_size_mobile": 14,
+            "percentage_number_bg": "linear-gradient(180deg, rgba(234, 56, 133, 1), rgba(95, 77, 188, 1) 100%)",
+            "block_heading_color": "#000000",
+            "bolded_block_heading_color": "#000000",
+            "block_body_color": "#666666",
+            "bolded_block_body_color": "#666666",
+            "border_color": "#000000"
+          },
+          "blocks": [
+            {
+              "type": "_reasons-to-buy-stat",
+              "settings": {
+                "row_heading": "<p>Customers saw <strong>visible improvement</strong></p>",
+                "row_text": "<p>Within the first 2 weeks of use</p>",
+                "percentage": 92
+              }
+            },
+            {
+              "type": "_reasons-to-buy-stat",
+              "settings": {
+                "row_heading": "<p>Reported <strong>better skin texture</strong></p>",
+                "row_text": "<p>Smoother and more even tone</p>",
+                "percentage": 87
+              }
+            },
+            {
+              "type": "_reasons-to-buy-stat",
+              "settings": {
+                "row_heading": "<p>Felt <strong>more confident</strong></p>",
+                "row_text": "<p>After 4 weeks of consistent use</p>",
+                "percentage": 94
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

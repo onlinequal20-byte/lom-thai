@@ -1,0 +1,77 @@
+{% assign product = closest.product %}
+{% style %}
+  .quantity-label {
+    font-family: var(--font-body-family);
+    font-size: {{ block.settings.quantity_label_font_size | default: 14 }}px;
+    font-weight: 600;
+    color: {{ block.settings.quantity_label_color | default: 'rgb(var(--color-base-text))' }};
+    margin: 0;
+  }
+  .subtotal-text {
+    font-family: var(--font-body-family);
+    font-size: {{ block.settings.subtotal_font_size | default: 12 }}px;
+    font-weight: 400;
+    color: {{ block.settings.subtotal_color | default: '#666666' }};
+    line-height: calc({{ block.settings.subtotal_font_size | default: 12 }}px + 6px);
+    margin: 0;
+  }
+{% endstyle %}
+<div class="product-info-left" {{ block.shopify_attributes }}>
+  <h3 class="quantity-label">{{ 'products.product.quantity.label' | t }} :</h3>
+  <p class="subtotal-text" id="subtotal-{{ section.id }}">
+    {{ 'products.product.subtotal' | t }}:
+    <span class="subtotal-amount" price="{{ product.selected_or_first_available_variant.price }}">
+      {{- product.selected_or_first_available_variant.price | money -}}
+    </span>
+  </p>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._quantity_label.name",
+  "tag": null,
+  "blocks": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks._quantity_label.settings.typography_header.content"
+    },
+    {
+      "type": "range",
+      "id": "quantity_label_font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._quantity_label.settings.quantity_label_font_size.label",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "quantity_label_color",
+      "label": "t:blocks._quantity_label.settings.quantity_label_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "subtotal_font_size",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._quantity_label.settings.subtotal_font_size.label",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "subtotal_color",
+      "label": "t:blocks._quantity_label.settings.subtotal_color.label",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._quantity_label.presets.name"
+    }
+  ]
+}
+{% endschema %}

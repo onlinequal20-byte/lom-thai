@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "buttons"
+      ],
+      "settings": {
+        "show_cart_note": true,
+        "enable_discount_code": true
+      }
+    },
+    "custom_cart_trust": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.lt-ctrust{background:#f5f5f5;padding:16px 20px;text-align:center}.lt-ctrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:24px;font-size:14px;color:#333}.lt-ctrust-item{display:flex;align-items:center;gap:6px;white-space:nowrap}@media(max-width:749px){.lt-ctrust-row{gap:12px;flex-direction:column}.lt-ctrust-item{font-size:13px}}</style><div class=\"lt-ctrust\"><div class=\"lt-ctrust-row\"><span class=\"lt-ctrust-item\">\ud83d\udd12 Secure Checkout</span><span class=\"lt-ctrust-item\">\ud83d\ude9a Free US & EU Shipping</span><span class=\"lt-ctrust-item\">\ud83d\udcaf 30-Day Money-Back Guarantee</span></div></div>"
+      }
+    },
+    "custom_cart_upsell": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.lt-cupsell{background:linear-gradient(135deg,#1B3A4B,#2C5F7C);padding:24px 20px;text-align:center;color:#fff;border-radius:8px;margin:16px auto;max-width:800px}.lt-cupsell h3{margin:0 0 12px;font-size:20px;font-weight:700}.lt-cupsell p{margin:0 0 16px;font-size:15px;opacity:.9}.lt-cupsell a{display:inline-block;background:#fff;color:#1B3A4B;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;transition:opacity .2s}.lt-cupsell a:hover{opacity:.9}@media(max-width:749px){.lt-cupsell h3{font-size:17px}.lt-cupsell p{font-size:14px}.lt-cupsell a{padding:10px 22px;font-size:14px}}</style><div class=\"lt-cupsell\"><h3>\ud83c\udf81 Add another for 20% off!</h3><p>Buy 2 Get 1 Free on all Thai herbal inhalers</p><a href=\"/collections/all\">Shop Now</a></div>"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 4,
+        "title": "Featured collection",
+        "heading_size": "h2",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer",
+    "custom_cart_trust",
+    "custom_cart_upsell",
+    "featured-collection"
+  ]
+}

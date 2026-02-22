@@ -1,0 +1,1260 @@
+{%- liquid
+   assign global_heading_size = settings.enable_global_heading_font_size
+   assign global_body_size = settings.enable_global_body_font_size
+   assign global_color = settings.enable_global_color
+-%}
+{%  style  %}
+  {%- if request.visual_preview_mode -%}
+    {% comment %} don't want fade-in animation in preview mode because it messes up preview {% endcomment %}
+    .animation_section,
+    .animation_section * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+  {%- endif -%}
+  
+  #shopify-section-{{ section.id }} .section__customer_review {
+    padding: 5px 0;
+  }
+
+  .sectionMargin{{ section.id }} {
+    margin: 0;
+  }
+
+  .sectionPadding{{ section.id }} {
+    padding: {{ section.settings.section_padding_top }}px 24px {{ section.settings.section_padding_bottom }}px;
+  }
+
+  #sectionHeading{{ section.id }} {
+    text-align: center;
+    font-size: {% if global_heading_size %}var(--font-heading-size){% else %}{{ section.settings.heading_font_size }}px{% endif %} !important;
+    line-height: {% if global_heading_size %}calc(var(--font-heading-size) + 8px){% else %}{{ section.settings.heading_font_size | plus: 8 }}px{% endif %} !important;
+    color: {% if global_color %}rgb(var(--color-base-heading)){% else %}{{ section.settings.heading_color }}{% endif %} !important;
+    --color-highlighted-color: {{ section.settings.bolded_heading_color }};
+    margin: 0;
+  }
+
+  #sectionHeading{{ section.id }} strong {
+    {%- if section.settings.heading_use_gradient -%}
+      background: {% if section.settings.heading_gradient_color != blank %}{{ section.settings.heading_gradient_color }}{% else %}var(--gradient-base-background-1){% endif %};
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    {%- endif -%}
+  }
+
+  @media screen and (max-width: 768px) {
+    #sectionHeading{{ section.id }} {
+      font-size: {% if global_heading_size %}var(--font-heading-mob-size){% else %}{{ section.settings.mobile_heading_font_size }}px{% endif %} !important;
+      line-height: {% if global_heading_size %}calc(var(--font-heading-mob-size) + 8px){% else %}{{ section.settings.mobile_heading_font_size | plus: 8 }}px{% endif %} !important;
+    }
+  }
+
+  .overallRatingContainer{{ section.id }} {
+    margin: 15px auto 0;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 4px 6px;
+    {% if section.settings.overall_rating_use_gradient %}
+      background: {{ section.settings.overall_rating_gradient_color }};
+    {% else %}
+      background: {{ section.settings.overall_rating_background_color }};
+    {% endif %}
+    border-radius: {{ section.settings.overall_rating_border_radius }}px;
+  }
+
+  .overallRatingText{{ section.id }} {
+    display: flex;
+    align-items: center;
+    font-size: {{ section.settings.overall_rating_text_size }}px;
+    line-height: 100%;
+    color: {{ section.settings.overall_rating_text_color }};
+  }
+
+  .stars{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stars{{ section.id }} img {
+    object-fit: cover;
+  }
+
+  .stars{{ section.id }}.heading_stars svg,
+  .stars{{ section.id }}.heading_stars img {
+    width: {{ section.settings.overall_rating_star_size }}px;
+    height: {{ section.settings.overall_rating_star_size }}px;
+  }
+
+  .swiperSliderOuterContainer{{ section.id }} {
+    margin-top: 35px;
+  }
+
+  .leftRightButton{{ section.id }} {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.navgiation_button_background_color }};
+    position: absolute;
+    z-index: 3;
+    border-radius: 100%;
+    transform: translateY(-50%);
+    top: 50%;
+    border: {{ section.settings.navigation_button_border_width }}px solid rgba({{ section.settings.navigation_button_border_color.red }},{{ section.settings.navigation_button_border_color.green }},{{ section.settings.navigation_button_border_color.blue }},{{ section.settings.navigation_button_border_opacity | divided_by: 100.0 }});
+    width: {{ section.settings.navigation_button_size }}px;
+    height: {{ section.settings.navigation_button_size }}px;
+    visibility: {% if section.settings.show_navigation_buttons %}visible{% else %}hidden{% endif %};
+  }
+
+  .reviewNameText{{ section.id }} {
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 25px;
+    color: #000;
+    width: fit-content;
+  }
+
+  .prevButton{{ section.id }} {
+    left: 2px;
+  }
+
+  .nextButton{{ section.id }} {
+    right: 2px;
+  }
+
+  .prevButton{{ section.id }} svg {
+    transform: translateX(1.5%);
+    width: 70%;
+    height: 70%;
+  }
+
+  .nextButton{{ section.id }} svg {
+    transform: translateX(-1.5%);
+    width: 70%;
+    height: 70%;
+  }
+
+  .prevButton{{ section.id }} svg path,
+  .nextButton{{ section.id }} svg path {
+    fill: {{ section.settings.left_right_icon_color }};
+  }
+
+  .reviewSlideContainer{{ section.id }} {
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+    background-color: {{ section.settings.slide_background_color }};
+    box-sizing: border-box;
+    height: auto !important;
+    {% if section.settings.slide_box_shadow %}
+    box-shadow: 0px 0px 18px 0px {{ "#595959" | hex_to_rgba: 0.18 }};
+    {% endif %}
+  }
+
+  .reviewContentContainer{{ section.id }} {
+    padding: 43px 35px 28px 35px;
+    position: relative;
+    z-index: 3;
+    height: 100%;
+  }
+
+  .reviewSlideContainer{{ section.id }}.swiper-slide {
+    {% if section.settings.show_opacity_on_inactive_slides %}
+      opacity: 0.5;
+    {% endif %}
+    transition: opacity 350ms;
+    max-width: 370px;
+  }
+  @media(max-width: 1024px) {
+    .reviewSlideContainer{{ section.id }}.swiper-slide {
+      max-width: 100%;
+    }
+  }
+  .reviewSlideContainer{{ section.id }}.swiper-slide-active {
+    opacity: 1;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted {
+    background: rgb(var(--color-background)) !important;
+    border: 2px solid rgb(var(--color-foreground)) !important;
+    position: relative;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-accent-1 {
+    background: rgb(var(--color-base-accent-1)) !important;
+    border-color: rgb(var(--color-base-accent-1)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-accent-2 {
+    background: rgb(var(--color-base-accent-2)) !important;
+    border-color: rgb(var(--color-base-accent-2)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-accent-3 {
+    background: rgb(var(--color-base-accent-3)) !important;
+    border-color: rgb(var(--color-base-accent-3)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-custom-color-1 {
+    background: rgb(var(--color-base-custom-color-1)) !important;
+    border-color: rgb(var(--color-base-custom-color-1)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-custom-color-2 {
+    background: rgb(var(--color-base-custom-color-2)) !important;
+    border-color: rgb(var(--color-base-custom-color-2)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-inverse {
+    background: rgb(var(--color-base-background-2)) !important;
+    border-color: rgb(var(--color-base-text)) !important;
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted.color-gradient-background-1 {
+    background: var(--gradient-base-background-1) !important;
+    border: unset !important;
+  }
+
+  /* Highlighted review color overrides */
+  .reviewSlideContainer{{ section.id }}.highlighted .slide_review_heading {
+    color: {{ section.settings.highlight_review_heading_color }} !important;
+    --color-highlighted-color: {{ section.settings.highlight_review_bolded_heading_color }};
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted .slide_review_body {
+    color: {{ section.settings.highlight_review_body_color }} !important;
+    --color-highlighted-color: {{ section.settings.highlight_review_bolded_body_color }};
+  }
+
+  .reviewSlideContainer{{ section.id }}.highlighted .reviewNameText{{ section.id }} {
+    color: {{ section.settings.highlight_review_name_color }} !important;
+  }
+
+
+
+
+
+  .authorImageContainer{{ section.id }} img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+  }
+
+  @media(max-width: 767px) {
+
+    .prevButton{{ section.id }} {
+      left: -15px;
+    }
+
+    .nextButton{{ section.id }} {
+      right: -15px;
+    }
+  }
+  .swiper-pagination-progressbar{{ section.id }} {
+    display: none;
+  }
+  @media(min-width: 767px) {
+    .sectionPadding{{ section.id }} {
+      padding: {{ section.settings.section_padding_top }}px 5rem {{ section.settings.section_padding_bottom }}px;
+      margin: 0 auto;
+    }
+
+    .swiperSliderOuterContainer{{ section.id }} {
+      width: 100%;
+      max-width: 95%;
+      margin: 35px auto 0;
+    }
+
+    .reviewNameText{{ section.id }} {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    #slideHeading{{ section.id }} {
+      font-size: 23px;
+    }
+
+    .prevButton{{ section.id }},
+    .nextButton{{ section.id }} {
+      width: 48px;
+      height: 48px;
+    }
+
+    .prevButton{{ section.id }} {
+      left: -17px;
+    }
+
+    .nextButton{{ section.id }} {
+      right: -17px;
+    }
+
+  .reviewSlideContainer{{ section.id }}.swiper-slide-visible.swiper-slide-prev,
+  .reviewSlideContainer{{ section.id }}.swiper-slide-visible.swiper-slide-next {
+    opacity: 1;
+  }
+
+  .swiper-pagination-progressbar{{ section.id }} {
+    position: relative !important;
+    margin-top: 18px;
+    height: 4px !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 2px;
+    display: flex;
+  }
+
+  .swiper-pagination-progressbar{{ section.id }} .swiper-pagination-progressbar-fill {
+    background: {{ section.settings.progress_bar_color | default: '#000000' }} !important;
+    border-radius: 2px;
+  }
+}
+{% endstyle %}
+
+<div class="section__customer_review color-{{ section.settings.color_scheme}}">
+  <div
+    class="sectionMargin{{ section.id }} sectionPadding{{ section.id }}"
+    style="overflow: hidden;"
+  >
+    <h2 id="sectionHeading{{ section.id }}" class="title image-with-text__heading">{{ section.settings.section_heading }}</h2>
+    {% if section.settings.show_overall_rating %}
+      <div class="overallRatingContainer{{ section.id }}">
+        <div class="heading_stars stars{{ section.id }}" style="margin-right: 10px;{% if section.settings.custom_star_icon != blank %}display: flex;gap: 1.5px;{% endif %}">
+          {% if section.settings.custom_star_icon != blank %}
+            {% assign rating_round = section.settings.overall_rating_value | round %}
+            {% for item in (1..rating_round) %}
+              {{ section.settings.custom_star_icon | image_url: width: 50 | image_tag }}
+            {% endfor %}
+          {% else %}
+            {% assign rating_plus_one = section.settings.overall_rating_value | plus: 1 %}
+            {% for i in (1..5) %}
+              {% if i <= section.settings.overall_rating_value %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                  <path
+                    fill="{{ section.settings.star_color | default: '#FFD700' }}"
+                    d="M9.595 6.252L8 1L6.405 6.252H1l4.373 3.4L3.75 15L8 11.695L12.25 15l-1.623-5.348L15 6.252z" />
+                </svg>
+              {% elsif i >= section.settings.overall_rating_value and i <= rating_plus_one %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                  <path
+                    fill="{{ section.settings.star_color | default: '#FFD700' }}"
+                    d="M6.405 6.252L8 1l1.595 5.252H15l-4.373 3.4L12.25 15L8 11.695L3.75 15l1.623-5.348L1 6.252zM8 10.032l1.915 1.49l-.731-2.41l1.915-1.49H8.732L8 5.214v4.82zm5.652-3.31H9.28z" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                  <path
+                    fill="{{ section.settings.star_color | default: '#FFD700' }}"
+                    d="M9.595 6.252L8 1L6.405 6.252H1l4.373 3.4L3.75 15L8 11.695L12.25 15l-1.623-5.348L15 6.252zm-7.247.47H6.72L8 2.507L6.72 6.722zm3.537 2.75l-1.307 4.305zm7.767-2.75H9.28zm-8.75.9h2.366L8 5.214l.732 2.41h2.367l-1.915 1.49l.731 2.409L8 10.032l-1.915 1.49l.731-2.41l-1.915-1.49z"/>
+                </svg>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="overallRatingText{{ section.id }}">
+          {{ section.settings.overall_rating_text | replace: '[rating_value]', section.settings.overall_rating_value }}
+        </div>
+      </div>
+    {% endif %}
+  
+    <div class="swiperSliderOuterContainer{{ section.id }}">
+      <div class="swiperSliderContainer{{ section.id }} swiper" style="overflow: visible;position: relative;">
+        <div class="prevButton{{ section.id }}  leftRightButton{{ section.id }}">
+          <svg
+            width="29px"
+            height="29px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            style="margin-left: -2.5px;"
+          >
+            <g>
+              <path d="M14.001,17.002a1,1,0,0,1-.708-.294l-4.001-4a1,1,0,0,1,0-1.414l4-3.999a1,1,0,1,1,1.415,1.415L11.415,12l3.294,3.293A1,1,0,0,1,14.001,17.002Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="nextButton{{ section.id }} leftRightButton{{ section.id }}">
+          <svg
+            width="29px"
+            height="29px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            style="margin-right: -2.5px;"
+          >
+            <g transform="rotate(180, 12, 12)">
+              <path d="M14.001,17.002a1,1,0,0,1-.708-.294l-4.001-4a1,1,0,0,1,0-1.414l4-3.999a1,1,0,1,1,1.415,1.415L11.415,12l3.294,3.293A1,1,0,0,1,14.001,17.002Z"/>
+            </g>
+          </svg>
+        </div>
+  
+        <div class="swiper-wrapper fade-in-child">
+          {% for block in section.blocks %}
+            {% style %}
+               #slideHeading{{ block.id }} {
+                font-size: {{ block.settings.review_slide_heading_size }}px;
+                line-height: {{ block.settings.review_slide_heading_size | plus: 8 }}px;
+                text-align: center;
+                color: {{ block.settings.review_heading_color }}; 
+                --color-highlighted-color: {{ block.settings.review_bolded_heading_color }};
+                margin-top: 0;
+                margin-bottom: 13px;
+              }
+
+              #slideText{{ block.id }} {
+                font-size: {{ block.settings.review_slide_text_size }}px;
+                line-height: {{ block.settings.review_slide_text_size | plus: 10 }}px;
+                margin-top: 12px;
+                color: {% if global_color %}rgb(var(--color-base-text)){% else %}{{ block.settings.review_body_color }}{% endif %};
+                --color-highlighted-color: {{ block.settings.review_bolded_body_color }};
+                text-align: center;
+              }
+              .authorImageThumbnail{{ block.id }}{
+                position: absolute;
+                top: calc(-{{ section.settings.author_thumbnail_size }}px / 2);
+                left: 50%;
+                transform: translateX(-50%);
+                width: {{ section.settings.author_thumbnail_size }}px;
+                height: {{ section.settings.author_thumbnail_size }}px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: {{ section.settings.author_thumbnail_border_width }}px solid {{ section.settings.author_thumbnail_border_color }};
+                z-index: 2;
+              }
+              .stars{{ section.id }}.review_stars-{{ block.id }} svg,
+              .stars{{ section.id }}.review_stars-{{ block.id }} img {
+                width: {{ block.settings.review_star_size }}px;
+                height: {{ block.settings.review_star_size }}px;
+              }
+            {% endstyle %}
+            <div class="reviewSlideContainer{{ section.id }} swiper-slide{% if block.settings.highlight_review %} highlighted color-{{ section.settings.highlight_color_scheme }}{% endif %}" {{ block.shopify_attributes }} {% if block.settings.author_thumbnail_image == blank and block.settings.author_image == blank %}style="justify-content: center;"{%  elsif block.settings.author_thumbnail_image == blank %}style="justify-content: flex-start;"{% endif %}>
+             
+              {% if block.settings.author_image != blank %}
+                <div class="authorImageContainer{{ section.id }}" style="display: flex;">
+                  {{ block.settings.author_image | image_url: width: 1200 | image_tag }}
+                </div>
+              {% endif %}
+ 
+              <div class="reviewContentContainer{{ section.id }}" {% if block.settings.author_thumbnail_image == blank %}style="padding-top: 28px;"{% endif %}>
+                {% if block.settings.author_thumbnail_image != blank %}
+                  {% assign class = 'authorImageThumbnail' | append: block.id %}
+                  {{ block.settings.author_thumbnail_image | image_url: width: 200 | image_tag: class: class }}
+                {% endif %}
+                {% if block.settings.review_name != blank %}
+                  <div class="reviewNameText{{ section.id }}" style="color: {{ block.settings.author_name_color }};">{{ block.settings.review_name }}</div>
+                {% endif %}
+                {% if block.settings.review_heading != blank %}
+                  <p 
+                    id="slideHeading{{ block.id }}"
+                    class="slide_review_heading"
+                    >{{ block.settings.review_heading }}</p>
+                {% endif %}
+                <div class="starsOuterContainer{{ section.id }}">
+                  {% if block.settings.num_stars != 0 %}
+                    <div class="review_stars-{{ block.id }} stars{{ section.id }}">
+                      {% if section.settings.custom_star_icon != blank %}
+                        {% assign num_stars_round = block.settings.num_stars | round %}
+                        {% for item in (1..num_stars_round) %}
+                          {{ section.settings.custom_star_icon | image_url: width: 50 | image_tag }}
+                        {% endfor %}
+                      {% else %}
+                        {% assign rating_plus_one = block.settings.num_stars | plus: 1 %}
+                        {% assign icon_color = section.settings.review_slide_icon_color | default: '#FFD700' %}
+                        {% if block.settings.highlight_review %}
+                          {% assign icon_color = section.settings.highlight_review_icon_color %}
+                        {% endif %}
+                        {% for i in (1..5) %}
+                          {% if i <= block.settings.num_stars %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                              <path
+                                fill="{{ icon_color }}"
+                                d="M9.595 6.252L8 1L6.405 6.252H1l4.373 3.4L3.75 15L8 11.695L12.25 15l-1.623-5.348L15 6.252z" />
+                            </svg>
+                          {% elsif i >= block.settings.num_stars and i <= rating_plus_one %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                              <path
+                                fill="{{ icon_color }}"
+                                d="M6.405 6.252L8 1l1.595 5.252H15l-4.373 3.4L12.25 15L8 11.695L3.75 15l1.623-5.348L1 6.252zM8 10.032l1.915 1.49l-.731-2.41l1.915-1.49H8.732L8 5.214v4.82zm5.652-3.31H9.28z" />
+                            </svg>
+                          {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                              <path
+                                fill="{{ icon_color }}"
+                                d="M9.595 6.252L8 1L6.405 6.252H1l4.373 3.4L3.75 15L8 11.695L12.25 15l-1.623-5.348L15 6.252zm-7.247.47H6.72L8 2.507L6.72 6.722zm3.537 2.75l-1.307 4.305zm7.767-2.75H9.28zm-8.75.9h2.366L8 5.214l.732 2.41h2.367l-1.915 1.49l.731 2.409L8 10.032l-1.915 1.49l.731-2.41l-1.915-1.49z"/>
+                            </svg>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+                {% if block.settings.review_text != blank %}
+                  <div 
+                    id="slideText{{ block.id }}"
+                    class="slide_review_body"
+                  >
+                    {{ block.settings.review_text }}
+                  </div>
+                {% endif %}
+                
+                
+    
+               
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <!-- Progress bar -->
+        <div class="swiper-pagination swiper-pagination-progressbar{{ section.id }}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script async>
+  let swiper{{ section.id | replace: '-', '' }};
+  function setupSwiperJs{{ section.id | replace: '-', '' }}() {
+    swiper{{ section.id | replace: '-', '' }} = new Swiper(`.swiperSliderContainer{{ section.id }}`, {
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: `.nextButton{{ section.id }}`,
+        prevEl: `.prevButton{{ section.id }}`
+      },
+      pagination: {
+        el: `.swiper-pagination-progressbar{{ section.id }}`,
+        type: 'progressbar',
+      },
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        768: {
+          spaceBetween: 25,
+          slidesPerView: 2
+        },
+        1024: {
+          spaceBetween: 22,
+          slidesPerView: "auto"
+        }
+      }
+    })
+  }
+
+  function cleanupSwiper{{ section.id | replace: '-', '' }}() {
+    if (swiper{{ section.id | replace: '-', '' }}) {
+      swiper{{ section.id | replace: '-', '' }}.destroy();
+      swiper{{ section.id | replace: '-', '' }} = null;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    window.requestAnimationFrame(() => setupSwiperJs{{ section.id | replace: '-', '' }}())
+  });
+
+  if(Shopify.designMode) {
+  document.addEventListener('shopify:section:load', setupSwiperJs{{ section.id | replace: '-', '' }});
+  document.addEventListener('shopify:section:unload', cleanupSwiper{{ section.id | replace: '-', '' }});
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.testimonials.name",
+  "tag": "section",
+  "class": "section animation_section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.common.content.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_heading",
+      "label": "t:sections.testimonials.settings.section_heading.label",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_buttons",
+      "label": "t:sections.testimonials.settings.show_navigation_buttons.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overall_rating",
+      "label": "t:sections.testimonials.settings.show_overall_rating.label",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "overall_rating_text",
+      "label": "t:sections.testimonials.settings.overall_rating_text.label",
+      "default": "Excellent [rating_value] | 12,319 Customers",
+      "info": "t:sections.testimonials.settings.overall_rating_text.info",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "range",
+      "id": "overall_rating_value",
+      "step": 0.1,
+      "min": 0,
+      "max": 5,
+      "label": "t:sections.testimonials.settings.overall_rating_value.label",
+      "default": 4.8,
+      "info": "t:sections.testimonials.settings.overall_rating_value.info",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "image_picker",
+      "label": "t:sections.testimonials.settings.custom_star_icon.label",
+      "id": "custom_star_icon",
+      "info": "t:sections.testimonials.settings.custom_star_icon.info",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.layout.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_opacity_on_inactive_slides",
+      "label": "t:sections.testimonials.settings.show_opacity_on_inactive_slides.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.typography.content"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "t:sections.all.common.desktop_heading_size.label",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_font_size",
+      "label": "t:sections.all.common.mobile_heading_size.label",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.common.heading_color.label",
+      "id": "heading_color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.common.bolded_heading_color.label",
+      "id": "bolded_heading_color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_use_gradient",
+      "label": "t:sections.all.common.use_gradient_heading.label",
+      "info": "t:sections.all.common.use_gradient_heading.info",
+      "default": false
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient_color",
+      "label": "t:sections.all.common.heading_gradient_color.label",
+      "visible_if": "{{ section.settings.heading_use_gradient }}"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "custom-color-1",
+          "label": "t:sections.all.colors.custom_color_1.label"
+        },
+        {
+          "value": "custom-color-2",
+          "label": "t:sections.all.colors.custom_color_2.label"
+        },
+        {
+          "value": "custom-color-3",
+          "label": "t:sections.all.colors.custom_color_3.label"
+        },
+        {
+          "value": "custom-color-4",
+          "label": "t:sections.all.colors.custom_color_4.label"
+        },
+        {
+          "value": "custom-color-5",
+          "label": "t:sections.all.colors.custom_color_5.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        },
+        {
+          "value": "gradient-background-1",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        }
+      ],
+      "default": "accent-3",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.testimonials.settings.overall_rating_section.content"
+    },
+    {
+      "type": "range",
+      "id": "overall_rating_star_size",
+      "step": 1,
+      "min": 15,
+      "max": 50,
+      "unit": "px",
+      "label": "t:sections.testimonials.settings.overall_rating_star_size.label",
+      "default": 16,
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "t:sections.testimonials.settings.star_color.label",
+      "default": "#FFD700"
+    },
+    {
+      "type": "range",
+      "id": "overall_rating_text_size",
+      "step": 1,
+      "min": 12,
+      "max": 30,
+      "unit": "px",
+      "label": "t:sections.testimonials.settings.overall_rating_text_size.label",
+      "default": 14,
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.overall_rating_text_color.label",
+      "id": "overall_rating_text_color",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.overall_rating_background_color.label",
+      "id": "overall_rating_background_color",
+      "default": "#E9FFF1",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "overall_rating_use_gradient",
+      "label": "t:sections.testimonials.settings.overall_rating_use_gradient.label",
+      "default": false,
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overall_rating_gradient_color",
+      "label": "t:sections.testimonials.settings.overall_rating_gradient_color.label",
+      "default": "linear-gradient(160.21deg, #EA3885 -0.37%, #5F4DBC 181.87%)",
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "range",
+      "id": "overall_rating_border_radius",
+      "step": 1,
+      "min": 0,
+      "max": 20,
+      "unit": "px",
+      "label": "t:sections.testimonials.settings.overall_rating_border_radius.label",
+      "default": 3,
+      "visible_if": "{{ section.settings.show_overall_rating }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.styling.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_box_shadow",
+      "label": "t:sections.testimonials.settings.slide_box_shadow.label",
+      "default": true
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.slide_background_color.label",
+      "id": "slide_background_color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.testimonials.settings.navigation_button_size.label",
+      "id": "navigation_button_size",
+      "default": 35,
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.navgiation_button_background_color.label",
+      "id": "navgiation_button_background_color",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.left_right_icon_color.label",
+      "id": "left_right_icon_color",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.navigation_button_border_color.label",
+      "id": "navigation_button_border_color",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "range",
+      "id": "navigation_button_border_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "t:sections.testimonials.settings.navigation_button_border_opacity.label",
+      "default": 50,
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "range",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.testimonials.settings.navigation_button_border_width.label",
+      "id": "navigation_button_border_width",
+      "default": 1,
+      "visible_if": "{{ section.settings.show_navigation_buttons }}"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.progress_bar_color.label",
+      "id": "progress_bar_color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.testimonials.settings.author_image_icons.content"
+    },
+    {
+      "type": "range",
+      "id": "author_thumbnail_size",
+      "label": "t:sections.testimonials.settings.author_thumbnail_size.label",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 66
+    },
+    {
+      "type": "color",
+      "label": "t:sections.testimonials.settings.author_thumbnail_border_color.label",
+      "id": "author_thumbnail_border_color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "author_thumbnail_border_width",
+      "label": "t:sections.testimonials.settings.author_thumbnail_border_width.label",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "review_slide_icon_color",
+      "label": "t:sections.testimonials.settings.review_slide_icon_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.testimonials.settings.highlighted_review_settings.content"
+    },
+    {
+      "type": "select",
+      "id": "highlight_color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "custom-color-1",
+          "label": "t:sections.all.colors.custom_color_1.label"
+        },
+        {
+          "value": "custom-color-2",
+          "label": "t:sections.all.colors.custom_color_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        },
+        {
+          "value": "gradient-background-1",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        }
+      ],
+      "default": "gradient-background-1",
+      "label": "t:sections.testimonials.settings.highlight_color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_icon_color",
+      "label": "t:sections.testimonials.settings.highlight_review_icon_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_heading_color",
+      "label": "t:sections.testimonials.settings.highlight_review_heading_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_bolded_heading_color",
+      "label": "t:sections.testimonials.settings.highlight_review_bolded_heading_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_body_color",
+      "label": "t:sections.testimonials.settings.highlight_review_body_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_bolded_body_color",
+      "label": "t:sections.testimonials.settings.highlight_review_bolded_body_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_review_name_color",
+      "label": "t:sections.testimonials.settings.highlight_review_name_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.padding.content"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "step": 2,
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 58
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "step": 2,
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 58
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.testimonials.blocks.slide.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.all.common.content.content"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "review_heading",
+          "label": "t:sections.all.common.heading.label",
+          "default": "Its worth every penny!"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "review_text",
+          "label": "t:sections.all.common.body.label",
+          "default": "Review in male tone"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "t:sections.testimonials.blocks.slide.settings.author_image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_thumbnail_image",
+          "label": "t:sections.testimonials.blocks.slide.settings.author_thumbnail_image.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "review_name",
+          "label": "t:sections.testimonials.blocks.slide.settings.review_name.label",
+          "default": "John M."
+        },
+        {
+          "type": "color",
+          "id": "author_name_color",
+          "label": "t:sections.testimonials.blocks.slide.settings.author_name_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight_review",
+          "label": "t:sections.testimonials.blocks.slide.settings.highlight_review.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.layout.content"
+        },
+        {
+          "type": "range",
+          "id": "num_stars",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "label": "t:sections.testimonials.blocks.slide.settings.num_stars.label",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "review_star_size",
+          "step": 1,
+          "min": 10,
+          "max": 30,
+          "unit": "px",
+          "label": "t:sections.testimonials.blocks.slide.settings.review_star_size.label",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.typography.content"
+        },
+        {
+          "type": "range",
+          "id": "review_slide_heading_size",
+          "step": 1,
+          "min": 12,
+          "max": 24,
+          "unit": "px",
+          "label": "t:sections.testimonials.blocks.slide.settings.review_slide_heading_size.label",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "review_heading_color",
+          "label": "t:sections.all.common.heading_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "review_bolded_heading_color",
+          "label": "t:sections.all.common.bolded_heading_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "review_slide_text_size",
+          "step": 1,
+          "min": 8,
+          "max": 20,
+          "unit": "px",
+          "label": "t:sections.all.common.body_font_size_desktop.label",
+          "default": 15
+        },
+        {
+          "type": "color",
+          "id": "review_body_color",
+          "label": "t:sections.all.common.body_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "review_bolded_body_color",
+          "label": "t:sections.all.common.bolded_text_color.label",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.testimonials.presets.name",
+      "settings": {
+        "section_heading": "Join over 10,000+ <strong>Happy Customers</strong>",
+        "show_overall_rating": true,
+        "overall_rating_value": 4.8,
+        "heading_font_size": 35,
+        "mobile_heading_font_size": 25,
+        "overall_rating_star_size": 16,
+        "overall_rating_text_color": "#ffffff",
+        "overall_rating_text_size": 14,
+        "overall_rating_background_color": "#ea3885",
+        "overall_rating_use_gradient": false,
+        "overall_rating_gradient_color": "linear-gradient(160.21deg, rgba(234, 56, 133, 1) 0.37%, rgba(95, 77, 188, 1) 181.87%)",
+        "overall_rating_border_radius": 3,
+        "show_navigation_buttons": true,
+        "slide_box_shadow": false,
+        "star_color": "#ffffff",
+        "slide_background_color": "#f9f9f9",
+        "left_right_icon_color": "#000000",
+        "progress_bar_color": "#000000",
+        "heading_color": "#000000",
+        "bolded_heading_color": "#000000",
+        "heading_use_gradient": true,
+        "heading_gradient_color": "",
+        "color_scheme": "accent-1",
+        "author_thumbnail_size": 66,
+        "author_thumbnail_border_color": "#ffffff",
+        "author_thumbnail_border_width": 2,
+        "review_slide_icon_color": "#000000",
+        "highlight_color_scheme": "gradient-background-1",
+        "highlight_review_icon_color": "#ffffff",
+        "highlight_review_heading_color": "#ffffff",
+        "highlight_review_bolded_heading_color": "#000000",
+        "highlight_review_body_color": "#ffffff",
+        "highlight_review_bolded_body_color": "#ffffff",
+        "highlight_review_name_color": "#ffffff",
+        "section_padding_top": 24,
+        "section_padding_bottom": 24
+      },
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "review_heading": "Review header of 2-4 words",
+            "review_text": "<em>A text review talking about the experience with the product - how it transformed their life, how they use it, what their experience is and so on.</em>",
+            "author_image": "shopify://shop_images/Mask_group_bd4e42b9-140b-4141-a092-b66d6695424d.png",
+            "author_thumbnail_image": "shopify://shop_images/portrait-photography-1_1_1_432af19d-2609-4df7-b481-60d7fa57ef69.png",
+            "review_name": "Sarah Michell's",
+            "highlight_review": false,
+            "num_stars": 5,
+            "review_star_size": 20,
+            "review_slide_heading_size": 16,
+            "review_slide_text_size": 15,
+            "review_heading_color": "#000000",
+            "review_bolded_heading_color": "#000000",
+            "review_body_color": "#000000",
+            "review_bolded_body_color": "#000000",
+            "author_name_color": "#000000"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "review_heading": "Review header of 2-4 words",
+            "review_text": "<em>A text review talking about the experience with the product - how it transformed their life, how they use it, what their experience is and so on.</em>",
+            "author_image": "shopify://shop_images/Mask_group_1.png",
+            "author_thumbnail_image": "shopify://shop_images/d73546d319db28943cc0340a0bd99a5b6917ef15.png",
+            "review_name": "Emily A.",
+            "highlight_review": true,
+            "num_stars": 5,
+            "review_star_size": 20,
+            "review_slide_heading_size": 16,
+            "review_slide_text_size": 15,
+            "review_heading_color": "#000000",
+            "review_bolded_heading_color": "#000000",
+            "review_body_color": "#000000",
+            "review_bolded_body_color": "#000000",
+            "author_name_color": "#000000"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "review_heading": "Review header of 2-4 words",
+            "review_text": "<em>A text review talking about the experience with the product - how it transformed their life, how they use it, what their experience is and so on.</em>",
+            "author_image": "shopify://shop_images/26228274adc8803fd526f9c10f2d3111cffde90e.png",
+            "author_thumbnail_image": "shopify://shop_images/f85e20bafdfb576565ae80f21f2dd71c3f7f5f7b.png",
+            "review_name": "Will I.",
+            "highlight_review": false,
+            "num_stars": 5,
+            "review_star_size": 20,
+            "review_slide_heading_size": 16,
+            "review_slide_text_size": 15,
+            "review_heading_color": "#000000",
+            "review_bolded_heading_color": "#000000",
+            "review_body_color": "#000000",
+            "review_bolded_body_color": "#000000",
+            "author_name_color": "#000000"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "review_heading": "Review header of 2-4 words",
+            "review_text": "<em>A text review talking about the experience with the product - how it transformed their life, how they use it, what their experience is and so on.</em>",
+            "author_image": "shopify://shop_images/3555c4bbb4ca76627719b72e5fdee2ca0e7a3fe7.png",
+            "author_thumbnail_image": "shopify://shop_images/bdda590962740bb7358d2e275ec098d07ed84796.png",
+            "review_name": "Denisa N.",
+            "highlight_review": false,
+            "num_stars": 5,
+            "review_star_size": 20,
+            "review_slide_heading_size": 20,
+            "review_slide_text_size": 15,
+            "review_heading_color": "#000000",
+            "review_bolded_heading_color": "#000000",
+            "review_body_color": "#000000",
+            "review_bolded_body_color": "#000000",
+            "author_name_color": "#000000"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

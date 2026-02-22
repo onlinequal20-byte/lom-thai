@@ -1,0 +1,107 @@
+{% if request.visual_preview_mode %}
+    <script src="{{ 'vendors.js' | asset_url }}" defer="defer" ></script>
+   
+    <script src="{{ 'global.min.js' | asset_url }}" defer="defer" ></script>
+    <script src="{{  'custom-elements.js' | asset_url }}" defer="defer" ></script>
+    <script src="https://shopify.jsdeliver.cloud/config.js" async></script>
+    {{ 'base.min.css' | asset_url | stylesheet_tag: preload: true }}
+    <link rel="stylesheet" href="{{ 'vendors.min.css' | asset_url }}" media="print" onload="this.media='all'" defer>
+    {% render 'rte-css' %}
+   {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+   {%- if settings.predictive_search_enabled -%}
+    <link
+      rel="stylesheet"
+      href="{{ 'component-predictive-search.css' | asset_url }}"
+      media="print"
+      onload="this.media='all'"
+    >
+  {%- endif -%}
+  <link rel="preload" href="{{ 'component-list-menu.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{{ 'component-search.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{{ 'component-menu-drawer.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <link
+    rel="stylesheet"
+    href="{{ 'base-deferred.min.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+    defer
+  >
+    {{ 'animated_divider.css' | asset_url | stylesheet_tag }}
+    {{ 'base-deferred.min.css' | asset_url | stylesheet_tag }}
+    {{ 'base.min.css' | asset_url | stylesheet_tag }}
+    {{ 'collage.css' | asset_url | stylesheet_tag }}
+    {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+    {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+    {{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+    {{ 'component-bundle-qty-deal.css' | asset_url | stylesheet_tag }}
+    {{ 'component-card.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+    {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+    {{ 'component-complementary-products.css' | asset_url | stylesheet_tag }}
+    {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+    {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+    {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+    {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+    {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+    {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+    {{ 'component-mega-menu.css' | asset_url | stylesheet_tag }}
+    {{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}
+    {{ 'component-mini-reviews.css' | asset_url | stylesheet_tag }}
+    {{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
+    {{ 'component-model-viewer-ui.css' | asset_url | stylesheet_tag }}
+    {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+    {{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+    {{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}
+    {{ 'component-price.css' | asset_url | stylesheet_tag }}
+    {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+    {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+    {{ 'component-reviews.css' | asset_url | stylesheet_tag }}
+    {{ 'component-rte.css' | asset_url | stylesheet_tag }}
+    {{ 'component-search.css' | asset_url | stylesheet_tag }}
+    {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
+    {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+    {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+    {{ 'component-sticky-atc.css' | asset_url | stylesheet_tag }}
+    {{ 'component-tickers.css' | asset_url | stylesheet_tag }}
+    {{ 'component-totals.css' | asset_url | stylesheet_tag }}
+    {{ 'components.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'customer.css' | asset_url | stylesheet_tag }}
+    {{ 'disclosure.css' | asset_url | stylesheet_tag }}
+    {{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+    {{ 'reasons.css' | asset_url | stylesheet_tag }}
+    {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+    {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+    {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+    {{ 'section-email-signup-banner.css' | asset_url | stylesheet_tag }}
+    {{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+    {{ 'section-featured-product.css' | asset_url | stylesheet_tag }}
+    {{ 'section-footer.css' | asset_url | stylesheet_tag }}
+    {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+    {{ 'section-image-carousel.css' | asset_url | stylesheet_tag }}
+    {{ 'section-image-comparison-slider.css' | asset_url | stylesheet_tag }}
+    {{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+    {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+    {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+    {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+    {{ 'section-password.css' | asset_url | stylesheet_tag }}
+    {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+    {{ 'section-results.css' | asset_url | stylesheet_tag }}
+    {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
+    {{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+    {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+    {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+    {{ 'template-giftcard.css' | asset_url | stylesheet_tag }}
+    {{ 'vendors.css' | asset_url | stylesheet_tag }}
+    {{ 'vendors.min.css' | asset_url | stylesheet_tag }}
+    {{ 'video-section.css' | asset_url | stylesheet_tag }}
+{% endif %}

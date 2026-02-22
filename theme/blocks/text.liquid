@@ -1,0 +1,107 @@
+<div class="rte sw-base-text-color product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% style %}
+    .product-block-{{ block.id }} p {
+      padding-top: {{block.settings.padding_top }}px;
+      padding-bottom: {{block.settings.padding_bottom }}px;
+    }
+    @media screen and (max-width: 768px) {
+      .product-block-{{ block.id }} p {
+        padding-top: {{block.settings.padding_top_mobile }}px;
+        padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+      }
+    }
+  {% endstyle %}
+  <p
+    style="
+      font-family: var(--font-body-family); 
+      color: inherit !important; 
+      max-width: none !important; 
+      font-size: {{block.settings.font_size }}px !important; 
+      line-height: {{block.settings.font_size | plus: 10 }}px !important; 
+      margin-top: 0 !important;
+    "
+    class="product__text "
+    {{ block.shopify_attributes }}
+  >
+    {{- block.settings.text -}}
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-product.blocks.text.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:sections.main-product.blocks.text.settings.text.label",
+      "default": "Text Block"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.text.settings.styling_header.content"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.text.settings.font_size.label",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.text.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.text.settings.padding_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.text.settings.padding_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.text.settings.padding_top_mobile.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.text.settings.padding_bottom_mobile.label",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.text.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

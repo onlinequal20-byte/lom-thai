@@ -1,0 +1,143 @@
+{%- comment -%} Social Media Icon Block {%- endcomment -%}
+{% style %}
+     .product-block-{{ block.id }}.social-icon .social-custom-image {
+    width: {{ block.settings.icon_image_size | default: 20 }}px;
+    height: {{ block.settings.icon_image_size | default: 20 }}px;
+    object-fit: contain;
+  }
+{% endstyle %}
+{% if block.settings.social_url != blank %}
+  <a
+    href="{{ block.settings.social_url }}"
+    class="social-icon product-block-{{ block.id }}"
+    target="_blank"
+    rel="noopener"
+  >
+    {%- if block.settings.social_custom_image != blank -%}
+      {{
+        block.settings.social_custom_image
+        | image_url: width: 48
+        | image_tag: loading: 'lazy', widths: '16, 20, 24, 32, 48', class: 'social-custom-image', alt: 'Social Media'
+      }}
+    {%- elsif block.settings.social_platform != 'none' -%}
+      {% case block.settings.social_platform %}
+        {% when 'youtube' %}
+          {% render 'icon-youtube-social', color: block.settings.social_color, size: block.settings.social_icon_size %}
+        {% when 'instagram' %}
+          {% render 'icon-instagram-social',
+            color: block.settings.social_color,
+            size: block.settings.social_icon_size
+          %}
+        {% when 'facebook' %}
+          {% render 'icon-facebook-social', color: block.settings.social_color, size: block.settings.social_icon_size %}
+        {% when 'twitter' %}
+          {% render 'icon-twitter-social', color: block.settings.social_color, size: block.settings.social_icon_size %}
+        {% when 'tiktok' %}
+          {% render 'icon-tiktok-social', color: block.settings.social_color, size: block.settings.social_icon_size %}
+        {% when 'telegram' %}
+          {% render 'icon-telegram-social', color: block.settings.social_color, size: block.settings.social_icon_size %}
+        {% when 'pinterest' %}
+          {% render 'icon-pinterest-social',
+            color: block.settings.social_color,
+            size: block.settings.social_icon_size
+          %}
+      {% endcase %}
+    {%- endif -%}
+  </a>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:blocks._social_media_icon.name",
+  "tag": null,
+  "blocks": [],
+  "settings": [
+    {
+      "type": "url",
+      "id": "social_url",
+      "label": "t:blocks._social_media_icon.settings.social_url.label"
+    },
+    {
+      "type": "select",
+      "id": "social_platform",
+      "label": "t:blocks._social_media_icon.settings.social_platform.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.none"
+        },
+        {
+          "value": "youtube",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.youtube"
+        },
+        {
+          "value": "instagram",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.instagram"
+        },
+        {
+          "value": "facebook",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.facebook"
+        },
+        {
+          "value": "twitter",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.twitter"
+        },
+        {
+          "value": "tiktok",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.tiktok"
+        },
+        {
+          "value": "telegram",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.telegram"
+        },
+        {
+          "value": "pinterest",
+          "label": "t:blocks._social_media_icon.settings.social_platform.options.pinterest"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "social_icon_size",
+      "min": 14,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks._social_media_icon.settings.social_icon_size.label",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "social_color",
+      "label": "t:blocks._social_media_icon.settings.social_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._social_media_icon.settings.custom_image_header.content"
+    },
+    {
+        "type": "image_picker",
+        "id": "social_custom_image",
+        "label": "t:blocks._social_media_icon.settings.social_custom_image.label",
+        "info": "t:blocks._social_media_icon.settings.social_custom_image.info"
+      },
+    {
+      "type": "range",
+      "id": "icon_image_size",
+      "min": 14,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks._social_media_icon.settings.icon_image_size.label",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._social_media_icon.presets.name"
+    }
+  ]
+}
+{% endschema %}

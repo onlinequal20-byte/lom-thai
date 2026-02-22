@@ -1,0 +1,198 @@
+{%- comment -%} Product is accessed via closest.product in the template {%- endcomment -%}
+<div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% style %}
+    .product-block-{{ block.id }} {
+      padding-top: {{block.settings.padding_top }}px;
+      padding-bottom: {{block.settings.padding_bottom }}px;
+    }
+    @media screen and (max-width: 768px) {
+      .product-block-{{ block.id }} {
+        padding-top: {{block.settings.padding_top_mobile }}px;
+        padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+      }
+    }
+  {% endstyle %}
+  {% render 'icon-with-text', block: block %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.icon_with_text.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.icon_1_header.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_1",
+      "default": "1,000+ Five Star Reviews",
+      "label": "t:blocks.icon_with_text.settings.heading_1.label"
+    },
+    {
+      "type": "textarea",
+      "id": "icon_1",
+      "label": "t:blocks.icon_with_text.settings.icon_1.label",
+      "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"#1f1f1f\"><path d=\"M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z\"></path></svg>",
+      "info": "t:blocks.icon_with_text.settings.icon_1.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:blocks.icon_with_text.settings.image_1.label",
+      "info": "t:blocks.icon_with_text.settings.image_1.info"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.icon_2_header.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_2",
+      "default": "Fast & Easy Returns",
+      "label": "t:blocks.icon_with_text.settings.heading_2.label"
+    },
+    {
+      "type": "textarea",
+      "id": "icon_2",
+      "label": "t:blocks.icon_with_text.settings.icon_2.label",
+      "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"#1f1f1f\"><path d=\"M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z\"></path></svg>",
+      "info": "t:blocks.icon_with_text.settings.icon_2.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:blocks.icon_with_text.settings.image_2.label"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.icon_3_header.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_3",
+      "default": "Worldwide Shipping",
+      "label": "t:blocks.icon_with_text.settings.heading_3.label"
+    },
+    {
+      "type": "textarea",
+      "id": "icon_3",
+      "label": "t:blocks.icon_with_text.settings.icon_3.label",
+      "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"#1f1f1f\"><path d=\"M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z\"></path></svg>",
+      "info": "t:blocks.icon_with_text.settings.icon_3.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "t:blocks.icon_with_text.settings.image_3.label"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.layout_header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout_direction",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:blocks.icon_with_text.settings.layout_direction.options.horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "t:blocks.icon_with_text.settings.layout_direction.options.vertical"
+        }
+      ],
+      "default": "horizontal",
+      "label": "t:blocks.icon_with_text.settings.layout_direction.label"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.typography_header.content"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:blocks.icon_with_text.settings.text_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.icon_with_text.settings.font_size.label",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "custom_icon_color",
+      "label": "t:blocks.icon_with_text.settings.custom_icon_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18,
+      "label": "t:blocks.icon_with_text.settings.icon_size.label"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.icon_with_text.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.icon_with_text.settings.padding_top.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.icon_with_text.settings.padding_bottom.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.icon_with_text.settings.padding_top_mobile.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.icon_with_text.settings.padding_bottom_mobile.label",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.icon_with_text.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

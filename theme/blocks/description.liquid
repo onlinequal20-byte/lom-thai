@@ -1,0 +1,105 @@
+{% assign product = closest.product %}
+<div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+                  {% style %}
+                    .product-block-{{ block.id }}{
+                      padding-top: {{block.settings.padding_top }}px;
+                      padding-bottom: {{block.settings.padding_bottom }}px;
+                    }
+                    @media screen and (max-width: 768px) {
+                      .product-block-{{ block.id }} {
+                        padding-top: {{block.settings.padding_top_mobile }}px;
+                        padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+                      }
+                    }
+                  {% endstyle %}
+                  {%- if product.description != blank and block.settings.show_description -%}
+                    <div
+                      style="color: {% if global_color %}rgb(var(--color-base-text)){% else %}{{ block.settings.des_color }}{% endif %}; --color-highlighted-color: {{ block.settings.bolded_des_color }};"
+                      class="product__description rte quick-add-hidden"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{ product.description }}
+                    </div>
+                  {%- endif -%}
+                </div>
+
+{% schema %}
+{
+  "name": "t:sections.main-product.blocks.description.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:blocks.description.settings.show_description.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.description.settings.styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "des_color",
+      "label": "t:blocks.description.settings.des_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bolded_des_color",
+      "label": "t:blocks.description.settings.bolded_des_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.description.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.description.settings.padding_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.description.settings.padding_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.description.settings.padding_top_mobile.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.description.settings.padding_bottom_mobile.label",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.description.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

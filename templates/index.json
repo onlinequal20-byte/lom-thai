@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "custom_hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{{ 'lom-premium.css' | asset_url | stylesheet_tag }}<div class=\"lt-hero-v2\"><div class=\"lt-hero-v2__inner\"><div class=\"lt-hero-v2__content\"><div class=\"lt-hero-v2__label\">Natural Thai Herbal Relief</div><h1>Tired of Reaching for Pills and Energy Drinks?</h1><p class=\"lt-hero-v2__sub\">One inhale clears your head. One roll soothes the pain. 100% natural. Works in seconds. No crash. No jitters. No chemicals.</p><a href=\"/collections/all\" class=\"lt-hero-v2__cta\">Shop Lom Thai</a></div><div class=\"lt-hero-v2__visual\"><div class=\"lt-hero-v2__img\">{% assign hero_product = collections.all.products.first %}{% if hero_product.featured_image %}<img src=\"{{ hero_product.featured_image | image_url: width: 800 }}\" alt=\"{{ hero_product.title }}\" loading=\"eager\">{% endif %}</div></div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_proof_bar": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-proof-bar\"><div class=\"lt-proof-bar__inner\"><span class=\"lt-proof-bar__item\"><strong>50,000+</strong> Sold</span><span class=\"lt-proof-bar__dot\"></span><span class=\"lt-proof-bar__item\"><strong>4.9</strong> Star Rating</span><span class=\"lt-proof-bar__dot\"></span><span class=\"lt-proof-bar__item\"><strong>Free</strong> Shipping US &amp; EU</span><span class=\"lt-proof-bar__dot\"></span><span class=\"lt-proof-bar__item\"><strong>30-Day</strong> Guarantee</span></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_pas": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-pas-outer\"><div class=\"lt-pas lt-fade-in\"><h2>Sound Familiar?</h2><div class=\"lt-pas__grid\"><div class=\"lt-pas__card\"><div class=\"lt-pas__card-icon\">&#128164;</div><h3>The Problem</h3><p>Drowsy commutes, afternoon slumps, brain fog, sinus pressure, tension headaches — you're tired of feeling tired.</p></div><div class=\"lt-pas__card\"><div class=\"lt-pas__card-icon\">&#128683;</div><h3>Why Others Fail</h3><p>Energy drinks crash. Coffee gives jitters. Pharmacy sprays cause rebound. Pills take 30 minutes. None of them are natural.</p></div><div class=\"lt-pas__card\"><div class=\"lt-pas__card-icon\">&#10024;</div><h3>The Lom Thai Way</h3><p>One inhale = instant relief. 100% natural Thai herbs, proven for a century. No crash, no chemicals, no waiting. Just breathe.</p></div></div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_product_showcase": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-showcase-v2-outer\" style=\"background:var(--lt-page-bg)\"><div class=\"lt-showcase-v2 lt-fade-in\"><div class=\"lt-showcase-v2__inner\"><div class=\"lt-showcase-v2__text\"><h2>Two Tools, One Stick</h2><p>The nasal inhaler delivers a powerful herbal blast that clears your head in seconds. Flip it over and the rollerball soothes temples and pressure points on contact. At $0.03 per use, it lasts months.</p><div class=\"lt-showcase-v2__mini-review\"><div class=\"lt-showcase-v2__mini-review-avatar\">MV</div><div>\"I'm a truck driver and this is a lifesaver. One sniff and I'm alert again.\" <br><strong style=\"font-style:normal;font-size:12px;color:#0a1820\">— Marco V., Germany</strong></div></div></div><div class=\"lt-showcase-v2__visual\"><div class=\"lt-showcase-v2__img\">{% assign sc_product = collections.all.products.first %}{% if sc_product.images[1] %}<img src=\"{{ sc_product.images[1] | image_url: width: 800 }}\" alt=\"{{ sc_product.title }}\" loading=\"lazy\">{% elsif sc_product.featured_image %}<img src=\"{{ sc_product.featured_image | image_url: width: 800 }}\" alt=\"{{ sc_product.title }}\" loading=\"lazy\">{% endif %}</div></div></div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_how_it_works": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-how-v2-outer\" style=\"background:var(--lt-page-bg)\"><div class=\"lt-how-v2 lt-fade-in\"><h2>How It Works</h2><div class=\"lt-how-v2__steps\"><div class=\"lt-how-v2__step\"><div class=\"lt-how-v2__num\">1</div><h3>Choose Your Relief</h3><p>Inhaler for alertness &amp; congestion. Roller for headaches &amp; tension.</p></div><div class=\"lt-how-v2__step\"><div class=\"lt-how-v2__num\">2</div><h3>Inhale or Apply</h3><p>Breathe deeply through the inhaler, or roll onto temples and neck.</p></div><div class=\"lt-how-v2__step\"><div class=\"lt-how-v2__num\">3</div><h3>Feel It in Seconds</h3><p>Instant natural relief. No waiting. No crash. No side effects.</p></div></div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_credibility": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-credibility-outer\" style=\"background:var(--lt-page-bg)\"><div class=\"lt-credibility lt-fade-in\"><div class=\"lt-credibility__item\"><div class=\"lt-credibility__icon\">&#9752;</div>100% Natural</div><div class=\"lt-credibility__item\"><div class=\"lt-credibility__icon\">&#127481;&#127469;</div>Made in Thailand</div><div class=\"lt-credibility__item\"><div class=\"lt-credibility__icon\">&#128230;</div>50,000+ Sold</div><div class=\"lt-credibility__item\"><div class=\"lt-credibility__icon\">&#9201;</div>Century-Old Recipe</div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_reviews_home": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"background:var(--lt-page-bg);padding:0 0 48px;\">{% render 'lom-reviews', mode: 'homepage', heading: 'What People Are Saying' %}</div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_newsletter": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"lt-newsletter-outer\"><div class=\"lt-newsletter\"><div class=\"lt-newsletter__inner\"><h2>Join 12,000+ Who Chose Natural Relief</h2><p class=\"lt-newsletter__sub\">Wellness tips, new products, and exclusive offers. No spam.</p>{% form 'customer' %}<input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\"><input type=\"email\" name=\"contact[email]\" placeholder=\"Enter your email\" required><button type=\"submit\">Subscribe</button>{% endform %}</div></div></div>",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "custom_hero",
+    "custom_proof_bar",
+    "custom_pas",
+    "custom_product_showcase",
+    "custom_how_it_works",
+    "custom_credibility",
+    "custom_reviews_home",
+    "custom_newsletter"
+  ]
+}

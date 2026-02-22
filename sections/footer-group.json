@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Info",
+            "menu": "footer"
+          }
+        },
+        "footer-2": {
+          "type": "text",
+          "settings": {
+            "heading": "Our mission",
+            "subtext": "<p>Bringing ancient Thai herbal wellness to the US and Europe. Free shipping on all orders. 100% natural, zero chemicals.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "footer-2"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Newsletter",
+        "newsletter_subtext": "<p>Get exclusive offers and wellness tips from Lom Thai.</p>",
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "branding_text": "\u00a9 2026 Lom Thai \u2014 Natural Thai Herbal Inhalers",
+        "email": "hello@lomthai.com",
+        "tel": "",
+        "address": "",
+        "footer_custom_background_color": "rgb(27,58,75)",
+        "margin_top": 48,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

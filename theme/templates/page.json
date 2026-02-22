@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_header_yphRyt": {
+      "type": "section-header",
+      "blocks": {
+        "heading_d6rxgR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get in Toch <em>With Us</em>",
+            "size": 35,
+            "mobile_font_size": 28,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "text_HAQHPN": {
+          "type": "text",
+          "settings": {
+            "text": "Discover the latest blog articles to learn more about Bolt Products. We cover topics from lifestyle, health, tips and more!",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        }
+      },
+      "block_order": [
+        "heading_d6rxgR",
+        "text_HAQHPN"
+      ],
+      "name": "Section header",
+      "settings": {
+        "color_scheme": "gradient-background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "contact_form_bNngaD": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Contact <em><strong>Us</strong></em>",
+        "contact_image": "shopify://shop_images/10281c5abecf06c8ba90d5e57fa4e7fa6a8e1c73.jpg",
+        "image_first_desktop": false,
+        "content_gap_desktop": 20,
+        "content_gap_mobile": 14,
+        "content_align_desktop": "flex-start",
+        "content_align_mobile": "flex-start",
+        "contact_image_width_desktop": 500,
+        "contact_image_border_radius": 10,
+        "heading_font_size": 40,
+        "heading_mob_font_size": 28,
+        "heading_color": "#000000",
+        "bolded_heading_color": "#000000",
+        "heading_use_gradient": true,
+        "heading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+        "color_scheme": "accent-1",
+        "input_background_color": "#F9F9F9",
+        "input_text_color": "#1D1A2D",
+        "placeholder_color": "#686868",
+        "input_border_radius": 6,
+        "input_border": false,
+        "borders_color": "#EBEBEB",
+        "borders_opacity": 10,
+        "button_text": "Send Message",
+        "button_full_width": true,
+        "button_font_size": 14,
+        "button_background_color": "#000000",
+        "button_text_color": "#FFFFFF",
+        "button_border_radius": 6,
+        "button_padding_horizontal": 24,
+        "button_padding_vertical": 8,
+        "padding_top": 60,
+        "padding_bottom": 24
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": 40,
+        "heading_mob_size": 28,
+        "heading_color": "#000000",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "section_header_yphRyt",
+    "contact_form_bNngaD",
+    "main"
+  ]
+}

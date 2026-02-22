@@ -1,0 +1,453 @@
+{% style %}
+   #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .section-header {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  #shopify-section-{{ section.id }} .section-header__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .section-header {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+{% endstyle %}
+<div class="section-header color-{{ section.settings.color_scheme }}">
+  {% if section.blocks.size > 0 %}
+    <div class="section-header__inner page-width section-{{ section.id }}-padding">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            {% style %}
+              #heading-section-{{ block.id }} {
+              color: {% if global_color %}rgb(var(--color-base-heading)){% else %}{{ block.settings.color }}{% endif %};
+              font-size: {% if global_heading_size %}var(--font-heading-size) !important{% else %}{{ block.settings.size }}px !important{% endif %};
+              line-height: {% if global_heading_size %}calc(var(--font-heading-size) + 8px) !important{% else %}{{ block.settings.size | plus: 8 }}px{% endif %};
+              margin: 0;
+              padding-top: {{ block.settings.padding_top_desktop }}px;
+              padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+              text-align: center;
+              min-width: 527px;
+              max-width: 527px;
+              }
+              @media (max-width: 768px) {
+              #heading-section-{{ block.id }} {
+                  padding-top: {{ block.settings.padding_top_mobile }}px;
+                  padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+                  font-size: {% if global_heading_size %}var(--font-heading-mob-size) !important{% else %}{{ block.settings.mobile_font_size }}px !important{% endif %};
+                  line-height: {% if global_heading_size %}calc(var(--font-heading-mob-size) + 6px) !important{% else %}{{ block.settings.mobile_font_size | plus: 6 }}px{% endif %};
+                  text-align: center;
+                  min-width: 100%;
+                  max-width: 100%;
+              }
+              }
+
+              #heading-section-{{ block.id }} strong {
+              {%- if block.settings.heading_use_gradient -%}
+                  background: {% if block.settings.heading_gradient_color != blank %}{{ block.settings.heading_gradient_color }}{% else %}var(--gradient-base-background-1){% endif %};
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+              {%- endif -%}
+              }
+            {% endstyle %}
+
+            <h2 id="heading-section-{{ block.id }}" class="title banner__heading" {{ block.shopify_attributes }}>
+              <span style="--color-highlighted-color: {{ block.settings.highlighted_color }};">
+                {{- block.settings.heading -}}
+              </span>
+            </h2>
+
+          {%- when 'text' -%}
+            {% style %}
+              #text-section-{{ block.id }} {
+              margin: 0;
+              padding-top: {{ block.settings.padding_top_desktop }}px;
+              padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+              text-align: center;
+              font-size: {{ block.settings.size }}px;
+              line-height: {{ block.settings.size | plus: 8 }}px;
+              color: {% if global_color %}rgb(var(--color-base-text)){% else %}{{ block.settings.color }}{% endif %};
+              min-width: 527px;
+              max-width: 527px;
+              }
+              #text-section-{{ block.id }} strong {
+              {% if block.settings.text_use_gradient %}
+                  background: {% if block.settings.text_gradient_color != blank %}{{ block.settings.text_gradient_color }}{% else %}var(--color-highlighted-color){% endif %};
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+              {% else %}
+                  color: {{ block.settings.highlighted_color }};
+              {% endif %}
+              }
+              @media (max-width: 750px) {
+              #text-section-{{ block.id }} {
+                  padding-top: {{ block.settings.padding_top_mobile }}px;
+                  padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+                  text-align: center;
+                  font-size: {{ block.settings.size_mobile }}px;
+                  line-height: {{ block.settings.size_mobile | plus: 6 }}px;
+                  min-width: 100%;
+                  max-width: 100%;
+              }
+              }
+            {% endstyle %}
+            <div
+              id="text-section-{{ block.id }}"
+              class="body image-with-text__text rte sw-base-text-color body"
+              {{ block.shopify_attributes }}
+            >
+              <div>{{ block.settings.text }}</div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.section-header.name",
+  "settings": [
+    {
+        "type": "select",
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "accent-3",
+            "label": "t:sections.all.colors.accent_3.label"
+          },
+          {
+            "value": "custom-color-1",
+            "label": "t:sections.all.colors.custom_color_1.label"
+          },
+          {
+            "value": "custom-color-2",
+            "label": "t:sections.all.colors.custom_color_2.label"
+          },
+          {
+            "value": "custom-color-3",
+            "label": "t:sections.all.colors.custom_color_3.label"
+          },
+          {
+            "value": "custom-color-4",
+            "label": "t:sections.all.colors.custom_color_4.label"
+          },
+          {
+            "value": "custom-color-5",
+            "label": "t:sections.all.colors.custom_color_5.label"
+          },
+          {
+            "value": "inverse",
+            "label": "t:sections.all.colors.inverse.label"
+          },
+          {
+            "value": "gradient-background-1",
+            "label": "t:sections.all.colors.gradient_background_1.label"
+          }
+        ],
+        "default": "accent-1",
+        "label": "t:sections.all.colors.label"
+      },
+    {
+      "type": "header",
+      "content": "t:sections.section-header.settings.section_padding.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.all.common.heading.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Video Natural Glow",
+          "label": "t:sections.all.common.heading.label"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "min": 20,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "t:sections.all.common.desktop_heading_size.label",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "mobile_font_size",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "label": "t:sections.all.common.mobile_heading_size.label",
+          "default": 28
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.styling.content"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "t:sections.all.common.heading_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "highlighted_color",
+          "label": "t:sections.all.common.bolded_heading_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "checkbox",
+          "id": "heading_use_gradient",
+          "label": "t:sections.all.common.use_gradient_heading.label",
+          "info": "t:sections.all.common.use_gradient_heading.info",
+          "default": false
+        },
+        {
+          "type": "color_background",
+          "id": "heading_gradient_color",
+          "label": "t:sections.all.common.heading_gradient_color.label",
+          "visible_if": "{{ block.settings.heading_use_gradient }}",
+          "default": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.padding.content"
+        },
+        {
+          "type": "range",
+          "id": "padding_top_desktop",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.desktop_top_padding.label",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_desktop",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.desktop_bottom_padding.label",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "padding_top_mobile",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.mobile_top_padding.label",
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.mobile_bottom_padding.label",
+          "default": 3
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.all.common.body.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Write 2-3 sentances that are focused on introducing the product and offering it as a perfect solution for the problem.",
+          "label": "t:sections.all.common.body.label"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "min": 8,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "label": "t:sections.all.common.body_font_size_desktop.label",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "size_mobile",
+          "min": 8,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "label": "t:sections.all.common.body_font_size_mobile.label",
+          "default": 14
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.styling.content"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "t:sections.all.common.body_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "highlighted_color",
+          "label": "t:sections.all.common.bolded_text_color.label",
+          "default": "#000000"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_use_gradient",
+          "label": "t:sections.all.common.use_gradient_text.label",
+          "default": false
+        },
+        {
+          "type": "color_background",
+          "id": "text_gradient_color",
+          "label": "t:sections.all.common.text_gradient_color.label",
+          "visible_if": "{{ block.settings.text_use_gradient }}",
+          "default": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.common.padding.content"
+        },
+        {
+          "type": "range",
+          "id": "padding_top_desktop",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.desktop_top_padding.label",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_desktop",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.desktop_bottom_padding.label",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "padding_top_mobile",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.mobile_top_padding.label",
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "step": 1,
+          "min": 0,
+          "max": 40,
+          "unit": "px",
+          "label": "t:sections.all.common.mobile_bottom_padding.label",
+          "default": 3
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.section-header.presets.name",
+      "settings": {
+        "color_scheme": "gradient-background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Get in Toch <em>With Us</em>",
+            "size": 35,
+            "mobile_font_size": 28,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "Discover the latest blog articles to learn more about Bolt Products. We cover topics from lifestyle, health, tips and more!",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

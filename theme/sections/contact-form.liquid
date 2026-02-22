@@ -1,0 +1,838 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+assign global_heading_size = settings.enable_global_heading_font_size
+assign global_body_size = settings.enable_global_body_font_size
+assign global_color = settings.enable_global_color
+assign padding_top = section.settings.padding_top | times: 0.75 | round: 0
+assign padding_bottom = section.settings.padding_bottom | times: 0.75 | round: 0
+assign section_id_variable = section.id
+-%}
+
+{% if request.visual_preview_mode %}
+ {% comment %} For rendering in the theme editor visual preview. {% endcomment %}
+ {% assign section_id_variable = "id" %}
+{% endif %}
+
+<style>
+
+  .section-padding-{{ section_id_variable }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom:  {{ padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-padding-{{ section_id_variable }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom:  {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section_id_variable }} .main-conacts {
+    align-items: {{ section.settings.content_align_desktop }} !important;
+    gap: {{ section.settings.content_gap_desktop }}px !important;
+    {% if section.settings.image_first_desktop == false %}
+      flex-direction: row-reverse;
+    {% endif %}
+  }
+  @media screen and (max-width: 1024px) {
+    #shopify-section-{{ section_id_variable }} .main-conacts {
+      gap: {{ section.settings.content_gap_mobile }}px !important;
+      align-items: {{ section.settings.content_align_mobile }} !important;
+    }
+  }
+  .contact__fields-{{ section_id_variable }} .field .field__label {
+    color: {{ section.settings.placeholder_color }} !important;
+    font-weight: 400 !important; 
+    line-height: 100%;
+    top: calc(2rem + var(--inputs-border-width));
+  }
+  .contact__fields-{{ section_id_variable }} .field__input:focus ~ .field__label,.contact__fields-{{ section_id_variable }} .field__input:not(:placeholder-shown) ~ .field__label{
+    top: calc(var(--inputs-border-width) + 0.5rem);
+  }
+  .contact__fields-{{ section_id_variable }} .field:before {
+    {% if section.settings.input_border %}
+      border: 1px solid rgba({{ section.settings.borders_color.red }}, {{ section.settings.borders_color.green }}, {{ section.settings.borders_color.blue }}, {{ section.settings.borders_opacity | divided_by: 100.0 }}) !important;
+    {% else %}
+      border: none !important;
+    {% endif %}
+    box-shadow: none !important;
+    border-radius: {{ section.settings.input_border_radius }}px !important;
+    top: 0 !important;  
+    left: 0 !important;
+    right: 0 !important; 
+    bottom: 0 !important;
+  }
+  .contact__fields-{{ section_id_variable }} .field:after {
+    {% if section.settings.input_border %}
+      border: 1px solid rgba({{ section.settings.borders_color.red }}, {{ section.settings.borders_color.green }}, {{ section.settings.borders_color.blue }}, {{ section.settings.borders_opacity | divided_by: 100.0 }}) !important;
+    {% else %}
+      border: none !important;
+    {% endif %}
+    box-shadow: none !important;
+    border-radius: {{ section.settings.input_border_radius }}px !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;  
+    bottom: 0 !important;
+  }
+
+  .contact__fields-{{ section_id_variable }} .field .field__input:focus {
+    {% if section.settings.input_border %}
+      box-shadow: 0 0 0 0.5px rgba({{ section.settings.borders_color.red }}, {{ section.settings.borders_color.green }}, {{ section.settings.borders_color.blue }}, {{ section.settings.borders_opacity | divided_by: 100.0 }});
+    {% else %}
+      box-shadow: none !important;
+    {% endif %}
+  }
+  .contact__fields-{{ section_id_variable }} .field .field__input { 
+    background-color: {{ section.settings.input_background_color }} !important;
+    border-radius: {{ section.settings.input_border_radius }}px !important;
+    margin: 0 !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    font-weight: 400 !important; 
+    line-height: 100%;
+    color: {{ section.settings.input_text_color }} !important;
+  }
+  #shopify-section-{{ section_id_variable }} .main-conacts .contact.page-width{
+    width: 100% !important;
+  }
+  #shopify-section-{{ section_id_variable }} .contactus-image {
+    max-width: {{ section.settings.contact_image_width_desktop }}px !important;
+    width: 100% !important;
+  }
+  @media screen and (max-width: 1024px) {
+    #shopify-section-{{ section_id_variable }} .contactus-image {
+      max-width: 100% !important;
+      width: 100% !important;
+   }
+    #shopify-section-{{ section_id_variable }} .main-conacts {
+      {% if section.settings.image_first_mobile %}
+        flex-direction: column-reverse;
+      {% else %}
+        flex-direction: column;
+      {% endif %}
+    }
+    #shopify-section-{{ section_id_variable }} .main-conacts .contact.page-width{
+      width: 100% !important;
+    }
+    #shopify-section-{{ section_id_variable }} .contact {
+      width: 100%;
+    }
+  }
+  .contactus-image-inner {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  .contactus-image-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media screen and (min-width: 1025px) {
+    .contactus-image-inner {
+      {% if section.settings.contact_image != blank and section.settings.image_height == 'adapt' %}
+        padding-bottom: {{ 1 | divided_by: section.settings.contact_image.aspect_ratio | times: 100 }}%;
+      {% endif %}
+      {% if section.settings.contact_image != blank and section.settings.image_height == 'small' %}
+        min-height: 489px;
+      {% elsif section.settings.contact_image != blank and section.settings.image_height == 'medium' %}
+        min-height: 639px;
+      {% elsif section.settings.contact_image != blank and section.settings.image_height == 'large' %}
+        min-height: 800px;
+      {% endif %}
+    }
+    .contactus-image-inner img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+</style>
+
+<div class="main-contatcs color-{{ section.settings.color_scheme }} gradient section__contact_form">
+  <div class="main-conacts section-padding-{{ section_id_variable }} page-width">
+    <div class="contact" style="flex:1;">
+      {%- if section.settings.heading != blank -%}
+        <style>
+          #section-heading-{{ section_id_variable }}{
+              font-size: {% if global_heading_size %}var(--font-heading-size)!important{% else %}{{ section.settings.heading_font_size }}px!important{% endif %};
+              line-height: {% if global_heading_size %}calc(var(--font-heading-size) + 10px)!important{% else %}{{ section.settings.heading_font_size | plus: 10 }}px!important{% endif %};
+              color: {% if global_color %}rgb(var(--color-base-heading)){% else %}{{ section.settings.heading_color }}{% endif %} !important;
+              margin: 0 auto {{ section.settings.space_between_heading_and_form_desktop }}px;
+              text-align: {{ section.settings.heading_alignment }};
+          }
+          #section-heading-{{ section_id_variable }} strong {
+            {%- if section.settings.heading_use_gradient -%}
+              background: {% if section.settings.heading_gradient_color != blank %}{{ section.settings.heading_gradient_color }}{% else %}var(--gradient-base-background-1){% endif %};
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            {% else %}
+              color: {{ section.settings.bolded_heading_color }};
+            {%- endif -%}
+          }
+          @media (max-width: 1024px) {
+            #section-heading-{{ section_id_variable }}{
+              margin: 0 auto {{ section.settings.space_between_heading_and_form_mobile }}px;
+              font-size: {% if global_heading_size %}var(--font-heading-mob-size) !important{% else %}{{ section.settings.heading_mob_font_size }}px!important{% endif %};
+              line-height: {% if global_heading_size %}calc(var(--font-heading-mob-size) + 10px) !important{% else %}{{ section.settings.heading_mob_font_size | plus: 10 }}px!important{% endif %};
+            }
+          }
+        </style>
+
+        <h2
+          id="section-heading-{{ section_id_variable }}"
+          class="title title-wrapper--no-top-margin "
+        >
+          {{ section.settings.heading }}
+        </h2>
+      {%- else -%}
+        <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+      {%- endif -%}
+      {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+        <div class="contact__fields-{{ section_id_variable }}">
+          {%- if form.posted_successfully? -%}
+            <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+              {% render 'icon-success' %}
+              {{ 'templates.contact.form.post_success' | t }}
+            </h2>
+          {%- elsif form.errors -%}
+            <div class="form__message">
+              <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+                {% render 'icon-error' %}
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h2>
+            </div>
+            <ul class="form-status-list caption-large" role="list">
+              <li>
+                <a href="#ContactForm-email" class="link">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </a>
+              </li>
+            </ul>
+          {%- endif -%}
+          <div class="contact__fields ">
+            <div class="field">
+              <input
+                class="field__input"
+                autocomplete="name"
+                type="text"
+                id="ContactForm-first-name"
+                name="contact[first_name]"
+                value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.name' | t }}"
+              >
+              <label class="field__label" for="ContactForm-first-name">{{ 'templates.contact.form.first_name' | t }}</label>
+            </div>
+            <div class="field field--with-error">
+              <input
+                class="field__input"
+                autocomplete="last_name"
+                type="text"
+                id="ContactForm-last-name"
+                name="contact[last_name]"
+                value="{% if form.last_name %}{{ form.last_name }}{% elsif customer %}{{ customer.last_name }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.name' | t }}"
+              >
+              <label class="field__label" for="ContactForm-last-name">{{ 'templates.contact.form.last_name' | t }}</label>
+            </div>
+          </div>
+          <div class="field">
+            <input
+              autocomplete="email"
+              type="email"
+              id="ContactForm-email"
+              class="field__input"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+              placeholder="{{ 'templates.contact.form.email' | t }}"
+            >
+            <label class="field__label" for="ContactForm-email">
+              {{- 'templates.contact.form.email' | t }}
+              <span aria-hidden="true">*</span></label
+            >
+            {%- if form.errors contains 'email' -%}
+              <small class="contact__field-error" id="ContactForm-email-error">
+                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                <span class="form__message">
+                  {%- render 'icon-error' -%}
+                  {{- form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email -}}
+                </span>
+              </small>
+            {%- endif -%}
+          </div>
+          <div class="field">
+            <input
+              type="tel"
+              id="ContactForm-phone"
+              class="field__input"
+              autocomplete="tel"
+              name="contact[{{ 'templates.contact.form.phone' | t }}]"
+              pattern="[0-9\-]*"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="{{ 'templates.contact.form.phone' | t }}"
+            >
+            <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+          </div>
+          <div class="field">
+            <textarea
+              rows="10"
+              id="ContactForm-body"
+              class="text-area field__input"
+              name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="{{ 'templates.contact.form.comment' | t }}"
+              style="min-height: 203px !important;"
+            >
+          {{- form.body -}}
+        </textarea>
+            <label class="form__label field__label" for="ContactForm-body">
+              {{- 'templates.contact.form.comment' | t -}}
+            </label>
+          </div>
+          <style>
+            #shopify-section-{{ section_id_variable }} .contact__button button {
+              background-color: {{ section.settings.button_background_color }} !important;
+              color: {{ section.settings.button_text_color }} !important;
+              border-radius: {{ section.settings.button_border_radius }}px !important;
+              padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px !important;
+              font-size: {{ section.settings.button_font_size }}px !important;
+            }
+            #shopify-section-{{ section_id_variable }} .button.split-slide-button:hover {
+              box-shadow: 0 0 10px 2px rgba({{ section.settings.button_background_color.red }}, {{ section.settings.button_background_color.green }}, {{ section.settings.button_background_color.blue }}, 1.0), 0 0 0 1px rgba({{ section.settings.button_background_color.red }}, {{ section.settings.button_background_color.green }}, {{ section.settings.button_background_color.blue }}, 0.5) !important;
+            }
+            #shopify-section-{{ section_id_variable }} .split-slide-button:hover .button-text{
+              color: {{ section.settings.button_text_color }} !important;
+            }
+            @media (max-width: 1024px) {
+              #shopify-section-{{ section_id_variable }} .contact__button button {
+                width: 100%;
+              }
+            }
+          </style>
+          <div class="contact__button">
+            <button
+              type="submit"
+              class="button{% if section.settings.button_full_width %} button--full-width{% endif %} "
+            >
+              <span class="button-text">
+                {{ section.settings.button_text }}
+              </span>
+            </button>
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+    {% if section.settings.contact_image != blank %}
+      <div style="overflow: hidden; border-radius: {{ section.settings.contact_image_border_radius }}px;" class="contactus-image">
+        <div class="contactus-image-inner">
+          {{ section.settings.contact_image | image_url: width: 1000 | image_tag: width: 1000, height: 1000 }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.content.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Get in touch with us",
+      "label": "t:sections.contact-form.settings.heading.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "contact_image",
+      "label": "t:sections.contact-form.settings.contact_image.label",
+      "info": "t:sections.contact-form.settings.contact_image.info"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.contact-form.settings.image_height.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.contact-form.settings.heading_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.contact-form.settings.heading_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.contact-form.settings.heading_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.contact-form.settings.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.layout.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_first_desktop",
+      "label": "t:sections.contact-form.settings.image_first_desktop.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "image_first_mobile",
+      "label": "t:sections.contact-form.settings.image_first_mobile.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "content_gap_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.content_gap_desktop.label",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_gap_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.content_gap_mobile.label",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "space_between_heading_and_form_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.space_between_heading_and_form_desktop.label",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "space_between_heading_and_form_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.space_between_heading_and_form_mobile.label",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "content_align_desktop",
+      "label": "t:sections.contact-form.settings.content_align_desktop.label",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:sections.contact-form.settings.content_align_desktop.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.contact-form.settings.content_align_desktop.options__2.label"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:sections.contact-form.settings.content_align_desktop.options__3.label"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "content_align_mobile",
+      "label": "t:sections.contact-form.settings.content_align_mobile.label",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:sections.contact-form.settings.content_align_mobile.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.contact-form.settings.content_align_mobile.options__2.label"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:sections.contact-form.settings.content_align_mobile.options__3.label"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.image_settings.content"
+    },
+    {
+      "type": "range",
+      "id": "contact_image_width_desktop",
+      "label": "t:sections.contact-form.settings.contact_image_width_desktop.label",
+      "min": 300,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "contact_image_border_radius",
+      "label": "t:sections.contact-form.settings.contact_image_border_radius.label",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 10,
+      "info": "t:sections.contact-form.settings.contact_image_border_radius.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.typography.content"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.heading_font_size.label",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_mob_font_size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.heading_mob_font_size.label",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:sections.contact-form.settings.heading_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bolded_heading_color",
+      "label": "t:sections.contact-form.settings.bolded_heading_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_use_gradient",
+      "label": "t:sections.contact-form.settings.heading_use_gradient.label",
+      "info": "t:sections.contact-form.settings.heading_use_gradient.info",
+      "default": false
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient_color",
+      "label": "t:sections.contact-form.settings.heading_gradient_color.label",
+      "default": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+      "info": "t:sections.contact-form.settings.heading_gradient_color.info",
+      "visible_if": "{{ section.settings.heading_use_gradient }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.colors.content"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "custom-color-1",
+          "label": "t:sections.all.colors.custom_color_1.label"
+        },
+        {
+          "value": "custom-color-2",
+          "label": "t:sections.all.colors.custom_color_2.label"
+        },
+        {
+          "value": "custom-color-3",
+          "label": "t:sections.all.colors.custom_color_3.label"
+        },
+        {
+          "value": "custom-color-4",
+          "label": "t:sections.all.colors.custom_color_4.label"
+        },
+        {
+          "value": "custom-color-5",
+          "label": "t:sections.all.colors.custom_color_5.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        },
+        {
+          "value": "gradient-background-1",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        }
+      ],
+      "default": "accent-2",
+      "label": "t:sections.contact-form.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.form_inputs.content"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "t:sections.contact-form.settings.input_background_color.label",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "t:sections.contact-form.settings.input_text_color.label",
+      "default": "#1D1A2D"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "t:sections.contact-form.settings.placeholder_color.label",
+      "default": "#686868"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.contact-form.settings.input_border_radius.label",
+      "default": 6,
+      "info": "t:sections.contact-form.settings.input_border_radius.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "input_border",
+      "label": "t:sections.contact-form.settings.input_border.label",
+      "default": false,
+      "info": "t:sections.contact-form.settings.input_border.info"
+    },
+    {
+      "type": "color",
+      "id": "borders_color",
+      "label": "t:sections.contact-form.settings.borders_color.label",
+      "default": "#EBEBEB",
+      "info": "t:sections.contact-form.settings.borders_color.info",
+      "visible_if": "{{ section.settings.input_border }}"
+    },
+    {
+      "type": "range",
+      "id": "borders_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "t:sections.contact-form.settings.borders_opacity.label",
+      "default": 10,
+      "info": "t:sections.contact-form.settings.borders_opacity.info",
+      "visible_if": "{{ section.settings.input_border }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.submit_button.content"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.contact-form.settings.button_text.label",
+      "default": "Send Message"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_full_width",
+      "label": "t:sections.contact-form.settings.button_full_width.label",
+      "default": false,
+      "info": "t:sections.contact-form.settings.button_full_width.info"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "t:sections.contact-form.settings.button_font_size.label",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "t:sections.contact-form.settings.button_background_color.label",
+      "default": "#484848"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:sections.contact-form.settings.button_text_color.label",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "t:sections.contact-form.settings.button_border_radius.label",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6,
+      "info": "t:sections.contact-form.settings.button_border_radius.info"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "t:sections.contact-form.settings.button_padding_horizontal.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "t:sections.contact-form.settings.button_padding_vertical.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Reach Out <em><strong>Any Time</strong></em>",
+        "contact_image": "shopify://shop_images/Mask_group_3a04d0b4-eab7-4dd9-b8af-8dcdcee4372b.png",
+        "heading_alignment": "left",
+        "image_first_desktop": false,
+        "content_gap_desktop": 35,
+        "content_gap_mobile": 14,
+        "space_between_heading_and_form_desktop": 20,
+        "space_between_heading_and_form_mobile": 14,
+        "content_align_desktop": "flex-start",
+        "content_align_mobile": "flex-start",
+        "contact_image_width_desktop": 600,
+        "contact_image_border_radius": 10,
+        "heading_font_size": 40,
+        "heading_mob_font_size": 28,
+        "heading_color": "#000000",
+        "bolded_heading_color": "#000000",
+        "heading_use_gradient": true,
+        "heading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+        "color_scheme": "accent-1",
+        "input_background_color": "#f9f9f9",
+        "input_text_color": "#1d1a2d",
+        "placeholder_color": "#686868",
+        "input_border_radius": 6,
+        "input_border": false,
+        "borders_color": "#000000",
+        "borders_opacity": 10,
+        "button_text": "Send Message",
+        "button_full_width": true,
+        "button_font_size": 12,
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "button_border_radius": 6,
+        "button_padding_horizontal": 24,
+        "button_padding_vertical": 8,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  ]
+}
+{% endschema %}

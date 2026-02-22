@@ -1,0 +1,608 @@
+<link
+  rel="preload"
+  href="{{ 'collapsible-content.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+{% render 'accordion-css' %}
+{%- liquid
+  assign global_heading_size = settings.enable_global_heading_font_size
+  assign global_color = settings.enable_global_color
+  assign section_id_variable = section.id
+-%}
+
+{% if request.visual_preview_mode %}
+  {% comment %} For some reason, using actual section id in preview messes up the preview render. Doing this fixes it. {% endcomment %}
+  {% assign section_id_variable = 'id' %}
+{% endif %}
+
+{%- style -%}
+  {%- if request.visual_preview_mode -%}
+    {% comment %} don't want fade-in animation in preview mode because it messes up preview {% endcomment %}
+    .animation_section,
+    .animation_section * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+  {%- endif -%}
+  #shopify-section-{{ section_id_variable }} .collapsible-content-wrapper-narrow {
+    max-width: {{ section.settings.content_max_width_desktop }}px;
+  }
+  #shopify-section-{{ section_id_variable }} .section__collapsible_content {
+    padding: 5px 0;
+    margin: -1px 0;
+  }
+
+  .section-{{ section_id_variable }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-{{ section_id_variable }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+
+  .accordianTitle-{{ section_id_variable }} {
+    margin: 0px;
+  }
+  .acc
+
+  .accordianTitle-{{ section_id_variable }} span.material-icon.material-symbols-outlined{
+    display: flex;
+    align-items: center;
+  }
+  #shopify-section-{{ section_id_variable }} .collapsible-content__subheading {
+    font-size: {{ section.settings.subheading_size }}px;
+    color: {{ section.settings.subheading_color }};
+    line-height: 100%;
+  }
+  #shopify-section-{{ section_id_variable }} .collapsible-content__subheading p {
+    margin: 0;
+  }
+  #shopify-section-{{ section_id_variable }} .collapsible-content__subheading strong {
+    {% if section.settings.subheading_use_gradient %}
+      background: {% if section.settings.subheading_gradient_color != blank %}{{ section.settings.subheading_gradient_color }}{% endif %};
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    {% else %}
+      color: {{ section.settings.subheading_highlighted_color }};
+    {% endif %}
+  }
+  @media (max-width: 768px) {
+    #shopify-section-{{ section_id_variable }} .collapsible-content__subheading {
+      font-size: {{ section.settings.subheading_mob_size }}px;
+    }
+  } 
+  #shopify-section-{{ section_id_variable }} .collapsible-content__grid {
+    padding-top: {{ section.settings.padding_top_content }}px;
+    padding-bottom: {{ section.settings.padding_bottom_content }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section__collapsible_content">
+  <div class="collapsible-content">
+    <div class="collapsible-content__wrapper section-{{ section_id_variable }}-padding">
+      <div class="{% if section.settings.image == blank %}collapsible-content-wrapper-narrow page-width{% else %}page-width{% endif %}">
+        <div class="collapsible-content__header" style="text-align: {{ section.settings.heading_alignment }};">
+          {%- if section.settings.heading != blank -%}
+            {% style %}
+              #section-heading-{{ section_id_variable }}{
+                  font-size: {% if global_heading_size %}var(--font-heading-size) !important{% else %}{{ section.settings.font_size }}px!important{% endif %};
+                  color: {% if global_color %}rgb(var(--color-base-heading)){% else %}{{ section.settings.heading_color }}{% endif %};
+                  --color-highlighted-color: {{ section.settings.heading_highlighted_color }};
+                  margin-bottom: {{ section.settings.heading_subheading_gap }}px;
+              }
+              #section-heading-{{ section_id_variable }} p {
+                margin: 0;
+              }
+              #section-heading-{{ section_id_variable }} strong {
+                {%- if section.settings.heading_use_gradient -%}
+                  background: {% if section.settings.heading_gradient_color != blank %}{{ section.settings.heading_gradient_color }}{% else %}var(--gradient-base-background-1){% endif %};
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+                {%- endif -%}
+              }
+              @media (max-width: 768px) {
+                #section-heading-{{ section_id_variable }}{
+                  font-size: {% if global_heading_size %}var(--font-heading-mob-size) !important{% else %}{{ section.settings.mob_font_size }}px!important{% endif %};
+                  margin-bottom: {{ section.settings.heading_subheading_gap_mobile }}px;
+                }
+              }
+            {% endstyle %}
+
+            <h2
+              id="section-heading-{{ section_id_variable }}"
+              class="title collapsible-content__heading {{ section.settings.heading_size }}"
+            >
+              {{ section.settings.heading }}
+            </h2>
+          {%- else -%}
+            <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
+          {% endif %}
+          {%- if section.settings.subheading != blank -%}
+            <div class="collapsible-content__subheading">{{ section.settings.subheading }}</div>
+          {% endif %}
+        </div>
+        <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}">
+          {%- if section.settings.image != blank -%}
+            <div
+              style="overflow: hidden; border-radius: 10px;"
+              class="grid__item collapsible-content__grid-item"
+            >
+              <div
+                class="collapsible-content__media collapsible-content__media--{{ section.settings.image_ratio }} media global-media-settings gradient"
+                {% if section.settings.image_ratio == 'adapt' %}
+                  style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                {%- capture sizes -%}
+                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                {%- endcapture -%}
+                {{
+                  section.settings.image
+                  | image_url: width: 1800
+                  | image_tag: loading: 'lazy', sizes: sizes, widths: '165, 360, 535, 750, 1070, 1250, 1500'
+                }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="grid__item">
+            {% content_for 'blocks' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCollapsibles{{ section.id | replace: '-', '' }}() {
+    const acc = document.getElementsByClassName("accordionButtonStyle-{{ section.id }}");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.maxHeight = panel.style.maxHeight ? null : (panel.scrollHeight + 25) + "px";
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => setTimeout(initCollapsibles{{ section.id | replace: '-', '' }}, 550));
+  document.addEventListener('shopify:section:load', () => setTimeout(initCollapsibles{{ section.id | replace: '-', '' }}, 550));
+  document.addEventListener('shopify:section:unload', () => setTimeout(initCollapsibles{{ section.id | replace: '-', '' }}, 550));
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.collapsible-content.name",
+  "tag": "section",
+  "class": "section animation_section",
+  "blocks": [
+    {
+      "type": "_collapsible-content-list"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.common.content.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.collapsible-content.settings.heading.label",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "t:sections.collapsible-content.settings.subheading.label",
+      "default": "Find quick answers to the most common questions about our product."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.collapsible-content.settings.image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_index",
+      "default": true,
+      "label": "t:sections.collapsible-content.settings.show_index.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.layout.content"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width_desktop",
+      "label": "t:sections.collapsible-content.settings.content_max_width_desktop.label",
+      "min": 500,
+      "max": 1200,
+      "step": 100, 
+      "unit": "px",
+      "default": 1100
+    },
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "t:sections.collapsible-content.settings.desktop_layout.options__1.label"
+        },
+        {
+          "value": "image_second",
+          "label": "t:sections.collapsible-content.settings.desktop_layout.options__2.label"
+        }
+      ],
+      "default": "image_first",
+      "label": "t:sections.collapsible-content.settings.desktop_layout.label",
+      "info": "t:sections.collapsible-content.settings.desktop_layout.info"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collapsible-content.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.collapsible-content.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.collapsible-content.settings.image_ratio.options__4.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.collapsible-content.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.collapsible-content.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.all.common.heading_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.common.heading_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.common.heading_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.common.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_subheading_gap",
+      "label": "t:sections.collapsible-content.settings.heading_subheading_gap.label",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "heading_subheading_gap_mobile",
+      "label": "t:sections.collapsible-content.settings.heading_subheading_gap_mobile.label",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 7
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.typography.content"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "t:sections.collapsible-content.settings.font_size.label",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "mob_font_size",
+      "label": "t:sections.collapsible-content.settings.mob_font_size.label",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:sections.all.common.heading_color.label",
+      "default": "#383838"
+    },
+    {
+      "type": "color",
+      "id": "heading_highlighted_color",
+      "label": "t:sections.all.common.bolded_heading_color.label",
+      "default": "#383838"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_use_gradient",
+      "label": "t:sections.all.common.use_gradient_heading.label",
+      "info": "t:sections.collapsible-content.settings.heading_use_gradient.info",
+      "default": false
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient_color",
+      "label": "t:sections.all.common.heading_gradient_color.label",
+      "visible_if": "{{ section.settings.heading_use_gradient }}",
+      "default": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "t:sections.collapsible-content.settings.subheading_size.label",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subheading_mob_size",
+      "label": "t:sections.collapsible-content.settings.subheading_mob_size.label",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "t:sections.collapsible-content.settings.subheading_color.label",
+      "default": "#383838"
+    },
+    {
+      "type": "color",
+      "id": "subheading_highlighted_color",
+      "label": "t:sections.collapsible-content.settings.subheading_highlighted_color.label",
+      "default": "#383838"
+    },
+    {
+      "type": "checkbox",
+      "id": "subheading_use_gradient",
+      "label": "t:sections.collapsible-content.settings.subheading_use_gradient.label",
+      "info": "t:sections.collapsible-content.settings.subheading_use_gradient.info",
+      "default": false
+    },
+    {
+      "type": "color_background",
+      "id": "subheading_gradient_color",
+      "label": "t:sections.collapsible-content.settings.subheading_gradient_color.label",
+      "default": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+      "visible_if": "{{ section.settings.subheading_use_gradient }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.common.styling.content"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "custom-color-1",
+          "label": "t:sections.all.colors.custom_color_1.label"
+        },
+        {
+          "value": "custom-color-2",
+          "label": "t:sections.all.colors.custom_color_2.label"
+        },
+        {
+          "value": "custom-color-3",
+          "label": "t:sections.all.colors.custom_color_3.label"
+        },
+        {
+          "value": "custom-color-4",
+          "label": "t:sections.all.colors.custom_color_4.label"
+        },
+        {
+          "value": "custom-color-5",
+          "label": "t:sections.all.colors.custom_color_5.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        },
+        {
+          "value": "gradient-background-1",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        }
+      ],
+      "default": "accent-2",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_content",
+      "label": "t:sections.collapsible-content.settings.padding_top_content.label",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 29
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_content",
+      "label": "t:sections.collapsible-content.settings.padding_bottom_content.label",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collapsible-content.presets",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Find quick answers to the most common questions about our product.",
+        "show_index": true,
+        "content_max_width_desktop": 1100,
+        "desktop_layout": "image_first",
+        "image_ratio": "adapt",
+        "heading_alignment": "center",
+        "font_size": 35,
+        "mob_font_size": 25,
+        "subheading_size": 16,
+        "subheading_mob_size": 16,
+        "heading_subheading_gap": 7,
+        "heading_subheading_gap_mobile": 7,
+        "color_scheme": "accent-1",
+        "heading_color": "#383838",
+        "heading_highlighted_color": "#383838",
+        "heading_use_gradient": false,
+        "heading_gradient_color": "",
+        "subheading_color": "#383838",
+        "subheading_highlighted_color": "#383838",
+        "subheading_use_gradient": false,
+        "subheading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+        "padding_top_content": 29,
+        "padding_bottom_content": 0,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": [
+        {
+          "type": "_collapsible-content-list",
+          "blocks": [
+            {
+              "type": "_collapsible-content-row",
+              "settings": {
+                "heading": "What is your return policy?",
+                "row_content": "<p>Absolutely. For best results, cleanse your face first, use the wand, and then apply your favorite serums or moisturizers.</p>",
+                "heading_color": "#383838",
+                "heading_highlighted_color": "#383838",
+                "body_color": "#302f2f",
+                "body_highlighted_color": "#302f2f"
+              },
+            },
+            {
+              "type": "_collapsible-content-row",
+              "settings": {
+                    "heading": "What is your return policy?",
+                    "row_content": "<p>Absolutely. For best results, cleanse your face first, use the wand, and then apply your favorite serums or moisturizers.</p>",
+                    "heading_color": "#383838",
+                    "heading_highlighted_color": "#383838",
+                    "body_color": "#302f2f",
+                    "body_highlighted_color": "#302f2f"
+                }
+            },
+            {
+              "type": "_collapsible-content-row",
+              "settings": {
+                "heading": "What is your return policy?",
+                "row_content": "<p>Absolutely. For best results, cleanse your face first, use the wand, and then apply your favorite serums or moisturizers.</p>",
+                "heading_color": "#383838",
+                "heading_highlighted_color": "#383838",
+                "body_color": "#302f2f",
+                "body_highlighted_color": "#302f2f"
+              }
+            }
+          ],
+          "settings": {
+            "heading_font_size": 16,
+            "heading_font_size_mobile": 16,
+            "body_font_size": 16,
+            "body_font_size_mobile": 16,
+            "index_number_size": 30,
+            "index_number_color": "#000000",
+            "index_number_background_color": "#ffffff",
+            "rows_have_border": false,
+            "row_gap": 15,
+            "border_radius": 6,
+            "row_container_bg_color_scheme": "#f9f9f9",
+            "rows_border_color": "#000000",
+            "rows_border_color_opacity": 15,
+            "rows_border_width": 1,
+            "vertical_padding": 13,
+            "horizontal_padding": 19,
+            "icon_size": 11,
+            "icon_color": "#181818",
+            "title_row_has_underline_on_hover": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

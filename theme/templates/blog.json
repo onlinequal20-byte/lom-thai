@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_header_LX93tU": {
+      "type": "section-header",
+      "blocks": {
+        "heading_PfBqGw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Blog",
+            "size": 35,
+            "mobile_font_size": 28,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "text_cyBcaM": {
+          "type": "text",
+          "settings": {
+            "text": "Discover the latest blog articles to learn more about Bolt Products. We cover topics from lifestyle, health, tips and more!",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        }
+      },
+      "block_order": [
+        "heading_PfBqGw",
+        "text_cyBcaM"
+      ],
+      "name": "Section header",
+      "settings": {
+        "color_scheme": "gradient-background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "blog_navigation_GTbjDg": {
+          "type": "blog_navigation",
+          "settings": {
+            "title": "News",
+            "url": "shopify://blogs/news"
+          }
+        },
+        "blog_navigation_BHn4gX": {
+          "type": "blog_navigation",
+          "settings": {
+            "title": "Fitness",
+            "url": "shopify://blogs/fitness"
+          }
+        },
+        "blog_navigation_CpaMY7": {
+          "type": "blog_navigation",
+          "settings": {
+            "title": "Health",
+            "url": "shopify://blogs/health"
+          }
+        }
+      },
+      "block_order": [
+        "blog_navigation_GTbjDg",
+        "blog_navigation_BHn4gX",
+        "blog_navigation_CpaMY7"
+      ],
+      "settings": {
+        "grid_columns_desktop": 3,
+        "grid_columns_tablet": 3,
+        "grid_columns_mobile": 1,
+        "blog_navigation_border_thickness": 1,
+        "blog_navigation_border_color": "#e0e0e0",
+        "blog_navigation_padding_bottom_desktop": 33,
+        "blog_navigation_padding_bottom_mobile": 10,
+        "space_between_navigation_and_articles_desktop": 59,
+        "space_between_navigation_and_articles_mobile": 33,
+        "blog_navigation_font_size_desktop": 16,
+        "blog_navigation_font_size_mobile": 14,
+        "blog_navigation_color": "#686868",
+        "blog_navigation_active_color": "#1d1a2d",
+        "blog_navigation_search_background_color": "#f9f9f9",
+        "blog_navigation_search_color": "#222222",
+        "blog_navigation_search_border_radius": 16,
+        "loading_spinner_color": "#1d1a2d",
+        "padding_top": 4,
+        "padding_bottom": 64
+      }
+    },
+    "about_us_MW6K8m": {
+      "type": "about-us",
+      "blocks": {
+        "heading_pLiNEa": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us",
+            "heading_size": 35,
+            "mobile_font_size": 28,
+            "heading_color": "#ffffff",
+            "bolded_heading_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)"
+          }
+        },
+        "text_PE3WFm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover our newest skincare innovations, thoughtfully crafted to bring out your natural glow. Explore the latest radiant, and healthy.  Read More</p>",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "body_color": "#ffffff",
+            "bolded_body_color": "#000000",
+            "body_use_gradient": false,
+            "body_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)"
+          }
+        },
+        "button_QtQgm3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pLiNEa",
+        "text_PE3WFm",
+        "button_QtQgm3"
+      ],
+      "name": "About us",
+      "settings": {
+        "image": "shopify://shop_images/3b034f07f1c0073325550b15268a03d5b341a57c.png",
+        "card_position": "bottom_right",
+        "cards_border_radius": 6,
+        "text_alignment": "left",
+        "card_background_color": "#ffffff",
+        "card_background_color_use_gradient": true,
+        "card_background_color_gradient": "linear-gradient(160.21deg, rgba(234, 56, 133, 1) 0.37%, rgba(95, 77, 188, 1) 181.87%)",
+        "card_background_color_use_opacity": true,
+        "card_background_color_opacity": 70,
+        "card_padding_vertical_desktop": 26,
+        "card_padding_horizontal_desktop": 24,
+        "card_padding_vertical_mobile": 19,
+        "card_padding_horizontal_mobile": 11,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "newsletter_BLYbNa": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_ceXAgW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join <em><strong>Our Newsletter</strong></em>",
+            "font_size": 35,
+            "mobile_font_size": 28,
+            "heading_text": "#383838",
+            "bolded_heading_text": "#383838",
+            "heading_use_gradient": true,
+            "heading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+            "heading_padding_top": 0,
+            "heading_padding_top_mobile": 25,
+            "heading_padding_bottom": 7,
+            "heading_padding_bottom_mobile": 20
+          }
+        },
+        "paragraph_Lezx8J": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get the latest updates, offers, and news delivered straight to your inbox.</p>",
+            "font_size": 14,
+            "mobile_font_size": 14,
+            "body_text": "#666666",
+            "bolded_body_text": "#000000",
+            "body_use_gradient": false,
+            "body_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+            "body_padding_top": 0,
+            "body_padding_top_mobile": 0,
+            "body_padding_bottom": 34,
+            "body_padding_bottom_mobile": 20
+          }
+        },
+        "email_form_4Nhkhd": {
+          "type": "email_form",
+          "settings": {
+            "button_label": "Subscribe to our Newsletter",
+            "email_form_input_gap": 17,
+            "input_text_color": "#000000",
+            "input_placeholder_color": "#000000",
+            "input_background_color": "#f9f9f9",
+            "border_radius": 6,
+            "border_width": 1,
+            "border_color": "#f2f2f2",
+            "button_font_size": 14,
+            "button_text_color": "#ffffff",
+            "button_background_color": "#1d1a2d",
+            "button_border_radius": 6,
+            "email_form_padding_top": 0,
+            "email_form_padding_top_mobile": 0,
+            "email_form_padding_bottom": 0,
+            "email_form_padding_bottom_mobile": 33
+          }
+        }
+      },
+      "block_order": [
+        "heading_ceXAgW",
+        "paragraph_Lezx8J",
+        "email_form_4Nhkhd"
+      ],
+      "name": "Our newsletter",
+      "settings": {
+        "side_block_image": "shopify://shop_images/37807a30159dbda801f6c3ba10116510bf1f17b2.png",
+        "image_height": "medium",
+        "image_first_desktop": true,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
+        "full_width": true,
+        "color_scheme": "accent-1",
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "section_header_LX93tU",
+    "main",
+    "about_us_MW6K8m",
+    "newsletter_BLYbNa"
+  ]
+}

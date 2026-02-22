@@ -1,0 +1,19 @@
+<!-- start_rich_text_list_card --><li class="rich-text__card" {{ block.shopify_attributes }}><div style="width: 100%;">{{ block.settings.text }}</div></li><!-- end_rich_text_list_card -->
+{% schema %}
+{
+  "name": "t:blocks._rich_text_list_card.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:blocks._rich_text_list_card.settings.text.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._rich_text_list_card.presets.name"
+    }
+  ]
+}
+{% endschema %}

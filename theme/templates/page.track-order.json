@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": 40,
+        "heading_mob_size": 28,
+        "heading_color": "#000000",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "track_your_order_MdPGhR": {
+      "type": "track-your-order",
+      "blocks": {
+        "heading_eBGRGH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Track <em><strong>Your Order</strong></em>",
+            "size": 40,
+            "mobile_font_size": 28,
+            "color": "#ffffff",
+            "highlighted_color": "#ffffff",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "linear-gradient(180deg, rgba(234, 56, 133, 1), rgba(95, 77, 188, 1) 100%)",
+            "padding_top_desktop": 0,
+            "padding_bottom_desktop": 0,
+            "padding_top_mobile": 10,
+            "padding_bottom_mobile": 8
+          }
+        },
+        "text_NUwCpX": {
+          "type": "text",
+          "settings": {
+            "text": "Sign up to receive your welcome offer, plus access to product launches and exclusive offers",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 23,
+            "padding_bottom_desktop": 35,
+            "padding_top_mobile": 10,
+            "padding_bottom_mobile": 21
+          }
+        }
+      },
+      "block_order": [
+        "heading_eBGRGH",
+        "text_NUwCpX"
+      ],
+      "name": "Track your order",
+      "settings": {
+        "image_radius": 6,
+        "button_label": "Track",
+        "image_first_on_desktop": true,
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "color_scheme2": "gradient-background-1",
+        "color_scheme": "gradient-background-1",
+        "has_custom_color_scheme": true,
+        "custom_color_scheme": "rgba(0,0,0,0)",
+        "card_border_radius": 6,
+        "card_top_padding": 18,
+        "card_top_padding_mobile": 18,
+        "card_right_padding": 18,
+        "card_right_padding_mobile": 18,
+        "card_bottom_padding": 18,
+        "card_bottom_padding_mobile": 18,
+        "card_left_padding": 18,
+        "card_left_padding_mobile": 18,
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "button_border_radius": 6,
+        "button_font_size": 14,
+        "input_background_color": "#ffffff",
+        "input_text_color": "#1d1a2d",
+        "input_placeholder_color": "#666666",
+        "input_border_radius": 6,
+        "input_border_width": 1,
+        "input_border_color": "#f8f8f8",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "contact_form_7jyRck": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "How Can <em><strong>We Help</strong></em>",
+        "contact_image": "shopify://shop_images/10281c5abecf06c8ba90d5e57fa4e7fa6a8e1c73.jpg",
+        "heading_alignment": "left",
+        "image_first_desktop": false,
+        "content_gap_desktop": 20,
+        "content_gap_mobile": 14,
+        "space_between_heading_and_form_desktop": 20,
+        "space_between_heading_and_form_mobile": 14,
+        "content_align_desktop": "flex-start",
+        "content_align_mobile": "flex-start",
+        "contact_image_width_desktop": 500,
+        "contact_image_border_radius": 10,
+        "heading_font_size": 40,
+        "heading_mob_font_size": 28,
+        "heading_color": "#000000",
+        "bolded_heading_color": "#000000",
+        "heading_use_gradient": true,
+        "heading_gradient_color": "linear-gradient(180deg, rgba(251, 51, 166, 1), rgba(127, 72, 176, 1) 50%, rgba(48, 145, 211, 1) 100%)",
+        "color_scheme": "accent-1",
+        "input_background_color": "#f9f9f9",
+        "input_text_color": "#1d1a2d",
+        "placeholder_color": "#686868",
+        "input_border_radius": 6,
+        "input_border": false,
+        "borders_color": "#ebebeb",
+        "borders_opacity": 10,
+        "button_text": "Send Message",
+        "button_full_width": true,
+        "button_font_size": 14,
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "button_border_radius": 6,
+        "button_padding_horizontal": 24,
+        "button_padding_vertical": 8,
+        "padding_top": 60,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "main",
+    "track_your_order_MdPGhR",
+    "contact_form_7jyRck"
+  ]
+}

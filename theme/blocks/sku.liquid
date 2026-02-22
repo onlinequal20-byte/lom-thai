@@ -1,0 +1,87 @@
+{% assign product = closest.product %}
+{% style %}
+  .product-block-{{ block.id }} {
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 768px) {
+    .product-block-{{ block.id }} {
+      padding-top: {{block.settings.padding_top_mobile }}px;
+      padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
+<p
+                  id="Sku-{{ section.id }}"
+                  class="product__sku product-block-{{ block.id }} no-js-hidden {% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                  role="status"
+                  {{ block.shopify_attributes }}
+                >
+                  {% style %}
+                    .product-block-{{ block.id }}{
+                      padding-top: {{block.settings.padding_top }}px;
+                      padding-bottom: {{block.settings.padding_bottom }}px;
+                    }
+                  {% endstyle %}
+                  <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
+                  {{- product.selected_or_first_available_variant.sku -}}
+                </p>
+
+{% schema %}
+{
+  "name": "t:sections.main-product.blocks.sku.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks.sku.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.sku.settings.padding_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.sku.settings.padding_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.sku.settings.padding_top_mobile.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.sku.settings.padding_bottom_mobile.label",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.sku.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

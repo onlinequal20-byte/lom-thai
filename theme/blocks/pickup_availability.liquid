@@ -1,0 +1,301 @@
+{% assign product = closest.product %}
+{% style %}
+                  .product-block-{{ block.id }} {
+                    padding-top: {{ block.settings.padding_top }}px;
+                    padding-bottom: {{ block.settings.padding_bottom }}px;
+                  }
+                  @media screen and (max-width: 768px) {
+                    .product-block-{{ block.id }} {
+                      padding-top: {{block.settings.padding_top_mobile }}px;
+                      padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+                    }
+                  }
+                  .product-block-{{ block.id }} .pickup-availability-preview {
+                    width: 100%;
+                    padding: {{ block.settings.container_padding | default: 18 }}px {{ block.settings.container_padding | default: 19 }}px;
+                    margin: 0;
+                    border: 1px solid {{ block.settings.border_color | default: 'rgba(0, 0, 0, 0.05)' }};
+                    background: {{ block.settings.background_color | default: '#E9FFF1' }};
+                    border-radius: {{ block.settings.border_radius | default: 8 }}px;
+                    display: flex;
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-info {
+                    flex: 1;
+                    margin-left: {{ block.settings.icon_text_gap | default: 13 }}px;
+                    display: flex;
+                    align-items: flex-start;
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-info-content p {
+                    margin: 0;
+                    font-size: {{ block.settings.text_font_size | default: 14 }}px;
+                    font-family: var(--font-body-family);
+                    font-weight: {{ block.settings.text_font_weight | default: 500 }};
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-info-content p.text-pickup {
+                    color: {{ block.settings.primary_text_color | default: '#181818' }};
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-info-content p.text-time-pickup {
+                    color: {{ block.settings.secondary_text_color | default: '#666666' }};
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-button {
+                    background-color: transparent;
+                    color: {{ block.settings.button_text_color | default: '#181818' }};
+                    font-size: {{ block.settings.button_font_size | default: 14 }}px;
+                    font-weight: {{ block.settings.button_font_weight | default: 500 }};
+                    font-family: var(--font-body-family);
+                    text-decoration: underline;
+                    margin-left: auto;
+                    margin-top: auto;
+                    border: none;
+                    cursor: pointer;
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-button:hover {
+                    color: {{ block.settings.button_hover_color | default: '#181818' }};
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-preview .icon {
+                    flex-shrink: 0;
+                    height: {{ block.settings.icon_size | default: 18 }}px;
+                    width: {{ block.settings.icon_size | default: 18 }}px;
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-preview .icon-unavailable {
+                    height: {{ block.settings.icon_size | default: 18 | minus: 2 }}px;
+                    width: {{ block.settings.icon_size | default: 18 | minus: 2 }}px;
+                    margin-top: 0.1rem;
+                  }
+                  
+                  .product-block-{{ block.id }} .pickup-availability-preview .icon path{
+                    fill: {{ block.settings.icon_color | default: '#00B04F' }};
+                  }
+                {% endstyle %}
+                <div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+                  {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+                  {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+                    | where: 'pick_up_enabled', true
+                  -%}
+              
+                  <pickup-availability
+                    class="product__pickup-availabilities no-js-hidden quick-add-hidden"
+                    {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}available{% endif %}
+                    data-root-url="{{ routes.root_url }}"
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    data-has-only-default-variant="{{ product.has_only_default_variant }}"
+                  >
+                    <template>
+                      <pickup-availability-preview class="pickup-availability-preview">
+                        {% render 'icon-unavailable' %}
+                        <div class="pickup-availability-info">
+                          <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                          <button class="pickup-availability-button link link--text underlined-link">
+                            {{ 'products.product.pickup_availability.refresh' | t }}
+                          </button>
+                        </div>
+                      </pickup-availability-preview>
+                    </template>
+                  </pickup-availability>
+              
+                  <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+                </div>
+
+{% schema %}
+{
+  "name": "t:blocks.pickup_availability.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks.pickup_availability.settings.container_styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:blocks.pickup_availability.settings.background_color.label",
+      "default": "#E9FFF1"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "t:blocks.pickup_availability.settings.border_color.label",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.border_radius.label",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.container_padding.label",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.pickup_availability.settings.icon_settings_header.content"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "t:blocks.pickup_availability.settings.icon_color.label",
+      "default": "#00B04F"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.icon_size.label",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "icon_text_gap",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.icon_text_gap.label",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.pickup_availability.settings.text_styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "t:blocks.pickup_availability.settings.primary_text_color.label",
+      "default": "#181818"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "t:blocks.pickup_availability.settings.secondary_text_color.label",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.text_font_size.label",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "text_font_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "t:blocks.pickup_availability.settings.text_font_weight.label",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.pickup_availability.settings.button_styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:blocks.pickup_availability.settings.button_text_color.label",
+      "default": "#181818"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "t:blocks.pickup_availability.settings.button_hover_color.label",
+      "default": "#181818"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.button_font_size.label",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "t:blocks.pickup_availability.settings.button_font_weight.label",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.pickup_availability.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.padding_top.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.padding_bottom.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.padding_top_mobile.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.pickup_availability.settings.padding_bottom_mobile.label",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.pickup_availability.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

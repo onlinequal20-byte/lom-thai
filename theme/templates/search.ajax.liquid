@@ -1,0 +1,22 @@
+{%- paginate search.results by 8 -%}
+  <div class="blog-articles" id="blog-articles-container">
+    {%- for item in search.results -%}
+      {%- if item.object_type == 'article' -%}
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: item,
+            media_height: 'large',
+            show_image: true,
+            show_excerpt: true
+          -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div id="blog-pagination-container">
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}

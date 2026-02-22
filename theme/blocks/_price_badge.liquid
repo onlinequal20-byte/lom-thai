@@ -1,0 +1,92 @@
+{% assign product = closest.product %}
+{% style %}
+  .product-block-{{ block.id }}.sale-badge {
+    background: var(--sale-badge-background);
+    border-radius: var(--badge-corner-radius);
+    padding: 0 {{ block.settings.sale_badge_padding | default: 8 }}px;
+    height: {{ block.settings.sale_badge_height | default: 20 }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-block-{{ block.id }} .sale-badge-text {
+    font-family: var(--font-body-family);
+    font-size: {{ block.settings.sale_badge_font_size | default: 12 }}px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-align: center;
+  }
+{% endstyle %}
+
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign compare_at_price = variant.compare_at_price -%}
+{%- assign price = variant.price -%}
+
+{%- assign original_price = compare_at_price -%}
+{%- assign sale_price = price -%}
+
+{%- if original_price > sale_price -%}
+  {%- assign savings = original_price | minus: sale_price -%}
+  {%- assign savings_percentage = savings | times: 100.0 | divided_by: original_price | round | append: '%' -%}
+  {%- assign savings_amount = savings | money -%}
+  <div class="sale-badge product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+    <span class="sale-badge-text">  
+      {% assign text = settings.sale_badge_text_html | replace: '[percentage]', savings_percentage | replace: '[amount]', savings_amount %}
+      {{ text }}
+    </span>
+  </div>
+{%- endif -%} 
+
+{% schema %}
+{
+  "name": "t:blocks._price_badge.name",
+  "tag": null,
+  "blocks": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks._price_badge.settings.sale_badge_header.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:blocks._price_badge.settings.sale_badge_info.content"
+    },
+    {
+      "type": "range",
+      "id": "sale_badge_font_size",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks._price_badge.settings.sale_badge_font_size.label",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "sale_badge_height",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks._price_badge.settings.sale_badge_height.label",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "sale_badge_padding",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks._price_badge.settings.sale_badge_padding.label",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._price_badge.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": 40,
+        "heading_mob_size": 28,
+        "heading_color": "#000000",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "section_header_3QfmyA": {
+      "type": "section-header",
+      "blocks": {
+        "heading_Y3aBN4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "size": 35,
+            "mobile_font_size": 28,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "heading_use_gradient": false,
+            "heading_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        },
+        "text_Ck4xQy": {
+          "type": "text",
+          "settings": {
+            "text": "We create nutrient-dense superfood blends designed to support digestion, comfort, and balance, so you can feel your best, every day.",
+            "size": 14,
+            "size_mobile": 14,
+            "color": "#ffffff",
+            "highlighted_color": "#000000",
+            "text_use_gradient": false,
+            "text_gradient_color": "",
+            "padding_top_desktop": 5,
+            "padding_bottom_desktop": 5,
+            "padding_top_mobile": 3,
+            "padding_bottom_mobile": 3
+          }
+        }
+      },
+      "block_order": [
+        "heading_Y3aBN4",
+        "text_Ck4xQy"
+      ],
+      "name": "Section header",
+      "settings": {
+        "color_scheme": "gradient-background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_REQwMW": {
+      "type": "rich-text",
+      "blocks": {
+        "list-cards": {
+          "type": "_rich-text-list-cards",
+          "static": true,
+          "settings": {
+            "text_alignment": "center",
+            "cards_layout": "left",
+            "font_size": 14,
+            "color": "#ffffff",
+            "bg_color": "#ffffff",
+            "background_opacity": 45,
+            "border_color": "#ffffff",
+            "border_radius": 10,
+            "gap_between_cards": 18,
+            "padding_top": 37,
+            "padding_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Rich text",
+      "settings": {
+        "heading": "",
+        "text": "<p>Every great brand begins with a need. For us, it was simple: we wanted natural solutions that actually worked for digestion and bloating, without complicated routines or synthetic formulas.<br/><br/>What started as a passion for wellness soon became a mission to make health easy, effective, and enjoyable. Today, BOLT is trusted by thousands who want simple products that bring real results.</p>",
+        "content_alignment": "center",
+        "text_max_width_percentage": 80,
+        "text_max_width_percentage_mobile": 100,
+        "heading_font_size": 35,
+        "mobile_heading_font_size": 28,
+        "heading_color": "#000000",
+        "heading_highlighted_color": "#000000",
+        "heading_use_gradient": false,
+        "heading_gradient_color": "",
+        "body_font_size": 16,
+        "body_color": "#302f2f",
+        "body_highlighted_color": "#302f2f",
+        "color_scheme": "accent-1",
+        "button_label": "",
+        "button_link": "",
+        "button_font_size": 14,
+        "button_font_size_mobile": 12,
+        "button_color": "#ffffff",
+        "button_bg_color": "#000000",
+        "button_border_radius": 6,
+        "button_padding_vertical": 8,
+        "button_width_increase_desktop": 0,
+        "button_width_increase_mobile": 80,
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_BFn8FM": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/raw1.png",
+        "image_radius": 6,
+        "defer_loading_image": true,
+        "heading": "Our <em><strong>Values</strong></em>",
+        "text": "<p>We’re on a mission to help people live healthier, happier lives by making wellness approachable. Each product is designed to:</p>",
+        "button_text": "",
+        "button_link": "",
+        "layout": "image_first",
+        "height": "medium",
+        "desktop_content_alignment": "left",
+        "grid_border_radius": 6,
+        "section_padding_left_padding": 12,
+        "section_padding_right_padding": 12,
+        "section_padding_bottom": 24,
+        "section_padding_top": 12,
+        "desktop_font_size": 35,
+        "mobile_font_size": 25,
+        "heading_font_weight": "700",
+        "heading_color": "#000000",
+        "heading_use_gradient": true,
+        "heading_highlighted_color": "#000000",
+        "font_size": 14,
+        "body_color": "#000000",
+        "body_highlighted_color": "#000000",
+        "section_color_scheme": "accent-1",
+        "grid_background_color": "#f9f9f9",
+        "card_use_gradient": false,
+        "card_gradient": "",
+        "benefit_1_text": "<strong>Transparency:</strong> Clear, honest labeling and trustworthy sourcing.",
+        "benefit_1_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" enable-background=\"new 0 0 24 24\" height=\"24px\" viewbox=\"0 0 24 24\" width=\"24px\" fill=\"#e3e3e3\"><g><rect fill=\"none\" height=\"24\" width=\"24\"></rect></g><g><path d=\"M23,12l-2.44-2.79l0.34-3.69l-3.61-0.82L15.4,1.5L12,2.96L8.6,1.5L6.71,4.69L3.1,5.5L3.44,9.2L1,12l2.44,2.79l-0.34,3.7 l3.61,0.82L8.6,22.5l3.4-1.47l3.4,1.46l1.89-3.19l3.61-0.82l-0.34-3.69L23,12z M10.09,16.72l-3.8-3.81l1.48-1.48l2.32,2.33 l5.85-5.87l1.48,1.48L10.09,16.72z\"></path></g></svg>",
+        "benefit_1_custom_icon": "shopify://shop_images/Group_165861.svg",
+        "benefit_2_text": "<strong>Quality First:</strong> Only premium-grade, nutrient-dense ingredients.",
+        "benefit_2_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" enable-background=\"new 0 0 24 24\" height=\"24px\" viewbox=\"0 0 24 24\" width=\"24px\" fill=\"#e3e3e3\"><g><rect fill=\"none\" height=\"24\" width=\"24\"></rect></g><g><path d=\"M23,12l-2.44-2.79l0.34-3.69l-3.61-0.82L15.4,1.5L12,2.96L8.6,1.5L6.71,4.69L3.1,5.5L3.44,9.2L1,12l2.44,2.79l-0.34,3.7 l3.61,0.82L8.6,22.5l3.4-1.47l3.4,1.46l1.89-3.19l3.61-0.82l-0.34-3.69L23,12z M10.09,16.72l-3.8-3.81l1.48-1.48l2.32,2.33 l5.85-5.87l1.48,1.48L10.09,16.72z\"></path></g></svg>",
+        "benefit_2_custom_icon": "shopify://shop_images/Group_165861.svg",
+        "benefit_3_text": "<strong>Science + Nature:</strong> Blending the best of both for effective results.",
+        "benefit_3_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" enable-background=\"new 0 0 24 24\" height=\"24px\" viewbox=\"0 0 24 24\" width=\"24px\" fill=\"#e3e3e3\"><g><rect fill=\"none\" height=\"24\" width=\"24\"></rect></g><g><path d=\"M23,12l-2.44-2.79l0.34-3.69l-3.61-0.82L15.4,1.5L12,2.96L8.6,1.5L6.71,4.69L3.1,5.5L3.44,9.2L1,12l2.44,2.79l-0.34,3.7 l3.61,0.82L8.6,22.5l3.4-1.47l3.4,1.46l1.89-3.19l3.61-0.82l-0.34-3.69L23,12z M10.09,16.72l-3.8-3.81l1.48-1.48l2.32,2.33 l5.85-5.87l1.48,1.48L10.09,16.72z\"></path></g></svg>",
+        "benefit_3_custom_icon": "shopify://shop_images/Group_165861.svg",
+        "benefits_icon_size": 20,
+        "benefits_text_size": 14,
+        "benefits_gap": 12,
+        "benefits_icon_color": "#000000",
+        "benefits_text_color": "#000000",
+        "benefits_text_highlighted_color": "#000000",
+        "card_max_width": 1600,
+        "button_label_1_size": 14,
+        "button_label_1_size_mobile": 12,
+        "button_1_text_color": "#ffffff",
+        "button_1_background_color": "#000000",
+        "button_1_border_radius": 6,
+        "button_padding_vertical": 8,
+        "button_width_increase_desktop": 0,
+        "button_width_increase_mobile": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_header_3QfmyA",
+    "rich_text_REQwMW",
+    "image_with_text_BFn8FM"
+  ]
+}

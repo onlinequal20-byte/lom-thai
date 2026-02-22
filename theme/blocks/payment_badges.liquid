@@ -1,0 +1,197 @@
+{% assign product = closest.product %}
+<div
+                  class="payment-badges-block product-block-{{ block.id }}"
+                  style="display: flex; justify-content: {{ block.settings.image_layout }};"
+                  {{ block.shopify_attributes }}
+                >
+                  {% style %}
+                    .product-block-{{ block.id }} {
+                      padding-top: {{ block.settings.padding_top }}px;
+                      padding-bottom: {{ block.settings.padding_bottom }}px;
+                    }
+                    .product-block-{{ block.id }} .list-payment__item svg {
+                      width: {{ block.settings.payment_icons_image_size }}px;
+                      height: auto;
+                    }
+                    @media screen and (max-width: 768px) {
+                      .product-block-{{ block.id }} .list-payment__item svg {
+                        width: {{ block.settings.payment_icons_image_size_mobile }}px;
+                        height: auto;
+                      }
+                      .product-block-{{ block.id }} {
+                        padding-top: {{block.settings.padding_top_mobile }}px;
+                        padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+                      }
+                    }
+                  
+
+                  {% endstyle %}
+
+                  {%- if block.settings.use_shopify_dynamic_payment_icons -%}
+                    <ul class="list list-payment" role="list">
+                      {% assign enabled_payment_types = settings.cart_payment__items | remove: ' ' | split: ',' %}
+                      {%- for type in enabled_payment_types -%}
+                        <li class="list-payment__item">
+                          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- else -%}
+                    {% if block.settings.custom_payment_icons_image %}
+                      {% style %}
+                        .product-block-{{ block.id }} .custom-payment-icons-image {
+                          width: {{ block.settings.custom_image_size }}%;
+                          display: block;
+                          height: auto;
+                        }
+                        @media screen and (max-width: 768px) {
+                          .product-block-{{ block.id }} .custom-payment-icons-image {
+                            width: {{ block.settings.custom_image_size_mobile }}%;
+                            height: auto;
+                          }
+                        }
+                      {% endstyle %}
+                      {{ block.settings.custom_payment_icons_image | image_url : width: 1000 | image_tag: class: 'custom-payment-icons-image' }}
+                    {% endif %}
+                  {%- endif -%}
+                </div>
+            
+
+{% schema %}
+{
+  "name": "t:sections.main-product.blocks.payment_badges.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "custom_payment_icons_image",
+      "label": "t:sections.main-product.blocks.payment_badges.settings.custom_payment_icons_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_shopify_dynamic_payment_icons",
+      "label": "t:sections.main-product.blocks.payment_badges.settings.use_shopify_dynamic_payment_icons.label",
+      "default": true,
+      "info": "t:sections.main-product.blocks.payment_badges.settings.use_shopify_dynamic_payment_icons.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-product.blocks.payment_badges.settings.layout.label"
+    },
+    {
+      "type": "select",
+      "id": "image_layout",
+      "label": "t:sections.main-product.blocks.payment_badges.settings.image_layout.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.main-product.blocks.payment_badges.settings.image_layout.options.option_1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.main-product.blocks.payment_badges.settings.image_layout.options.option_2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.main-product.blocks.payment_badges.settings.image_layout.options.option_3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "custom_image_size",
+      "label": "t:blocks.payment_badges.settings.custom_image_size.label",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 80,
+      "visible_if": "{{ block.settings.use_shopify_dynamic_payment_icons == false }}"
+    },
+    {
+      "type": "range",
+      "id": "custom_image_size_mobile",
+      "label": "t:blocks.payment_badges.settings.custom_image_size_mobile.label",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 80,
+      "visible_if": "{{ block.settings.use_shopify_dynamic_payment_icons == false }}"
+    },
+    {
+      "type": "range",
+      "id": "payment_icons_image_size",
+      "label": "t:blocks.payment_badges.settings.payment_icons_image_size.label",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.use_shopify_dynamic_payment_icons == true }}"
+    },
+    {
+      "type": "range",
+      "id": "payment_icons_image_size_mobile",
+      "label": "t:blocks.payment_badges.settings.payment_icons_image_size_mobile.label",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.use_shopify_dynamic_payment_icons == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.payment_badges.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:blocks.payment_badges.settings.padding_top.label",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:blocks.payment_badges.settings.padding_bottom.label",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:blocks.payment_badges.settings.padding_top_mobile.label",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:blocks.payment_badges.settings.padding_bottom_mobile.label",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.payment_badges.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

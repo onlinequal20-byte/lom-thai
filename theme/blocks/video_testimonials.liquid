@@ -1,0 +1,153 @@
+{% assign product = closest.product %}
+{% style %}
+  .product-block-{{ block.id }} {
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 768px) {
+    .product-block-{{ block.id }} {
+      padding-top: {{block.settings.padding_top_mobile }}px;
+      padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+    }
+  }
+  .testimonials-{{ block.id }} {
+    width: 100%;
+    position: relative;
+  }
+  .testimonials-header-{{ block.id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: {{ block.settings.gap_between_cards | default: 15 }}px;
+  }
+  .testimonials-title-{{ block.id }} {
+    font-family: var(--font-body-family), sans-serif;
+    font-weight: 500;
+    font-size: {{ block.settings.title_font_size | default: 18 }}px;
+    color: {{ block.settings.title_color | default: '#000000' }};
+    margin: 0;
+  }
+{% endstyle %}
+  
+<div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  <video-testimonials>
+    <div class="testimonials-{{ block.id }}">
+      <div class="testimonials-header-{{ block.id }}">
+        <h2 class="testimonials-title-{{ block.id }}">{{ block.settings.testimonials_title }}</h2>
+        {% content_for 'block', type: '_social_media_icons', id: 'social_media_icons' %}
+      </div>
+      {% content_for 'block', type: '_video_slider', id: 'video_slider' %}
+    </div>
+  </video-testimonials>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.video_testimonials.name",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_social_media_icons"
+    },
+    {
+      "type": "_video_slider"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:blocks.video_testimonials.settings.content_header.content"
+    },
+    {
+      "type": "text",
+      "id": "testimonials_title",
+      "label": "t:blocks.video_testimonials.settings.testimonials_title.label",
+      "default": "What Our Followers Think"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.video_testimonials.settings.typography_header.content"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.title_font_size.label",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "t:blocks.video_testimonials.settings.title_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.video_testimonials.settings.layout_header.content"
+    },
+    {
+      "type": "range",
+      "id": "gap_between_cards",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.gap_between_cards.label",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.video_testimonials.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.padding_top.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.padding_bottom.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.padding_top_mobile.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.video_testimonials.settings.padding_bottom_mobile.label",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.video_testimonials.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}

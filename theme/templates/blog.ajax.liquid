@@ -1,0 +1,20 @@
+{%- paginate blog.articles by 8 %}
+  <div class="blog-articles" id="blog-articles-container">
+    {%- for article in blog.articles -%}
+      <div class="blog-articles__article article">
+        {%- render 'article-card',
+          article: article,
+          show_image: true,
+          media_height: 'large',
+          show_excerpt: true
+        -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div id="blog-pagination-container">
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}

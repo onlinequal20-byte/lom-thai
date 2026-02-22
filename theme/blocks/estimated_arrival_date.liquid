@@ -1,0 +1,191 @@
+{% assign product = closest.product %}
+<div class="product-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% style %}
+    .product-block-{{ block.id }} {
+      padding-top: {{block.settings.padding_top }}px;
+      padding-bottom: {{block.settings.padding_bottom }}px;
+    }
+    @media screen and (max-width: 768px) {
+      .product-block-{{ block.id }} {
+        padding-top: {{block.settings.padding_top_mobile }}px;
+        padding-bottom: {{block.settings.padding_bottom_mobile }}px;
+      }
+    }
+  {% endstyle %}
+  {% render 'estimated-arrival-date', block: block %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.estimated_arrival_date.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "custom_text",
+      "label": "t:blocks.estimated_arrival_date.settings.custom_text.label",
+      "default": "<p>Arrives by <strong>[earliest_date]</strong>, if you order today.</p>",
+      "info": "t:blocks.estimated_arrival_date.settings.custom_text.info"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.estimated_arrival_date.settings.arrival_date_range_header.content"
+    },
+    {
+      "type": "number",
+      "id": "num_days_for_earliest_arrival",
+      "label": "t:blocks.estimated_arrival_date.settings.num_days_for_earliest_arrival.label",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "num_days_for_latest_arrival",
+      "label": "t:blocks.estimated_arrival_date.settings.num_days_for_latest_arrival.label",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "date_format",
+      "label": "t:blocks.estimated_arrival_date.settings.date_format.label",
+      "options": [
+        {
+          "value": "dayName_monthName_dayNumber",
+          "label": "t:blocks.estimated_arrival_date.settings.date_format.options.dayName_monthName_dayNumber"
+        },
+        {
+          "value": "dayName_dayNumber_monthName",
+          "label": "t:blocks.estimated_arrival_date.settings.date_format.options.dayName_dayNumber_monthName"
+        },
+        {
+          "value": "monthName_dayNumber",
+          "label": "t:blocks.estimated_arrival_date.settings.date_format.options.monthName_dayNumber"
+        }
+      ],
+      "default": "monthName_dayNumber"
+    },
+    {
+      "type": "text",
+      "id": "day_labels",
+      "label": "t:blocks.estimated_arrival_date.settings.day_labels.label",
+      "default": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday"
+    },
+    {
+      "type": "text",
+      "id": "month_labels",
+      "label": "t:blocks.estimated_arrival_date.settings.month_labels.label",
+      "default": "January, February, March, April, May, June, July, August, September, October, November, December"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.estimated_arrival_date.settings.layout_header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_icon",
+      "default": true,
+      "label": "t:blocks.estimated_arrival_date.settings.display_icon.label"
+    },
+    {
+      "type": "textarea",
+      "id": "icon",
+      "label": "t:blocks.estimated_arrival_date.settings.icon.label",
+      "info": "t:blocks.estimated_arrival_date.settings.icon.info",
+      "visible_if": "{{ block.settings.display_icon }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_icon",
+      "label": "t:blocks.estimated_arrival_date.settings.custom_icon.label",
+      "visible_if": "{{ block.settings.display_icon }}"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.icon_size.label",
+      "default": 32,
+      "visible_if": "{{ block.settings.display_icon }}"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.estimated_arrival_date.settings.styling_header.content"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "t:blocks.estimated_arrival_date.settings.icon_color.label",
+      "default": "#000000",
+      "visible_if": "{{ block.settings.display_icon }}"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:blocks.estimated_arrival_date.settings.text_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.font_size.label",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.estimated_arrival_date.settings.padding_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.padding_top.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.padding_bottom.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.padding_top_mobile.label",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.estimated_arrival_date.settings.padding_bottom_mobile.label",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.estimated_arrival_date.presets.name",
+      "category": "Product Information"
+    }
+  ]
+}
+{% endschema %}
