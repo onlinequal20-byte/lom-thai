@@ -2187,3 +2187,286 @@
   text-align: center;
   margin: 8px 0 0;
 }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.lom-contact {
+  padding: 80px 0 100px;
+}
+
+.lom-contact__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.lom-contact__eyebrow {
+  display: block;
+  font-family: var(--lom-body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  margin-bottom: 12px;
+}
+
+.lom-contact__title {
+  font-family: var(--lom-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--lom-black);
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.lom-contact__subtitle {
+  font-family: var(--lom-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--lom-text-light);
+  margin: 0;
+}
+
+.lom-contact__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Form */
+.lom-contact__form-wrap {
+  background: white;
+  border: 1px solid var(--lom-border);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.lom-contact__form-title {
+  font-family: var(--lom-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--lom-black);
+  margin: 0 0 28px;
+}
+
+.lom-contact__field {
+  margin-bottom: 20px;
+}
+
+.lom-contact__label {
+  display: block;
+  font-family: var(--lom-body);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin-bottom: 8px;
+}
+
+.lom-contact__optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--lom-text-light);
+}
+
+.lom-contact__input {
+  width: 100%;
+  font-family: var(--lom-body);
+  font-size: 15px;
+  padding: 14px 18px;
+  border: 1px solid var(--lom-border);
+  border-radius: 10px;
+  background: var(--lom-cream);
+  color: var(--lom-charcoal);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+
+.lom-contact__input:focus {
+  border-color: var(--lom-sage);
+  box-shadow: 0 0 0 3px rgba(122, 158, 126, 0.1);
+}
+
+.lom-contact__input::placeholder {
+  color: var(--lom-text-light);
+}
+
+.lom-contact__select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23666' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.lom-contact__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.lom-contact__submit {
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.lom-contact__success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(122, 158, 126, 0.1);
+  border: 1px solid var(--lom-sage-light);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.lom-contact__success-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--lom-sage);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lom-contact__success p {
+  font-family: var(--lom-body);
+  font-size: 15px;
+  color: var(--lom-sage-dark);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.lom-contact__error {
+  background: rgba(196, 147, 122, 0.1);
+  border: 1px solid rgba(196, 147, 122, 0.3);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-family: var(--lom-body);
+  font-size: 14px;
+  color: var(--lom-terracotta-dark);
+}
+
+.lom-contact__error p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+/* Sidebar */
+.lom-contact__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lom-contact__card {
+  background: white;
+  border: 1px solid var(--lom-border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s;
+}
+
+.lom-contact__card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.lom-contact__card-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.lom-contact__card-title {
+  font-family: var(--lom-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin: 0 0 8px;
+}
+
+.lom-contact__card-text {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--lom-text-light);
+  margin: 0;
+  white-space: pre-line;
+}
+
+.lom-contact__card-link {
+  display: inline-block;
+  font-family: var(--lom-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lom-sage-dark);
+  text-decoration: none;
+  margin-top: 12px;
+  transition: color 0.2s;
+}
+
+.lom-contact__card-link:hover {
+  color: var(--lom-sage);
+}
+
+/* FAQ teaser */
+.lom-contact__faq-teaser {
+  background: var(--lom-cream);
+  border: 1px solid var(--lom-border);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+.lom-contact__faq-teaser-title {
+  font-family: var(--lom-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--lom-charcoal);
+  margin: 0 0 8px;
+}
+
+.lom-contact__faq-teaser-text {
+  font-family: var(--lom-body);
+  font-size: 14px;
+  color: var(--lom-text-light);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.lom-contact__faq-btn {
+  font-size: 13px;
+  padding: 10px 24px;
+}
+
+@media (max-width: 768px) {
+  .lom-contact {
+    padding: 48px 0 64px;
+  }
+
+  .lom-contact__header {
+    margin-bottom: 40px;
+  }
+
+  .lom-contact__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .lom-contact__form-wrap {
+    padding: 24px;
+  }
+}

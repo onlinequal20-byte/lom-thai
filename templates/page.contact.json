@@ -1,34 +1,55 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "contact": {
+      "type": "lom-contact",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "eyebrow": "Get In Touch",
+        "heading": "We're Here to Help",
+        "subtitle": "Have a question about your order, our products, or wholesale? Our team typically responds within 24 hours.",
+        "form_heading": "Send Us a Message",
+        "button_text": "Send Message",
+        "success_message": "Thanks for reaching out! We'll get back to you within 24 hours."
+      },
+      "blocks": {
+        "email": {
+          "type": "info_card",
+          "settings": {
+            "icon": "📧",
+            "title": "Email Us",
+            "text": "support@lomthai.com\nWe respond within 24 hours"
+          }
+        },
+        "track": {
+          "type": "info_card",
+          "settings": {
+            "icon": "📦",
+            "title": "Track Your Order",
+            "text": "Check your order status anytime",
+            "link_text": "Track Order",
+            "link_url": "/pages/track-order"
+          }
+        },
+        "returns": {
+          "type": "info_card",
+          "settings": {
+            "icon": "🔄",
+            "title": "Returns & Refunds",
+            "text": "30-day money-back guarantee.\nNo questions asked."
+          }
+        },
+        "shipping": {
+          "type": "info_card",
+          "settings": {
+            "icon": "🚚",
+            "title": "Shipping Info",
+            "text": "Free shipping on US & EU orders.\n5-10 business days delivery."
+          }
+        }
+      },
+      "block_order": ["email", "track", "returns", "shipping"]
     }
   },
   "order": [
-    "main",
-    "form"
+    "contact"
   ]
 }
