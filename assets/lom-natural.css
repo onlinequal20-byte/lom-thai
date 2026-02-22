@@ -1867,9 +1867,9 @@
   padding: 3px 5px;
 }
 
-.lom-hero-payments__icon .lom-payment-svg {
+.lom-hero-payments__icon svg {
   display: block;
-  height: 20px;
+  height: 24px;
   width: auto;
 }
 
