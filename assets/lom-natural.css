@@ -1848,23 +1848,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  min-width: 46px;
-  padding: 0 8px;
-  border-radius: 6px;
-  font-family: var(--lom-body);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  color: white;
-  text-transform: uppercase;
+  height: 28px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 2px 4px;
 }
 
-.lom-hero-payments__icon--amex { background: #006fcf; }
-.lom-hero-payments__icon--mc { background: #eb001b; background: linear-gradient(135deg, #eb001b 0%, #f79e1b 100%); }
-.lom-hero-payments__icon--pp { background: #003087; }
-.lom-hero-payments__icon--shop { background: #5a31f4; }
-.lom-hero-payments__icon--visa { background: #1a1f71; }
+.lom-hero-payments__icon svg {
+  display: block;
+  height: 18px;
+  width: auto;
+}
 
 /* ============================================================
    TRUST ROW (Safe Payment / Free Shipping / Fast Delivery)
