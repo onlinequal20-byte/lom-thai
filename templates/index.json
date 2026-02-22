@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -15,14 +24,45 @@
     },
     "proof": {
       "type": "lom-social-proof",
-      "settings": { "background": "cream" },
       "blocks": {
-        "s1": { "type": "stat", "settings": { "number": "50,000+", "label": "Sticks Sold Worldwide" } },
-        "s2": { "type": "stat", "settings": { "number": "4.9/5", "label": "Average Customer Rating" } },
-        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } },
-        "s4": { "type": "stat", "settings": { "number": "30 Day", "label": "Money-Back Guarantee" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "50,000+",
+            "label": "Sticks Sold Worldwide"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "4.9/5",
+            "label": "Average Customer Rating"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Natural Ingredients"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "30 Day",
+            "label": "Money-Back Guarantee"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "background": "cream"
+      }
     },
     "story_1": {
       "type": "lom-story",
@@ -30,8 +70,11 @@
         "eyebrow": "The Problem",
         "heading": "You Shouldn't Need Chemicals to Feel Better",
         "text": "<p>Headaches, brain fog, afternoon slumps, sinus pressure — modern life is exhausting. And the solutions? Energy drinks that crash. Pills that take 30 minutes. Pharmacy sprays with side effects. None of them are natural. None of them are instant.</p>",
+        "image": "shopify://shop_images/Gemini_Generated_Image_qzgpp5qzgpp5qzgp.png",
         "reverse": false,
-        "background": "white"
+        "background": "white",
+        "button_text": "",
+        "button_url": ""
       }
     },
     "story_2": {
@@ -49,51 +92,167 @@
     },
     "benefits": {
       "type": "lom-benefits-strip",
-      "settings": {},
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "icon": "⚡", "title": "Instant Relief", "text": "Works in seconds" } },
-        "b2": { "type": "benefit", "settings": { "icon": "🌿", "title": "100% Natural", "text": "Plant-based ingredients" } },
-        "b3": { "type": "benefit", "settings": { "icon": "✈️", "title": "TSA Friendly", "text": "Take it anywhere" } },
-        "b4": { "type": "benefit", "settings": { "icon": "💰", "title": "$0.03/Use", "text": "Lasts for months" } }
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "⚡",
+            "title": "Instant Relief",
+            "text": "Works in seconds"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "text": "Plant-based ingredients"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✈️",
+            "title": "TSA Friendly",
+            "text": "Take it anywhere"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "$0.03/Use",
+            "text": "Lasts for months"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
     },
     "steps": {
       "type": "lom-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "heading": "Choose Your Relief",
+            "text": "Inhaler side for alertness and congestion. Roller side for headaches and tension."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "heading": "Inhale or Apply",
+            "text": "Breathe deeply through the inhaler, or roll onto temples, neck, and pressure points."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "heading": "Feel It in Seconds",
+            "text": "Instant natural relief. No waiting. No crash. No side effects. Just plants doing their thing."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "heading": "How It Works",
         "subtitle": "Simple, natural, effective"
-      },
-      "blocks": {
-        "s1": { "type": "step", "settings": { "heading": "Choose Your Relief", "text": "Inhaler side for alertness and congestion. Roller side for headaches and tension." } },
-        "s2": { "type": "step", "settings": { "heading": "Inhale or Apply", "text": "Breathe deeply through the inhaler, or roll onto temples, neck, and pressure points." } },
-        "s3": { "type": "step", "settings": { "heading": "Feel It in Seconds", "text": "Instant natural relief. No waiting. No crash. No side effects. Just plants doing their thing." } }
-      },
-      "block_order": ["s1", "s2", "s3"]
+      }
     },
     "credibility": {
       "type": "lom-credibility",
-      "settings": {},
       "blocks": {
-        "c1": { "type": "badge", "settings": { "icon": "🌿", "title": "100% Natural", "subtitle": "Plant-based ingredients" } },
-        "c2": { "type": "badge", "settings": { "icon": "🇹🇭", "title": "Made in Thailand", "subtitle": "Authentic heritage" } },
-        "c3": { "type": "badge", "settings": { "icon": "📦", "title": "50,000+ Sold", "subtitle": "Trusted worldwide" } },
-        "c4": { "type": "badge", "settings": { "icon": "⏱", "title": "Century-Old Recipe", "subtitle": "Time-tested formula" } }
+        "c1": {
+          "type": "badge",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "subtitle": "Plant-based ingredients"
+          }
+        },
+        "c2": {
+          "type": "badge",
+          "settings": {
+            "icon": "🇹🇭",
+            "title": "Made in Thailand",
+            "subtitle": "Authentic heritage"
+          }
+        },
+        "c3": {
+          "type": "badge",
+          "settings": {
+            "icon": "📦",
+            "title": "50,000+ Sold",
+            "subtitle": "Trusted worldwide"
+          }
+        },
+        "c4": {
+          "type": "badge",
+          "settings": {
+            "icon": "⏱",
+            "title": "Century-Old Recipe",
+            "subtitle": "Time-tested formula"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4"]
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {}
     },
     "reviews": {
       "type": "lom-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "I use this every single day. Clears my head in seconds and the rollerball is perfect for my tension headaches. Best $8 I ever spent.",
+            "name": "Sarah M.",
+            "location": "California, USA"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again. Bought 5 more for my whole crew.",
+            "name": "Marco V.",
+            "location": "Germany"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Finally something natural that actually works. I've replaced my afternoon coffee with this. No crash, just clarity.",
+            "name": "Emma L.",
+            "location": "London, UK"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "What People Are Saying",
         "subtitle": "Real results from real customers around the world"
-      },
-      "blocks": {
-        "r1": { "type": "review", "settings": { "stars": 5, "text": "I use this every single day. Clears my head in seconds and the rollerball is perfect for my tension headaches. Best $8 I ever spent.", "name": "Sarah M.", "location": "California, USA" } },
-        "r2": { "type": "review", "settings": { "stars": 5, "text": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again. Bought 5 more for my whole crew.", "name": "Marco V.", "location": "Germany" } },
-        "r3": { "type": "review", "settings": { "stars": 5, "text": "Finally something natural that actually works. I've replaced my afternoon coffee with this. No crash, just clarity.", "name": "Emma L.", "location": "London, UK" } }
-      },
-      "block_order": ["r1", "r2", "r3"]
+      }
     },
     "final_cta": {
       "type": "lom-final-cta",
