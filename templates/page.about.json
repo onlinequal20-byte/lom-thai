@@ -23,8 +23,11 @@
         "eyebrow": "The Origin",
         "heading": "A Century-Old Recipe, Perfected by Nature",
         "text": "<p>In Thailand, ya dom isn't just a product — it's a way of life. From taxi drivers staying alert on long shifts to grandmothers soothing headaches, these herbal inhalers have been a daily essential for over 100 years.</p><p>Lom Thai was born from a simple question: why isn't the rest of the world using this?</p>",
+        "image": "shopify://shop_images/Gemini_Generated_Image_lhonkzlhonkzlhon.png",
         "reverse": false,
-        "background": "white"
+        "background": "white",
+        "button_text": "",
+        "button_url": ""
       }
     },
     "story_2": {
@@ -41,27 +44,92 @@
     },
     "values": {
       "type": "lom-values",
-      "settings": {
-        "heading": "What We Stand For"
-      },
       "blocks": {
-        "v1": { "type": "value", "settings": { "icon": "🌿", "title": "100% Natural", "text": "Every ingredient comes from nature. No synthetic chemicals, preservatives, or artificial fragrances. Ever." } },
-        "v2": { "type": "value", "settings": { "icon": "🇹🇭", "title": "Thai Heritage", "text": "Our formula is based on a century-old recipe passed through generations of Thai herbal practitioners." } },
-        "v3": { "type": "value", "settings": { "icon": "♻️", "title": "Sustainable", "text": "Minimal packaging, ethically sourced ingredients, and a product that lasts months instead of days." } },
-        "v4": { "type": "value", "settings": { "icon": "💚", "title": "Accessible Wellness", "text": "Natural relief shouldn't be expensive. At $0.03 per use, we make wellness accessible to everyone." } }
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "text": "Every ingredient comes from nature. No synthetic chemicals, preservatives, or artificial fragrances. Ever."
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "🇹🇭",
+            "title": "Thai Heritage",
+            "text": "Our formula is based on a century-old recipe passed through generations of Thai herbal practitioners."
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "♻️",
+            "title": "Sustainable",
+            "text": "Minimal packaging, ethically sourced ingredients, and a product that lasts months instead of days."
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "icon": "💚",
+            "title": "Accessible Wellness",
+            "text": "Natural relief shouldn't be expensive. At $0.03 per use, we make wellness accessible to everyone."
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"]
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "heading": "What We Stand For",
+        "subtitle": ""
+      }
     },
     "proof": {
       "type": "lom-social-proof",
-      "settings": { "background": "white" },
       "blocks": {
-        "s1": { "type": "stat", "settings": { "number": "50,000+", "label": "Sticks Sold" } },
-        "s2": { "type": "stat", "settings": { "number": "4.9/5", "label": "Customer Rating" } },
-        "s3": { "type": "stat", "settings": { "number": "40+", "label": "Countries Shipped" } },
-        "s4": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "50,000+",
+            "label": "Sticks Sold"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "4.9/5",
+            "label": "Customer Rating"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "40+",
+            "label": "Countries Shipped"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Natural Ingredients"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "background": "white"
+      }
     },
     "final_cta": {
       "type": "lom-final-cta",
