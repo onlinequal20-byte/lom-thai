@@ -15,6 +15,7 @@
         "label": "100% Natural Thai Herbs",
         "heading": "Nature's Answer to Headaches, Fatigue & Congestion",
         "subtitle": "One inhale clears your head. One roll soothes the pain. Plant-based ingredients, perfected over a century. Works in seconds — no pills, no chemicals, no crash.",
+        "image": "shopify://shop_images/Gemini_Generated_Image_lhonkzlhonkzlhon.png",
         "button_text": "Shop Lom Thai",
         "button_url": "/collections/all",
         "button_secondary_text": "Learn More",
@@ -24,26 +25,76 @@
     "proof_bar": {
       "type": "lom-proof-bar",
       "blocks": {
-        "sold": { "type": "proof_item", "settings": { "text": "50,000+ Sold" } },
-        "rating": { "type": "proof_item", "settings": { "text": "4.9 ★ Rating" } },
-        "shipping": { "type": "proof_item", "settings": { "text": "Free US & EU Shipping" } },
-        "guarantee": { "type": "proof_item", "settings": { "text": "30-Day Guarantee" } }
+        "sold": {
+          "type": "proof_item",
+          "settings": {
+            "text": "50,000+ Sold"
+          }
+        },
+        "rating": {
+          "type": "proof_item",
+          "settings": {
+            "text": "4.9 ★ Rating"
+          }
+        },
+        "shipping": {
+          "type": "proof_item",
+          "settings": {
+            "text": "Free US & EU Shipping"
+          }
+        },
+        "guarantee": {
+          "type": "proof_item",
+          "settings": {
+            "text": "30-Day Guarantee"
+          }
+        }
       },
-      "block_order": ["sold", "rating", "shipping", "guarantee"],
+      "block_order": [
+        "sold",
+        "rating",
+        "shipping",
+        "guarantee"
+      ],
       "settings": {}
     },
     "pas": {
       "type": "lom-pas",
+      "blocks": {
+        "problem": {
+          "type": "card",
+          "settings": {
+            "icon": "😴",
+            "heading": "The Problem",
+            "text": "Drowsy commutes, afternoon slumps, brain fog, sinus pressure, tension headaches — you're tired of feeling tired."
+          }
+        },
+        "fail": {
+          "type": "card",
+          "settings": {
+            "icon": "🚫",
+            "heading": "Why Others Fail",
+            "text": "Energy drinks crash. Coffee gives jitters. Pharmacy sprays cause rebound. Pills take 30 minutes. None of them are natural."
+          }
+        },
+        "solution": {
+          "type": "card",
+          "settings": {
+            "icon": "🌿",
+            "heading": "The Lom Thai Way",
+            "text": "One inhale = instant relief. 100% natural Thai herbs, proven for a century. No crash, no chemicals, no waiting. Just breathe."
+          }
+        }
+      },
+      "block_order": [
+        "problem",
+        "fail",
+        "solution"
+      ],
       "settings": {
         "heading": "Sound Familiar?",
         "subtitle": ""
-      },
-      "blocks": {
-        "problem": { "type": "card", "settings": { "icon": "😴", "heading": "The Problem", "text": "Drowsy commutes, afternoon slumps, brain fog, sinus pressure, tension headaches — you're tired of feeling tired." } },
-        "fail": { "type": "card", "settings": { "icon": "🚫", "heading": "Why Others Fail", "text": "Energy drinks crash. Coffee gives jitters. Pharmacy sprays cause rebound. Pills take 30 minutes. None of them are natural." } },
-        "solution": { "type": "card", "settings": { "icon": "🌿", "heading": "The Lom Thai Way", "text": "One inhale = instant relief. 100% natural Thai herbs, proven for a century. No crash, no chemicals, no waiting. Just breathe." } }
-      },
-      "block_order": ["problem", "fail", "solution"]
+      }
     },
     "showcase": {
       "type": "lom-showcase",
@@ -58,40 +109,123 @@
     },
     "steps": {
       "type": "lom-steps",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "heading": "Choose Your Relief",
+            "text": "Inhaler for alertness & congestion. Roller for headaches & tension."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "heading": "Inhale or Apply",
+            "text": "Breathe deeply through the inhaler, or roll onto temples and neck."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "heading": "Feel It in Seconds",
+            "text": "Instant natural relief. No waiting. No crash. No side effects."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ],
       "settings": {
         "heading": "How It Works",
         "subtitle": ""
-      },
-      "blocks": {
-        "step1": { "type": "step", "settings": { "heading": "Choose Your Relief", "text": "Inhaler for alertness & congestion. Roller for headaches & tension." } },
-        "step2": { "type": "step", "settings": { "heading": "Inhale or Apply", "text": "Breathe deeply through the inhaler, or roll onto temples and neck." } },
-        "step3": { "type": "step", "settings": { "heading": "Feel It in Seconds", "text": "Instant natural relief. No waiting. No crash. No side effects." } }
-      },
-      "block_order": ["step1", "step2", "step3"]
+      }
     },
     "credibility": {
       "type": "lom-credibility",
-      "settings": {},
       "blocks": {
-        "natural": { "type": "badge", "settings": { "icon": "🌿", "title": "100% Natural", "subtitle": "Plant-based ingredients" } },
-        "thai": { "type": "badge", "settings": { "icon": "🇹🇭", "title": "Made in Thailand", "subtitle": "Authentic heritage" } },
-        "sold": { "type": "badge", "settings": { "icon": "📦", "title": "50,000+ Sold", "subtitle": "Trusted worldwide" } },
-        "recipe": { "type": "badge", "settings": { "icon": "⏱", "title": "Century-Old Recipe", "subtitle": "Time-tested formula" } }
+        "natural": {
+          "type": "badge",
+          "settings": {
+            "icon": "🌿",
+            "title": "100% Natural",
+            "subtitle": "Plant-based ingredients"
+          }
+        },
+        "thai": {
+          "type": "badge",
+          "settings": {
+            "icon": "🇹🇭",
+            "title": "Made in Thailand",
+            "subtitle": "Authentic heritage"
+          }
+        },
+        "sold": {
+          "type": "badge",
+          "settings": {
+            "icon": "📦",
+            "title": "50,000+ Sold",
+            "subtitle": "Trusted worldwide"
+          }
+        },
+        "recipe": {
+          "type": "badge",
+          "settings": {
+            "icon": "⏱",
+            "title": "Century-Old Recipe",
+            "subtitle": "Time-tested formula"
+          }
+        }
       },
-      "block_order": ["natural", "thai", "sold", "recipe"]
+      "block_order": [
+        "natural",
+        "thai",
+        "sold",
+        "recipe"
+      ],
+      "settings": {}
     },
     "reviews": {
       "type": "lom-reviews",
+      "blocks": {
+        "review1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "I use this every single day. Clears my head in seconds and the rollerball is perfect for my tension headaches.",
+            "name": "Sarah M.",
+            "location": "California, USA"
+          }
+        },
+        "review2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again. Bought 5 more for friends.",
+            "name": "Marco V.",
+            "location": "Germany"
+          }
+        },
+        "review3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Finally something natural that actually works. I've replaced my afternoon coffee with this. No crash, just clarity.",
+            "name": "Emma L.",
+            "location": "London, UK"
+          }
+        }
+      },
+      "block_order": [
+        "review1",
+        "review2",
+        "review3"
+      ],
       "settings": {
         "heading": "What People Are Saying",
         "subtitle": "Real results from real customers around the world"
-      },
-      "blocks": {
-        "review1": { "type": "review", "settings": { "stars": 5, "text": "I use this every single day. Clears my head in seconds and the rollerball is perfect for my tension headaches.", "name": "Sarah M.", "location": "California, USA" } },
-        "review2": { "type": "review", "settings": { "stars": 5, "text": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again. Bought 5 more for friends.", "name": "Marco V.", "location": "Germany" } },
-        "review3": { "type": "review", "settings": { "stars": 5, "text": "Finally something natural that actually works. I've replaced my afternoon coffee with this. No crash, just clarity.", "name": "Emma L.", "location": "London, UK" } }
-      },
-      "block_order": ["review1", "review2", "review3"]
+      }
     },
     "newsletter": {
       "type": "lom-newsletter",
