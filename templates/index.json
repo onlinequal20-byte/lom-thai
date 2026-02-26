@@ -16,6 +16,7 @@
           "type": "trust_item",
           "settings": {
             "icon_type": "box",
+            "icon": "",
             "label": "10,000+ Sticks Sold"
           }
         },
@@ -23,6 +24,7 @@
           "type": "trust_item",
           "settings": {
             "icon_type": "star",
+            "icon": "",
             "label": "4.8★ from 1,200+ Reviews"
           }
         },
@@ -30,6 +32,7 @@
           "type": "trust_item",
           "settings": {
             "icon_type": "leaf",
+            "icon": "",
             "label": "100% Natural"
           }
         },
@@ -37,12 +40,19 @@
           "type": "trust_item",
           "settings": {
             "icon_type": "shield",
+            "icon": "",
             "label": "30-Day Guarantee"
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {
+        "background_image": "shopify://shop_images/Gemini_Generated_Image_lhonkzlhonkzlhon.png",
         "headline": "Headaches. Brain Fog. Congestion. You Shouldn't Have to Push Through the Day Like This.",
         "subhead": "One inhale of this century-old Thai herbal stick and the fog lifts in seconds — no pills, no caffeine crash, no chemicals.",
         "primary_cta_text": "Get Instant Relief — Free US Shipping",
@@ -58,6 +68,7 @@
           "type": "pain_card",
           "settings": {
             "icon_type": "coffee",
+            "icon": "",
             "title": "Energy drinks & coffee",
             "text": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue. Your heart races. Your hands shake. And you're still exhausted."
           }
@@ -66,6 +77,7 @@
           "type": "pain_card",
           "settings": {
             "icon_type": "pill",
+            "icon": "",
             "title": "Pharmacy sprays & pills",
             "text": "Chemicals you can't pronounce. Side effects longer than the relief. And that foggy, medicated feeling that makes you wonder if the cure is worse."
           }
@@ -74,12 +86,17 @@
           "type": "pain_card",
           "settings": {
             "icon_type": "fatigue",
+            "icon": "",
             "title": "Just pushing through",
             "text": "White-knuckling through headaches. Blinking hard to stay awake during your shift. Telling yourself 'I'll feel better tomorrow.' You won't."
           }
         }
       },
-      "block_order": ["p1", "p2", "p3"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "eyebrow": "Sound familiar?",
         "heading": "You've Tried Everything. Nothing Sticks.",
@@ -114,7 +131,11 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
       "settings": {
         "heading": "This Is What Nurses, Athletes & Truck Drivers Carry Instead",
         "subhead": "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief.",
@@ -325,14 +346,28 @@
           }
         }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8"
+      ],
       "settings": {
         "eyebrow": "The Truth",
         "heading": "Stop Settling for Relief That Hurts You",
         "subtitle": "See why 10,000+ people switched",
         "brand_name": "Lom Thai",
         "brand_tagline": "5 natural ingredients. Century-old Thai formula. Works in seconds. Lasts months per stick. 30-day guarantee.",
-        "cta_button": "Try Lom Thai Risk-Free →"
+        "cta_button": "Try Lom Thai Risk-Free →",
+        "cta_url": ""
       }
     },
     "ingredients": {
@@ -342,6 +377,7 @@
           "type": "ingredient",
           "settings": {
             "icon_type": "snowflake",
+            "icon": "",
             "name": "Menthol",
             "benefit": "Traditionally used to promote clear breathing and an invigorating sensation",
             "sourcing": "40% concentration — 3x the industry standard"
@@ -351,6 +387,7 @@
           "type": "ingredient",
           "settings": {
             "icon_type": "flower",
+            "icon": "",
             "name": "Camphor",
             "benefit": "Traditionally used to soothe tension and promote comfort",
             "sourcing": "Steam-distilled from Cinnamomum camphora trees"
@@ -360,6 +397,7 @@
           "type": "ingredient",
           "settings": {
             "icon_type": "diamond",
+            "icon": "",
             "name": "Borneol",
             "benefit": "Traditional Thai remedy for focus and mental clarity",
             "sourcing": "Extracted from Dryobalanops trees in Southern Thailand"
@@ -369,6 +407,7 @@
           "type": "ingredient",
           "settings": {
             "icon_type": "leaf",
+            "icon": "",
             "name": "Eucalyptus Oil",
             "benefit": "Traditionally used to support respiratory comfort",
             "sourcing": "Pure Eucalyptus globulus leaf oil"
@@ -378,17 +417,35 @@
           "type": "ingredient",
           "settings": {
             "icon_type": "droplet",
+            "icon": "",
             "name": "Lemon Oil",
             "benefit": "Traditionally used to uplift mood and promote comfort",
             "sourcing": "Cold-pressed from Thai lemon peel"
           }
         }
       },
-      "block_order": ["menthol", "camphor", "borneol", "eucalyptus", "lemon"],
+      "block_order": [
+        "menthol",
+        "camphor",
+        "borneol",
+        "eucalyptus",
+        "lemon"
+      ],
       "settings": {
         "heading": "What's Inside",
         "subtitle": "Five powerful natural ingredients, perfected over a century",
-        "formulation_note": "Small-batch crafted in Thailand. Each stick is hand-filled with concentrated herbal extracts — not the diluted blends you'll find on Amazon."
+        "show_badges": true,
+        "badge_1_icon": "",
+        "badge_1": "GMP-Certified Facility",
+        "badge_2_icon": "",
+        "badge_2": "Third-Party Lab Tested",
+        "badge_3_icon": "",
+        "badge_3": "100% Natural Ingredients",
+        "badge_4_icon": "",
+        "badge_4": "Made in Thailand",
+        "formulation_note": "Small-batch crafted in Thailand. Each stick is hand-filled with concentrated herbal extracts — not the diluted blends you'll find on Amazon.",
+        "transparency_line": "No fillers. No synthetic fragrance. No ingredients you need a chemistry degree to pronounce. Just five plants that have been used for over a century.",
+        "fda_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
     "guarantee": {
@@ -408,8 +465,12 @@
             "name": "Try It",
             "tagline": "See what the hype is about",
             "price": "$8",
+            "compare_price": "",
+            "savings": "",
+            "badge": "",
             "highlighted": false,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "url": ""
           }
         },
         "o2": {
@@ -422,7 +483,8 @@
             "savings": "1 Stick Free",
             "badge": "Most Popular",
             "highlighted": true,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "url": ""
           }
         },
         "o3": {
@@ -435,11 +497,16 @@
             "savings": "2 Sticks Free",
             "badge": "Best Value",
             "highlighted": false,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "url": ""
           }
         }
       },
-      "block_order": ["o1", "o2", "o3"],
+      "block_order": [
+        "o1",
+        "o2",
+        "o3"
+      ],
       "settings": {
         "heading": "Choose How You Want to Feel",
         "reassurance": "Every order ships free to the US. Every order is backed by our 30-day guarantee."

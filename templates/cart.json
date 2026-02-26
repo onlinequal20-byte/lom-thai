@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cart-items": {
@@ -29,15 +38,12 @@
         "subtotal",
         "buttons"
       ],
-      "settings": {
-        "show_cart_note": true,
-        "enable_discount_code": true
-      }
+      "settings": {}
     },
     "custom_cart_trust": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>.lt-ctrust{padding:20px 20px 8px;text-align:center}.lt-ctrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:20px;font-family:'Inter',sans-serif;font-size:13px;color:#555}.lt-ctrust-item{display:flex;align-items:center;gap:6px;white-space:nowrap}@media(max-width:749px){.lt-ctrust-row{gap:10px;flex-direction:column}.lt-ctrust-item{font-size:12px}}</style><div class=\"lt-ctrust\"><div class=\"lt-ctrust-row\"><span class=\"lt-ctrust-item\">\uD83D\uDD12 Secure checkout</span><span class=\"lt-ctrust-item\">\uD83D\uDCE6 Ships in 24hrs</span><span class=\"lt-ctrust-item\">\u21A9\uFE0F 30-day guarantee</span></div></div>"
+        "custom_liquid": "<style>.lt-ctrust{padding:20px 20px 8px;text-align:center}.lt-ctrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:20px;font-family:'Inter',sans-serif;font-size:13px;color:#555}.lt-ctrust-item{display:flex;align-items:center;gap:6px;white-space:nowrap}@media(max-width:749px){.lt-ctrust-row{gap:10px;flex-direction:column}.lt-ctrust-item{font-size:12px}}</style><div class=\"lt-ctrust\"><div class=\"lt-ctrust-row\"><span class=\"lt-ctrust-item\">🔒 Secure checkout</span><span class=\"lt-ctrust-item\">📦 Ships in 24hrs</span><span class=\"lt-ctrust-item\">↩️ 30-day guarantee</span></div></div>"
       }
     }
   },
