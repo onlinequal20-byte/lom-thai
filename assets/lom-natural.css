@@ -52,6 +52,10 @@
 /* ============================================================
    GLOBAL RESETS
    ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -1595,11 +1599,13 @@ h1, h2, h3, h4, h5, h6,
 
   .lom-compare__table-wrap {
     border-radius: 12px;
-    margin: 0 -8px;
+    margin: 0 -16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .lom-compare__table {
-    min-width: 600px;
+    min-width: 560px;
   }
 
   .lom-compare__th {
@@ -2466,6 +2472,9 @@ h1, h2, h3, h4, h5, h6,
 
 .lom-product-hero__info {
   font-family: var(--lt-sans);
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .lom-product-hero__breadcrumb {
@@ -2837,6 +2846,8 @@ h1, h2, h3, h4, h5, h6,
   position: relative;
   overflow: hidden;
   border-radius: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .lom-urgency__bar {
@@ -2925,6 +2936,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 13px;
   font-weight: 600;
   color: var(--lt-gold);
+  flex-wrap: wrap;
 }
 
 /* ============================================================
@@ -3946,9 +3958,9 @@ variant-radios input:checked + label { border-color: var(--lt-gold) !important; 
    Covers every page & section for perfect mobile experience
    ============================================================ */
 
-/* --- Prevent any horizontal overflow site-wide --- */
-html, body {
-  overflow-x: hidden;
+/* --- Prevent horizontal scrollbar site-wide --- */
+html {
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -4066,6 +4078,18 @@ html, body {
 
   .lom-container, .lom-container--wide {
     padding: 0 16px;
+  }
+
+  /* Buttons: prevent overflow on small screens */
+  .lom-btn-large {
+    padding: 18px 28px;
+    font-size: 14px;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .lom-btn-primary {
+    max-width: 100%;
   }
 
   /* Consistent section padding */
@@ -4344,7 +4368,9 @@ html, body {
   }
   .lom-compare__table-wrap {
     border-radius: 10px;
-    margin: 0 -4px;
+    margin: 0 -16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .lom-compare__table {
     min-width: 520px;
@@ -5226,3 +5252,4 @@ html, body {
     font-size: 12px;
   }
 }
+
