@@ -4,6 +4,14 @@
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  /* Hide misleading subscription/recurring charge terms when no subscription products exist */
+  .cart__dynamic-checkout-buttons [data-shopify-agreements],
+  .cart__dynamic-checkout-buttons [data-shopify-agreements-container],
+  .additional-checkout-buttons p:last-child,
+  [data-terms-checkbox] {
+    display: none !important;
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -117,6 +125,9 @@
                 >
                   {{ 'sections.cart.checkout' | t }}
                 </button>
+                {%- if cart != empty -%}
+                  <p class="lom-cart-microcopy">Join 10,000+ people who chose natural relief</p>
+                {%- endif -%}
               </div>
 
               {%- if additional_checkout_buttons -%}

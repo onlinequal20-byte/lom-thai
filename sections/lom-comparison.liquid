@@ -13,38 +13,51 @@
       {% endif %}
     </div>
 
-    {%- comment -%} Responsive comparison grid {%- endcomment -%}
-    <div class="lom-compare__grid lom-fade-in">
+    {%- comment -%} Enemy-framed column headers {%- endcomment -%}
+    <div class="lom-compare__columns lom-fade-in">
+      {%- comment -%} Lom Thai (hero column) {%- endcomment -%}
+      <div class="lom-compare__col lom-compare__col--hero">
+        <div class="lom-compare__col-name">{{ section.settings.brand_name }}</div>
+        <p class="lom-compare__col-desc lom-compare__col-desc--hero">{{ section.settings.brand_tagline }}</p>
+      </div>
+
+      {%- comment -%} Competitor columns with emotional enemy copy {%- endcomment -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'competitor' %}
+          <div class="lom-compare__col lom-compare__col--enemy" {{ block.shopify_attributes }}>
+            <div class="lom-compare__col-name">{{ block.settings.name }}</div>
+            <p class="lom-compare__col-desc lom-compare__col-desc--enemy">{{ block.settings.enemy_copy }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Feature comparison rows {%- endcomment -%}
+    <div class="lom-compare__rows lom-fade-in">
       {% for block in section.blocks %}
         {% if block.type == 'row' %}
-          <div class="lom-compare__card" {{ block.shopify_attributes }}>
-            <div class="lom-compare__card-feature">{{ block.settings.feature }}</div>
-            <div class="lom-compare__card-columns">
-              <div class="lom-compare__card-brand">
-                <span class="lom-compare__card-label">{{ section.settings.brand_name }}</span>
-                <span class="lom-compare__card-value lom-compare__card-value--win">
-                  {% assign bv = block.settings.brand_value %}
-                  {% if bv contains '✓' or bv contains 'Yes' or bv contains 'Seconds' %}
-                    <span class="lom-compare__check">✓</span>
-                  {% endif %}
-                  <span>{{ bv | remove: '✓' | strip }}</span>
-                </span>
+          <div class="lom-compare__row" {{ block.shopify_attributes }}>
+            <div class="lom-compare__row-feature">{{ block.settings.feature }}</div>
+            <div class="lom-compare__row-values">
+              {%- comment -%} Brand value {%- endcomment -%}
+              <div class="lom-compare__row-cell lom-compare__row-cell--brand" data-label="{{ section.settings.brand_name }}">
+                {% assign bv = block.settings.brand_value %}
+                {% if bv contains '✓' %}
+                  <span class="lom-compare__check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                {% endif %}
+                <span>{{ bv | remove: '✓' | strip }}</span>
               </div>
-              {% assign comp_values = block.settings.competitor_1 | append: '|||' | append: block.settings.competitor_2 | append: '|||' | append: block.settings.competitor_3 %}
+              {%- comment -%} Competitor values {%- endcomment -%}
+              {% assign competitor_blocks = section.blocks | where: 'type', 'competitor' %}
+              {% assign comp_values = block.settings.competitor_1 | append: '|||' | append: block.settings.competitor_2 | append: '|||' | append: block.settings.competitor_3 | append: '|||' | append: block.settings.competitor_4 %}
               {% assign comp_array = comp_values | split: '|||' %}
-              {% assign comp_index = 0 %}
-              {% for b in section.blocks %}
-                {% if b.type == 'competitor' %}
-                  <div class="lom-compare__card-competitor">
-                    <span class="lom-compare__card-label">{{ b.settings.name }}</span>
-                    {% assign cv = comp_array[comp_index] %}
-                    <span class="lom-compare__card-value {% if cv contains '✗' or cv contains 'No' %}lom-compare__card-value--lose{% endif %}">
-                      {% if cv contains '✗' or cv contains 'No' %}
-                        <span class="lom-compare__cross">✗</span>
-                      {% endif %}
-                      <span>{{ cv | remove: '✗' | remove: '✓' | strip }}</span>
-                    </span>
-                    {% assign comp_index = comp_index | plus: 1 %}
+              {% for val in comp_array %}
+                {% if val != blank %}
+                  <div class="lom-compare__row-cell {% if val contains '✗' %}lom-compare__row-cell--lose{% endif %}" data-label="{{ competitor_blocks[forloop.index0].settings.name | default: '' }}">
+                    {% if val contains '✗' %}
+                      <span class="lom-compare__cross"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                    {% endif %}
+                    <span>{{ val | remove: '✗' | remove: '✓' | strip }}</span>
                   </div>
                 {% endif %}
               {% endfor %}
@@ -56,8 +69,7 @@
 
     {%- comment -%} Bottom CTA {%- endcomment -%}
     <div class="lom-compare__cta lom-fade-in">
-      <p class="lom-compare__cta-text">{{ section.settings.cta_text | default: 'Join 50,000+ people who chose the natural alternative' }}</p>
-      <a href="{{ section.settings.cta_url | default: '#lom-product-form' }}" class="lom-btn-primary lom-btn-large">{{ section.settings.cta_button | default: 'Try Lom Thai Risk-Free' }}</a>
+      <a href="{{ section.settings.cta_url | default: '#lom-product-form' }}" class="lom-btn-primary lom-btn-large">{{ section.settings.cta_button | default: 'Try Lom Thai Risk-Free →' }}</a>
     </div>
   </div>
 </section>
@@ -70,19 +82,19 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow text",
-      "default": "The Clear Winner"
+      "default": "The Truth"
     },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Why Lom Thai?"
+      "default": "Stop Settling for Relief That Hurts You"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "See how we stack up against the alternatives"
+      "default": "See why 10,000+ people switched"
     },
     {
       "type": "text",
@@ -91,16 +103,16 @@
       "default": "Lom Thai"
     },
     {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA text",
-      "default": "Join 50,000+ people who chose the natural alternative"
+      "type": "textarea",
+      "id": "brand_tagline",
+      "label": "Brand description",
+      "default": "5 natural ingredients. Century-old Thai formula. Works in seconds. Lasts months per stick. 30-day guarantee."
     },
     {
       "type": "text",
       "id": "cta_button",
       "label": "CTA button text",
-      "default": "Try Lom Thai Risk-Free"
+      "default": "Try Lom Thai Risk-Free →"
     },
     {
       "type": "url",
@@ -118,6 +130,12 @@
           "id": "name",
           "label": "Competitor name",
           "default": "Energy Drinks"
+        },
+        {
+          "type": "textarea",
+          "id": "enemy_copy",
+          "label": "Enemy framing copy",
+          "default": "Caffeine + sugar + taurine. Your heart pays the price."
         }
       ]
     },
@@ -141,19 +159,25 @@
           "type": "text",
           "id": "competitor_1",
           "label": "Competitor 1 value",
-          "default": "15-30 min"
+          "default": "✗ 15-30 min"
         },
         {
           "type": "text",
           "id": "competitor_2",
           "label": "Competitor 2 value",
-          "default": "5-10 min"
+          "default": "✗ 5-10 min"
         },
         {
           "type": "text",
           "id": "competitor_3",
           "label": "Competitor 3 value",
-          "default": "20-45 min"
+          "default": "✗ 20-45 min"
+        },
+        {
+          "type": "text",
+          "id": "competitor_4",
+          "label": "Competitor 4 value",
+          "default": "✗ Varies"
         }
       ]
     }
@@ -162,16 +186,18 @@
     {
       "name": "Lom Comparison",
       "blocks": [
-        { "type": "competitor", "settings": { "name": "Energy Drinks" } },
-        { "type": "competitor", "settings": { "name": "Pharmacy Sprays" } },
-        { "type": "competitor", "settings": { "name": "Coffee" } },
-        { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min" } },
-        { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes" } },
-        { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
-        { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No" } },
-        { "type": "row", "settings": { "feature": "Clears congestion", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
-        { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
-        { "type": "row", "settings": { "feature": "Cost per use", "brand_value": "$0.03", "competitor_1": "$2-4", "competitor_2": "$0.50", "competitor_3": "$3-6" } }
+        { "type": "competitor", "settings": { "name": "Energy Drinks", "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price." } },
+        { "type": "competitor", "settings": { "name": "Pharmacy Sprays", "enemy_copy": "Oxymetazoline addiction is real. Google 'rebound congestion.'" } },
+        { "type": "competitor", "settings": { "name": "Coffee", "enemy_copy": "Anxiety, acid reflux, stained teeth, and you're still tired by 2pm." } },
+        { "type": "competitor", "settings": { "name": "Amazon Generics", "enemy_copy": "Mass-produced. Unknown ingredients. No heritage. No guarantee." } },
+        { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min", "competitor_4": "✗ Varies" } },
+        { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes", "competitor_4": "✗ Unknown" } },
+        { "type": "row", "settings": { "feature": "No crash or side effects", "brand_value": "✓ None", "competitor_1": "✗ Crash + jitters", "competitor_2": "✗ Rebound congestion", "competitor_3": "✗ Anxiety + crash", "competitor_4": "✗ Unknown" } },
+        { "type": "row", "settings": { "feature": "Headache comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No", "competitor_4": "✗ Unverified" } },
+        { "type": "row", "settings": { "feature": "Respiratory comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✓ Temporarily", "competitor_3": "✗ No", "competitor_4": "✗ Unverified" } },
+        { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No", "competitor_4": "✓ Yes" } },
+        { "type": "row", "settings": { "feature": "Months of daily relief", "brand_value": "✓ One $8 stick lasts months", "competitor_1": "✗ $60-120/mo", "competitor_2": "✗ $15-30/mo", "competitor_3": "✗ $90-180/mo", "competitor_4": "✗ Varies" } },
+        { "type": "row", "settings": { "feature": "Money-back guarantee", "brand_value": "✓ 30 days", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No", "competitor_4": "✗ No" } }
       ]
     }
   ]

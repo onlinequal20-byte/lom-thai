@@ -12,13 +12,20 @@
       </div>
       <div class="lom-showcase-text">
         <h2>{{ section.settings.heading }}</h2>
-        <p>{{ section.settings.description }}</p>
-        {% if section.settings.quote != blank %}
-          <div class="lom-showcase-quote">
-            <p>"{{ section.settings.quote }}"</p>
-            <cite>— {{ section.settings.quote_author }}</cite>
-          </div>
-        {% endif %}
+        <p class="lom-showcase-subhead">{{ section.settings.subhead }}</p>
+
+        <div class="lom-benefit-blocks">
+          {% for block in section.blocks %}
+            <div class="lom-benefit-block" {{ block.shopify_attributes }}>
+              <div class="lom-benefit-feature">{{ block.settings.feature }}</div>
+              <div class="lom-benefit-outcome">{{ block.settings.benefit }}</div>
+              <div class="lom-benefit-life-impact">{{ block.settings.life_impact }}</div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <p class="lom-showcase-identity">{{ section.settings.identity_callout }}</p>
+
         {% if section.settings.button_text != blank %}
           <a href="{{ section.settings.button_url }}" class="lom-cta-btn">{{ section.settings.button_text }}</a>
         {% endif %}
@@ -29,19 +36,19 @@
 
 {% schema %}
 {
-  "name": "Lom Product Showcase",
+  "name": "Lom Solution Showcase",
   "settings": [
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Two Tools, One Stick"
+      "default": "This Is What Nurses, Athletes & Truck Drivers Carry Instead"
     },
     {
       "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "The nasal inhaler delivers a powerful herbal blast that clears your head in seconds. Flip it over and the rollerball soothes temples and pressure points on contact. At $0.03 per use, it lasts months."
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief."
     },
     {
       "type": "image_picker",
@@ -50,21 +57,15 @@
     },
     {
       "type": "text",
-      "id": "quote",
-      "label": "Customer quote",
-      "default": "I'm a truck driver and this is a lifesaver. One sniff and I'm alert again."
-    },
-    {
-      "type": "text",
-      "id": "quote_author",
-      "label": "Quote author",
-      "default": "Marco V., Germany"
+      "id": "identity_callout",
+      "label": "Identity callout",
+      "default": "People who carry Lom Thai don't wait for relief. They choose it."
     },
     {
       "type": "text",
       "id": "button_text",
       "label": "Button text",
-      "default": "Shop Now"
+      "default": "Try It Risk-Free →"
     },
     {
       "type": "url",
@@ -73,9 +74,61 @@
       "default": "/collections/all"
     }
   ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature",
+          "default": "Promotes clear breathing"
+        },
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit",
+          "default": "Supports respiratory comfort"
+        },
+        {
+          "type": "textarea",
+          "id": "life_impact",
+          "label": "Life impact",
+          "default": "So you can breathe fully, think clearly, and actually be present — at work, at the gym, with your kids"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Lom Product Showcase"
+      "name": "Lom Solution Showcase",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "feature": "Promotes clear breathing",
+            "benefit": "Supports respiratory comfort",
+            "life_impact": "So you can breathe fully, think clearly, and actually be present — at work, at the gym, with your kids"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "feature": "Menthol + camphor blend",
+            "benefit": "Traditionally used for headache comfort",
+            "life_impact": "No more canceling plans, leaving work early, or lying in a dark room waiting for pills to kick in"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "feature": "Pocket-sized, TSA-friendly",
+            "benefit": "Relief anywhere",
+            "life_impact": "You're never trapped without an option again — flights, meetings, long drives, 3am shifts"
+          }
+        }
+      ]
     }
   ]
 }

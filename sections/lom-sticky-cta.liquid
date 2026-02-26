@@ -1,0 +1,85 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<div class="lom-sticky-cta" id="lom-sticky-cta">
+  <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lom-sticky-cta__btn">
+    {{ section.settings.cta_text | default: 'Get Instant Relief — Free Shipping' }}
+  </a>
+</div>
+
+<script>
+  (function () {
+    var bar = document.getElementById('lom-sticky-cta');
+    if (!bar) return;
+    var hero = document.getElementById('hero');
+    var shown = false;
+
+    function getCookieBannerHeight() {
+      var cb = document.querySelector('.shopify-cookie-banner, #shopify-pc__banner, [id*="cookie-banner"]');
+      if (cb && cb.offsetHeight > 0) return cb.offsetHeight;
+      return 0;
+    }
+
+    function check() {
+      var trigger = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 600;
+      var firstOrder = document.querySelector('.lom-first-order--visible');
+      var cookieH = getCookieBannerHeight();
+      bar.style.bottom = cookieH > 0 ? cookieH + 'px' : '';
+      if (trigger && !shown) {
+        if (!firstOrder) {
+          bar.classList.add('lom-sticky-cta--visible');
+        }
+        shown = true;
+      } else if (!trigger && shown) {
+        bar.classList.remove('lom-sticky-cta--visible');
+        shown = false;
+      }
+      if (firstOrder && shown) {
+        bar.classList.remove('lom-sticky-cta--visible');
+      } else if (!firstOrder && shown && trigger) {
+        bar.classList.add('lom-sticky-cta--visible');
+      }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+    // Re-check periodically for late-loading cookie banner
+    var cookieCheck = setInterval(function () {
+      check();
+      if (!getCookieBannerHeight()) clearInterval(cookieCheck);
+    }, 1000);
+    setTimeout(function () { clearInterval(cookieCheck); }, 15000);
+
+    // Add bottom spacer so last section isn't hidden behind sticky bar
+    var spacer = document.createElement('div');
+    spacer.style.cssText = 'height:72px';
+    spacer.className = 'lom-sticky-cta-spacer';
+    if (window.matchMedia('(max-width:768px)').matches) {
+      document.body.appendChild(spacer);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lom Sticky CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Get Instant Relief — Free Shipping"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Sticky CTA"
+    }
+  ]
+}
+{% endschema %}

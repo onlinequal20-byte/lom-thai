@@ -12,7 +12,7 @@
     "product_hero": {
       "type": "lom-product-hero",
       "settings": {
-        "subtitle": "2-in-1 Nasal Inhaler & Roller — Instant natural relief for headaches, fatigue, and congestion",
+        "subtitle": "2-in-1 Nasal Inhaler & Roller — Traditional Thai herbal support for everyday comfort",
         "review_count": "2,847",
         "atc_text": "Add to Cart",
         "show_bundle": true,
@@ -24,37 +24,16 @@
       "blocks": {
         "b1": { "type": "benefit", "settings": { "icon": "⚡", "text": "Works in seconds, not minutes" } },
         "b2": { "type": "benefit", "settings": { "icon": "🌿", "text": "5 natural plant-based ingredients" } },
-        "b3": { "type": "benefit", "settings": { "icon": "💰", "text": "Only $0.03 per use — lasts months" } },
+        "b3": { "type": "benefit", "settings": { "icon": "💰", "text": "One $8 stick lasts months of daily use" } },
         "rv1": { "type": "review", "settings": { "name": "Sarah K.", "location": "Los Angeles", "text": "This thing is magic. Instant relief from my sinus headaches. I carry it everywhere now." } },
         "rv2": { "type": "review", "settings": { "name": "James M.", "location": "New York", "text": "As a truck driver, this is a lifesaver. One sniff and I'm alert again." } },
         "rv3": { "type": "review", "settings": { "name": "Anna P.", "location": "Netherlands", "text": "My whole family uses these. Best natural remedy we've found." } },
         "rv4": { "type": "review", "settings": { "name": "Michelle T.", "location": "Texas", "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works." } },
-        "acc1": { "type": "accordion", "settings": { "heading": "Description", "content": "<p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Instant relief for headaches, fatigue, congestion, and nausea.</p>" } },
-        "acc2": { "type": "accordion", "settings": { "heading": "Most Common Questions", "content": "<p><strong>Is this a drug?</strong> No — 100% natural herbal aromatherapy.<br><strong>How fast does it work?</strong> Seconds. Instant effect upon inhaling.<br><strong>Is it TSA-friendly?</strong> Yes — solid stick, pocket-sized, flight-safe.</p>" } },
+        "acc1": { "type": "accordion", "settings": { "heading": "Description", "content": "<p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Traditionally used in Thailand for over a century to promote comfort and well-being.</p>" } },
+        "acc2": { "type": "accordion", "settings": { "heading": "Most Common Questions", "content": "<p><strong>Is this a drug?</strong> No — 100% natural herbal aromatherapy.<br><strong>How does it feel?</strong> The aromatic experience is immediate upon inhaling.<br><strong>Is it TSA-friendly?</strong> Yes — solid stick, pocket-sized, flight-safe.</p>" } },
         "acc3": { "type": "accordion", "settings": { "heading": "Processing & Shipping", "content": "<p>Orders ship within 24 hours. Free shipping to US & EU. Delivery in 5-10 business days. 30-day money-back guarantee — no questions asked.</p>" } }
       },
       "block_order": ["b1", "b2", "b3", "rv1", "rv2", "rv3", "rv4", "acc1", "acc2", "acc3"]
-    },
-    "benefits_strip": {
-      "type": "lom-benefits-strip",
-      "settings": {},
-      "blocks": {
-        "b1": { "type": "benefit", "settings": { "icon": "🚚", "title": "Free Shipping", "text": "US & EU orders" } },
-        "b2": { "type": "benefit", "settings": { "icon": "🌿", "title": "100% Natural", "text": "Plant-based" } },
-        "b3": { "type": "benefit", "settings": { "icon": "✓", "title": "30-Day Guarantee", "text": "No questions asked" } },
-        "b4": { "type": "benefit", "settings": { "icon": "📦", "title": "50,000+ Sold", "text": "Worldwide" } }
-      },
-      "block_order": ["b1", "b2", "b3", "b4"]
-    },
-    "story": {
-      "type": "lom-story",
-      "settings": {
-        "eyebrow": "Why Lom Thai",
-        "heading": "A Century-Old Thai Tradition, Reimagined",
-        "text": "<p>For over 100 years, Thai families have relied on ya dom — aromatic herbal inhalers — for natural relief. Lom Thai brings this time-tested tradition to the world with a modern, premium design.</p><p>Five powerful plant-based ingredients: menthol, camphor, borneol, eucalyptus, and lemon oil — working together as nature intended.</p>",
-        "reverse": true,
-        "background": "cream"
-      }
     },
     "steps": {
       "type": "lom-steps",
@@ -62,9 +41,9 @@
         "heading": "How to Use"
       },
       "blocks": {
-        "s1": { "type": "step", "settings": { "heading": "Choose Your Relief", "text": "Inhaler for alertness & congestion. Roller for headaches & tension." } },
+        "s1": { "type": "step", "settings": { "heading": "Choose Your Experience", "text": "Inhaler for a refreshing aromatic sensation. Roller for soothing comfort." } },
         "s2": { "type": "step", "settings": { "heading": "Inhale or Apply", "text": "Breathe deeply through the inhaler, or roll onto temples and neck." } },
-        "s3": { "type": "step", "settings": { "heading": "Feel It in Seconds", "text": "Instant natural relief. No waiting. No crash. No side effects." } }
+        "s3": { "type": "step", "settings": { "heading": "Feel the Difference", "text": "The aromatic herbal blend is noticeable immediately. A century-old Thai tradition, now in your pocket." } }
       },
       "block_order": ["s1", "s2", "s3"]
     },
@@ -85,10 +64,10 @@
         "r1": { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min" } },
         "r2": { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes" } },
         "r3": { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
-        "r4": { "type": "row", "settings": { "feature": "Relieves headaches", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No" } },
-        "r5": { "type": "row", "settings": { "feature": "Clears congestion", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
+        "r4": { "type": "row", "settings": { "feature": "Headache comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No" } },
+        "r5": { "type": "row", "settings": { "feature": "Respiratory comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
         "r6": { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No" } },
-        "r7": { "type": "row", "settings": { "feature": "Cost per use", "brand_value": "$0.03", "competitor_1": "$2-4", "competitor_2": "$0.50", "competitor_3": "$3-6" } }
+        "r7": { "type": "row", "settings": { "feature": "Months of daily relief", "brand_value": "✓ One $8 stick lasts months", "competitor_1": "✗ $60-120/mo", "competitor_2": "✗ $15-30/mo", "competitor_3": "✗ $90-180/mo" } }
       },
       "block_order": ["c1", "c2", "c3", "r1", "r2", "r3", "r4", "r5", "r6", "r7"]
     },
@@ -99,11 +78,11 @@
         "subtitle": "Five powerful natural ingredients, perfected over a century"
       },
       "blocks": {
-        "i1": { "type": "ingredient", "settings": { "icon": "❄️", "name": "Menthol", "benefit": "Opens airways instantly, delivers cooling relief" } },
-        "i2": { "type": "ingredient", "settings": { "icon": "🌸", "name": "Camphor", "benefit": "Soothes headaches and reduces inflammation" } },
+        "i1": { "type": "ingredient", "settings": { "icon": "❄️", "name": "Menthol", "benefit": "Traditionally used to promote clear breathing" } },
+        "i2": { "type": "ingredient", "settings": { "icon": "🌸", "name": "Camphor", "benefit": "Traditionally used to soothe tension and promote comfort" } },
         "i3": { "type": "ingredient", "settings": { "icon": "⭐", "name": "Borneol", "benefit": "Traditional Thai remedy for focus and clarity" } },
-        "i4": { "type": "ingredient", "settings": { "icon": "🌿", "name": "Eucalyptus Oil", "benefit": "Clears congestion and supports breathing" } },
-        "i5": { "type": "ingredient", "settings": { "icon": "🍋", "name": "Lemon Oil", "benefit": "Uplifts mood, fights nausea" } }
+        "i4": { "type": "ingredient", "settings": { "icon": "🌿", "name": "Eucalyptus Oil", "benefit": "Traditionally used to support respiratory comfort" } },
+        "i5": { "type": "ingredient", "settings": { "icon": "🍋", "name": "Lemon Oil", "benefit": "Traditionally used to uplift mood and promote comfort" } }
       },
       "block_order": ["i1", "i2", "i3", "i4", "i5"]
     },
@@ -127,9 +106,9 @@
       "blocks": {
         "q1": { "type": "question", "settings": { "question": "Is this a drug or medication?", "answer": "No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils." } },
         "q2": { "type": "question", "settings": { "question": "Is it TSA / airport safe?", "answer": "Yes! It's a solid aromatherapy stick well under liquid limits. Pocket-sized and flight-friendly." } },
-        "q3": { "type": "question", "settings": { "question": "How long does one stick last?", "answer": "Several months with daily use. At $0.03 per use, it's incredibly cost-effective." } },
+        "q3": { "type": "question", "settings": { "question": "How long does one stick last?", "answer": "Several months with daily use. One $8 stick delivers premium relief longer than a month's worth of energy drinks or pharmacy sprays — for a fraction of the cost." } },
         "q4": { "type": "question", "settings": { "question": "How fast does it work?", "answer": "Seconds. The effect is immediate upon inhaling. The rollerball provides relief within 60 seconds." } },
-        "q5": { "type": "question", "settings": { "question": "What's the difference between the two ends?", "answer": "Top: nasal inhaler for alertness and congestion. Bottom: rollerball for headache and tension relief." } },
+        "q5": { "type": "question", "settings": { "question": "What's the difference between the two ends?", "answer": "Top: nasal inhaler for a refreshing aromatic experience. Bottom: rollerball applicator for temples and neck." } },
         "q6": { "type": "question", "settings": { "question": "Do you ship internationally?", "answer": "Free shipping to the US and EU. 5-10 business days. 30-day money-back guarantee." } }
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
@@ -143,19 +122,6 @@
         "button_url": "#"
       }
     },
-    "ticker": {
-      "type": "lom-social-ticker",
-      "settings": {},
-      "blocks": {
-        "t1": { "type": "item", "settings": { "text": "★★★★★ 2,847+ five-star reviews" } },
-        "t2": { "type": "item", "settings": { "text": "🔥 50,000+ units sold worldwide" } },
-        "t3": { "type": "item", "settings": { "text": "🇺🇸 Free US & EU shipping" } },
-        "t4": { "type": "item", "settings": { "text": "✓ 100% natural ingredients" } },
-        "t5": { "type": "item", "settings": { "text": "🛡️ 30-day money-back guarantee" } },
-        "t6": { "type": "item", "settings": { "text": "✈️ TSA-friendly — take it anywhere" } }
-      },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"]
-    },
     "guarantee": {
       "type": "lom-guarantee",
       "settings": {
@@ -165,10 +131,7 @@
     }
   },
   "order": [
-    "ticker",
     "product_hero",
-    "benefits_strip",
-    "story",
     "steps",
     "comparison",
     "ingredients",

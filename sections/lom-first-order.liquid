@@ -1,0 +1,96 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<div id="lom-first-order-banner" class="lom-first-order" style="display:none;" role="complementary" aria-label="First order discount">
+  <div class="lom-first-order__inner">
+    <p class="lom-first-order__text">
+      {{ section.settings.text }} <span class="lom-first-order__code">{{ section.settings.code }}</span> {{ section.settings.suffix }}
+    </p>
+    <button class="lom-first-order__dismiss" aria-label="Dismiss" onclick="document.getElementById('lom-first-order-banner').classList.remove('lom-first-order--visible');localStorage.setItem('lom_first_order_dismissed','1');var sc=document.getElementById('lom-sticky-cta');if(sc&&window.scrollY>600)sc.classList.add('lom-sticky-cta--visible');">✕</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (localStorage.getItem('lom_first_order_dismissed') === '1') return;
+    if (window.Shopify && window.Shopify.designMode) return;
+
+    var banner = document.getElementById('lom-first-order-banner');
+    var shown = false;
+    var delay = {{ section.settings.delay | default: 15 }} * 1000;
+    var scrollPct = {{ section.settings.scroll_trigger | default: 50 }};
+
+    function show() {
+      if (shown) return;
+      shown = true;
+      banner.style.display = '';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          banner.classList.add('lom-first-order--visible');
+        });
+      });
+    }
+
+    // Time trigger
+    setTimeout(show, delay);
+
+    // Scroll trigger
+    window.addEventListener('scroll', function onScroll() {
+      var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      if (scrolled >= scrollPct) {
+        show();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }, { passive: true });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lom First Order Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Banner text",
+      "default": "First time? Use code"
+    },
+    {
+      "type": "text",
+      "id": "code",
+      "label": "Discount code",
+      "default": "FIRSTTRY"
+    },
+    {
+      "type": "text",
+      "id": "suffix",
+      "label": "Text after code",
+      "default": "for 10% off your first order"
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "Show after (seconds)",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "default": 15,
+      "unit": "s"
+    },
+    {
+      "type": "range",
+      "id": "scroll_trigger",
+      "label": "Show at scroll percentage",
+      "min": 10,
+      "max": 100,
+      "step": 10,
+      "default": 50,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom First Order Banner"
+    }
+  ]
+}
+{% endschema %}

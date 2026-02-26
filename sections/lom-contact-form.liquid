@@ -1,0 +1,177 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-contact">
+  <div class="lom-container">
+    <div class="lom-contact__header lom-reveal">
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="lom-contact__promise">{{ section.settings.promise }}</p>
+    </div>
+
+    <div class="lom-contact__grid">
+      <div class="lom-contact__form-wrap lom-reveal">
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div class="lom-contact__success">
+              <p>Message sent! We'll get back to you within 24 hours.</p>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="lom-contact__errors">
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="lom-contact__field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="contact[name]" placeholder="Your name" required>
+          </div>
+
+          <div class="lom-contact__field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="contact[email]" placeholder="you@example.com" required>
+          </div>
+
+          <div class="lom-contact__field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="contact[body]" rows="5" placeholder="How can we help?" required></textarea>
+          </div>
+
+          <button type="submit" class="lom-btn lom-btn--primary lom-contact__submit">Send Message</button>
+        {% endform %}
+      </div>
+
+      <div class="lom-contact__info lom-reveal">
+        {% if section.settings.email != blank %}
+          <div class="lom-contact__info-item">
+            <h3>Email Us Directly</h3>
+            <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          </div>
+        {% endif %}
+
+        <div class="lom-contact__info-item">
+          <h3>Quick Answers</h3>
+          <p>{{ section.settings.faq_text }} <a href="{{ section.settings.faq_link }}">{{ section.settings.faq_link_text }}</a></p>
+        </div>
+
+        {% if section.settings.show_social %}
+          <div class="lom-contact__info-item">
+            <h3>Follow Us</h3>
+            <div class="lom-contact__social">
+              {% if section.settings.instagram != blank %}
+                <a href="{{ section.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+              {% endif %}
+              {% if section.settings.tiktok != blank %}
+                <a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+              {% endif %}
+              {% if section.settings.facebook != blank %}
+                <a href="{{ section.settings.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lom-contact { padding: 100px 0; background: var(--lt-dark); }
+  .lom-contact__header { text-align: center; margin-bottom: 48px; }
+  .lom-contact__header h1 { font-family: var(--lt-serif); font-size: clamp(32px, 5vw, 48px); color: var(--lt-cream); line-height: 1.1; margin-bottom: 12px; font-weight: 400; letter-spacing: -0.04em; }
+  .lom-contact__promise { font-family: var(--lt-sans); font-size: 17px; color: var(--lt-text-muted); font-style: italic; }
+  .lom-contact__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; max-width: 900px; margin: 0 auto; }
+  .lom-contact__form-wrap { background: var(--lt-glass); border: 1px solid var(--lt-border); border-radius: 12px; padding: 44px; }
+  .lom-contact__field { margin-bottom: 20px; }
+  .lom-contact__field label { display: block; font-family: var(--lt-sans); font-size: 11px; font-weight: 600; color: var(--lt-text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.5px; }
+  .lom-contact__field input, .lom-contact__field textarea { width: 100%; padding: 14px 18px; font-family: var(--lt-sans); font-size: 15px; color: var(--lt-cream); background: transparent; border: 1px solid var(--lt-border); border-radius: 8px; transition: border-color 0.3s; -webkit-appearance: none; }
+  .lom-contact__field input:focus, .lom-contact__field textarea:focus { outline: none; border-color: var(--lt-gold); }
+  .lom-contact__field input::placeholder, .lom-contact__field textarea::placeholder { color: var(--lt-text-muted); }
+  .lom-contact__submit { width: 100%; margin-top: 8px; font-family: var(--lt-sans); font-size: 14px; font-weight: 600; padding: 18px 40px; background: var(--lt-gold); color: var(--lt-black); border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; text-transform: none; letter-spacing: 0.3px; }
+  .lom-contact__submit:hover { background: var(--lt-gold-light); transform: translateY(-2px); }
+  .lom-contact__success { background: rgba(52,128,94,0.15); border: 1px solid rgba(52,128,94,0.25); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; text-align: center; }
+  .lom-contact__success p { font-family: var(--lt-sans); font-size: 14px; color: var(--lt-emerald-light); margin: 0; }
+  .lom-contact__errors { background: rgba(193,87,79,0.15); border: 1px solid rgba(193,87,79,0.25); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; font-family: var(--lt-sans); font-size: 14px; color: var(--lt-danger); }
+  .lom-contact__info { display: flex; flex-direction: column; gap: 32px; padding-top: 8px; }
+  .lom-contact__info-item h3 { font-family: var(--lt-serif); font-size: 20px; color: var(--lt-cream); margin-bottom: 8px; font-weight: 400; }
+  .lom-contact__info-item p, .lom-contact__info-item a { font-family: var(--lt-sans); font-size: 15px; color: var(--lt-text-muted); line-height: 1.6; }
+  .lom-contact__info-item a { color: var(--lt-gold); text-decoration: underline; text-underline-offset: 3px; }
+  .lom-contact__social { display: flex; gap: 16px; }
+  .lom-contact__social a { font-family: var(--lt-sans); font-size: 13px; font-weight: 600; color: var(--lt-gold); text-decoration: none; padding: 10px 20px; border: 1px solid var(--lt-border); border-radius: 8px; transition: all 0.3s; }
+  .lom-contact__social a:hover { background: var(--lt-gold); color: var(--lt-black); border-color: var(--lt-gold); }
+  @media (max-width: 768px) {
+    .lom-contact { padding: 72px 0; }
+    .lom-contact__grid { grid-template-columns: 1fr; gap: 40px; }
+    .lom-contact__submit { min-height: 56px; font-size: 16px; }
+    .lom-contact__form-wrap { padding: 28px 20px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Lom Contact Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "text",
+      "id": "promise",
+      "label": "Promise line",
+      "default": "Real humans respond within 24 hours"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Contact email",
+      "default": "hello@lomthai.com"
+    },
+    {
+      "type": "text",
+      "id": "faq_text",
+      "label": "FAQ text",
+      "default": "Most questions answered here"
+    },
+    {
+      "type": "url",
+      "id": "faq_link",
+      "label": "FAQ page link"
+    },
+    {
+      "type": "text",
+      "id": "faq_link_text",
+      "label": "FAQ link text",
+      "default": "View FAQs →"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social links",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Contact Form"
+    }
+  ]
+}
+{% endschema %}

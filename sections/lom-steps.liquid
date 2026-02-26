@@ -15,6 +15,9 @@
         </div>
       {% endfor %}
     </div>
+    {% if section.settings.transition != blank %}
+      <p class="lom-steps-transition lom-fade-in">{{ section.settings.transition }}</p>
+    {% endif %}
   </div>
 </section>
 
@@ -32,6 +35,12 @@
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "transition",
+      "label": "Transition line",
+      "default": "That's it. No water needed. No waiting. No side effects. No crash."
     }
   ],
   "blocks": [
@@ -49,7 +58,7 @@
           "type": "textarea",
           "id": "text",
           "label": "Step description",
-          "default": "Inhaler for alertness & congestion. Roller for headaches & tension."
+          "default": "Inhaler for a refreshing aromatic experience. Roller for soothing comfort."
         }
       ]
     }
@@ -58,11 +67,12 @@
     {
       "name": "Lom How It Works",
       "blocks": [
-        { "type": "step", "settings": { "heading": "Choose Your Relief", "text": "Inhaler for alertness & congestion. Roller for headaches & tension." } },
-        { "type": "step", "settings": { "heading": "Inhale or Apply", "text": "Breathe deeply through the inhaler, or roll onto temples and neck." } },
-        { "type": "step", "settings": { "heading": "Feel It in Seconds", "text": "Instant natural relief. No waiting. No crash. No side effects." } }
+        { "type": "step", "settings": { "heading": "Uncap It", "text": "Takes one second. Fits in your pocket, purse, or gym bag." } },
+        { "type": "step", "settings": { "heading": "Inhale or Roll On", "text": "One deep breath through the inhaler for a refreshing sensation. Roll the balm on temples for soothing comfort." } },
+        { "type": "step", "settings": { "heading": "Feel the Difference", "text": "The aromatic herbal blend is noticeable immediately. A century-old Thai tradition, now in your pocket." } }
       ]
     }
   ]
 }
 {% endschema %}
+

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "cart-items": {
@@ -14,6 +5,12 @@
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "custom_cart_upsell": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.lt-cupsell{background:var(--lom-cream-dark,#EDE8E0);padding:20px 24px;text-align:center;border-radius:8px;margin:0 auto 16px;max-width:800px;border:1px solid var(--lom-sage,#6B7F6B)}.lt-cupsell h3{margin:0 0 8px;font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--lom-forest,#1B3A2D)}.lt-cupsell p{margin:0 0 14px;font-family:'Inter',sans-serif;font-size:14px;color:#555}.lt-cupsell button{display:inline-block;background:var(--lom-sage,#6B7F6B);color:#fff;padding:10px 24px;border-radius:6px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;transition:background .2s}.lt-cupsell button:hover{background:#5a6e5a}.lt-cupsell button:disabled{opacity:.6;cursor:wait}@media(max-width:749px){.lt-cupsell{padding:16px 18px}.lt-cupsell h3{font-size:17px}.lt-cupsell p{font-size:13px}}</style><div class=\"lt-cupsell\"><h3>Buy 2 Get 1 Free — Add Another Stick!</h3><p>You're one stick away from a free one. Your future self will thank you.</p><button id=\"lt-upsell-btn\" onclick=\"(function(btn){btn.disabled=true;btn.textContent='Adding...';fetch('/products/lom-thai-authentic-muay-thai-oil.js').then(function(r){return r.json()}).then(function(p){return fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:p.variants[0].id,quantity:1}]})})}).then(function(){window.location.reload()}).catch(function(){btn.disabled=false;btn.textContent='Add Another Stick'})})(this)\">Add Another Stick</button></div>"
       }
     },
     "cart-footer": {
@@ -40,41 +37,14 @@
     "custom_cart_trust": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>.lt-ctrust{background:#f5f5f5;padding:16px 20px;text-align:center}.lt-ctrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:24px;font-size:14px;color:#333}.lt-ctrust-item{display:flex;align-items:center;gap:6px;white-space:nowrap}@media(max-width:749px){.lt-ctrust-row{gap:12px;flex-direction:column}.lt-ctrust-item{font-size:13px}}</style><div class=\"lt-ctrust\"><div class=\"lt-ctrust-row\"><span class=\"lt-ctrust-item\">\ud83d\udd12 Secure Checkout</span><span class=\"lt-ctrust-item\">\ud83d\ude9a Free US & EU Shipping</span><span class=\"lt-ctrust-item\">\ud83d\udcaf 30-Day Money-Back Guarantee</span></div></div>"
-      }
-    },
-    "custom_cart_upsell": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<style>.lt-cupsell{background:linear-gradient(135deg,#1B3A4B,#2C5F7C);padding:24px 20px;text-align:center;color:#fff;border-radius:8px;margin:16px auto;max-width:800px}.lt-cupsell h3{margin:0 0 12px;font-size:20px;font-weight:700}.lt-cupsell p{margin:0 0 16px;font-size:15px;opacity:.9}.lt-cupsell a{display:inline-block;background:#fff;color:#1B3A4B;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;transition:opacity .2s}.lt-cupsell a:hover{opacity:.9}@media(max-width:749px){.lt-cupsell h3{font-size:17px}.lt-cupsell p{font-size:14px}.lt-cupsell a{padding:10px 22px;font-size:14px}}</style><div class=\"lt-cupsell\"><h3>\ud83c\udf81 Add another for 20% off!</h3><p>Buy 2 Get 1 Free on all Thai herbal inhalers</p><a href=\"/collections/all\">Shop Now</a></div>"
-      }
-    },
-    "featured-collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 4,
-        "title": "Featured collection",
-        "heading_size": "h2",
-        "columns_desktop": 4,
-        "show_view_all": true,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "custom_liquid": "<style>.lt-ctrust{padding:20px 20px 8px;text-align:center}.lt-ctrust-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:20px;font-family:'Inter',sans-serif;font-size:13px;color:#555}.lt-ctrust-item{display:flex;align-items:center;gap:6px;white-space:nowrap}@media(max-width:749px){.lt-ctrust-row{gap:10px;flex-direction:column}.lt-ctrust-item{font-size:12px}}</style><div class=\"lt-ctrust\"><div class=\"lt-ctrust-row\"><span class=\"lt-ctrust-item\">\uD83D\uDD12 Secure checkout</span><span class=\"lt-ctrust-item\">\uD83D\uDCE6 Ships in 24hrs</span><span class=\"lt-ctrust-item\">\u21A9\uFE0F 30-day guarantee</span></div></div>"
       }
     }
   },
   "order": [
     "cart-items",
-    "cart-footer",
-    "custom_cart_trust",
     "custom_cart_upsell",
-    "featured-collection"
+    "cart-footer",
+    "custom_cart_trust"
   ]
 }

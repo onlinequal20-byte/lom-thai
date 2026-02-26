@@ -51,6 +51,15 @@
     <div class="lom-container">
       <div class="lom-footer__bottom-inner">
         <p class="lom-footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+        <nav class="lom-footer__legal">
+          <a href="/policies/terms-of-service">Terms of Service</a>
+          <a href="/policies/privacy-policy">Privacy Policy</a>
+          <a href="/policies/shipping-policy">Shipping Policy</a>
+          <a href="/policies/refund-policy">Refund Policy</a>
+        </nav>
+        {% if section.settings.origin_text != blank %}
+          <p class="lom-footer__origin">{{ section.settings.origin_text }}</p>
+        {% endif %}
         <div class="lom-footer__social">
           {% if section.settings.social_instagram != blank %}
             <a href="{{ section.settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">
@@ -91,6 +100,12 @@
       "id": "tagline_sub",
       "label": "Tagline subtitle",
       "default": "Plant-based relief, perfected over a century in Thailand."
+    },
+    {
+      "type": "text",
+      "id": "origin_text",
+      "label": "Origin / address line",
+      "default": "Formulated in Thailand · Shipped from the USA"
     },
     {
       "type": "url",
@@ -141,7 +156,7 @@
           "type": "textarea",
           "id": "text",
           "label": "Description",
-          "default": "Join 12,000+ people who chose natural relief. Wellness tips and exclusive offers."
+          "default": "Join 10,000+ people who chose natural relief. Wellness tips and exclusive offers."
         },
         {
           "type": "text",
@@ -159,9 +174,10 @@
         { "type": "menu", "settings": { "title": "Shop" } },
         { "type": "menu", "settings": { "title": "Help" } },
         { "type": "menu", "settings": { "title": "About" } },
-        { "type": "newsletter", "settings": { "title": "Stay Connected", "text": "Join 12,000+ people who chose natural relief. Wellness tips and exclusive offers.", "placeholder": "Your email" } }
+        { "type": "newsletter", "settings": { "title": "Stay Connected", "text": "Join 10,000+ people who chose natural relief. Wellness tips and exclusive offers.", "placeholder": "Your email" } }
       ]
     }
   ]
 }
 {% endschema %}
+

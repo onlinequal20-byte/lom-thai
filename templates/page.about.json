@@ -1,153 +1,54 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "about_hero": {
-      "type": "lom-about-hero",
+    "about": {
+      "type": "lom-about",
       "settings": {
-        "eyebrow": "Our Story",
-        "heading": "From Thai Tradition to Global Wellness",
-        "text": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
-      }
-    },
-    "story_1": {
-      "type": "lom-story",
-      "settings": {
-        "eyebrow": "The Origin",
-        "heading": "A Century-Old Recipe, Perfected by Nature",
-        "text": "<p>In Thailand, ya dom isn't just a product — it's a way of life. From taxi drivers staying alert on long shifts to grandmothers soothing headaches, these herbal inhalers have been a daily essential for over 100 years.</p><p>Lom Thai was born from a simple question: why isn't the rest of the world using this?</p>",
-        "image": "shopify://shop_images/Gemini_Generated_Image_lhonkzlhonkzlhon.png",
-        "reverse": false,
-        "background": "white",
-        "button_text": "",
-        "button_url": ""
-      }
-    },
-    "story_2": {
-      "type": "lom-story",
-      "settings": {
-        "eyebrow": "The Mission",
-        "heading": "Making Natural Relief Accessible to Everyone",
-        "text": "<p>We believe you shouldn't have to choose between effectiveness and natural ingredients. Our 2-in-1 inhaler and roller delivers instant relief using five plant-based ingredients — no synthetic chemicals, no side effects, no waiting.</p><p>At $0.03 per use, premium wellness doesn't have to be expensive.</p>",
-        "image": "shopify://shop_images/76067a4cb13a03542993_thai_7.png",
-        "reverse": true,
-        "background": "cream",
-        "button_text": "Shop Lom Thai",
-        "button_url": "/collections/all"
-      }
-    },
-    "values": {
-      "type": "lom-values",
+        "heading": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago."
+      },
       "blocks": {
-        "v1": {
-          "type": "value",
+        "narrative_1": {
+          "type": "narrative",
           "settings": {
-            "icon": "🌿",
-            "title": "100% Natural",
-            "text": "Every ingredient comes from nature. No synthetic chemicals, preservatives, or artificial fragrances. Ever."
+            "text": "In Thailand, these herbal sticks aren't alternative medicine. They're the medicine. Every taxi driver, every street vendor, every grandmother carries one."
           }
         },
-        "v2": {
-          "type": "value",
+        "narrative_2": {
+          "type": "narrative",
           "settings": {
-            "icon": "🇹🇭",
-            "title": "Thai Heritage",
-            "text": "Our formula is based on a century-old recipe passed through generations of Thai herbal practitioners."
+            "text": "We brought this formula to the West because we were tired of watching people choose between chemicals that don't work and coffee that makes them jittery."
           }
         },
-        "v3": {
-          "type": "value",
+        "narrative_3": {
+          "type": "narrative",
           "settings": {
-            "icon": "♻️",
-            "title": "Sustainable",
-            "text": "Minimal packaging, ethically sourced ingredients, and a product that lasts months instead of days."
+            "text": "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
           }
         },
-        "v4": {
-          "type": "value",
+        "founder": {
+          "type": "founder",
           "settings": {
-            "icon": "💚",
-            "title": "Accessible Wellness",
-            "text": "Natural relief shouldn't be expensive. At $0.03 per use, we make wellness accessible to everyone."
+            "name": "Founder Name",
+            "role": "Founder, Lom Thai",
+            "story": "I first discovered ya dom in a Bangkok pharmacy in 2019. One inhale and I understood why every Thai person carries one. I spent two years working with traditional herbalists to bring this exact formula to the West."
+          }
+        },
+        "closing": {
+          "type": "closing",
+          "settings": {
+            "text": "We're not a wellness startup. We're a bridge between ancient Thai relief and modern Western lives."
           }
         }
       },
       "block_order": [
-        "v1",
-        "v2",
-        "v3",
-        "v4"
-      ],
-      "settings": {
-        "heading": "What We Stand For",
-        "subtitle": ""
-      }
-    },
-    "proof": {
-      "type": "lom-social-proof",
-      "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "number": "50,000+",
-            "label": "Sticks Sold"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "number": "4.9/5",
-            "label": "Customer Rating"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "number": "40+",
-            "label": "Countries Shipped"
-          }
-        },
-        "s4": {
-          "type": "stat",
-          "settings": {
-            "number": "100%",
-            "label": "Natural Ingredients"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4"
-      ],
-      "settings": {
-        "background": "white"
-      }
-    },
-    "final_cta": {
-      "type": "lom-final-cta",
-      "settings": {
-        "heading": "Experience the Tradition",
-        "text": "Join 50,000+ people who chose natural relief. Free shipping. 30-day guarantee.",
-        "button_text": "Shop Now",
-        "button_url": "/collections/all"
-      }
+        "narrative_1",
+        "narrative_2",
+        "narrative_3",
+        "founder",
+        "closing"
+      ]
     }
   },
   "order": [
-    "about_hero",
-    "story_1",
-    "story_2",
-    "values",
-    "proof",
-    "final_cta"
+    "about"
   ]
 }

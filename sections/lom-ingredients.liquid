@@ -9,12 +9,74 @@
     <div class="lom-ingredients-grid">
       {% for block in section.blocks %}
         <div class="lom-ingredient-card lom-fade-in" {{ block.shopify_attributes }}>
-          <div class="lom-ingredient-icon">{{ block.settings.icon }}</div>
+          <div class="lom-ingredient-icon">
+            <span class="lt-icon lt-icon--lg lt-icon--circle">
+              {% case block.settings.icon_type %}
+                {% when 'snowflake' %}
+                  <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg>
+                {% when 'flower' %}
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2a4 4 0 014 4c0 1.95-2 3-2 3s-2-1.05-2-3a4 4 0 014-4zM18.5 7.5a4 4 0 011.5 5.46c-.97 1.68-3.15 1.95-3.15 1.95s-.2-2.23.77-3.91a4 4 0 011.88-3.5z"/></svg>
+                {% when 'diamond' %}
+                  <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 15L22 7z"/><path d="M2 7h20"/></svg>
+                {% when 'leaf' %}
+                  <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 18c4-2 7-4 10-8"/><path d="M2 2s7.5.5 11.5 4.5c3 3 4.5 7 4.5 7"/></svg>
+                {% when 'droplet' %}
+                  <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+                {% else %}
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+              {% endcase %}
+            </span>
+          </div>
           <h3 class="lom-ingredient-name">{{ block.settings.name }}</h3>
           <p class="lom-ingredient-benefit">{{ block.settings.benefit }}</p>
+          {% if block.settings.sourcing != blank %}
+            <p class="lom-ingredient-sourcing">{{ block.settings.sourcing }}</p>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
+    {% if section.settings.show_badges %}
+      <div class="lom-ingredients-badges lom-fade-in">
+        {% if section.settings.badge_1 != blank %}
+          <div class="lom-badge-item">
+            <span class="lom-badge-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m6 0v1a3 3 0 006 0V7M3 7h18M6 21V10m12 11V10"/></svg></span>
+            <span>{{ section.settings.badge_1 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.badge_2 != blank %}
+          <div class="lom-badge-item">
+            <span class="lom-badge-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <span>{{ section.settings.badge_2 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.badge_3 != blank %}
+          <div class="lom-badge-item">
+            <span class="lom-badge-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 18c4-2 7-4 10-8"/><path d="M2 2s7.5.5 11.5 4.5c3 3 4.5 7 4.5 7"/></svg></span>
+            <span>{{ section.settings.badge_3 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.badge_4 != blank %}
+          <div class="lom-badge-item">
+            <span class="lom-badge-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+            <span>{{ section.settings.badge_4 }}</span>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.formulation_note != blank %}
+      <div class="lom-ingredients-formulation lom-fade-in">
+        <p class="lom-formulation-text">{{ section.settings.formulation_note }}</p>
+      </div>
+    {% endif %}
+
+    {% if section.settings.transparency_line != blank %}
+      <p class="lom-ingredients-transparency lom-fade-in">{{ section.settings.transparency_line }}</p>
+    {% endif %}
+
+    {% if section.settings.fda_disclaimer != blank %}
+      <p class="lom-fda-disclaimer lom-fade-in">{{ section.settings.fda_disclaimer }}</p>
+    {% endif %}
   </div>
 </section>
 
@@ -22,18 +84,20 @@
 {
   "name": "Lom Ingredients",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "What's Inside"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Five powerful natural ingredients, perfected over a century"
-    }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's Inside" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Five powerful natural ingredients, perfected over a century" },
+    { "type": "checkbox", "id": "show_badges", "label": "Show validation badges", "default": true },
+    { "type": "text", "id": "badge_1_icon", "label": "Badge 1 icon (unused)" },
+    { "type": "text", "id": "badge_1", "label": "Badge 1 text", "default": "GMP-Certified Facility" },
+    { "type": "text", "id": "badge_2_icon", "label": "Badge 2 icon (unused)" },
+    { "type": "text", "id": "badge_2", "label": "Badge 2 text", "default": "Third-Party Lab Tested" },
+    { "type": "text", "id": "badge_3_icon", "label": "Badge 3 icon (unused)" },
+    { "type": "text", "id": "badge_3", "label": "Badge 3 text", "default": "100% Natural Ingredients" },
+    { "type": "text", "id": "badge_4_icon", "label": "Badge 4 icon (unused)" },
+    { "type": "text", "id": "badge_4", "label": "Badge 4 text", "default": "Made in Thailand" },
+    { "type": "textarea", "id": "formulation_note", "label": "Formulation note", "default": "Small-batch crafted in Thailand. Each stick is hand-filled with concentrated herbal extracts — not the diluted blends you'll find on Amazon." },
+    { "type": "textarea", "id": "transparency_line", "label": "Transparency closing line", "default": "No fillers. No synthetic fragrance. No ingredients you need a chemistry degree to pronounce. Just five plants that have been used for over a century." },
+    { "type": "textarea", "id": "fda_disclaimer", "label": "FDA disclaimer", "default": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." }
   ],
   "blocks": [
     {
@@ -41,23 +105,22 @@
       "name": "Ingredient",
       "settings": [
         {
-          "type": "text",
-          "id": "icon",
-          "label": "Icon (emoji)",
-          "default": "🌿"
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "snowflake", "label": "Snowflake (Menthol)" },
+            { "value": "flower", "label": "Flower (Camphor)" },
+            { "value": "diamond", "label": "Diamond (Borneol)" },
+            { "value": "leaf", "label": "Leaf (Eucalyptus)" },
+            { "value": "droplet", "label": "Droplet (Lemon)" }
+          ],
+          "default": "leaf"
         },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Ingredient name",
-          "default": "Menthol"
-        },
-        {
-          "type": "textarea",
-          "id": "benefit",
-          "label": "Benefit description",
-          "default": "Opens airways instantly, delivers cooling relief that wakes you up in seconds"
-        }
+        { "type": "text", "id": "icon", "label": "Legacy icon (unused)" },
+        { "type": "text", "id": "name", "label": "Ingredient name", "default": "Menthol" },
+        { "type": "textarea", "id": "benefit", "label": "Benefit description", "default": "Traditionally used to promote clear breathing and an invigorating sensation" },
+        { "type": "text", "id": "sourcing", "label": "Sourcing detail" }
       ]
     }
   ],
@@ -65,11 +128,11 @@
     {
       "name": "Lom Ingredients",
       "blocks": [
-        { "type": "ingredient", "settings": { "icon": "❄️", "name": "Menthol", "benefit": "Opens airways instantly, delivers cooling relief that wakes you up in seconds" } },
-        { "type": "ingredient", "settings": { "icon": "🌸", "name": "Camphor", "benefit": "Soothes headaches and reduces inflammation on contact" } },
-        { "type": "ingredient", "settings": { "icon": "⭐", "name": "Borneol", "benefit": "Traditional Thai remedy for focus and mental clarity" } },
-        { "type": "ingredient", "settings": { "icon": "🌿", "name": "Eucalyptus Oil", "benefit": "Clears congestion and supports respiratory health naturally" } },
-        { "type": "ingredient", "settings": { "icon": "🍋", "name": "Lemon Oil", "benefit": "Uplifts mood, fights nausea, and enhances alertness" } }
+        { "type": "ingredient", "settings": { "icon_type": "snowflake", "name": "Menthol", "benefit": "Traditionally used to promote clear breathing and an invigorating sensation", "sourcing": "40% concentration — 3x the industry standard" } },
+        { "type": "ingredient", "settings": { "icon_type": "flower", "name": "Camphor", "benefit": "Traditionally used to soothe tension and promote comfort", "sourcing": "Steam-distilled from Cinnamomum camphora trees" } },
+        { "type": "ingredient", "settings": { "icon_type": "diamond", "name": "Borneol", "benefit": "Traditional Thai herb for focus and mental clarity", "sourcing": "Extracted from Dryobalanops trees in Southern Thailand" } },
+        { "type": "ingredient", "settings": { "icon_type": "leaf", "name": "Eucalyptus Oil", "benefit": "Traditionally used to support respiratory comfort", "sourcing": "Pure Eucalyptus globulus leaf oil" } },
+        { "type": "ingredient", "settings": { "icon_type": "droplet", "name": "Lemon Oil", "benefit": "Traditionally used to uplift mood and promote comfort", "sourcing": "Cold-pressed from Thai lemon peel" } }
       ]
     }
   ]

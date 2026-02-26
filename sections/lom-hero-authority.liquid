@@ -1,0 +1,148 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-hero-authority" id="hero">
+  <div class="lom-hero-authority__bg">
+    {% if section.settings.background_image != blank %}
+      <img
+        src="{{ section.settings.background_image | image_url: width: 1600 }}"
+        alt=""
+        class="lom-hero-authority__bg-img"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {% endif %}
+  </div>
+
+  <div class="lom-container">
+    <div class="lom-hero-authority__content lom-fade-in">
+      <h1 class="lom-hero-authority__headline">{{ section.settings.headline }}</h1>
+      <p class="lom-hero-authority__subhead">{{ section.settings.subhead }}</p>
+
+      <div class="lom-hero-authority__ctas">
+        <a href="{{ section.settings.primary_cta_url }}" class="lom-cta-btn lom-cta-btn--hero">
+          {{ section.settings.primary_cta_text }}
+        </a>
+        {% if section.settings.price_line != blank %}
+          <p class="lom-hero-authority__price-line">{{ section.settings.price_line }}</p>
+        {% endif %}
+        <a href="#how-it-works" class="lom-hero-authority__secondary-cta">
+          {{ section.settings.secondary_cta_text }}
+        </a>
+      </div>
+    </div>
+
+    <div class="lom-hero-authority__trust-strip lom-fade-in">
+      {% for block in section.blocks %}
+        <div class="lom-hero-authority__trust-item" {{ block.shopify_attributes }}>
+          <span class="lom-hero-authority__trust-icon">
+            {% case block.settings.icon_type %}
+              {% when 'box' %}
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              {% when 'star' %}
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {% when 'leaf' %}
+                <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 18c4-2 7-4 10-8"/><path d="M2 2s7.5.5 11.5 4.5c3 3 4.5 7 4.5 7"/></svg>
+              {% when 'shield' %}
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            {% endcase %}
+          </span>
+          <span class="lom-hero-authority__trust-label">{{ block.settings.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Hero Authority",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Headaches. Brain Fog. Congestion. You Shouldn't Have to Push Through the Day Like This."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "One inhale of this century-old Thai herbal stick and the fog lifts in seconds — no pills, no caffeine crash, no chemicals."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary CTA text",
+      "default": "Get Instant Relief — Free US Shipping"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_url",
+      "label": "Primary CTA link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "price_line",
+      "label": "Price line below CTA",
+      "default": "Starting at $8 — Free US Shipping"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA text",
+      "default": "See How It Works ↓"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "box", "label": "Package/Box" },
+            { "value": "star", "label": "Star" },
+            { "value": "leaf", "label": "Leaf/Natural" },
+            { "value": "shield", "label": "Shield/Guarantee" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Legacy icon (unused)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "10,000+ Sold"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Hero Authority",
+      "blocks": [
+        { "type": "trust_item", "settings": { "icon_type": "box", "label": "10,000+ Sold" } },
+        { "type": "trust_item", "settings": { "icon_type": "star", "label": "4.8★ from 1,200+ Reviews" } },
+        { "type": "trust_item", "settings": { "icon_type": "leaf", "label": "100% Natural" } },
+        { "type": "trust_item", "settings": { "icon_type": "shield", "label": "30-Day Guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

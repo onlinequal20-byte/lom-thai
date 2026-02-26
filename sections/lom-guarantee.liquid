@@ -4,12 +4,16 @@
   <div class="lom-container">
     <div class="lom-guarantee__inner lom-reveal">
       <div class="lom-guarantee__badge">
+        <div class="lom-guarantee__shield">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <span class="lom-guarantee__badge-number">30</span>
         <span class="lom-guarantee__badge-text">Day Guarantee</span>
       </div>
       <div class="lom-guarantee__content">
         <h2>{{ section.settings.heading }}</h2>
         <p>{{ section.settings.text }}</p>
+        <p class="lom-guarantee__loss-aversion"><em>{{ section.settings.loss_aversion_text }}</em></p>
       </div>
     </div>
   </div>
@@ -23,13 +27,19 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Try It Risk-Free for 30 Days"
+      "default": "Try It for 30 Days. If It Doesn't Change How You Handle Your Worst Days, We'll Refund Every Penny."
     },
     {
       "type": "textarea",
       "id": "text",
       "label": "Text",
-      "default": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, just let us know and we'll refund every penny — no questions asked, no hassle. You have nothing to lose and natural relief to gain."
+      "default": "No forms. No fine print. No 'restocking fees.' Just email us and we send your money back. We can afford to do this because 97% of people never ask."
+    },
+    {
+      "type": "text",
+      "id": "loss_aversion_text",
+      "label": "Loss Aversion Text",
+      "default": "The only risk is spending another month reaching for chemicals."
     }
   ],
   "presets": [
@@ -39,3 +49,4 @@
   ]
 }
 {% endschema %}
+

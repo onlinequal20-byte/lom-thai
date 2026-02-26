@@ -1,0 +1,180 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-about">
+  <div class="lom-container">
+    <div class="lom-about__hero lom-reveal">
+      <h1>{{ section.settings.heading }}</h1>
+    </div>
+
+    <div class="lom-about__story">
+      {% for block in section.blocks %}
+        <div class="lom-about__block lom-reveal" {{ block.shopify_attributes }}>
+          {% if block.type == 'narrative' %}
+            <div class="lom-about__narrative">
+              {% if block.settings.image != blank %}
+                <div class="lom-about__image">
+                  {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image.alt }}
+                </div>
+              {% endif %}
+              <div class="lom-about__text">
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {% elsif block.type == 'founder' %}
+            <div class="lom-about__founder">
+              {% if block.settings.image != blank %}
+                <div class="lom-about__founder-photo">
+                  {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.name }}
+                </div>
+              {% endif %}
+              <div class="lom-about__founder-info">
+                <h3 class="lom-about__founder-name">{{ block.settings.name }}</h3>
+                <span class="lom-about__founder-role">{{ block.settings.role }}</span>
+                <p class="lom-about__founder-story">{{ block.settings.story }}</p>
+              </div>
+            </div>
+          {% elsif block.type == 'closing' %}
+            <div class="lom-about__closing">
+              <p><em>{{ block.settings.text }}</em></p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .lom-about { padding: 100px 0; background: var(--lt-charcoal); }
+  .lom-about__hero { text-align: center; margin-bottom: 60px; }
+  .lom-about__hero h1 { font-family: var(--lt-serif); font-size: clamp(32px, 5vw, 56px); color: var(--lt-cream); line-height: 1.1; max-width: 800px; margin: 0 auto; font-weight: 400; letter-spacing: -0.04em; }
+  .lom-about__story { max-width: 800px; margin: 0 auto; }
+  .lom-about__block { margin-bottom: 48px; }
+  .lom-about__block:last-child { margin-bottom: 0; }
+  .lom-about__narrative { display: flex; flex-direction: column; gap: 24px; }
+  .lom-about__image { border-radius: 12px; overflow: hidden; }
+  .lom-about__image img { width: 100%; height: auto; display: block; }
+  .lom-about__text p { font-family: var(--lt-sans); font-size: 17px; line-height: 1.8; color: var(--lt-text); }
+  .lom-about__closing { text-align: center; padding: 40px 0; border-top: 1px solid var(--lt-border); }
+  .lom-about__closing p { font-family: var(--lt-serif); font-size: 20px; line-height: 1.6; color: var(--lt-gold); max-width: 640px; margin: 0 auto; }
+  .lom-about__founder { display: flex; align-items: flex-start; gap: 24px; padding: 32px; background: var(--lt-glass); border-radius: 12px; border: 1px solid var(--lt-border); }
+  .lom-about__founder-photo { flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%; overflow: hidden; }
+  .lom-about__founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .lom-about__founder-info { flex: 1; }
+  .lom-about__founder-name { font-family: var(--lt-serif); font-size: 22px; color: var(--lt-cream); margin: 0 0 4px; font-weight: 400; }
+  .lom-about__founder-role { font-family: var(--lt-sans); font-size: 13px; color: var(--lt-gold); display: block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; }
+  .lom-about__founder-story { font-family: var(--lt-sans); font-size: 15px; line-height: 1.7; color: var(--lt-text-muted); margin: 0; }
+  @media (max-width: 768px) {
+    .lom-about { padding: 72px 0; }
+    .lom-about__hero { margin-bottom: 40px; }
+    .lom-about__block { margin-bottom: 36px; }
+    .lom-about__text p { font-size: 15px; }
+    .lom-about__founder { flex-direction: column; align-items: center; text-align: center; padding: 24px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Lom About",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "narrative",
+      "name": "Narrative Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "In Thailand, these herbal sticks aren't alternative medicine. They're the medicine. Every taxi driver, every street vendor, every grandmother carries one."
+        }
+      ]
+    },
+    {
+      "type": "founder",
+      "name": "Founder Block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Founder photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Founder Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role / Title",
+          "default": "Founder, Lom Thai"
+        },
+        {
+          "type": "textarea",
+          "id": "story",
+          "label": "Personal story",
+          "default": "I first discovered ya dom in a Bangkok pharmacy in 2019. One inhale and I understood why every Thai person carries one. I spent two years working with traditional herbalists to bring this exact formula to the West."
+        }
+      ]
+    },
+    {
+      "type": "closing",
+      "name": "Closing Statement",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Closing Text",
+          "default": "We're not a wellness startup. We're a bridge between ancient Thai relief and modern Western lives."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom About",
+      "blocks": [
+        {
+          "type": "narrative",
+          "settings": {
+            "text": "In Thailand, these herbal sticks aren't alternative medicine. They're the medicine. Every taxi driver, every street vendor, every grandmother carries one."
+          }
+        },
+        {
+          "type": "narrative",
+          "settings": {
+            "text": "We brought this formula to the West because we were tired of watching people choose between chemicals that don't work and coffee that makes them jittery."
+          }
+        },
+        {
+          "type": "narrative",
+          "settings": {
+            "text": "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
+          }
+        },
+        {
+          "type": "closing",
+          "settings": {
+            "text": "We're not a wellness startup. We're a bridge between ancient Thai relief and modern Western lives."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

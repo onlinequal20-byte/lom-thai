@@ -1,0 +1,129 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-pain-agitate">
+  <div class="lom-container">
+    <p class="lom-pain-eyebrow lom-fade-in">{{ section.settings.eyebrow }}</p>
+    <h2 class="lom-heading lom-fade-in">{{ section.settings.heading }}</h2>
+
+    <div class="lom-pain-grid">
+      {% for block in section.blocks %}
+        <div class="lom-pain-card lom-fade-in" {{ block.shopify_attributes }}>
+          <div class="lom-pain-card__icon">
+            <span class="lt-icon lt-icon--danger">
+              {% case block.settings.icon_type %}
+                {% when 'coffee' %}
+                  <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+                {% when 'pill' %}
+                  <svg viewBox="0 0 24 24"><path d="M10.5 1.5H8a6.5 6.5 0 100 13h8a6.5 6.5 0 000-13h-2.5" transform="rotate(45 12 12)"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
+                {% when 'fatigue' %}
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                {% else %}
+                  <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {% endcase %}
+            </span>
+          </div>
+          <h3 class="lom-pain-card__title">{{ block.settings.title }}</h3>
+          <p class="lom-pain-card__text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.transition_line != blank %}
+      <p class="lom-pain-transition lom-fade-in">{{ section.settings.transition_line }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lom Pain Agitation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Sound familiar?"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You've Tried Everything. Nothing Sticks."
+    },
+    {
+      "type": "textarea",
+      "id": "transition_line",
+      "label": "Transition line (below cards)",
+      "default": "What if relief didn't come with a tradeoff?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pain_card",
+      "name": "Pain Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "coffee", "label": "Coffee cup" },
+            { "value": "pill", "label": "Pill" },
+            { "value": "fatigue", "label": "Fatigue" },
+            { "value": "warning", "label": "Warning" }
+          ],
+          "default": "coffee"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Legacy icon (unused)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Energy drinks & coffee"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Pain description",
+          "default": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom Pain Agitation",
+      "blocks": [
+        {
+          "type": "pain_card",
+          "settings": {
+            "icon_type": "coffee",
+            "title": "Energy drinks & coffee",
+            "text": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue. Your heart races. Your hands shake. And you're still exhausted."
+          }
+        },
+        {
+          "type": "pain_card",
+          "settings": {
+            "icon_type": "pill",
+            "title": "Pharmacy sprays & pills",
+            "text": "Chemicals you can't pronounce. Side effects longer than the relief. And that foggy, medicated feeling that makes you wonder if the cure is worse."
+          }
+        },
+        {
+          "type": "pain_card",
+          "settings": {
+            "icon_type": "fatigue",
+            "title": "Just pushing through",
+            "text": "White-knuckling through headaches. Blinking hard to stay awake during your shift. Telling yourself 'I'll feel better tomorrow.' You won't."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
