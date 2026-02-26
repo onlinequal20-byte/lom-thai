@@ -9,14 +9,21 @@
       <div class="lom-product-hero__gallery">
         <div class="lom-product-hero__main-image" id="lom-main-image">
           {% if product.featured_image %}
-            <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | default: product.title }}" id="lom-product-img" loading="eager">
+            <img
+              src="{{ product.featured_image | image_url: width: 1200 }}"
+              alt="{{ product.featured_image.alt | default: product.title }}"
+              id="lom-product-img"
+              loading="eager"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
+            >
           {% endif %}
         </div>
         {% if product.images.size > 1 %}
           <div class="lom-product-hero__thumbs">
             {% for image in product.images %}
-              <button class="lom-product-hero__thumb {% if forloop.first %}is-active{% endif %}" onclick="document.getElementById('lom-product-img').src='{{ image | image_url: width: 1200 }}'; document.querySelectorAll('.lom-product-hero__thumb').forEach(function(t){t.classList.remove('is-active')}); this.classList.add('is-active');">
-                <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | default: product.title }}" loading="lazy" width="120">
+              <button type="button" class="lom-product-hero__thumb {% if forloop.first %}is-active{% endif %}" aria-label="View image {{ forloop.index }}" onclick="document.getElementById('lom-product-img').src='{{ image | image_url: width: 1200 }}'; document.querySelectorAll('.lom-product-hero__thumb').forEach(function(t){t.classList.remove('is-active')}); this.classList.add('is-active');">
+                <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | default: product.title }}" loading="lazy" width="120" height="120">
               </button>
             {% endfor %}
           </div>
@@ -76,7 +83,7 @@
               <label class="lom-product-hero__option-label">{{ option.name }}</label>
               <div class="lom-product-hero__option-values">
                 {% for value in option.values %}
-                  <button class="lom-product-hero__option-btn {% if option.selected_value == value %}is-active{% endif %}">{{ value }}</button>
+                  <button type="button" class="lom-product-hero__option-btn {% if option.selected_value == value %}is-active{% endif %}">{{ value }}</button>
                 {% endfor %}
               </div>
             </div>
@@ -86,15 +93,15 @@
         {%- comment -%} Bundle offer {%- endcomment -%}
         {% if section.settings.show_bundle %}
           <div class="lom-product-hero__bundles">
-            <div class="lom-product-hero__bundle is-active" data-quantity="1">
+            <button type="button" class="lom-product-hero__bundle is-active" data-quantity="1">
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
                 <strong>Try It</strong>
                 <span>See what the hype is about</span>
               </div>
               <div class="lom-product-hero__bundle-price">{{ product.price | money }}</div>
-            </div>
-            <div class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3">
+            </button>
+            <button type="button" class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3">
               <span class="lom-product-hero__bundle-badge">Most Popular</span>
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
@@ -105,8 +112,8 @@
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 3 | money }}</small>
                 {{ product.price | times: 3 | times: 80 | divided_by: 100 | money }}
               </div>
-            </div>
-            <div class="lom-product-hero__bundle" data-quantity="5">
+            </button>
+            <button type="button" class="lom-product-hero__bundle" data-quantity="5">
               <span class="lom-product-hero__bundle-badge lom-product-hero__bundle-badge--value">Best Value</span>
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
@@ -117,7 +124,7 @@
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 5 | money }}</small>
                 {{ product.price | times: 5 | times: 70 | divided_by: 100 | money }}
               </div>
-            </div>
+            </button>
           </div>
         {% endif %}
 
@@ -230,7 +237,7 @@
           <div class="lom-hero-accordions">
             {% for block in accordion_blocks %}
               <div class="lom-hero-accordion" {{ block.shopify_attributes }}>
-                <button class="lom-hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')">
+                <button type="button" class="lom-hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')">
                   <span>{{ block.settings.heading }}</span>
                   <span class="lom-hero-accordion__icon">+</span>
                 </button>
@@ -260,7 +267,7 @@
       <div class="lom-sticky-atc__title">{{ product.title }}</div>
       <div class="lom-sticky-atc__price">{{ product.price | money }}{% if product.compare_at_price > product.price %} <s style="color:var(--lom-text-light);font-size:12px">{{ product.compare_at_price | money }}</s>{% endif %}</div>
     </div>
-    <button class="lom-sticky-atc__btn" onclick="document.getElementById('lom-product-form').querySelector('button[type=submit]').click()">
+    <button type="button" class="lom-sticky-atc__btn" onclick="document.getElementById('lom-product-form').querySelector('button[type=submit]').click()">
       Add to Cart
     </button>
   </div>
@@ -465,4 +472,3 @@
   ]
 }
 {% endschema %}
-

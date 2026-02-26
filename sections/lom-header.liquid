@@ -34,7 +34,7 @@
           </svg>
         </a>
       {% endif %}
-      <a href="/cart" class="lom-header__icon lom-header__cart" aria-label="Cart">
+      <a href="/cart" id="cart-icon-bubble" class="lom-header__icon lom-header__cart" aria-label="Cart" aria-haspopup="dialog">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
         </svg>
@@ -59,14 +59,6 @@
       <a href="{{ link.url }}" class="lom-mobile-menu__link">{{ link.title }}</a>
     {% endfor %}
   </nav>
-  <div class="lom-mobile-menu__footer">
-    {% if shop.customer_accounts_enabled %}
-      <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="lom-mobile-menu__link lom-mobile-menu__link--small">Account</a>
-    {% endif %}
-    <a href="/pages/about" class="lom-mobile-menu__link lom-mobile-menu__link--small">Our Story</a>
-    <a href="/pages/faq" class="lom-mobile-menu__link lom-mobile-menu__link--small">FAQ</a>
-    <a href="/pages/contact" class="lom-mobile-menu__link lom-mobile-menu__link--small">Contact</a>
-  </div>
 </div>
 
 <script>
@@ -83,6 +75,18 @@
       }
       lastScroll = st;
     }, {passive:true});
+  })();
+
+  // Ensure custom cart icon opens Dawn cart drawer (slide-in) instead of redirecting
+  (function () {
+    var cartLink = document.getElementById('cart-icon-bubble');
+    if (!cartLink) return;
+    cartLink.addEventListener('click', function (event) {
+      var drawer = document.querySelector('cart-drawer');
+      if (!drawer || typeof drawer.open !== 'function') return;
+      event.preventDefault();
+      drawer.open(cartLink);
+    });
   })();
 </script>
 
@@ -109,4 +113,3 @@
   ]
 }
 {% endschema %}
-

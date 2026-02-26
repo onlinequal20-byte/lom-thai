@@ -363,24 +363,116 @@
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
     .lom-about__hero {
-      padding: 100px 0 72px;
+      padding: 66px 0 34px;
+    }
+    .lom-about__eyebrow {
+      margin-bottom: 12px;
+    }
+    .lom-about__title {
+      font-size: clamp(34px, 9vw, 46px);
+      margin-bottom: 14px;
+      line-height: 1.08;
+    }
+    .lom-about__subtitle {
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 92%;
     }
     .lom-about__narratives {
-      padding: 56px 0;
+      padding: 28px 0 44px;
+    }
+    .lom-about__narratives .lom-container {
+      position: relative;
+      padding-left: 16px;
+      padding-right: 16px;
     }
     .lom-about__narrative {
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-bottom: 56px;
+      display: block;
+      position: relative;
+      width: calc(50% - 22px);
+      margin-bottom: 62px;
+      padding: 22px 18px 18px;
+      border-radius: 18px;
+      background:
+        radial-gradient(130% 120% at 100% 0%, rgba(212, 175, 106, 0.13), rgba(212, 175, 106, 0) 45%),
+        linear-gradient(155deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025) 55%, rgba(255, 255, 255, 0.015));
+      border: 1px solid rgba(212, 175, 106, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      --lt-curve-width: 86px;
+      --lt-curve-height: 48px;
+      --lt-curve-color: rgba(212, 175, 106, 0.7);
+    }
+    .lom-about__narrative::before,
+    .lom-about__narrative::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+    .lom-about__narrative::before {
+      top: 30px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(212, 175, 106, 0.9);
+      background: var(--lt-dark);
+      left: 100%;
+      margin-left: 10px;
+      box-shadow: 0 0 0 4px rgba(212, 175, 106, 0.12), 0 0 16px rgba(212, 175, 106, 0.2);
+    }
+    .lom-about__narrative::after {
+      top: calc(100% - 16px);
+      left: calc(100% + 16px);
+      width: var(--lt-curve-width);
+      height: var(--lt-curve-height);
+      border-top: 1.5px solid var(--lt-curve-color);
+      border-right: 1.5px solid var(--lt-curve-color);
+      border-top-right-radius: 44px;
+      filter: drop-shadow(0 0 6px rgba(212, 175, 106, 0.2));
+      opacity: 0.95;
+    }
+    .lom-about__narrative:not(.lom-about__narrative--reverse) {
+      margin-right: auto;
+      margin-left: 0;
     }
     .lom-about__narrative--reverse {
       direction: ltr;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .lom-about__narrative--reverse::before {
+      left: auto;
+      right: 100%;
+      margin-left: 0;
+      margin-right: 10px;
+    }
+    .lom-about__narrative--reverse::after {
+      left: auto;
+      right: calc(100% + 16px);
+      border-top: 1.5px solid var(--lt-curve-color);
+      border-left: 1.5px solid var(--lt-curve-color);
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 44px;
+    }
+    .lom-about__narrative:last-child::after {
+      display: none;
     }
     .lom-about__narrative-num {
-      font-size: 48px;
+      font-size: 30px;
+      margin-bottom: 14px;
+      color: rgba(212, 175, 106, 0.3);
+      letter-spacing: -0.02em;
     }
     .lom-about__narrative-text p {
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(247, 243, 237, 0.9);
+      text-wrap: balance;
+    }
+    .lom-about__narrative-image {
+      display: none;
     }
     .lom-about__values {
       padding: 56px 0;
@@ -408,6 +500,34 @@
     }
     .lom-about__closing {
       padding: 56px 0;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .lom-about__hero {
+      padding: 58px 0 28px;
+    }
+    .lom-about__title {
+      margin-bottom: 12px;
+    }
+    .lom-about__subtitle {
+      max-width: 96%;
+    }
+    .lom-about__narrative {
+      width: calc(50% - 16px);
+      padding: 18px 14px 14px;
+      --lt-curve-width: 64px;
+      --lt-curve-height: 38px;
+    }
+    .lom-about__narrative::before {
+      top: 24px;
+    }
+    .lom-about__narrative-num {
+      font-size: 26px;
+    }
+    .lom-about__narrative-text p {
+      font-size: 13px;
+      line-height: 1.65;
     }
   }
 </style>

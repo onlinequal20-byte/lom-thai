@@ -280,13 +280,11 @@
     {{ 'lom-natural.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
-      {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
-    {%- endif -%}
+    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+    {{ 'component-totals.css' | asset_url | stylesheet_tag }}
+    {{ 'component-price.css' | asset_url | stylesheet_tag }}
+    {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
@@ -325,9 +323,7 @@
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
-    {%- endif -%}
+    {%- render 'cart-drawer' -%}
 
     {% sections 'header-group' %}
 
@@ -385,15 +381,44 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+
+      // Enforce drawer-only cart UX:
+      // if user lands on /cart, route to home and open the slide drawer.
+      (function () {
+        var cartPath = '{{ routes.cart_url }}';
+        var rootPath = '{{ routes.root_url }}';
+        var currentPath = window.location.pathname;
+        var params = new URLSearchParams(window.location.search);
+
+        if (currentPath === cartPath) {
+          if (params.get('open_cart') !== '1') {
+            var redirectUrl = rootPath + (rootPath.indexOf('?') > -1 ? '&' : '?') + 'open_cart=1';
+            window.location.replace(redirectUrl);
+            return;
+          }
+        }
+
+        if (params.get('open_cart') === '1') {
+          window.addEventListener('load', function () {
+            var drawer = document.querySelector('cart-drawer');
+            var trigger = document.getElementById('cart-icon-bubble');
+            if (drawer && typeof drawer.open === 'function') {
+              drawer.open(trigger || null);
+            }
+            params.delete('open_cart');
+            var next = params.toString();
+            var cleanUrl = window.location.pathname + (next ? '?' + next : '') + window.location.hash;
+            window.history.replaceState({}, '', cleanUrl);
+          });
+        }
+      })();
     </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
     <!-- Lom Thai: Scroll reveal observer (global) -->
     <script>
