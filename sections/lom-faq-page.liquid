@@ -1,0 +1,259 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-faq-page">
+  {%- comment -%} ===== HERO ===== {%- endcomment -%}
+  <div class="lom-faq-page__hero">
+    <div class="lom-faq-page__hero-glow"></div>
+    <div class="lom-container">
+      <div class="lom-faq-page__hero-content lom-reveal">
+        {% if section.settings.eyebrow != blank %}
+          <span class="lom-about__eyebrow">{{ section.settings.eyebrow }}</span>
+        {% endif %}
+        <h1 class="lom-about__title">{{ section.settings.heading }}</h1>
+        {% if section.settings.subtitle != blank %}
+          <p class="lom-about__subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ===== FAQ CATEGORIES ===== {%- endcomment -%}
+  {% assign categories = section.blocks | map: 'settings' | map: 'category' | uniq %}
+  {% for cat in categories %}
+    <div class="lom-faq-page__category">
+      <div class="lom-container">
+        <h2 class="lom-faq-page__cat-title">{{ cat }}</h2>
+        <div class="lom-faq-list">
+          {% for block in section.blocks %}
+            {% if block.settings.category == cat %}
+              <div class="lom-faq-item lom-fade-in" {{ block.shopify_attributes }}>
+                <button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">
+                  {{ block.settings.question }}
+                  <span class="lom-faq-toggle">+</span>
+                </button>
+                <div class="lom-faq-answer">
+                  <p>{{ block.settings.answer }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  {%- comment -%} ===== STILL HAVE QUESTIONS CTA ===== {%- endcomment -%}
+  <div class="lom-faq-page__cta">
+    <div class="lom-container">
+      <div class="lom-faq-page__cta-card lom-reveal">
+        <div class="lom-faq-page__cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3 class="lom-faq-page__cta-heading">{{ section.settings.cta_heading }}</h3>
+        <p class="lom-faq-page__cta-text">{{ section.settings.cta_text }}</p>
+        <a href="{{ section.settings.cta_url }}" class="lom-btn lom-btn--primary">{{ section.settings.cta_button }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ===== FAQ PAGE — BASE ===== */
+  .lom-faq-page {
+    background: var(--lt-dark);
+    color: var(--lt-text);
+  }
+
+  /* ===== HERO ===== */
+  .lom-faq-page__hero {
+    position: relative;
+    padding: 140px 0 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .lom-faq-page__hero-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,175,106,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lom-faq-page__hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== CATEGORIES ===== */
+  .lom-faq-page__category {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--lt-border);
+  }
+  .lom-faq-page__category:last-of-type {
+    border-bottom: none;
+  }
+  .lom-faq-page__cat-title {
+    font-family: var(--lt-serif);
+    font-size: clamp(22px, 3vw, 32px);
+    color: var(--lt-gold);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0 0 32px;
+  }
+
+  /* ===== STILL HAVE QUESTIONS CTA ===== */
+  .lom-faq-page__cta {
+    padding: 80px 0;
+  }
+  .lom-faq-page__cta-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 56px 40px;
+    background: var(--lt-glass);
+    border-radius: 16px;
+    border: 1px solid var(--lt-border);
+  }
+  .lom-faq-page__cta-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(212,175,106,0.08);
+    border: 1px solid rgba(212,175,106,0.15);
+    color: var(--lt-gold);
+  }
+  .lom-faq-page__cta-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .lom-faq-page__cta-heading {
+    font-family: var(--lt-serif);
+    font-size: clamp(22px, 3vw, 30px);
+    color: var(--lt-cream);
+    font-weight: 400;
+    margin: 0 0 12px;
+  }
+  .lom-faq-page__cta-text {
+    font-family: var(--lt-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--lt-text-muted);
+    margin: 0 0 28px;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .lom-faq-page__hero {
+      padding: 100px 0 56px;
+    }
+    .lom-faq-page__category {
+      padding: 32px 0;
+    }
+    .lom-faq-page__cta {
+      padding: 56px 0;
+    }
+    .lom-faq-page__cta-card {
+      padding: 40px 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Lom FAQ Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Help Center"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Everything you need to know about Lom Thai — from ingredients to shipping to how it works."
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA Heading",
+      "default": "Still Have Questions?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Our team typically responds within a few hours. We're happy to help with anything."
+    },
+    {
+      "type": "text",
+      "id": "cta_button",
+      "label": "CTA Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Product & Safety"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is this a drug or medication?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "No. Lom Thai is a 100% natural herbal aromatherapy product."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lom FAQ Page",
+      "blocks": [
+        { "type": "question", "settings": { "category": "Product & Safety", "question": "Is Lom Thai actually safe?", "answer": "5 ingredients. All plant-based. Used by millions in Thailand for over a century. It's not a drug, medication, or supplement — it's a natural herbal aromatherapy stick used through inhalation and topical application. As with any product, discontinue use if irritation occurs." } },
+        { "type": "question", "settings": { "category": "Product & Safety", "question": "How is this different from Vicks?", "answer": "Vicks is petroleum-based with synthetic menthol. Lom Thai uses pure plant extracts — menthol, camphor, eucalyptus, borneol, and lemon — in a century-old Thai formula. Different universe. Thai herbalists perfected this blend generations before Vicks existed." } },
+        { "type": "question", "settings": { "category": "Product & Safety", "question": "What are the ingredients?", "answer": "Menthol (40% concentration — 3x industry standard), camphor, eucalyptus oil, borneol, and lemon oil. All plant-based, all naturally sourced. Nothing synthetic, nothing artificial, nothing you can't pronounce." } },
+        { "type": "question", "settings": { "category": "Product & Safety", "question": "Is it TSA / airport safe?", "answer": "Yes. It's a solid stick, well under any liquid limits. Thousands of our customers fly with it. Pocket-sized, flight-friendly, and the only thing you'll actually want to pack." } },
+        { "type": "question", "settings": { "category": "How to Use", "question": "How do I use it?", "answer": "Two ways: Top end is a nasal inhaler — breathe in the aromatic herbal blend for a refreshing sensation. Bottom end is a rollerball applicator — roll onto temples, neck, or under your nose. Two tools, one pocket-sized stick." } },
+        { "type": "question", "settings": { "category": "How to Use", "question": "How quickly can I feel the aroma?", "answer": "The aromatic experience is immediate — one inhale and you'll notice the herbal blend. Many people in Thailand have traditionally used this type of inhaler throughout their day for a refreshing sensation." } },
+        { "type": "question", "settings": { "category": "How to Use", "question": "How long does one stick last?", "answer": "Several months with daily use. One $8 stick delivers premium relief longer than a month's worth of energy drinks or pharmacy sprays — for a fraction of the cost." } },
+        { "type": "question", "settings": { "category": "How to Use", "question": "What's the difference between the two ends?", "answer": "Top end: nasal inhaler — breathe in the aromatic herbal blend for a refreshing sensation. Bottom end: rollerball applicator — roll onto temples, neck, or under your nose. Two tools, one pocket-sized stick." } },
+        { "type": "question", "settings": { "category": "Shipping & Returns", "question": "Do you ship internationally?", "answer": "Free US shipping (5-7 business days). Free EU shipping (5-10 business days). Ships within 24 hours. Every order is backed by our 30-day money-back guarantee, no matter where you are." } },
+        { "type": "question", "settings": { "category": "Shipping & Returns", "question": "What if it doesn't work for me?", "answer": "Email us. Full refund. No forms, no shipping it back, no 'restocking fee.' 97% of people keep it — but if you're in the 3%, we'll make it right without a single question." } },
+        { "type": "question", "settings": { "category": "Shipping & Returns", "question": "How do I track my order?", "answer": "You'll receive a tracking email as soon as your order ships (within 24 hours). You can also visit our Track Order page anytime to check your delivery status." } },
+        { "type": "question", "settings": { "category": "Shipping & Returns", "question": "What's your return policy?", "answer": "30-day money-back guarantee on every order. No forms, no shipping it back, no questions asked. Just email us and we'll refund you. We can afford this because 97% of people keep their Lom Thai." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

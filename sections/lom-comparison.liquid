@@ -13,58 +13,68 @@
       {% endif %}
     </div>
 
-    {%- comment -%} Enemy-framed column headers {%- endcomment -%}
-    <div class="lom-compare__columns lom-fade-in">
-      {%- comment -%} Lom Thai (hero column) {%- endcomment -%}
-      <div class="lom-compare__col lom-compare__col--hero">
-        <div class="lom-compare__col-name">{{ section.settings.brand_name }}</div>
-        <p class="lom-compare__col-desc lom-compare__col-desc--hero">{{ section.settings.brand_tagline }}</p>
-      </div>
+    {% assign competitor_blocks = section.blocks | where: 'type', 'competitor' %}
+    {% assign row_blocks = section.blocks | where: 'type', 'row' %}
+    {% assign total_cols = competitor_blocks.size | plus: 2 %}
 
-      {%- comment -%} Competitor columns with emotional enemy copy {%- endcomment -%}
-      {% for block in section.blocks %}
-        {% if block.type == 'competitor' %}
-          <div class="lom-compare__col lom-compare__col--enemy" {{ block.shopify_attributes }}>
-            <div class="lom-compare__col-name">{{ block.settings.name }}</div>
-            <p class="lom-compare__col-desc lom-compare__col-desc--enemy">{{ block.settings.enemy_copy }}</p>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
+    {%- comment -%} Scrollable table wrapper for mobile {%- endcomment -%}
+    <div class="lom-compare__table-wrap lom-fade-in">
+      <table class="lom-compare__table" role="table">
+        <thead>
+          <tr>
+            <th class="lom-compare__th lom-compare__th--feature"></th>
+            <th class="lom-compare__th lom-compare__th--brand">
+              <div class="lom-compare__brand-badge">
+                <svg class="lom-compare__crown" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg>
+                <span>{{ section.settings.brand_name }}</span>
+              </div>
+            </th>
+            {% for comp in competitor_blocks %}
+              <th class="lom-compare__th lom-compare__th--comp" {{ comp.shopify_attributes }}>
+                {{ comp.settings.name }}
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in row_blocks %}
+            <tr class="lom-compare__tr" {{ block.shopify_attributes }}>
+              <td class="lom-compare__td lom-compare__td--feature">{{ block.settings.feature }}</td>
 
-    {%- comment -%} Feature comparison rows {%- endcomment -%}
-    <div class="lom-compare__rows lom-fade-in">
-      {% for block in section.blocks %}
-        {% if block.type == 'row' %}
-          <div class="lom-compare__row" {{ block.shopify_attributes }}>
-            <div class="lom-compare__row-feature">{{ block.settings.feature }}</div>
-            <div class="lom-compare__row-values">
-              {%- comment -%} Brand value {%- endcomment -%}
-              <div class="lom-compare__row-cell lom-compare__row-cell--brand" data-label="{{ section.settings.brand_name }}">
+              {%- comment -%} Brand cell {%- endcomment -%}
+              <td class="lom-compare__td lom-compare__td--brand">
                 {% assign bv = block.settings.brand_value %}
                 {% if bv contains '✓' %}
-                  <span class="lom-compare__check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span class="lom-compare__icon lom-compare__icon--yes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
                 {% endif %}
-                <span>{{ bv | remove: '✓' | strip }}</span>
-              </div>
-              {%- comment -%} Competitor values {%- endcomment -%}
-              {% assign competitor_blocks = section.blocks | where: 'type', 'competitor' %}
+                <span class="lom-compare__val">{{ bv | remove: '✓' | remove: '✗' | strip }}</span>
+              </td>
+
+              {%- comment -%} Competitor cells {%- endcomment -%}
               {% assign comp_values = block.settings.competitor_1 | append: '|||' | append: block.settings.competitor_2 | append: '|||' | append: block.settings.competitor_3 | append: '|||' | append: block.settings.competitor_4 %}
               {% assign comp_array = comp_values | split: '|||' %}
               {% for val in comp_array %}
-                {% if val != blank %}
-                  <div class="lom-compare__row-cell {% if val contains '✗' %}lom-compare__row-cell--lose{% endif %}" data-label="{{ competitor_blocks[forloop.index0].settings.name | default: '' }}">
+                {% if forloop.index0 < competitor_blocks.size and val != blank %}
+                  <td class="lom-compare__td lom-compare__td--comp {% if val contains '✗' %}lom-compare__td--fail{% elsif val contains '✓' %}lom-compare__td--pass{% endif %}">
                     {% if val contains '✗' %}
-                      <span class="lom-compare__cross"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                      <span class="lom-compare__icon lom-compare__icon--no">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                      </span>
+                    {% elsif val contains '✓' %}
+                      <span class="lom-compare__icon lom-compare__icon--partial">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
                     {% endif %}
-                    <span>{{ val | remove: '✗' | remove: '✓' | strip }}</span>
-                  </div>
+                    <span>{{ val | remove: '✓' | remove: '✗' | strip }}</span>
+                  </td>
                 {% endif %}
               {% endfor %}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
     {%- comment -%} Bottom CTA {%- endcomment -%}

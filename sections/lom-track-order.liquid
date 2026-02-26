@@ -1,0 +1,426 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<section class="lom-track">
+  <div class="lom-track__bg">
+    <div class="lom-track__bg-glow"></div>
+  </div>
+
+  <div class="lom-container">
+    <!-- Hero tracker card -->
+    <div class="lom-track__card lom-reveal">
+      <div class="lom-track__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="12" fill="rgba(212,175,106,0.12)"/>
+          <path d="M14 20h12v2H14v-2zm0 4h8v2h-8v-2zm20-8H14a2 2 0 00-2 2v12a2 2 0 002 2h20a2 2 0 002-2V18a2 2 0 00-2-2zm0 14H14V18h20v12z" fill="var(--lt-gold)"/>
+          <circle cx="30" cy="28" r="4" stroke="var(--lt-gold)" stroke-width="1.5" fill="none"/>
+          <path d="M33 31l2 2" stroke="var(--lt-gold)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h1 class="lom-track__title">{{ section.settings.heading }}</h1>
+      <p class="lom-track__subtitle">{{ section.settings.text }}</p>
+
+      <div class="lom-track__form">
+        <div class="lom-track__input-group">
+          <input
+            type="text"
+            id="lom-tracking-input"
+            class="lom-track__input"
+            placeholder="{{ section.settings.placeholder }}"
+            autocomplete="off"
+          >
+          <button class="lom-track__btn" onclick="lomTrackOrder()" aria-label="Track order">
+            <span>{{ section.settings.button_text }}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <p class="lom-track__hint">Enter the tracking number from your confirmation email</p>
+      </div>
+
+      <div id="lom-tracking-result" class="lom-track__result"></div>
+    </div>
+
+    <!-- Trust / info row -->
+    <div class="lom-track__trust lom-reveal">
+      <div class="lom-track__trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>Secure Shipping</strong>
+          <span>Tracked & insured delivery</span>
+        </div>
+      </div>
+      <div class="lom-track__trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div>
+          <strong>Real-Time Updates</strong>
+          <span>Live tracking status</span>
+        </div>
+      </div>
+      <div class="lom-track__trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div>
+          <strong>Need Help?</strong>
+          <span>Contact us anytime</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ section -->
+    <div class="lom-track__faq lom-reveal">
+      <h2 class="lom-track__faq-title">Common Questions</h2>
+      <div class="lom-track__faq-grid">
+        <details class="lom-track__faq-item">
+          <summary>Where do I find my tracking number?</summary>
+          <p>Your tracking number is included in the shipping confirmation email sent when your order ships. Check your inbox (and spam folder) for an email from Lom Thai.</p>
+        </details>
+        <details class="lom-track__faq-item">
+          <summary>How long does shipping take?</summary>
+          <p>Standard shipping takes 5–10 business days. Express shipping is 2–4 business days. International orders may take up to 14 business days depending on your location.</p>
+        </details>
+        <details class="lom-track__faq-item">
+          <summary>My tracking hasn't updated?</summary>
+          <p>Tracking information can take 24–48 hours to update after shipping. If there's no update after 3 days, please contact our support team for assistance.</p>
+        </details>
+        <details class="lom-track__faq-item">
+          <summary>Can I change my delivery address?</summary>
+          <p>Address changes are possible within 2 hours of placing your order. After that, please contact our support team and we'll do our best to help.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ============================================================
+   LOM TRACK ORDER — Premium branded tracking page
+   ============================================================ */
+.lom-track {
+  position: relative;
+  background: var(--lt-black);
+  padding: var(--lt-section-pad) 0;
+  overflow: hidden;
+  min-height: 80vh;
+}
+.lom-track__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.lom-track__bg-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--lt-gold-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  filter: blur(80px);
+}
+
+/* Card */
+.lom-track__card {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--lt-charcoal);
+  border: 1px solid var(--lt-border-light);
+  border-radius: 20px;
+  padding: 56px 48px;
+  text-align: center;
+}
+.lom-track__icon {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+.lom-track__title {
+  font-family: var(--lt-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  color: var(--lt-cream);
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+.lom-track__subtitle {
+  font-family: var(--lt-sans);
+  font-size: 15px;
+  color: var(--lt-text-muted);
+  line-height: 1.6;
+  margin: 0 0 36px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form */
+.lom-track__form {
+  max-width: 480px;
+  margin: 0 auto;
+}
+.lom-track__input-group {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--lt-border-light);
+  transition: border-color 0.3s;
+}
+.lom-track__input-group:focus-within {
+  border-color: var(--lt-gold);
+  box-shadow: 0 0 0 3px var(--lt-gold-glow);
+}
+.lom-track__input {
+  flex: 1;
+  background: var(--lt-dark);
+  border: none;
+  padding: 16px 20px;
+  font-family: var(--lt-sans);
+  font-size: 15px;
+  color: var(--lt-cream);
+  outline: none;
+  min-width: 0;
+}
+.lom-track__input::placeholder {
+  color: var(--lt-text-muted);
+}
+.lom-track__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--lt-gold), var(--lt-gold-dark));
+  color: var(--lt-black);
+  border: none;
+  padding: 16px 28px;
+  font-family: var(--lt-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.lom-track__btn:hover {
+  background: linear-gradient(135deg, var(--lt-gold-light), var(--lt-gold));
+  transform: translateX(2px);
+}
+.lom-track__btn svg {
+  transition: transform 0.3s;
+}
+.lom-track__btn:hover svg {
+  transform: translateX(3px);
+}
+.lom-track__hint {
+  font-family: var(--lt-sans);
+  font-size: 12px;
+  color: var(--lt-text-muted);
+  margin: 12px 0 0;
+  opacity: 0.7;
+}
+
+/* Result */
+.lom-track__result {
+  margin-top: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.lom-track__result:empty {
+  display: none;
+}
+
+/* Trust strip */
+.lom-track__trust {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  max-width: 800px;
+  margin: 56px auto 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--lt-border);
+}
+.lom-track__trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+.lom-track__trust-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.lom-track__trust-item strong {
+  display: block;
+  font-family: var(--lt-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lt-cream);
+  letter-spacing: 0.02em;
+}
+.lom-track__trust-item span {
+  display: block;
+  font-family: var(--lt-sans);
+  font-size: 12px;
+  color: var(--lt-text-muted);
+  margin-top: 2px;
+}
+
+/* FAQ */
+.lom-track__faq {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 64px auto 0;
+}
+.lom-track__faq-title {
+  font-family: var(--lt-serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--lt-cream);
+  text-align: center;
+  margin: 0 0 28px;
+}
+.lom-track__faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lom-track__faq-item {
+  background: var(--lt-charcoal);
+  border: 1px solid var(--lt-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.lom-track__faq-item[open] {
+  border-color: var(--lt-border-light);
+}
+.lom-track__faq-item summary {
+  padding: 18px 24px;
+  font-family: var(--lt-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lt-cream);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lom-track__faq-item summary::-webkit-details-marker { display: none; }
+.lom-track__faq-item summary::after {
+  content: '+';
+  font-size: 18px;
+  color: var(--lt-gold);
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+.lom-track__faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.lom-track__faq-item p {
+  padding: 0 24px 18px;
+  margin: 0;
+  font-family: var(--lt-sans);
+  font-size: 13px;
+  color: var(--lt-text-muted);
+  line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .lom-track {
+    padding: var(--lt-section-pad-mobile) 0;
+  }
+  .lom-track__card {
+    padding: 40px 24px;
+    border-radius: 16px;
+  }
+  .lom-track__input-group {
+    flex-direction: column;
+    border-radius: 12px;
+  }
+  .lom-track__input {
+    border-radius: 0;
+    text-align: center;
+  }
+  .lom-track__btn {
+    justify-content: center;
+    padding: 14px 24px;
+  }
+  .lom-track__trust {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .lom-track__trust-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+}
+</style>
+
+<script>
+function lomTrackOrder() {
+  var num = document.getElementById('lom-tracking-input').value.trim();
+  if (!num) {
+    document.getElementById('lom-tracking-input').focus();
+    return;
+  }
+  var result = document.getElementById('lom-tracking-result');
+  result.innerHTML = '<div style="text-align:center;padding:40px;color:var(--lt-text-muted);font-family:var(--lt-sans);font-size:14px;"><div style="margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:lom-spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>Looking up your order...</div><style>@keyframes lom-spin{to{transform:rotate(360deg)}}</style>';
+  if (typeof YQV5 !== 'undefined') {
+    YQV5.trackSingle({ YQ_ContainerId: 'lom-tracking-result', YQ_Height: 560, YQ_Fc: '0', YQ_Lang: 'en', YQ_Num: num });
+  } else {
+    result.innerHTML = '<div style="text-align:center;padding:40px;background:var(--lt-charcoal);border-radius:12px;border:1px solid var(--lt-border);font-family:var(--lt-sans);"><p style="color:var(--lt-cream);font-size:15px;margin:0 0 8px;">Tracking: <strong>' + num + '</strong></p><p style="color:var(--lt-text-muted);font-size:13px;margin:0;">Please check back shortly or contact us for updates.</p></div>';
+  }
+}
+
+// Allow Enter key to trigger tracking
+document.getElementById('lom-tracking-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') lomTrackOrder();
+});
+</script>
+
+<script defer type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+
+{% schema %}
+{
+  "name": "Lom Track Order",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Track Your Order"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Enter your tracking number below to see real-time updates on your Lom Thai order."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input placeholder",
+      "default": "Enter your tracking number"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Track Order"
+    }
+  ],
+  "presets": [{ "name": "Lom Track Order" }]
+}
+{% endschema %}

@@ -3,7 +3,9 @@
     "about": {
       "type": "lom-about",
       "settings": {
-        "heading": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago."
+        "eyebrow": "Our Story",
+        "heading": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago.",
+        "subtitle": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
       },
       "blocks": {
         "narrative_1": {
@@ -22,6 +24,38 @@
           "type": "narrative",
           "settings": {
             "text": "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
+          }
+        },
+        "value_1": {
+          "type": "value_pillar",
+          "settings": {
+            "icon": "leaf",
+            "label": "100% Natural",
+            "text": "Five plant-based ingredients, nothing synthetic"
+          }
+        },
+        "value_2": {
+          "type": "value_pillar",
+          "settings": {
+            "icon": "clock",
+            "label": "Century-Old Formula",
+            "text": "Perfected by Thai herbalists over generations"
+          }
+        },
+        "value_3": {
+          "type": "value_pillar",
+          "settings": {
+            "icon": "globe",
+            "label": "Made in Thailand",
+            "text": "Small-batch crafted in traditional facilities"
+          }
+        },
+        "value_4": {
+          "type": "value_pillar",
+          "settings": {
+            "icon": "shield",
+            "label": "GMP Certified",
+            "text": "Third-party tested for purity and potency"
           }
         },
         "founder": {
@@ -43,6 +77,10 @@
         "narrative_1",
         "narrative_2",
         "narrative_3",
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4",
         "founder",
         "closing"
       ]
