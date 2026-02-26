@@ -109,11 +109,11 @@ body {
 
 .lom-bg-cream { background: var(--lt-charcoal); }
 
-.lom-hide-mobile { display: block; }
-.lom-hide-desktop { display: none; }
+.lom-hide-mobile { display: block !important; }
+.lom-hide-desktop { display: none !important; }
 @media (max-width: 768px) {
-  .lom-hide-mobile { display: none; }
-  .lom-hide-desktop { display: block; }
+  .lom-hide-mobile { display: none !important; }
+  .lom-hide-desktop { display: block !important; }
 }
 
 /* ============================================================
@@ -2330,8 +2330,40 @@ h1, h2, h3, h4, h5, h6,
 .lom-footer__payment svg { height: 24px; width: auto; }
 
 @media (max-width: 768px) {
-  .lom-footer__grid { grid-template-columns: repeat(2, 1fr); }
-  .lom-footer__bottom-inner { flex-direction: column; }
+  .lom-footer__brand {
+    padding: 48px 0 32px;
+  }
+  .lom-footer__columns {
+    padding: 32px 0;
+  }
+  .lom-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .lom-footer__col-title {
+    margin-bottom: 12px;
+  }
+  .lom-footer__col--newsletter {
+    border-top: 1px solid var(--lt-border);
+    padding-top: 28px;
+  }
+  .lom-footer__bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .lom-footer__legal {
+    justify-content: center;
+    gap: 12px 16px;
+  }
+  .lom-footer__social {
+    justify-content: center;
+  }
+  .lom-footer__payment {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 /* ============================================================
@@ -3718,3 +3750,1093 @@ variant-radios input:checked + label { border-color: var(--lt-gold) !important; 
 /* Image hover */
 .card__media img, .media img { transition: transform 0.6s ease !important; }
 .card-wrapper:hover .card__media img, .card-wrapper:hover .media img { transform: scale(1.03) !important; }
+
+/* ============================================================
+   COMPREHENSIVE MOBILE OPTIMIZATION v1.0
+   Covers every page & section for perfect mobile experience
+   ============================================================ */
+
+/* --- Prevent any horizontal overflow site-wide --- */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ============================================================
+   TABLET BREAKPOINT (769px – 1024px)
+   ============================================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --lt-section-pad: 80px;
+  }
+
+  .lom-container, .lom-container--wide {
+    padding: 0 32px;
+  }
+
+  /* Hero */
+  .lom-hero-authority .lom-container {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .lom-hero-authority__headline {
+    font-size: clamp(36px, 5vw, 52px);
+  }
+  .lom-hero-authority__trust-strip {
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+  }
+
+  /* Pain grid */
+  .lom-pain-agitate { padding: 80px 0; }
+  .lom-pain-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Showcase */
+  .lom-showcase { padding: 80px 0; }
+  .lom-showcase-content {
+    gap: 48px;
+  }
+
+  /* Steps */
+  .lom-steps { padding: 80px 0; }
+  .lom-steps-container {
+    gap: 32px;
+  }
+
+  /* Reviews */
+  .lom-reviews { padding: 80px 0; }
+  .lom-reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Ingredients */
+  .lom-ingredients { padding: 80px 0; }
+  .lom-ingredients-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Offer stack */
+  .lom-offer-stack { padding: 80px 0; }
+  .lom-offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
+  }
+
+  /* Product hero */
+  .lom-product-hero__grid {
+    gap: 40px;
+  }
+
+  /* Contact */
+  .lom-contact__grid {
+    gap: 32px;
+  }
+  .lom-contact__form-wrap {
+    padding: 32px;
+  }
+
+  /* Footer */
+  .lom-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Comparison */
+  .lom-compare { padding: 80px 0; }
+
+  /* FAQ */
+  .lom-faq { padding: 80px 0; }
+
+  /* Final CTA */
+  .lom-final-cta { padding: 80px 0; }
+  .lom-final-cta__inner {
+    padding: 40px;
+    gap: 40px;
+  }
+
+  /* Guarantee */
+  .lom-guarantee { padding: 80px 0; }
+  .lom-guarantee__inner {
+    padding: 40px;
+  }
+}
+
+/* ============================================================
+   MOBILE MASTER BREAKPOINT (max-width: 768px)
+   Enhanced & comprehensive — fills gaps in original queries
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- GLOBAL MOBILE RESETS --- */
+  body {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  .lom-container, .lom-container--wide {
+    padding: 0 16px;
+  }
+
+  /* Consistent section padding */
+  :root {
+    --lt-section-pad-mobile: 56px;
+  }
+
+  /* --- TYPOGRAPHY MOBILE --- */
+  .lom-heading {
+    font-size: clamp(28px, 7vw, 38px);
+    margin-bottom: 12px;
+  }
+
+  .lom-heading-subtitle {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 40px;
+  }
+
+  .lt-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  /* --- ICON SYSTEM MOBILE --- */
+  .lt-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .lt-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .lt-icon--lg {
+    width: 52px;
+    height: 52px;
+  }
+  .lt-icon--lg svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* --- HEADER MOBILE --- */
+  .lom-header {
+    padding: 14px 0;
+  }
+  .lom-header__inner {
+    padding: 0 16px;
+  }
+  .lom-header__logo-text {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+  .lom-header__logo img {
+    height: 32px;
+  }
+  .lom-header__nav {
+    display: none;
+  }
+
+  /* --- ANNOUNCEMENT BAR MOBILE --- */
+  .lom-announce {
+    padding: 8px 0;
+  }
+  .lom-announce__text {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  /* --- HERO AUTHORITY MOBILE (enhanced) --- */
+  .lom-hero-authority {
+    min-height: auto;
+    align-items: flex-end;
+  }
+  .lom-hero-authority .lom-container {
+    padding: 48px 16px 32px;
+  }
+  .lom-hero-authority__headline {
+    font-size: clamp(26px, 7vw, 36px);
+    margin-bottom: 12px;
+    line-height: 1.12;
+  }
+  .lom-hero-authority__subhead {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .lom-hero-authority__ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .lom-cta-btn--hero {
+    width: 100%;
+    text-align: center;
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  .lom-hero-authority__price-line {
+    font-size: 12px;
+    text-align: center;
+  }
+  .lom-hero-authority__secondary-cta {
+    text-align: center;
+    font-size: 12px;
+    display: block;
+  }
+  .lom-hero-authority__trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 18px;
+  }
+  .lom-hero-authority__trust-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+  }
+  .lom-hero-authority__trust-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  .lom-hero-authority__trust-label {
+    font-size: 11px;
+  }
+
+  /* --- PAIN AGITATION MOBILE (enhanced) --- */
+  .lom-pain-agitate {
+    padding: 48px 0;
+  }
+  .lom-pain-agitate .lom-heading {
+    margin-bottom: 32px;
+  }
+  .lom-pain-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .lom-pain-card {
+    padding: 24px 20px;
+    border-radius: 10px;
+  }
+  .lom-pain-card__title {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+  .lom-pain-card__text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .lom-pain-transition {
+    font-size: 18px;
+    padding: 0 8px;
+  }
+
+  /* --- SHOWCASE MOBILE (enhanced) --- */
+  .lom-showcase {
+    padding: 48px 0;
+  }
+  .lom-showcase-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .lom-showcase-image {
+    order: -1;
+  }
+  .lom-showcase-text h2 {
+    font-size: clamp(26px, 6vw, 34px);
+    margin-bottom: 14px;
+  }
+  .lom-showcase-text p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .lom-showcase-subhead {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .lom-benefit-blocks {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .lom-benefit-block {
+    padding: 18px 16px;
+  }
+  .lom-benefit-outcome {
+    font-size: 17px;
+  }
+  .lom-benefit-life-impact {
+    font-size: 13px;
+  }
+  .lom-showcase-identity {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  /* --- STEPS MOBILE (enhanced) --- */
+  .lom-steps {
+    padding: 48px 0;
+  }
+  .lom-steps-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .lom-steps-container::before {
+    display: none;
+  }
+  .lom-step-number {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .lom-step h3 {
+    font-size: 19px;
+  }
+  .lom-step p {
+    font-size: 14px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .lom-steps-transition {
+    font-size: 14px;
+    margin-top: 32px;
+  }
+
+  /* --- REVIEWS MOBILE (enhanced) --- */
+  .lom-reviews {
+    padding: 48px 0;
+  }
+  .lom-reviews-stats-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    padding: 18px 16px;
+    margin-bottom: 32px;
+    justify-content: center;
+  }
+  .lom-reviews-stats-bar__number {
+    font-size: 24px;
+  }
+  .lom-reviews-stats-bar__label {
+    font-size: 9px;
+  }
+  .lom-reviews-stats-bar__divider {
+    height: 32px;
+  }
+  .lom-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .lom-review-card {
+    padding: 24px 20px;
+  }
+  .lom-review-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .lom-review-author {
+    gap: 10px;
+    padding-top: 16px;
+  }
+  .lom-review-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  /* --- COMPARISON TABLE MOBILE (complete rework) --- */
+  .lom-compare {
+    padding: 48px 0;
+  }
+  .lom-compare__header {
+    margin-bottom: 28px;
+  }
+  .lom-compare__table-wrap {
+    border-radius: 10px;
+    margin: 0 -4px;
+  }
+  .lom-compare__table {
+    min-width: 520px;
+    font-size: 12px;
+  }
+  .lom-compare__th {
+    padding: 12px 8px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .lom-compare__th--feature {
+    width: 25%;
+  }
+  .lom-compare__th--comp {
+    width: 15%;
+  }
+  .lom-compare__brand-badge span {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+  .lom-compare__crown {
+    width: 14px;
+    height: 14px;
+  }
+  .lom-compare__td {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+  .lom-compare__td--feature {
+    font-size: 11px;
+  }
+  .lom-compare__icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+  }
+  .lom-compare__icon--yes svg {
+    width: 10px;
+    height: 10px;
+  }
+  .lom-compare__icon--no svg,
+  .lom-compare__icon--partial svg {
+    width: 8px;
+    height: 8px;
+  }
+  .lom-compare__cta {
+    margin-top: 32px;
+  }
+
+  /* --- INGREDIENTS MOBILE (enhanced) --- */
+  .lom-ingredients {
+    padding: 48px 0;
+  }
+  .lom-ingredients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .lom-ingredient-card {
+    padding: 24px 14px;
+  }
+  .lom-ingredient-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+  }
+  .lom-ingredient-name {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .lom-ingredient-benefit {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .lom-ingredient-sourcing {
+    font-size: 9px;
+    margin-top: 8px;
+  }
+  .lom-ingredients-formulation {
+    margin-top: 28px;
+    padding: 18px 16px;
+  }
+  .lom-formulation-text {
+    font-size: 13px;
+  }
+  .lom-ingredients-badges {
+    gap: 16px 20px;
+    margin-top: 28px;
+  }
+  .lom-badge-item {
+    font-size: 11px;
+  }
+  .lom-ingredients-transparency {
+    margin-top: 28px;
+    font-size: 14px;
+  }
+  .lom-fda-disclaimer {
+    margin-top: 16px;
+    font-size: 10px;
+  }
+
+  /* --- FAQ MOBILE (enhanced) --- */
+  .lom-faq {
+    padding: 48px 0;
+  }
+  .lom-faq-question {
+    font-size: 15px;
+    padding: 18px 44px 18px 0;
+    min-height: 48px;
+  }
+  .lom-faq-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .lom-faq-answer p {
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
+
+  /* --- GUARANTEE MOBILE (enhanced) --- */
+  .lom-guarantee {
+    padding: 48px 0;
+  }
+  .lom-guarantee__inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+    gap: 24px;
+  }
+  .lom-guarantee__badge {
+    width: 80px;
+    height: 80px;
+  }
+  .lom-guarantee__badge-number {
+    font-size: 24px;
+  }
+  .lom-guarantee__badge-text {
+    font-size: 8px;
+  }
+  .lom-guarantee__shield svg {
+    width: 36px;
+    height: 36px;
+  }
+  .lom-guarantee__shield {
+    margin-bottom: 10px;
+  }
+  .lom-guarantee__content h2 {
+    font-size: clamp(22px, 5vw, 28px);
+  }
+  .lom-guarantee__content p {
+    font-size: 14px;
+  }
+
+  /* --- OFFER STACK MOBILE (enhanced) --- */
+  .lom-offer-stack {
+    padding: 48px 0;
+  }
+  .lom-offer-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 16px;
+  }
+  .lom-offer-card {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+  .lom-offer-card__name {
+    font-size: 20px;
+  }
+  .lom-offer-card__tagline {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .lom-offer-card__pricing {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .lom-offer-card__price {
+    font-size: 30px;
+  }
+  .lom-offer-card__compare {
+    font-size: 14px;
+  }
+  .lom-offer-stack__reassurance {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  /* --- FINAL CTA MOBILE (enhanced) --- */
+  .lom-final-cta {
+    padding: 48px 0;
+  }
+  .lom-final-cta__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 28px 20px;
+    gap: 20px;
+  }
+  .lom-final-cta__image img {
+    width: 140px;
+    margin: 0 auto;
+  }
+  .lom-final-cta__text h2 {
+    font-size: clamp(22px, 5vw, 30px);
+  }
+  .lom-final-cta__text p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* --- FOOTER MOBILE (enhanced) --- */
+  .lom-footer__brand {
+    padding: 36px 0 24px;
+  }
+  .lom-footer__tagline {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+  .lom-footer__tagline-sub {
+    font-size: 13px;
+  }
+  .lom-footer__columns {
+    padding: 28px 0;
+  }
+  .lom-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+  .lom-footer__col-title {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .lom-footer__links a {
+    font-size: 13px;
+  }
+  .lom-footer__links li {
+    margin-bottom: 10px;
+  }
+  .lom-footer__col--newsletter {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--lt-border);
+    padding-top: 24px;
+  }
+  .lom-footer__newsletter-text {
+    font-size: 13px;
+  }
+  .lom-footer__bottom {
+    padding: 20px 0;
+  }
+  .lom-footer__bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .lom-footer__copyright {
+    font-size: 11px;
+  }
+  .lom-footer__legal {
+    justify-content: center;
+    gap: 8px 14px;
+  }
+  .lom-footer__legal a {
+    font-size: 10px;
+  }
+  .lom-footer__social {
+    justify-content: center;
+  }
+  .lom-footer__payment {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* --- CONTACT PAGE MOBILE (new — was missing) --- */
+  .lom-contact {
+    padding: 48px 0;
+  }
+  .lom-contact__header {
+    margin-bottom: 32px;
+  }
+  .lom-contact__title {
+    font-size: clamp(26px, 6vw, 36px);
+  }
+  .lom-contact__subtitle {
+    font-size: 14px;
+  }
+  .lom-contact__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .lom-contact__form-wrap {
+    padding: 24px 18px;
+  }
+  .lom-contact__form-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .lom-contact__input {
+    font-size: 16px;
+    padding: 14px 14px;
+  }
+  .lom-contact__submit {
+    width: 100%;
+    min-height: 52px;
+    font-size: 15px;
+  }
+  .lom-contact__info-item {
+    margin-bottom: 20px;
+  }
+  .lom-contact__info-item h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .lom-contact__info-item p,
+  .lom-contact__info-item a {
+    font-size: 14px;
+  }
+  .lom-contact__social {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .lom-contact__social a {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- ABOUT PAGE MOBILE (new — was missing) --- */
+  .lom-about-hero {
+    min-height: auto;
+    padding: 56px 16px;
+  }
+  .lom-about-hero__content h1 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+  .lom-about-hero__content p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .lom-about__founder {
+    padding: 24px 18px;
+    margin: 0 16px;
+  }
+  .lom-about__founder-name {
+    font-size: 20px;
+  }
+  .lom-about__image {
+    margin: 0 16px;
+  }
+
+  /* --- PRODUCT HERO MOBILE (enhanced) --- */
+  .lom-product-hero {
+    padding: 24px 0 48px;
+  }
+  .lom-product-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .lom-product-hero__gallery {
+    position: static;
+  }
+  .lom-product-hero__thumbs {
+    gap: 6px;
+  }
+  .lom-product-hero__thumb {
+    width: 56px;
+    height: 56px;
+  }
+  .lom-product-hero__breadcrumb {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+  .lom-product-hero__title {
+    font-size: clamp(24px, 6vw, 34px);
+    margin-bottom: 8px;
+  }
+  .lom-product-hero__subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .lom-product-hero__price {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .lom-product-hero__price-current {
+    font-size: 28px;
+  }
+  .lom-product-hero__price-compare {
+    font-size: 16px;
+  }
+  .lom-product-hero__option-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  .lom-product-hero__bundle,
+  .lom-product-hero__bundle--popular {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .lom-product-hero__bundle-info strong {
+    font-size: 14px;
+  }
+  .lom-product-hero__bundle-info span {
+    font-size: 12px;
+  }
+  .lom-product-hero__bundle-price {
+    font-size: 15px;
+  }
+  .lom-product-hero__bundle-was {
+    font-size: 12px;
+  }
+  .lom-product-hero__atc {
+    padding: 18px 24px;
+    font-size: 15px;
+    min-height: 56px;
+  }
+  .lom-product-hero__trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    font-size: 11px;
+  }
+  .lom-product-hero__guarantees {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .lom-product-hero__guarantee {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 120px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .lom-product-hero__benefits {
+    gap: 10px;
+    padding-top: 20px;
+  }
+  .lom-product-hero__benefit {
+    font-size: 13px;
+    gap: 10px;
+  }
+  .lom-product-hero__benefit-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .lom-product-hero__benefit-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+  .lom-product-hero__loss-aversion {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+
+  /* --- URGENCY MOBILE --- */
+  .lom-urgency {
+    padding: 12px 14px;
+  }
+  .lom-urgency__content {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .lom-urgency__text {
+    font-size: 10px;
+  }
+  .lom-urgency__number {
+    font-size: 18px;
+  }
+  .lom-urgency__unit {
+    min-width: 28px;
+  }
+  .lom-urgency__subtext {
+    font-size: 10px;
+  }
+
+  /* --- REVIEW CAROUSEL MOBILE --- */
+  .lom-hero-review-carousel {
+    min-height: 140px;
+  }
+  .lom-hero-review-card {
+    padding: 20px 16px;
+  }
+  .lom-hero-review-card__avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+  .lom-hero-review-card__name {
+    font-size: 14px;
+  }
+  .lom-hero-review-card__text {
+    font-size: 13px;
+  }
+  .lom-hero-review-card__inner {
+    gap: 12px;
+  }
+
+  /* --- BUYERS / PAYMENTS MOBILE --- */
+  .lom-hero-buyers {
+    padding: 10px 0;
+  }
+  .lom-hero-buyers__avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+  .lom-hero-buyers__text {
+    font-size: 12px;
+  }
+  .lom-hero-trust-row {
+    gap: 10px 16px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .lom-hero-trust-row__item {
+    font-size: 11px;
+  }
+
+  /* --- ACCORDIONS MOBILE --- */
+  .lom-hero-accordion__trigger {
+    padding: 16px 0;
+    font-size: 14px;
+    min-height: 48px;
+  }
+  .lom-hero-accordion__body {
+    font-size: 13px;
+  }
+
+  /* --- FIRST ORDER BANNER MOBILE --- */
+  .lom-first-order__inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+  .lom-first-order__code {
+    font-size: 11px;
+    padding: 2px 10px;
+  }
+
+  /* --- DAWN OVERRIDE MOBILE FIXES --- */
+  .header {
+    padding: 12px 0 !important;
+  }
+  .card {
+    border-radius: 10px !important;
+  }
+  .card__heading, .card__heading a {
+    font-size: 16px !important;
+  }
+  .button, .shopify-challenge__button, button.button, a.button,
+  .cart__checkout-button, .shopify-payment-button__button,
+  .product-form__submit, input[type="submit"], .form__submit {
+    min-height: 52px !important;
+    font-size: 13px !important;
+    padding: 14px 20px !important;
+  }
+
+  /* Inputs: prevent iOS zoom (must be 16px+) */
+  input[type="text"], input[type="email"], input[type="password"],
+  input[type="tel"], input[type="number"], input[type="search"],
+  input[type="url"], textarea, select, .field__input {
+    font-size: 16px !important;
+  }
+
+  /* Dawn product page mobile */
+  .product__title {
+    font-size: clamp(24px, 6vw, 34px) !important;
+  }
+  .product__description {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Dawn collection grid mobile */
+  .collection .grid {
+    gap: 12px !important;
+  }
+
+  /* Safe area bottom padding for notch phones */
+  .lom-sticky-cta {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .lom-first-order {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* ============================================================
+   EXTRA SMALL PHONES (max-width: 375px) — enhanced
+   ============================================================ */
+@media (max-width: 375px) {
+  .lom-container, .lom-container--wide {
+    padding: 0 14px;
+  }
+
+  .lom-heading {
+    font-size: clamp(24px, 7.5vw, 32px);
+  }
+
+  .lom-hero-authority__headline {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  .lom-hero-authority .lom-container {
+    padding: 40px 14px 28px;
+  }
+
+  .lom-hero-authority__trust-strip {
+    gap: 10px;
+  }
+
+  .lom-hero-authority__trust-label {
+    font-size: 10px;
+  }
+
+  .lom-pain-card {
+    padding: 20px 16px;
+  }
+
+  .lom-pain-card__title {
+    font-size: 17px;
+  }
+
+  .lom-review-card {
+    padding: 20px 16px;
+  }
+
+  .lom-offer-card {
+    padding: 24px 16px;
+  }
+
+  .lom-offer-card__price {
+    font-size: 26px;
+  }
+
+  .lom-product-hero__title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .lom-product-hero__price-current {
+    font-size: 24px;
+  }
+
+  .lom-product-hero__guarantee {
+    flex: 1 1 100%;
+  }
+
+  .lom-guarantee__inner {
+    padding: 24px 16px;
+  }
+
+  .lom-final-cta__inner {
+    padding: 24px 16px;
+  }
+
+  .lom-contact__form-wrap {
+    padding: 20px 14px;
+  }
+
+  .lom-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .lom-ingredients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lom-steps-container {
+    gap: 24px;
+  }
+
+  .lom-compare__table {
+    min-width: 440px;
+  }
+
+  /* Smaller section padding */
+  :root {
+    --lt-section-pad-mobile: 40px;
+  }
+}
