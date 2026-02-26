@@ -2,7 +2,6 @@
 
 <section class="lom-compare" id="why-lom-thai">
   <div class="lom-container">
-    {%- comment -%} Eyebrow + heading {%- endcomment -%}
     <div class="lom-compare__header lom-fade-in">
       {% if section.settings.eyebrow != blank %}
         <span class="lom-compare__eyebrow">{{ section.settings.eyebrow }}</span>
@@ -15,9 +14,7 @@
 
     {% assign competitor_blocks = section.blocks | where: 'type', 'competitor' %}
     {% assign row_blocks = section.blocks | where: 'type', 'row' %}
-    {% assign total_cols = competitor_blocks.size | plus: 2 %}
 
-    {%- comment -%} Scrollable table wrapper for mobile {%- endcomment -%}
     <div class="lom-compare__table-wrap lom-fade-in">
       <table class="lom-compare__table" role="table">
         <thead>
@@ -40,19 +37,15 @@
           {% for block in row_blocks %}
             <tr class="lom-compare__tr" {{ block.shopify_attributes }}>
               <td class="lom-compare__td lom-compare__td--feature">{{ block.settings.feature }}</td>
-
-              {%- comment -%} Brand cell {%- endcomment -%}
               <td class="lom-compare__td lom-compare__td--brand">
                 {% assign bv = block.settings.brand_value %}
                 {% if bv contains '✓' %}
                   <span class="lom-compare__icon lom-compare__icon--yes">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z" opacity="0.9"/></svg>
                   </span>
                 {% endif %}
                 <span class="lom-compare__val">{{ bv | remove: '✓' | remove: '✗' | strip }}</span>
               </td>
-
-              {%- comment -%} Competitor cells {%- endcomment -%}
               {% assign comp_values = block.settings.competitor_1 | append: '|||' | append: block.settings.competitor_2 | append: '|||' | append: block.settings.competitor_3 | append: '|||' | append: block.settings.competitor_4 %}
               {% assign comp_array = comp_values | split: '|||' %}
               {% for val in comp_array %}
@@ -60,11 +53,11 @@
                   <td class="lom-compare__td lom-compare__td--comp {% if val contains '✗' %}lom-compare__td--fail{% elsif val contains '✓' %}lom-compare__td--pass{% endif %}">
                     {% if val contains '✗' %}
                       <span class="lom-compare__icon lom-compare__icon--no">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z"/><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
                       </span>
                     {% elsif val contains '✓' %}
                       <span class="lom-compare__icon lom-compare__icon--partial">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z"/></svg>
                       </span>
                     {% endif %}
                     <span>{{ val | remove: '✓' | remove: '✗' | strip }}</span>
@@ -77,7 +70,6 @@
       </table>
     </div>
 
-    {%- comment -%} Bottom CTA {%- endcomment -%}
     <div class="lom-compare__cta lom-fade-in">
       <a href="{{ section.settings.cta_url | default: '#lom-product-form' }}" class="lom-btn-primary lom-btn-large">{{ section.settings.cta_button | default: 'Try Lom Thai Risk-Free →' }}</a>
     </div>
