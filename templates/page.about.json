@@ -11,11 +11,6 @@
   "sections": {
     "about": {
       "type": "lom-about",
-      "settings": {
-        "eyebrow": "Our Story",
-        "heading": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago.",
-        "subtitle": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
-      },
       "blocks": {
         "narrative_1": {
           "type": "narrative",
@@ -70,7 +65,8 @@
         "founder": {
           "type": "founder",
           "settings": {
-            "name": "Founder Name",
+            "image": "shopify://shop_images/Gemini_Generated_Image_cf7vgvcf7vgvcf7v.png",
+            "name": "Anya Kaur",
             "role": "Founder, Lom Thai",
             "story": "I first discovered ya dom in a Bangkok pharmacy in 2019. One inhale and I understood why every Thai person carries one. I spent two years working with traditional herbalists to bring this exact formula to the West."
           }
@@ -92,7 +88,12 @@
         "value_4",
         "founder",
         "closing"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "We Didn't Invent This. Thai Herbalists Did — Over 100 Years Ago.",
+        "subtitle": "For over a century, Thai families have trusted ya dom herbal inhalers for natural relief. We're bringing that tradition to the world."
+      }
     }
   },
   "order": [
