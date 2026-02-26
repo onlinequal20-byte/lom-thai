@@ -9,9 +9,14 @@
     <div class="lom-steps-container">
       {% for block in section.blocks %}
         <div class="lom-step lom-fade-in" {{ block.shopify_attributes }}>
-          <div class="lom-step-number">{{ forloop.index }}</div>
-          <h3>{{ block.settings.heading }}</h3>
-          <p>{{ block.settings.text }}</p>
+          <div class="lom-step__top">
+            <span class="lom-step-number">{{ forloop.index }}</span>
+            {% unless forloop.last %}<span class="lom-step-connector"></span>{% endunless %}
+          </div>
+          <div class="lom-step__text">
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
         </div>
       {% endfor %}
     </div>

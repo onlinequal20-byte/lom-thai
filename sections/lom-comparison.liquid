@@ -15,7 +15,8 @@
     {% assign competitor_blocks = section.blocks | where: 'type', 'competitor' %}
     {% assign row_blocks = section.blocks | where: 'type', 'row' %}
 
-    <div class="lom-compare__table-wrap lom-fade-in">
+    {%- comment -%} DESKTOP: Full table {%- endcomment -%}
+    <div class="lom-compare__table-wrap lom-compare__desktop lom-fade-in">
       <table class="lom-compare__table" role="table">
         <thead>
           <tr>
@@ -68,6 +69,37 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
+
+    {%- comment -%} MOBILE: Premium Winner Column {%- endcomment -%}
+    <div class="lom-compare__mobile lom-fade-in">
+      <div class="lom-compare__m-card">
+        <div class="lom-compare__m-head">
+          <div class="lom-compare__m-head-brand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg>
+            <span>Lom Thai</span>
+          </div>
+          <span class="lom-compare__m-head-vs">vs</span>
+          <span class="lom-compare__m-head-other">Others</span>
+        </div>
+        <div class="lom-compare__m-body">
+          {% for block in row_blocks %}
+            {% assign bv = block.settings.brand_value | remove: '✓' | remove: '✗' | strip %}
+            <div class="lom-compare__m-row" {{ block.shopify_attributes }}>
+              <div class="lom-compare__m-feature">{{ block.settings.feature }}</div>
+              <div class="lom-compare__m-vals">
+                <span class="lom-compare__m-brand-val">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {{ bv }}
+                </span>
+                <span class="lom-compare__m-other-val">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
     <div class="lom-compare__cta lom-fade-in">

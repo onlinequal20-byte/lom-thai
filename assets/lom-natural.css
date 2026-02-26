@@ -197,6 +197,15 @@ body {
   stroke: var(--lt-danger);
 }
 
+.lt-icon--gold {
+  background: linear-gradient(135deg, rgba(212,175,106,0.12), rgba(212,175,106,0.04));
+  border: 1px solid rgba(212,175,106,0.15);
+}
+
+.lt-icon--gold svg {
+  stroke: var(--lt-gold);
+}
+
 /* ============================================================
    SVG STAR SYSTEM
    ============================================================ */
@@ -802,30 +811,23 @@ h1, h2, h3, h4, h5, h6,
    ============================================================ */
 /* --- Pain Agitate: Staggered floating glass with red ambient glow --- */
 .lom-pain-agitate {
-  background: var(--lt-charcoal);
-  padding: 140px 0;
+  background: var(--lt-dark);
+  padding: var(--lt-section-pad) 0;
   position: relative;
-  border-top: 1px solid transparent;
-  background-clip: padding-box;
   overflow: hidden;
 }
 
 .lom-pain-agitate::before {
   content: '';
   position: absolute;
-  top: -100px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(193,87,79,0.08) 0%, transparent 60%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--lt-gold-glow) 0%, transparent 65%);
   pointer-events: none;
-  animation: painPulse 6s ease-in-out infinite;
-}
-
-@keyframes painPulse {
-  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+  opacity: 0.4;
 }
 
 .lom-pain-agitate::after {
@@ -835,7 +837,7 @@ h1, h2, h3, h4, h5, h6,
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--lt-border-light), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212,175,106,0.2), transparent);
 }
 
 .lom-pain-eyebrow {
@@ -844,7 +846,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--lt-danger);
+  color: var(--lt-gold);
   margin-bottom: 16px;
   font-weight: 600;
   display: flex;
@@ -858,8 +860,8 @@ h1, h2, h3, h4, h5, h6,
   content: '';
   width: 24px;
   height: 1px;
-  background: var(--lt-danger);
-  opacity: 0.5;
+  background: var(--lt-gold);
+  opacity: 0.4;
 }
 
 .lom-pain-agitate .lom-heading {
@@ -875,12 +877,12 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .lom-pain-card {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 20px;
+  background: var(--lt-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
   padding: 40px 28px;
-  border: 1px solid rgba(193,87,79,0.15);
+  border: 1px solid var(--lt-border);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   overflow: hidden;
@@ -894,8 +896,8 @@ h1, h2, h3, h4, h5, h6,
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 20px;
-  background: radial-gradient(circle at 50% 0%, rgba(193,87,79,0.08) 0%, transparent 60%);
+  border-radius: 16px;
+  background: radial-gradient(circle at 50% 0%, rgba(212,175,106,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -905,15 +907,15 @@ h1, h2, h3, h4, h5, h6,
   top: -1px;
   left: 20%;
   right: 20%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(193,87,79,0.5), transparent);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,106,0.3), transparent);
 }
 
 .lom-pain-card:hover {
-  background: rgba(255,255,255,0.06);
+  background: var(--lt-glass-hover);
   transform: translateY(-6px);
-  border-color: rgba(193,87,79,0.3);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(193,87,79,0.1);
+  border-color: var(--lt-border-light);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(212,175,106,0.08);
 }
 
 .lom-pain-card:nth-child(2):hover {
@@ -927,9 +929,9 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(193,87,79,0.08);
+  background: rgba(212,175,106,0.06);
   border-radius: 14px;
-  border: 1px solid rgba(193,87,79,0.15);
+  border: 1px solid rgba(212,175,106,0.12);
 }
 
 .lom-pain-card__title {
@@ -1059,60 +1061,73 @@ h1, h2, h3, h4, h5, h6,
 .lom-benefit-blocks {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   margin: 0 0 36px;
 }
 
 .lom-benefit-block {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 24px 24px 24px 28px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.06);
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s ease;
 }
 
-.lom-benefit-block::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 16px;
-  bottom: 16px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--lt-gold), rgba(212,175,106,0.2));
-  border-radius: 3px;
+.lom-benefit-block:last-child {
+  border-bottom: none;
 }
 
-.lom-benefit-block:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(212,175,106,0.15);
-  transform: translateX(6px);
+.lom-benefit-block__check {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(52,128,94,0.12);
+  border: 1px solid rgba(52,128,94,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lt-emerald-light);
+  margin-top: 2px;
+}
+
+.lom-benefit-block__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.lom-benefit-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.lom-benefit-outcome {
+  font-family: var(--lt-serif);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--lt-cream);
+  line-height: 1.3;
 }
 
 .lom-benefit-feature {
   font-family: var(--lt-sans);
   font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--lt-gold);
-  margin: 0 0 6px;
-}
-
-.lom-benefit-outcome {
-  font-family: var(--lt-serif);
-  font-size: 20px;
   font-weight: 500;
-  color: var(--lt-cream);
-  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--lt-gold);
+  opacity: 0.7;
+  white-space: nowrap;
 }
 
 .lom-benefit-life-impact {
   font-family: var(--lt-sans);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--lt-text-muted);
 }
 
@@ -1136,13 +1151,11 @@ h1, h2, h3, h4, h5, h6,
 /* ============================================================
    STEPS (HOW IT WORKS)
    ============================================================ */
-/* --- Steps: Vertical glass rail timeline --- */
+/* --- Steps: Horizontal 3-col on desktop, stacked on mobile --- */
 .lom-steps {
-  padding: 120px 0;
+  padding: var(--lt-section-pad) 0;
   background: var(--lt-charcoal);
   position: relative;
-  border-top: 1px solid transparent;
-  background-clip: padding-box;
   overflow: hidden;
 }
 
@@ -1157,77 +1170,71 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .lom-steps-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   position: relative;
-  max-width: 680px;
+  max-width: 900px;
   margin: 0 auto;
-  padding-left: 80px;
-}
-
-.lom-steps-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 32px;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(212,175,106,0.4), rgba(212,175,106,0.1));
-  z-index: 0;
 }
 
 .lom-step {
-  text-align: left;
+  text-align: center;
   position: relative;
-  z-index: 1;
-  padding: 32px;
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  margin-bottom: 24px;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 0 28px;
 }
 
-.lom-step:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(212,175,106,0.15);
-  transform: translateX(8px);
+.lom-step__text {
+  /* desktop: flows naturally under the number */
+}
+
+.lom-step__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
 }
 
 .lom-step-number {
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  left: -80px;
-  top: 32px;
+  width: 52px;
+  height: 52px;
   background: var(--lt-charcoal);
   color: var(--lt-gold);
-  border: 2px solid rgba(212,175,106,0.4);
+  border: 1.5px solid rgba(212,175,106,0.35);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--lt-serif);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
-  box-shadow: 0 0 20px rgba(212,175,106,0.15), 0 0 0 6px var(--lt-charcoal);
+  position: relative;
   z-index: 2;
+  flex-shrink: 0;
+}
+
+.lom-step-connector {
+  position: absolute;
+  left: calc(50% + 30px);
+  right: calc(-50% + -30px);
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212,175,106,0.35), rgba(212,175,106,0.08));
+  z-index: 1;
 }
 
 .lom-step h3 {
   font-family: var(--lt-serif);
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--lt-cream);
   margin: 0 0 10px;
 }
 
 .lom-step p {
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--lt-text-muted);
   margin: 0;
   font-family: var(--lt-sans);
@@ -1237,19 +1244,24 @@ h1, h2, h3, h4, h5, h6,
   text-align: center;
   font-family: var(--lt-sans);
   font-size: 15px;
-  color: var(--lt-text-muted);
+  color: var(--lt-text);
   margin: 48px auto 0;
   max-width: 600px;
   line-height: 1.6;
-  font-style: italic;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .lom-steps { padding: var(--lt-section-pad-mobile) 0; }
-  .lom-steps-container { padding-left: 60px; }
-  .lom-steps-container::before { left: 22px; }
-  .lom-step-number { left: -60px; width: 40px; height: 40px; font-size: 17px; }
-  .lom-step { padding: 24px; }
+  .lom-steps-container { grid-template-columns: 1fr; gap: 0; max-width: none; }
+  .lom-step { text-align: left; padding: 20px 0; display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .lom-step:last-child { border-bottom: none; }
+  .lom-step__top { margin-bottom: 0; justify-content: flex-start; }
+  .lom-step__text { min-width: 0; }
+  .lom-step-number { width: 40px; height: 40px; font-size: 18px; }
+  .lom-step-connector { display: none; }
+  .lom-step h3 { font-size: 18px; margin-bottom: 4px; }
+  .lom-step p { font-size: 14px; line-height: 1.6; }
 }
 
 /* ============================================================
@@ -1735,102 +1747,139 @@ h1, h2, h3, h4, h5, h6,
   margin-top: 56px;
 }
 
-/* --- Mobile --- */
+/* --- Mobile: Premium Winner Column --- */
+.lom-compare__mobile { display: none; }
+
 @media (max-width: 768px) {
-  .lom-compare { padding: var(--lt-section-pad-mobile) 0; }
-  .lom-compare__header { margin-bottom: 32px; }
+  .lom-compare { padding: 48px 0; }
+  .lom-compare__header { margin-bottom: 20px; }
+  .lom-compare__desktop { display: none; }
+  .lom-compare__mobile { display: block; }
 
-  .lom-compare__table-wrap {
-    border-radius: 12px;
-    margin: 0;
+  /* Card shell */
+  .lom-compare__m-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
-  .lom-compare__table {
-    min-width: 0;
-    width: 100%;
-    table-layout: auto;
+  /* Header: Brand vs Others */
+  .lom-compare__m-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: rgba(212,175,106,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* Header */
-  .lom-compare__th {
-    padding: 10px 4px;
-    font-size: 7px;
-    letter-spacing: 0.8px;
-    white-space: nowrap;
+  .lom-compare__m-head-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--lt-gold);
   }
 
-  .lom-compare__th--feature {
-    width: 30%;
-  }
-
-  .lom-compare__th--brand {
-    width: 22%;
-  }
-
-  .lom-compare__th--comp {
-    width: auto;
-    font-size: 7px;
+  .lom-compare__m-head-brand span {
+    font-family: var(--lt-serif);
+    font-size: 16px;
+    font-weight: 500;
     letter-spacing: 0.5px;
   }
 
-  .lom-compare__brand-badge {
-    gap: 3px;
-  }
-
-  .lom-compare__brand-badge span {
-    font-size: 9px;
-    letter-spacing: 1px;
-  }
-
-  .lom-compare__crown {
-    width: 14px;
-    height: 14px;
-  }
-
-  /* Body cells */
-  .lom-compare__td {
-    padding: 8px 4px;
-    font-size: 10px;
-    line-height: 1.2;
-  }
-
-  .lom-compare__td--feature {
+  .lom-compare__m-head-vs {
+    font-family: var(--lt-sans);
     font-size: 11px;
-    padding-left: 8px;
+    color: var(--lt-text-muted);
+    opacity: 0.4;
+    text-transform: lowercase;
   }
 
-  /* Hide long text on competitor cells, keep icons */
-  .lom-compare__td--comp > span:not(.lom-compare__icon),
-  .lom-compare__td--fail > span:not(.lom-compare__icon) {
-    display: none;
+  .lom-compare__m-head-other {
+    font-family: var(--lt-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--lt-text-muted);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
   }
 
-  /* Show brand value text but smaller */
-  .lom-compare__td--brand > .lom-compare__val,
-  .lom-compare__td--brand > span {
-    font-size: 10px;
+  /* Rows container */
+  .lom-compare__m-body {
+    padding: 4px 0;
   }
 
-  .lom-compare__icon {
-    width: 20px;
-    height: 20px;
-    margin: 0 auto;
+  /* Each row: feature name on top, values below */
+  .lom-compare__m-row {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
   }
 
-  .lom-compare__icon--yes svg {
-    width: 13px;
-    height: 13px;
+  .lom-compare__m-row:last-child {
+    border-bottom: none;
   }
 
-  .lom-compare__icon--no svg,
-  .lom-compare__icon--partial svg {
-    width: 11px;
-    height: 11px;
+  .lom-compare__m-row:nth-child(even) {
+    background: rgba(255,255,255,0.015);
+  }
+
+  .lom-compare__m-feature {
+    font-family: var(--lt-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--lt-cream);
+    margin-bottom: 8px;
+  }
+
+  /* Values row: brand wins left, others fail right */
+  .lom-compare__m-vals {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Brand value: green check + text — this is what SELLS */
+  .lom-compare__m-brand-val {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--lt-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--lt-emerald-light);
+    background: rgba(52,128,94,0.08);
+    border: 1px solid rgba(52,128,94,0.12);
+    border-radius: 6px;
+    padding: 4px 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .lom-compare__m-brand-val svg {
+    flex-shrink: 0;
+    stroke: var(--lt-emerald-light);
+  }
+
+  /* Others: dim X mark, no text — intentionally muted */
+  .lom-compare__m-other-val {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .lom-compare__m-other-val svg {
+    stroke: rgba(255,255,255,0.2);
   }
 
   .lom-compare__cta {
-    margin-top: 36px;
+    margin-top: 24px;
   }
 }
 
@@ -2171,25 +2220,23 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .lom-guarantee {
-  padding: 100px 0;
+  padding: 80px 0;
   background: var(--lt-charcoal);
   position: relative;
-  border-top: 1px solid transparent;
-  background-clip: padding-box;
 }
 
 .lom-guarantee__inner {
   display: flex;
   align-items: center;
-  gap: 48px;
-  max-width: 900px;
+  gap: 32px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 56px;
+  padding: 40px;
   background: rgba(255,255,255,0.03);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(212,175,106,0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(212,175,106,0.12);
   position: relative;
   overflow: hidden;
 }
@@ -2197,22 +2244,18 @@ h1, h2, h3, h4, h5, h6,
 .lom-guarantee__inner::before {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: 24px;
-  padding: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212,175,106,0.3) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmerBorder 4s ease-in-out infinite;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  top: -1px;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,106,0.25), transparent);
   pointer-events: none;
 }
 
 .lom-guarantee__badge {
   flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+  width: 88px;
+  height: 88px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2222,64 +2265,66 @@ h1, h2, h3, h4, h5, h6,
   background: rgba(212,175,106,0.06);
   border: 1px solid rgba(212,175,106,0.2);
   border-radius: 50%;
-  box-shadow: 0 0 30px rgba(212,175,106,0.1);
 }
 
 .lom-guarantee__shield {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 2px;
 }
 .lom-guarantee__shield svg {
-  width: 48px;
-  height: 48px;
+  width: 28px;
+  height: 28px;
   stroke: var(--lt-gold);
   stroke-width: 1.5;
   fill: none;
-  filter: drop-shadow(0 0 6px rgba(212,175,106,0.3));
 }
 
 .lom-guarantee__badge-number {
   font-family: var(--lt-serif);
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 1;
 }
 
 .lom-guarantee__badge-text {
   font-family: var(--lt-sans);
-  font-size: 9px;
+  font-size: 8px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 4px;
+  margin-top: 2px;
+}
+
+.lom-guarantee__heading-short {
+  display: none;
 }
 
 .lom-guarantee__content h2 {
   font-family: var(--lt-serif);
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(22px, 2.5vw, 28px);
   color: var(--lt-cream);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   font-weight: 500;
 }
 
 .lom-guarantee__content p {
   font-family: var(--lt-sans);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--lt-text-muted);
   margin: 0;
 }
 
 .lom-guarantee__loss-aversion {
-  margin-top: 16px !important;
+  margin-top: 12px !important;
   color: var(--lt-gold);
   font-weight: 500;
   font-style: italic;
 }
 .lom-guarantee__faq-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 14px;
   font-family: var(--lt-sans);
   font-size: 13px;
   font-weight: 500;
@@ -2292,15 +2337,25 @@ h1, h2, h3, h4, h5, h6,
 }
 
 @media (max-width: 768px) {
-  .lom-guarantee { padding: 64px 0; }
+  .lom-guarantee { padding: 40px 0; }
   .lom-guarantee__inner {
-    flex-direction: column;
-    text-align: center;
-    padding: 36px 24px;
-    border-radius: 20px;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 24px 20px;
+    gap: 16px;
+    border-radius: 14px;
   }
-  .lom-guarantee__badge { width: 96px; height: 96px; }
-  .lom-guarantee__badge-number { font-size: 28px; }
+  .lom-guarantee__badge { width: 56px; height: 56px; }
+  .lom-guarantee__shield { margin-bottom: 0; }
+  .lom-guarantee__shield svg { width: 20px; height: 20px; }
+  .lom-guarantee__badge-number { font-size: 16px; }
+  .lom-guarantee__badge-text { font-size: 6px; letter-spacing: 1.5px; margin-top: 1px; }
+  .lom-guarantee__heading-full { display: none; }
+  .lom-guarantee__heading-short { display: block; font-size: 17px; margin-bottom: 6px; }
+  .lom-guarantee__desc { display: none; }
+  .lom-guarantee__loss-aversion { margin-top: 0 !important; font-size: 13px; }
+  .lom-guarantee__faq-link { margin-top: 8px; font-size: 12px; }
 }
 
 /* ============================================================
@@ -4619,17 +4674,35 @@ html, body {
     margin-bottom: 24px;
   }
   .lom-benefit-blocks {
-    gap: 12px;
+    gap: 0;
     margin-bottom: 24px;
   }
   .lom-benefit-block {
-    padding: 18px 16px;
+    padding: 16px 0;
+    gap: 12px;
+  }
+  .lom-benefit-block__check {
+    width: 28px;
+    height: 28px;
+  }
+  .lom-benefit-block__check svg {
+    width: 14px;
+    height: 14px;
+  }
+  .lom-benefit-headline {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 4px;
   }
   .lom-benefit-outcome {
     font-size: 17px;
   }
+  .lom-benefit-feature {
+    font-size: 10px;
+  }
   .lom-benefit-life-impact {
     font-size: 13px;
+    line-height: 1.55;
   }
   .lom-showcase-identity {
     font-size: 17px;
@@ -4640,30 +4713,25 @@ html, body {
   .lom-steps {
     padding: 48px 0;
   }
-  .lom-steps-container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .lom-steps-container::before {
-    display: none;
+  .lom-step {
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    padding: 16px 0;
   }
   .lom-step-number {
-    width: 52px;
-    height: 52px;
-    font-size: 22px;
-    margin-bottom: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
   .lom-step h3 {
-    font-size: 19px;
+    font-size: 17px;
   }
   .lom-step p {
-    font-size: 14px;
-    max-width: 320px;
-    margin: 0 auto;
+    font-size: 13px;
   }
   .lom-steps-transition {
     font-size: 14px;
-    margin-top: 32px;
+    margin-top: 28px;
   }
 
   /* --- REVIEWS MOBILE (enhanced) --- */
@@ -4781,36 +4849,34 @@ html, body {
 
   /* --- GUARANTEE MOBILE (enhanced) --- */
   .lom-guarantee {
-    padding: 48px 0;
+    padding: 32px 0;
   }
   .lom-guarantee__inner {
-    flex-direction: column;
-    text-align: center;
-    padding: 28px 20px;
-    gap: 24px;
+    padding: 20px 16px;
+    gap: 14px;
   }
   .lom-guarantee__badge {
-    width: 80px;
-    height: 80px;
+    width: 48px;
+    height: 48px;
   }
   .lom-guarantee__badge-number {
-    font-size: 24px;
+    font-size: 14px;
   }
   .lom-guarantee__badge-text {
-    font-size: 8px;
+    display: none;
   }
   .lom-guarantee__shield svg {
-    width: 36px;
-    height: 36px;
+    width: 16px;
+    height: 16px;
   }
   .lom-guarantee__shield {
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
-  .lom-guarantee__content h2 {
-    font-size: clamp(22px, 5vw, 28px);
+  .lom-guarantee__heading-short {
+    font-size: 15px;
   }
-  .lom-guarantee__content p {
-    font-size: 14px;
+  .lom-guarantee__loss-aversion {
+    font-size: 12px;
   }
 
   /* --- OFFER STACK MOBILE (enhanced) --- */

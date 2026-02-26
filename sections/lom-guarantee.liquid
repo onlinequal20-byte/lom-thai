@@ -11,10 +11,11 @@
         <span class="lom-guarantee__badge-text">Day Guarantee</span>
       </div>
       <div class="lom-guarantee__content">
-        <h2>{{ section.settings.heading }}</h2>
-        <p>{{ section.settings.text }}</p>
+        <h2 class="lom-guarantee__heading-full">{{ section.settings.heading }}</h2>
+        <h2 class="lom-guarantee__heading-short">{{ section.settings.heading_short | default: "30-Day Money-Back Guarantee" }}</h2>
+        <p class="lom-guarantee__desc">{{ section.settings.text }}</p>
         <p class="lom-guarantee__loss-aversion"><em>{{ section.settings.loss_aversion_text }}</em></p>
-        <a href="/pages/faq" class="lom-guarantee__faq-link">Have questions? Read our FAQ →</a>
+        <a href="/pages/faq" class="lom-guarantee__faq-link">FAQ →</a>
       </div>
     </div>
   </div>
@@ -29,6 +30,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "Try It for 30 Days. If It Doesn't Change How You Handle Your Worst Days, We'll Refund Every Penny."
+    },
+    {
+      "type": "text",
+      "id": "heading_short",
+      "label": "Short heading (mobile)",
+      "default": "30-Day Money-Back Guarantee"
     },
     {
       "type": "textarea",
