@@ -219,6 +219,7 @@
         "r1": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_40_12.png",
             "stars": 5,
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
             "name": "Sarah M.",
@@ -229,6 +230,7 @@
         "r2": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "stars": 5,
             "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
@@ -239,6 +241,7 @@
         "r3": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
             "stars": 5,
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
             "name": "Anna P.",
