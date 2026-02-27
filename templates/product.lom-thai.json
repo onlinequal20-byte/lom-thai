@@ -117,7 +117,11 @@
         "urgency_text": "Sale ends in",
         "urgency_subtext": "Order now to lock in this price + free shipping",
         "buyers_text": "Sarah and 89 people this week",
-        "loss_aversion_text": "Still thinking? Every day without this is another day reaching for chemicals that don't actually solve the problem."
+        "avatar_1": "shopify://shop_images/1.png",
+        "avatar_2": "shopify://shop_images/2.png",
+        "avatar_3": "shopify://shop_images/4.png",
+        "loss_aversion_text": "Still thinking? Every day without this is another day reaching for chemicals that don't actually solve the problem.",
+        "fda_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
     "comparison": {
@@ -126,19 +130,22 @@
         "comp1": {
           "type": "competitor",
           "settings": {
-            "name": "Energy Drinks"
+            "name": "Energy Drinks",
+            "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price."
           }
         },
         "comp2": {
           "type": "competitor",
           "settings": {
-            "name": "Pharmacy Sprays"
+            "name": "Pharmacy Sprays",
+            "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price."
           }
         },
         "comp3": {
           "type": "competitor",
           "settings": {
-            "name": "Coffee"
+            "name": "Coffee",
+            "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price."
           }
         },
         "row1": {
@@ -148,7 +155,8 @@
             "brand_value": "✓ Seconds",
             "competitor_1": "15-30 min",
             "competitor_2": "5-10 min",
-            "competitor_3": "20-45 min"
+            "competitor_3": "20-45 min",
+            "competitor_4": "✗ Varies"
           }
         },
         "row2": {
@@ -158,7 +166,8 @@
             "brand_value": "✓ Yes",
             "competitor_1": "✗ No",
             "competitor_2": "✗ No",
-            "competitor_3": "✓ Yes"
+            "competitor_3": "✓ Yes",
+            "competitor_4": "✗ Varies"
           }
         },
         "row3": {
@@ -168,7 +177,8 @@
             "brand_value": "✓",
             "competitor_1": "✗",
             "competitor_2": "✓",
-            "competitor_3": "✗"
+            "competitor_3": "✗",
+            "competitor_4": "✗ Varies"
           }
         },
         "row4": {
@@ -178,7 +188,8 @@
             "brand_value": "✓",
             "competitor_1": "✗",
             "competitor_2": "✗",
-            "competitor_3": "✗"
+            "competitor_3": "✗",
+            "competitor_4": "✗ Varies"
           }
         },
         "row5": {
@@ -188,7 +199,8 @@
             "brand_value": "✓",
             "competitor_1": "✗",
             "competitor_2": "✓",
-            "competitor_3": "✗"
+            "competitor_3": "✗",
+            "competitor_4": "✗ Varies"
           }
         },
         "row6": {
@@ -198,7 +210,8 @@
             "brand_value": "✓",
             "competitor_1": "✗",
             "competitor_2": "✓",
-            "competitor_3": "✗"
+            "competitor_3": "✗",
+            "competitor_4": "✗ Varies"
           }
         },
         "row7": {
@@ -208,7 +221,8 @@
             "brand_value": "✓ One $8 stick lasts months",
             "competitor_1": "✗ $60-120/mo",
             "competitor_2": "✗ $15-30/mo",
-            "competitor_3": "✗ $90-180/mo"
+            "competitor_3": "✗ $90-180/mo",
+            "competitor_4": "✗ Varies"
           }
         }
       },
@@ -229,7 +243,9 @@
         "heading": "Why Lom Thai?",
         "subtitle": "See how we stack up against the alternatives",
         "brand_name": "Lom Thai",
-        "cta_button": "Try Lom Thai Risk-Free"
+        "brand_tagline": "5 natural ingredients. Century-old Thai formula. Works in seconds. Lasts months per stick. 30-day guarantee.",
+        "cta_button": "Try Lom Thai Risk-Free",
+        "cta_url": ""
       }
     },
     "ingredients": {
@@ -238,6 +254,7 @@
         "menthol": {
           "type": "ingredient",
           "settings": {
+            "icon_type": "leaf",
             "icon": "❄️",
             "name": "Menthol",
             "benefit": "Traditionally used to promote clear breathing and an invigorating sensation",
@@ -247,6 +264,7 @@
         "camphor": {
           "type": "ingredient",
           "settings": {
+            "icon_type": "leaf",
             "icon": "🌸",
             "name": "Camphor",
             "benefit": "Traditionally used to soothe tension and promote comfort",
@@ -256,6 +274,7 @@
         "borneol": {
           "type": "ingredient",
           "settings": {
+            "icon_type": "leaf",
             "icon": "⭐",
             "name": "Borneol",
             "benefit": "Traditional Thai remedy for focus and mental clarity",
@@ -265,6 +284,7 @@
         "eucalyptus": {
           "type": "ingredient",
           "settings": {
+            "icon_type": "leaf",
             "icon": "🌿",
             "name": "Eucalyptus Oil",
             "benefit": "Traditionally used to support respiratory comfort",
@@ -274,6 +294,7 @@
         "lemon": {
           "type": "ingredient",
           "settings": {
+            "icon_type": "leaf",
             "icon": "🍋",
             "name": "Lemon Oil",
             "benefit": "Traditionally used to uplift mood and promote comfort",
@@ -291,7 +312,18 @@
       "settings": {
         "heading": "What's Inside",
         "subtitle": "Five powerful natural ingredients, perfected over a century",
-        "formulation_note": "Small-batch crafted in Thailand. Each stick is hand-filled with concentrated herbal extracts — not the diluted blends you'll find on Amazon."
+        "show_badges": true,
+        "badge_1_icon": "",
+        "badge_1": "GMP-Certified Facility",
+        "badge_2_icon": "",
+        "badge_2": "Third-Party Lab Tested",
+        "badge_3_icon": "",
+        "badge_3": "100% Natural Ingredients",
+        "badge_4_icon": "",
+        "badge_4": "Made in Thailand",
+        "formulation_note": "Small-batch crafted in Thailand. Each stick is hand-filled with concentrated herbal extracts — not the diluted blends you'll find on Amazon.",
+        "transparency_line": "No fillers. No synthetic fragrance. No ingredients you need a chemistry degree to pronounce. Just five plants that have been used for over a century.",
+        "fda_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
     "reviews": {
@@ -303,6 +335,7 @@
             "stars": 5,
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
             "name": "Sarah M.",
+            "title": "Nurse",
             "location": "Nurse, Texas"
           }
         },
@@ -312,6 +345,7 @@
             "stars": 5,
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
+            "title": "Nurse",
             "location": "Truck Driver, Ohio"
           }
         },
@@ -321,6 +355,7 @@
             "stars": 5,
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
             "name": "Anna P.",
+            "title": "Nurse",
             "location": "Portland"
           }
         }
@@ -331,14 +366,19 @@
         "r3"
       ],
       "settings": {
-        "heading": "They Were Skeptical Too. Then They Tried It."
+        "heading": "They Were Skeptical Too. Then They Tried It.",
+        "avg_rating": "4.8",
+        "total_reviews": "1,200+",
+        "recommend_pct": "97"
       }
     },
     "guarantee": {
       "type": "lom-guarantee",
       "settings": {
         "heading": "Try It Risk-Free for 30 Days",
-        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
+        "heading_short": "30-Day Money-Back Guarantee",
+        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle.",
+        "loss_aversion_text": "The only risk is spending another month reaching for chemicals."
       }
     },
     "faq": {
