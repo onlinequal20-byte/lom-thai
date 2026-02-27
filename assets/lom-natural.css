@@ -515,41 +515,22 @@ h1, h2, h3, h4, h5, h6,
 .lom-header__nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
 }
 
 .lom-header__link {
-  font-family: var(--lt-sans);
-  font-size: 12.5px;
+  font-family: var(--lt-serif);
+  font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
-  font-weight: 500;
-  color: var(--lt-brown-black, #2c2421);
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: var(--lt-charcoal);
   text-decoration: none;
-  transition: color 0.3s ease, opacity 0.3s ease;
-  opacity: 0.72;
-  position: relative;
-  padding: 4px 0;
-}
-
-.lom-header__link::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
+  transition: color 0.4s ease;
 }
 
 .lom-header__link:hover {
-  color: var(--lt-brown-black, #2c2421);
-  opacity: 1;
-}
-
-.lom-header__link:hover::after {
-  width: 100%;
+  color: var(--lt-brown-black);
 }
 
 .lom-header__logo {
