@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lom Thai — Natural Herbal Relief for Headaches, Fatigue & Congestion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LOM THAI — HOMEPAGE v5.0
+   Problem-Solution Archetype — Ecom UX Expert Rebuild
+   Warm Ivory & Charcoal — Cormorant Garamond + DM Sans
+   ============================================================ */
+
+:root {
+  --ivory: #f5f0ea;
+  --ivory-dark: #ece6dd;
+  --ivory-mid: #e2dbd0;
+  --sand: #d6cec3;
+  --warm-gray: #9a8e82;
+  --charcoal: #3d3630;
+  --brown-black: #2a2520;
+  --black: #1a1714;
+  --terracotta: #c47a5a;
+  --terracotta-light: #d4927a;
+  --terracotta-dark: #a86545;
+  --olive: #7a8a5a;
+  --olive-light: #94a472;
+  --border: rgba(42,37,32,0.10);
+  --border-dark: rgba(42,37,32,0.18);
+  --glass: rgba(42,37,32,0.04);
+  --glass-hover: rgba(42,37,32,0.07);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --section-pad: 100px;
+  --section-pad-m: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--ivory);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+::selection { background: var(--terracotta); color: #fff; }
+a { color: var(--terracotta); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--terracotta-dark); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.container--wide { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--serif);
+  color: var(--brown-black);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--brown-black);
+  text-align: center;
+  margin: 0 0 14px;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.section-subtitle {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--warm-gray);
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 56px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--terracotta);
+  opacity: 0.5;
+}
+
+/* Star */
+.star {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: var(--terracotta);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* ============================================================
+   BUTTONS — 2026 Standard
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  padding: 0 32px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--brown-black);
+  color: var(--ivory);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.12);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.btn-primary a, .btn-primary a:hover { color: var(--ivory); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--brown-black);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: var(--brown-black);
+  color: var(--ivory);
+  border-color: var(--brown-black);
+}
+
+.btn-inline { width: auto; }
+
+/* ============================================================
+   ANNOUNCEMENT BAR
+   ============================================================ */
+.announce {
+  background: var(--brown-black);
+  padding: 10px 0;
+  text-align: center;
+}
+.announce__text {
+  color: var(--ivory-dark);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  background: var(--ivory);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.header__nav { display: flex; gap: 40px; }
+.header__link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: var(--warm-gray);
+}
+.header__link:hover { color: var(--brown-black); }
+.header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header__logo-text {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--brown-black);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.header__actions { display: flex; gap: 20px; align-items: center; }
+.header__icon { color: var(--warm-gray); transition: color 0.3s; position: relative; }
+.header__icon:hover { color: var(--brown-black); }
+.header__cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--terracotta);
+  color: #fff;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ============================================================
+   HERO — Product Section
+   ============================================================ */
+.hero {
+  padding: 40px 0 80px;
+  background: var(--ivory);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.hero__gallery { position: sticky; top: 120px; }
+.hero__main-image {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--ivory-dark);
+  border: 1px solid var(--border);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__main-image .placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--ivory-dark) 0%, var(--ivory-mid) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--warm-gray);
+  font-family: var(--serif);
+  font-size: 24px;
+}
+.hero__thumbs { display: flex; gap: 8px; }
+.hero__thumb {
+  flex: 0 0 68px;
+  width: 68px;
+  height: 68px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--ivory-dark);
+  cursor: pointer;
+  transition: border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--warm-gray);
+}
+.hero__thumb.is-active { border-color: var(--brown-black); }
+
+/* Purchase UI — strict order */
+.hero__info { font-family: var(--sans); }
+
+.hero__proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--charcoal);
+}
+
+.hero__title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 400;
+  color: var(--brown-black);
+  margin: 0 0 10px;
+  line-height: 1.12;
+}
+
+.hero__subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--warm-gray);
+  margin: 0 0 24px;
+}
+
+/* Urgency */
+.urgency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: rgba(196,122,90,0.06);
+  border: 1px solid rgba(196,122,90,0.12);
+}
+.urgency__icon { color: var(--terracotta); display: flex; }
+.urgency__text { font-size: 13px; font-weight: 600; color: var(--terracotta); }
+
+/* Price */
+.hero__price {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.hero__price-compare {
+  font-size: 18px;
+  color: var(--warm-gray);
+  text-decoration: line-through;
+}
+.hero__price-current {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--brown-black);
+}
+.hero__price-save {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--olive);
+  background: rgba(122,138,90,0.1);
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bundles */
+.bundles { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.bundle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  background: transparent;
+  border-radius: 10px;
+}
+.bundle:hover {
+  border-color: var(--border-dark);
+  background: var(--glass);
+}
+.bundle.is-active {
+  border-color: var(--brown-black);
+  background: rgba(42,37,32,0.03);
+}
+.bundle__badge {
+  position: absolute;
+  top: -9px;
+  right: 12px;
+  background: var(--brown-black);
+  color: var(--ivory);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+.bundle__badge--value {
+  background: var(--terracotta);
+  color: #fff;
+}
+.bundle__radio {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--sand);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.3s;
+}
+.bundle.is-active .bundle__radio {
+  border-color: var(--brown-black);
+  background: var(--brown-black);
+}
+.bundle.is-active .bundle__radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: var(--ivory);
+  border-radius: 50%;
+}
+.bundle__info { flex: 1; }
+.bundle__info strong {
+  font-size: 15px;
+  color: var(--brown-black);
+  display: block;
+  margin-bottom: 1px;
+}
+.bundle__info span { font-size: 13px; color: var(--warm-gray); }
+.bundle__price {
+  text-align: right;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brown-black);
+  font-family: var(--serif);
+  flex-shrink: 0;
+}
+.bundle__was {
+  font-size: 12px;
+  color: var(--warm-gray);
+  text-decoration: line-through;
+  font-weight: 400;
+  margin-right: 4px;
+  font-family: var(--sans);
+}
+
+/* Trust badges */
+.trust-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--charcoal);
+  flex: 1;
+  min-width: 130px;
+  justify-content: center;
+}
+.trust-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--terracotta);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* Hero ATC */
+.hero__atc { margin-bottom: 14px; }
+
+/* Buyers proof */
+.hero-buyers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.hero-buyers__avatars { display: flex; }
+.hero-buyers__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  border: 2px solid var(--ivory);
+  margin-left: -6px;
+}
+.hero-buyers__avatar:first-child { margin-left: 0; }
+.hero-buyers__text { font-size: 12px; font-weight: 500; color: var(--warm-gray); }
+
+/* Payments */
+.hero-payments { margin-bottom: 10px; }
+.hero-payments__track { display: flex; gap: 5px; }
+.hero-payments__icon {
+  height: 26px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: var(--warm-gray);
+  font-weight: 500;
+}
+
+/* Accordions */
+.hero-accordions { border-top: 1px solid var(--border); }
+.hero-accordion { border-bottom: 1px solid var(--border); }
+.hero-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brown-black);
+  text-align: left;
+}
+.hero-accordion__icon { font-size: 18px; color: var(--terracotta); transition: transform 0.3s; }
+.hero-accordion.is-open .hero-accordion__icon { transform: rotate(45deg); }
+.hero-accordion__content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.hero-accordion.is-open .hero-accordion__content { max-height: 400px; }
+.hero-accordion__body { padding: 0 0 18px; font-size: 14px; line-height: 1.65; color: var(--warm-gray); }
+
+.fda-disclaimer {
+  max-width: 640px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--warm-gray);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   SOCIAL PROOF STRIP
+   ============================================================ */
+.proof-strip {
+  background: var(--brown-black);
+  padding: 28px 0;
+}
+.proof-strip__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+}
+.proof-strip__item { text-align: center; }
+.proof-strip__number {
+  display: block;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.proof-strip__label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--warm-gray);
+  margin-top: 4px;
+}
+.proof-strip__divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(245,240,234,0.1);
+}
+
+/* ============================================================
+   PAIN SECTION — "Sound Familiar?"
+   ============================================================ */
+.pain {
+  padding: var(--section-pad) 0;
+  background: var(--ivory);
+}
+.pain__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pain__heading {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  color: var(--brown-black);
+  margin: 0 0 32px;
+  line-height: 1.12;
+}
+.pain__list {
+  list-style: none;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pain__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+.pain__item-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  color: var(--terracotta);
+}
+.pain__transition {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+
+/* ============================================================
+   BENEFITS — Scannable Stack
+   ============================================================ */
+.benefits {
+  padding: var(--section-pad) 0;
+  background: #fff;
+  position: relative;
+}
+.benefits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
+}
+.benefits__list {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.benefit__check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--terracotta);
+  margin-top: 2px;
+}
+.benefit__text strong {
+  color: var(--brown-black);
+}
+.benefit__text span {
+  color: var(--warm-gray);
+}
+
+/* ============================================================
+   HOW IT WORKS — 3 Steps
+   ============================================================ */
+.steps {
+  padding: var(--section-pad) 0;
+  background: var(--ivory);
+  position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
+}
+.steps__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.step { text-align: center; padding: 0 24px; position: relative; }
+.step__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+.step__number {
+  width: 48px;
+  height: 48px;
+  background: var(--ivory);
+  color: var(--terracotta);
+  border: 1.5px solid rgba(196,122,90,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+.step__connector {
+  position: absolute;
+  left: calc(50% + 28px);
+  right: calc(-50% + -28px);
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,122,90,0.3), rgba(196,122,90,0.06));
+  z-index: 1;
+}
+.step h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--brown-black);
+  margin: 0 0 8px;
+}
+.step p { font-size: 14px; line-height: 1.65; color: var(--warm-gray); margin: 0; }
+.steps__transition {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--warm-gray);
+  margin-top: 48px;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.compare {
+  padding: var(--section-pad) 0;
+  background: #fff;
+}
+.compare__desktop { overflow-x: auto; }
+.compare__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+.compare__th {
+  padding: 18px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  border-bottom: 1px solid var(--border);
+}
+.compare__th--brand {
+  background: rgba(196,122,90,0.04);
+  border-top: 3px solid var(--terracotta);
+  border-radius: 8px 8px 0 0;
+  color: var(--brown-black);
+}
+.compare__th--feature { text-align: left; }
+.compare__brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.compare__crown { color: var(--terracotta); }
+.compare__td {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--warm-gray);
+}
+.compare__td--feature {
+  text-align: left;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.compare__td--brand {
+  background: rgba(196,122,90,0.04);
+  font-weight: 600;
+  color: var(--brown-black);
+}
+.compare__val { color: var(--olive); font-weight: 600; }
+.compare__td--fail { color: var(--warm-gray); opacity: 0.7; }
+.compare__td--pass { color: var(--olive); }
+
+/* Mobile comparison */
+.compare__mobile { display: none; }
+.compare__m-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.compare__m-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--glass);
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+}
+.compare__m-head-brand { color: var(--brown-black); display: flex; align-items: center; gap: 6px; }
+.compare__m-head-vs { color: var(--warm-gray); font-weight: 400; }
+.compare__m-head-other { color: var(--warm-gray); }
+.compare__m-row {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.compare__m-row:last-child { border-bottom: none; }
+.compare__m-feature {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.compare__m-vals { display: flex; justify-content: space-between; }
+.compare__m-brand-val {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--olive);
+}
+.compare__m-brand-val svg { stroke: var(--olive); }
+.compare__m-other-val {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--warm-gray);
+  opacity: 0.5;
+}
+
+.compare__cta { text-align: center; margin-top: 48px; }
+.compare__cta .btn-primary { width: auto; padding: 0 48px; }
+
+/* ============================================================
+   INGREDIENTS
+   ============================================================ */
+.ingredients {
+  padding: var(--section-pad) 0;
+  background: var(--ivory);
+}
+.ingredients__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.ingredient {
+  text-align: center;
+  padding: 28px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.ingredient:hover {
+  border-color: var(--border-dark);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.ingredient__icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 14px;
+  color: var(--terracotta);
+}
+.ingredient__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+.ingredient__name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brown-black);
+  margin: 0 0 6px;
+}
+.ingredient__benefit {
+  font-size: 13px;
+  color: var(--warm-gray);
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+.ingredient__source {
+  font-size: 11px;
+  color: var(--terracotta);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cert-badges {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.cert-badge__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--terracotta);
+}
+.cert-badge__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+.reviews {
+  padding: var(--section-pad) 0;
+  background: #fff;
+}
+.reviews__stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 20px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reviews__stat { text-align: center; }
+.reviews__stat-number {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--brown-black);
+  display: block;
+}
+.reviews__stat-stars { display: flex; gap: 2px; justify-content: center; margin: 2px 0; }
+.reviews__stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+}
+.reviews__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.review-card {
+  padding: 28px;
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.review-card:nth-child(2) { transform: translateY(24px); }
+.review-card__stars { display: flex; gap: 2px; margin-bottom: 14px; }
+.review-card__text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  margin: 0 0 18px;
+  font-style: italic;
+}
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.review-card__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.review-card__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brown-black);
+}
+.review-card__location {
+  font-size: 12px;
+  color: var(--warm-gray);
+}
+.review-card__verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--olive);
+  font-weight: 600;
+}
+.review-card__verified svg { stroke: var(--olive); }
+
+/* ============================================================
+   GUARANTEE
+   ============================================================ */
+.guarantee {
+  padding: 64px 0;
+  background: var(--ivory);
+}
+.guarantee__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.guarantee__badge {
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.guarantee__shield {
+  width: 76px;
+  height: 76px;
+  color: var(--terracotta);
+}
+.guarantee__shield svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: rgba(196,122,90,0.08);
+  stroke-width: 1;
+}
+.guarantee__badge-text {
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--terracotta);
+}
+.guarantee__content h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+.guarantee__content p {
+  font-size: 15px;
+  color: var(--warm-gray);
+  margin: 0;
+  line-height: 1.6;
+}
+.guarantee__faq-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq {
+  padding: var(--section-pad) 0;
+  background: #fff;
+}
+.faq__list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brown-black);
+  text-align: left;
+}
+.faq-toggle {
+  font-size: 20px;
+  color: var(--terracotta);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.faq-item.active .faq-toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-item.active .faq-answer { max-height: 200px; }
+.faq-answer p {
+  padding: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--warm-gray);
+  margin: 0;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta {
+  padding: var(--section-pad) 0;
+  background: var(--ivory);
+}
+.final-cta__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.final-cta__image {
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, var(--ivory-dark) 0%, var(--ivory-mid) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--warm-gray);
+}
+.final-cta__text { flex: 1; }
+.final-cta__text h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 12px;
+}
+.final-cta__text p {
+  font-size: 15px;
+  color: var(--warm-gray);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+.final-cta__trust {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+.final-cta__trust span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.final-cta__trust svg {
+  stroke: var(--terracotta);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 48px 0 32px;
+  background: var(--brown-black);
+  text-align: center;
+}
+.footer__brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ivory);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.footer__tagline {
+  font-size: 13px;
+  color: var(--warm-gray);
+  margin-bottom: 24px;
+}
+.footer__bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(245,240,234,0.08);
+  font-size: 12px;
+  color: var(--warm-gray);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   STICKY MOBILE ATC BAR
+   ============================================================ */
+.sticky-atc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  background: var(--ivory);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sticky-atc.is-visible { transform: translateY(0); }
+.sticky-atc__price {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--brown-black);
+  white-space: nowrap;
+}
+.sticky-atc__btn {
+  flex: 1;
+  height: 48px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--brown-black);
+  color: var(--ivory);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .header__nav,
+  .header__logo { display: none; }
+  .header__inner { justify-content: center; }
+  .header__logo-mobile {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--brown-black);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .hero { padding: 24px 0 48px; }
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero__gallery { position: static; }
+  .hero__main-image { aspect-ratio: 1; }
+
+  .proof-strip__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .proof-strip__divider { display: none; }
+
+  .pain { padding: var(--section-pad-m) 0; }
+  .benefits { padding: var(--section-pad-m) 0; }
+
+  .steps { padding: var(--section-pad-m) 0; }
+  .steps__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .step { text-align: left; display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 0; }
+  .step__top { margin-bottom: 0; }
+  .step__connector { display: none; }
+
+  .compare { padding: var(--section-pad-m) 0; }
+  .compare__desktop { display: none; }
+  .compare__mobile { display: block; }
+
+  .ingredients { padding: var(--section-pad-m) 0; }
+  .ingredients__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ingredient { padding: 20px 12px; }
+  .ingredient:nth-child(5) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+
+  .reviews { padding: var(--section-pad-m) 0; }
+  .reviews__stats { gap: 16px; padding: 16px; }
+  .reviews__stat-number { font-size: 22px; }
+  .reviews__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .review-card:nth-child(2) { transform: none; }
+
+  .guarantee__inner {
+    flex-direction: row;
+    gap: 20px;
+    padding: 24px;
+  }
+  .guarantee__badge { width: 56px; height: 56px; }
+  .guarantee__shield { width: 56px; height: 56px; }
+  .guarantee__badge-text { font-size: 16px; }
+
+  .faq { padding: var(--section-pad-m) 0; }
+
+  .final-cta { padding: var(--section-pad-m) 0; }
+  .final-cta__inner {
+    flex-direction: column;
+    padding: 28px;
+    gap: 24px;
+  }
+  .final-cta__image {
+    width: 100%;
+    height: 160px;
+  }
+  .final-cta__text .btn-primary { width: 100%; }
+
+  .sticky-atc { display: flex; }
+
+  .container { padding: 0 16px; }
+  .container--wide { padding: 0 16px; }
+}
+
+@media (min-width: 769px) {
+  .header__logo-mobile-wrap { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+  <span class="announce__text">Free Shipping on All Orders &mdash; 30-Day Money-Back Guarantee</span>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header__inner">
+    <nav class="header__nav">
+      <a href="#" class="header__link">Shop</a>
+      <a href="#" class="header__link">About</a>
+    </nav>
+    <a href="#" class="header__logo">
+      <span class="header__logo-text">Lom Thai</span>
+    </a>
+    <div class="header__logo-mobile-wrap">
+      <span class="header__logo-mobile">Lom Thai</span>
+    </div>
+    <div class="header__actions">
+      <a href="#" class="header__link">FAQ</a>
+      <a href="#" class="header__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="header__cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — Product Section -->
+<section class="hero">
+  <div class="container--wide">
+    <div class="hero__grid">
+      <!-- Gallery -->
+      <div class="hero__gallery">
+        <div class="hero__main-image">
+          <div class="placeholder">Product Image</div>
+        </div>
+        <div class="hero__thumbs">
+          <div class="hero__thumb is-active">1</div>
+          <div class="hero__thumb">2</div>
+          <div class="hero__thumb">3</div>
+          <div class="hero__thumb">4</div>
+        </div>
+      </div>
+
+      <!-- Purchase UI — strict element order -->
+      <div class="hero__info">
+        <!-- 1. Stars + review count -->
+        <div class="hero__proof">
+          <span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>
+          <span>2,847 Reviews</span>
+        </div>
+
+        <!-- 2. Title (benefit headline) -->
+        <h1 class="hero__title">Instant Natural Relief for Headaches, Fatigue & Congestion</h1>
+
+        <!-- 3. Subtitle -->
+        <p class="hero__subtitle">2-in-1 Nasal Inhaler & Roller — Five Thai herbs, zero chemicals, works in seconds.</p>
+
+        <!-- 4. Urgency -->
+        <div class="urgency">
+          <span class="urgency__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="urgency__text">Limited batch — ships within 24 hours</span>
+        </div>
+
+        <!-- 5. Price block -->
+        <div class="hero__price">
+          <span class="hero__price-compare">$12.99</span>
+          <span class="hero__price-current">$7.99</span>
+          <span class="hero__price-save">Save 38%</span>
+        </div>
+
+        <!-- 6. Bundle selector — MIDDLE pre-selected -->
+        <div class="bundles">
+          <div class="bundle" onclick="selectBundle(this, '$7.99', '$7.99')">
+            <div class="bundle__radio"></div>
+            <div class="bundle__info"><strong>Try It</strong><span>See what the hype is about</span></div>
+            <div class="bundle__price">$7.99</div>
+          </div>
+          <div class="bundle is-active" onclick="selectBundle(this, '$19.17', '$6.39/ea')">
+            <span class="bundle__badge">Most Popular</span>
+            <div class="bundle__radio"></div>
+            <div class="bundle__info"><strong>Relief Pack</strong><span>Home + work + gym — never without it</span></div>
+            <div class="bundle__price"><small class="bundle__was">$23.97</small> $19.17</div>
+          </div>
+          <div class="bundle" onclick="selectBundle(this, '$27.96', '$5.59/ea')">
+            <span class="bundle__badge bundle__badge--value">Best Value</span>
+            <div class="bundle__radio"></div>
+            <div class="bundle__info"><strong>Never Run Out</strong><span>Best price. Stock up for the year.</span></div>
+            <div class="bundle__price"><small class="bundle__was">$39.95</small> $27.96</div>
+          </div>
+        </div>
+
+        <!-- 7. Trust badges -->
+        <div class="trust-badges">
+          <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>30-Day Guarantee</span></div>
+          <div class="trust-badge"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Free Shipping</span></div>
+          <div class="trust-badge"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span>Secure Checkout</span></div>
+        </div>
+
+        <!-- 8. ATC BUTTON -->
+        <button class="btn-primary hero__atc" id="heroATC">Get Lom Thai — $19.17</button>
+
+        <!-- 9. Social buyers proof -->
+        <div class="hero-buyers">
+          <div class="hero-buyers__avatars">
+            <span class="hero-buyers__avatar" style="background:var(--terracotta);z-index:4">S</span>
+            <span class="hero-buyers__avatar" style="background:var(--olive);z-index:3">M</span>
+            <span class="hero-buyers__avatar" style="background:var(--charcoal);z-index:2">J</span>
+          </div>
+          <span class="hero-buyers__text">Sarah + 89 others bought this week</span>
+        </div>
+
+        <!-- 10. Payment icons -->
+        <div class="hero-payments">
+          <div class="hero-payments__track">
+            <span class="hero-payments__icon">Visa</span>
+            <span class="hero-payments__icon">MC</span>
+            <span class="hero-payments__icon">Amex</span>
+            <span class="hero-payments__icon">PayPal</span>
+            <span class="hero-payments__icon">Shop Pay</span>
+          </div>
+        </div>
+
+        <!-- 11. Accordions -->
+        <div class="hero-accordions">
+          <div class="hero-accordion">
+            <button class="hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Description</span><span class="hero-accordion__icon">+</span></button>
+            <div class="hero-accordion__content"><div class="hero-accordion__body"><p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Traditionally used in Thailand for over a century.</p></div></div>
+          </div>
+          <div class="hero-accordion">
+            <button class="hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Common Questions</span><span class="hero-accordion__icon">+</span></button>
+            <div class="hero-accordion__content"><div class="hero-accordion__body"><p><strong>Is this a drug?</strong> No — 100% natural herbal aromatherapy.<br><strong>Is it TSA-friendly?</strong> Yes — solid stick, pocket-sized, flight-safe.</p></div></div>
+          </div>
+          <div class="hero-accordion">
+            <button class="hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Shipping & Returns</span><span class="hero-accordion__icon">+</span></button>
+            <div class="hero-accordion__content"><div class="hero-accordion__body"><p>Orders ship within 24 hours. Free shipping to US & EU. 30-day money-back guarantee — no questions asked.</p></div></div>
+          </div>
+        </div>
+
+        <p class="fda-disclaimer">* These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<section class="proof-strip">
+  <div class="container--wide">
+    <div class="proof-strip__inner">
+      <div class="proof-strip__item"><span class="proof-strip__number">50,000+</span><span class="proof-strip__label">Happy Customers</span></div>
+      <div class="proof-strip__divider"></div>
+      <div class="proof-strip__item"><span class="proof-strip__number">4.8</span><span class="proof-strip__label">Average Rating</span></div>
+      <div class="proof-strip__divider"></div>
+      <div class="proof-strip__item"><span class="proof-strip__number">100%</span><span class="proof-strip__label">Natural Ingredients</span></div>
+      <div class="proof-strip__divider"></div>
+      <div class="proof-strip__item"><span class="proof-strip__number">100+</span><span class="proof-strip__label">Years of Tradition</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN SECTION — "Sound Familiar?" -->
+<section class="pain reveal">
+  <div class="container">
+    <div class="pain__inner">
+      <span class="eyebrow">Sound Familiar?</span>
+      <h2 class="pain__heading">Tired of reaching for chemicals that don't work?</h2>
+      <ul class="pain__list">
+        <li class="pain__item">
+          <svg class="pain__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Headaches that won't quit no matter what you take
+        </li>
+        <li class="pain__item">
+          <svg class="pain__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Energy crashes every afternoon at your desk
+        </li>
+        <li class="pain__item">
+          <svg class="pain__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Pharmacy sprays that dry out your nose and stop working
+        </li>
+        <li class="pain__item">
+          <svg class="pain__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Spending $60-180/month on coffee and energy drinks
+        </li>
+      </ul>
+      <p class="pain__transition">There's a better way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS — Scannable Stack -->
+<section class="benefits reveal">
+  <div class="container">
+    <span class="eyebrow" style="display:block;text-align:center;">The Solution</span>
+    <h2 class="section-heading">Why 50,000+ People Switched to Lom Thai</h2>
+    <p class="section-subtitle">Five Thai herbs. One pocket-sized stick. A century of tradition.</p>
+    <div class="benefits__list">
+      <div class="benefit">
+        <svg class="benefit__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="benefit__text"><strong>Works in seconds</strong> <span>— No waiting 20-45 minutes like coffee or pills</span></div>
+      </div>
+      <div class="benefit">
+        <svg class="benefit__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="benefit__text"><strong>100% natural</strong> <span>— Five Thai herbs, zero chemicals, zero side effects</span></div>
+      </div>
+      <div class="benefit">
+        <svg class="benefit__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="benefit__text"><strong>Lasts for months</strong> <span>— One $8 stick replaces $120+ in energy drinks</span></div>
+      </div>
+      <div class="benefit">
+        <svg class="benefit__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="benefit__text"><strong>Pocket-sized & TSA-friendly</strong> <span>— Take it literally anywhere</span></div>
+      </div>
+      <div class="benefit">
+        <svg class="benefit__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="benefit__text"><strong>2-in-1 design</strong> <span>— Inhaler for focus, roller for tension relief</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps reveal">
+  <div class="container">
+    <span class="eyebrow" style="display:block;text-align:center;">Simple</span>
+    <h2 class="section-heading">How to Use</h2>
+    <p class="section-subtitle" style="margin-bottom:48px;">Three seconds. That's all it takes.</p>
+    <div class="steps__grid">
+      <div class="step">
+        <div class="step__top"><span class="step__number">1</span><span class="step__connector"></span></div>
+        <div class="step__text"><h3>Choose Your Experience</h3><p>Inhaler for a refreshing aromatic sensation. Roller for soothing comfort.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__top"><span class="step__number">2</span><span class="step__connector"></span></div>
+        <div class="step__text"><h3>Inhale or Apply</h3><p>Breathe deeply through the inhaler, or roll onto temples and neck.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__top"><span class="step__number">3</span></div>
+        <div class="step__text"><h3>Feel the Difference</h3><p>Immediate aromatic relief. A century-old Thai tradition, now in your pocket.</p></div>
+      </div>
+    </div>
+    <p class="steps__transition">That's it. No water. No waiting. No side effects.</p>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare reveal">
+  <div class="container">
+    <span class="eyebrow" style="display:block;text-align:center;">The Clear Winner</span>
+    <h2 class="section-heading">Why Lom Thai?</h2>
+    <p class="section-subtitle">See how we compare to what you're using now</p>
+
+    <!-- Desktop table -->
+    <div class="compare__desktop">
+      <table class="compare__table">
+        <thead><tr>
+          <th class="compare__th compare__th--feature"></th>
+          <th class="compare__th compare__th--brand"><div class="compare__brand-badge"><svg class="compare__crown" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg><span>LOM THAI</span></div></th>
+          <th class="compare__th compare__th--comp">Energy Drinks</th>
+          <th class="compare__th compare__th--comp">Pharmacy Sprays</th>
+          <th class="compare__th compare__th--comp">Coffee</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="compare__td compare__td--feature">Works instantly</td><td class="compare__td compare__td--brand"><span class="compare__val">Seconds</span></td><td class="compare__td compare__td--fail">15-30 min</td><td class="compare__td compare__td--fail">5-10 min</td><td class="compare__td compare__td--fail">20-45 min</td></tr>
+          <tr><td class="compare__td compare__td--feature">100% Natural</td><td class="compare__td compare__td--brand"><span class="compare__val">Yes</span></td><td class="compare__td compare__td--fail">No</td><td class="compare__td compare__td--fail">No</td><td class="compare__td compare__td--pass">Yes</td></tr>
+          <tr><td class="compare__td compare__td--feature">No crash or jitters</td><td class="compare__td compare__td--brand"><span class="compare__val">None</span></td><td class="compare__td compare__td--fail">Crash + jitters</td><td class="compare__td compare__td--pass">Minimal</td><td class="compare__td compare__td--fail">Anxiety + crash</td></tr>
+          <tr><td class="compare__td compare__td--feature">Headache comfort</td><td class="compare__td compare__td--brand"><span class="compare__val">Traditional use</span></td><td class="compare__td compare__td--fail">No</td><td class="compare__td compare__td--fail">No</td><td class="compare__td compare__td--fail">No</td></tr>
+          <tr><td class="compare__td compare__td--feature">Portable & TSA-safe</td><td class="compare__td compare__td--brand"><span class="compare__val">Yes</span></td><td class="compare__td compare__td--fail">No</td><td class="compare__td compare__td--pass">Yes</td><td class="compare__td compare__td--fail">No</td></tr>
+          <tr><td class="compare__td compare__td--feature">Monthly cost</td><td class="compare__td compare__td--brand"><span class="compare__val">$8 lasts months</span></td><td class="compare__td compare__td--fail">$60-120/mo</td><td class="compare__td compare__td--fail">$15-30/mo</td><td class="compare__td compare__td--fail">$90-180/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="compare__mobile">
+      <div class="compare__m-card">
+        <div class="compare__m-head">
+          <span class="compare__m-head-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg> Lom Thai</span>
+          <span class="compare__m-head-vs">vs</span>
+          <span class="compare__m-head-other">Others</span>
+        </div>
+        <div class="compare__m-body">
+          <div class="compare__m-row"><div class="compare__m-feature">Works instantly</div><div class="compare__m-vals"><span class="compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Seconds</span><span class="compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="compare__m-row"><div class="compare__m-feature">100% Natural</div><div class="compare__m-vals"><span class="compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Yes</span><span class="compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="compare__m-row"><div class="compare__m-feature">No crash or jitters</div><div class="compare__m-vals"><span class="compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> None</span><span class="compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="compare__m-row"><div class="compare__m-feature">Headache comfort</div><div class="compare__m-vals"><span class="compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Traditional use</span><span class="compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="compare__m-row"><div class="compare__m-feature">Monthly cost</div><div class="compare__m-vals"><span class="compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> $8 lasts months</span><span class="compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare__cta"><button class="btn-primary btn-inline">Try Lom Thai Risk-Free</button></div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients reveal">
+  <div class="container">
+    <span class="eyebrow" style="display:block;text-align:center;">Transparency</span>
+    <h2 class="section-heading">What's Inside</h2>
+    <p class="section-subtitle">Five powerful natural ingredients, perfected over a century</p>
+    <div class="ingredients__grid">
+      <div class="ingredient">
+        <div class="ingredient__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><polyline points="9 4 12 2 15 4"/><polyline points="9 20 12 22 15 20"/></svg></div>
+        <h3 class="ingredient__name">Menthol</h3>
+        <p class="ingredient__benefit">Clear breathing & invigorating sensation</p>
+        <p class="ingredient__source">40% Concentration</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient__icon"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M12 12C12 12 7 10 5 6c0 0 3.5 1 7 1s7-1 7-1c-2 4-7 6-7 6z"/></svg></div>
+        <h3 class="ingredient__name">Camphor</h3>
+        <p class="ingredient__benefit">Soothes tension & promotes comfort</p>
+        <p class="ingredient__source">Steam-Distilled</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient__icon"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="2" x2="12" y2="22"/></svg></div>
+        <h3 class="ingredient__name">Borneol</h3>
+        <p class="ingredient__benefit">Focus & mental clarity</p>
+        <p class="ingredient__source">Southern Thailand</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient__icon"><svg viewBox="0 0 24 24"><path d="M6 21c3-3 5-8 5-14"/><path d="M11 7C11 7 14 3 20 3c0 6-4 9.5-9 11"/></svg></div>
+        <h3 class="ingredient__name">Eucalyptus</h3>
+        <p class="ingredient__benefit">Respiratory comfort</p>
+        <p class="ingredient__source">Pure Leaf Oil</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><line x1="12" y1="3" x2="12" y2="8.5"/></svg></div>
+        <h3 class="ingredient__name">Lemon Oil</h3>
+        <p class="ingredient__benefit">Uplifts mood naturally</p>
+        <p class="ingredient__source">Cold-Pressed Thai Peel</p>
+      </div>
+    </div>
+    <div class="cert-badges">
+      <div class="cert-badge"><div class="cert-badge__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span>GMP-Certified</span></div>
+      <div class="cert-badge"><div class="cert-badge__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><span>Lab Tested</span></div>
+      <div class="cert-badge"><div class="cert-badge__icon"><svg viewBox="0 0 24 24"><path d="M6 21c3-3 5-8 5-14"/><path d="M11 7C11 7 14 3 20 3c0 6-4 9.5-9 11"/></svg></div><span>100% Natural</span></div>
+      <div class="cert-badge"><div class="cert-badge__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><span>Made in Thailand</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews reveal">
+  <div class="container">
+    <h2 class="section-heading">Real Results From Real People</h2>
+    <div class="reviews__stats">
+      <div class="reviews__stat">
+        <span class="reviews__stat-number">4.8</span>
+        <div class="reviews__stat-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+        <span class="reviews__stat-label">Avg Rating</span>
+      </div>
+      <div class="reviews__stat-divider"></div>
+      <div class="reviews__stat">
+        <span class="reviews__stat-number">1,200+</span>
+        <span class="reviews__stat-label">Verified Reviews</span>
+      </div>
+      <div class="reviews__stat-divider"></div>
+      <div class="reviews__stat">
+        <span class="reviews__stat-number">97%</span>
+        <span class="reviews__stat-label">Recommend</span>
+      </div>
+    </div>
+    <div class="reviews__grid">
+      <div class="review-card">
+        <div class="review-card__stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+        <p class="review-card__text">"Instant relief from my sinus headaches. I'm a nurse working 12-hour shifts and this keeps me going without any crash."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar" style="background:var(--terracotta)">MT</div>
+          <div>
+            <div class="review-card__name">Michelle T.</div>
+            <div class="review-card__location">Texas, USA</div>
+            <span class="review-card__verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+        <p class="review-card__text">"Replaced my 3-cup-a-day coffee habit. One inhale and the brain fog lifts immediately. My whole family uses these now."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar" style="background:var(--olive)">JK</div>
+          <div>
+            <div class="review-card__name">James K.</div>
+            <div class="review-card__location">New York, USA</div>
+            <span class="review-card__verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+        <p class="review-card__text">"As a truck driver, staying alert is everything. This little stick is better than any energy drink I've tried. Natural and no jitters."</p>
+        <div class="review-card__author">
+          <div class="review-card__avatar" style="background:var(--charcoal)">RD</div>
+          <div>
+            <div class="review-card__name">Robert D.</div>
+            <div class="review-card__location">Ohio, USA</div>
+            <span class="review-card__verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee__inner">
+      <div class="guarantee__badge">
+        <div class="guarantee__shield"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <span class="guarantee__badge-text">30</span>
+      </div>
+      <div class="guarantee__content">
+        <h2>Try It Risk-Free for 30 Days</h2>
+        <p>Full money-back guarantee. No questions asked, no hassle.</p>
+        <a href="#faq" class="guarantee__faq-link">FAQ &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Quick answers to common concerns</p>
+    <div class="faq__list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Is this a drug or medication?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>No. Lom Thai is 100% natural herbal aromatherapy made from essential oils. Not a drug, not a supplement.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">How fast does it work?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Seconds. The aromatic effect is immediate upon inhaling. The roller provides soothing comfort within 60 seconds.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">How long does one stick last?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Several months with daily use. One $8 stick outlasts a month's worth of energy drinks or coffee.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Is it TSA / airport safe?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Yes. It's a solid aromatherapy stick, well under liquid limits. Pocket-sized and flight-friendly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Do you ship internationally?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Free shipping to the US and EU. 5-10 business days. Full 30-day money-back guarantee on all orders.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta__inner">
+      <div class="final-cta__image">Product</div>
+      <div class="final-cta__text">
+        <span class="eyebrow">Don't Wait</span>
+        <h2>Still Thinking?</h2>
+        <p>50,000+ people already made the switch. Free shipping. 30-day guarantee. No risk.</p>
+        <div class="final-cta__trust">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30-Day Guarantee</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free Shipping</span>
+        </div>
+        <button class="btn-primary">Yes, I Want This — $19.17</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__brand">Lom Thai</div>
+    <p class="footer__tagline">Natural relief. Century-old tradition. Thai-made.</p>
+    <div class="footer__bottom"><p>&copy; 2026 Lom Thai. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE ATC BAR -->
+<div class="sticky-atc" id="stickyATC">
+  <span class="sticky-atc__price">$19.17</span>
+  <button class="sticky-atc__btn">Get Lom Thai</button>
+</div>
+
+<script>
+// Bundle selector
+function selectBundle(el, price, perUnit) {
+  document.querySelectorAll('.bundle').forEach(b => b.classList.remove('is-active'));
+  el.classList.add('is-active');
+  // Update ATC button text
+  document.getElementById('heroATC').textContent = 'Get Lom Thai — ' + price;
+  // Update sticky bar
+  document.querySelector('.sticky-atc__price').textContent = price;
+  // Update final CTA
+  document.querySelector('.final-cta .btn-primary').textContent = 'Yes, I Want This — ' + price;
+}
+
+// Sticky mobile ATC bar — show when hero ATC scrolls out of view
+const heroATC = document.getElementById('heroATC');
+const stickyBar = document.getElementById('stickyATC');
+if (heroATC && stickyBar) {
+  const obs = new IntersectionObserver(([e]) => {
+    stickyBar.classList.toggle('is-visible', !e.isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(heroATC);
+}
+
+// Scroll reveal animations
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('is-visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
