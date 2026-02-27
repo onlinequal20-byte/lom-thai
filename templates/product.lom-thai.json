@@ -36,6 +36,7 @@
         "review_1": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/4.png",
             "name": "Sarah M.",
             "location": "Texas",
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me."
@@ -44,6 +45,7 @@
         "review_2": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "name": "Marco V.",
             "location": "Ohio",
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash."
@@ -52,6 +54,7 @@
         "review_3": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
             "name": "Anna P.",
             "location": "Portland",
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house."
@@ -60,6 +63,7 @@
         "review_4": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq.png",
             "name": "Michelle T.",
             "location": "Texas",
             "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. 10/10."
@@ -119,7 +123,7 @@
         "buyers_text": "Sarah and 89 people this week",
         "avatar_1": "shopify://shop_images/1.png",
         "avatar_2": "shopify://shop_images/2.png",
-        "avatar_3": "shopify://shop_images/4.png",
+        "avatar_3": "shopify://shop_images/3.png",
         "loss_aversion_text": "Still thinking? Every day without this is another day reaching for chemicals that don't actually solve the problem.",
         "fda_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
@@ -332,6 +336,7 @@
         "r1": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_40_12.png",
             "stars": 5,
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
             "name": "Sarah M.",
@@ -342,16 +347,18 @@
         "r2": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "stars": 5,
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
-            "title": "Nurse",
-            "location": "Truck Driver, Ohio"
+            "title": "Truck Drive",
+            "location": "Ohio"
           }
         },
         "r3": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq.png",
             "stars": 5,
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
             "name": "Anna P.",
