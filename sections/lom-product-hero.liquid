@@ -93,15 +93,18 @@
         {%- comment -%} Bundle offer {%- endcomment -%}
         {% if section.settings.show_bundle %}
           <div class="lom-product-hero__bundles">
-            <button type="button" class="lom-product-hero__bundle is-active" data-quantity="1">
+            {% assign price_1 = product.price %}
+            {% assign price_3 = product.price | times: 3 | times: 80 | divided_by: 100 %}
+            {% assign price_5 = product.price | times: 5 | times: 70 | divided_by: 100 %}
+            <button type="button" class="lom-product-hero__bundle is-active" data-quantity="1" data-bundle-price="{{ price_1 | money }}" data-bundle-name="Try It">
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
                 <strong>Try It</strong>
                 <span>See what the hype is about</span>
               </div>
-              <div class="lom-product-hero__bundle-price">{{ product.price | money }}</div>
+              <div class="lom-product-hero__bundle-price">{{ price_1 | money }}</div>
             </button>
-            <button type="button" class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3">
+            <button type="button" class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3" data-bundle-price="{{ price_3 | money }}" data-bundle-name="Relief Pack">
               <span class="lom-product-hero__bundle-badge">Most Popular</span>
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
@@ -110,10 +113,10 @@
               </div>
               <div class="lom-product-hero__bundle-price">
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 3 | money }}</small>
-                {{ product.price | times: 3 | times: 80 | divided_by: 100 | money }}
+                {{ price_3 | money }}
               </div>
             </button>
-            <button type="button" class="lom-product-hero__bundle" data-quantity="5">
+            <button type="button" class="lom-product-hero__bundle" data-quantity="5" data-bundle-price="{{ price_5 | money }}" data-bundle-name="Never Run Out">
               <span class="lom-product-hero__bundle-badge lom-product-hero__bundle-badge--value">Best Value</span>
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
@@ -122,7 +125,7 @@
               </div>
               <div class="lom-product-hero__bundle-price">
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 5 | money }}</small>
-                {{ product.price | times: 5 | times: 70 | divided_by: 100 | money }}
+                {{ price_5 | money }}
               </div>
             </button>
           </div>
@@ -147,7 +150,9 @@
         {%- comment -%} Add to Cart {%- endcomment -%}
         {% form 'product', product, id: 'lom-product-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <button type="submit" class="lom-btn-primary lom-btn-full lom-product-hero__atc" {% unless product.available %}disabled{% endunless %}>
+          <input type="hidden" name="quantity" value="1" id="lom-bundle-qty">
+          <button type="submit" class="lom-btn-primary lom-btn-full lom-product-hero__atc" {% unless product.available %}disabled{% endunless %}
+            data-atc-text="{{ section.settings.atc_text | default: 'Add to Cart' }}">
             {% if product.available %}
               {{ section.settings.atc_text | default: 'Add to Cart' }} — {{ product.price | money }}
             {% else %}
@@ -290,11 +295,27 @@
 </div>
 
 <script>
-  // Bundle selector
+  // Bundle selector — updates quantity, CTA text, and sticky bar
   document.querySelectorAll('.lom-product-hero__bundle').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('.lom-product-hero__bundle').forEach(function(x){x.classList.remove('is-active')});
       this.classList.add('is-active');
+
+      var qty = this.getAttribute('data-quantity');
+      var price = this.getAttribute('data-bundle-price');
+      var qtyInput = document.getElementById('lom-bundle-qty');
+      var atcBtn = document.querySelector('.lom-product-hero__atc');
+      var stickyBtn = document.querySelector('.lom-sticky-atc__btn');
+      var stickyPrice = document.querySelector('.lom-sticky-atc__price');
+
+      if (qtyInput) qtyInput.value = qty;
+
+      if (atcBtn && atcBtn.dataset.atcText) {
+        atcBtn.textContent = atcBtn.dataset.atcText + ' — ' + price;
+      }
+
+      if (stickyBtn) stickyBtn.textContent = 'Add to Cart — ' + price;
+      if (stickyPrice) stickyPrice.innerHTML = price;
     });
   });
 

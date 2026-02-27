@@ -559,6 +559,30 @@
           </small>
         </div>
 
+        <!-- Free shipping progress -->
+        {% assign free_shipping_threshold = 5000 %}
+        {% assign cart_total = cart.total_price %}
+        {% assign remaining = free_shipping_threshold | minus: cart_total %}
+        {% assign progress = cart_total | times: 100 | divided_by: free_shipping_threshold %}
+        {% if progress > 100 %}{% assign progress = 100 %}{% endif %}
+
+        <div class="lom-cart-shipping">
+          {% if remaining > 0 %}
+            <p class="lom-cart-shipping__text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l4 4v6a2 2 0 0 1-2 2h-1"/><path d="M3 7v10a2 2 0 0 0 2 2h2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
+              Add {{ remaining | money }} more for <strong>free shipping</strong>
+            </p>
+          {% else %}
+            <p class="lom-cart-shipping__text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              You've unlocked <strong>free shipping!</strong>
+            </p>
+          {% endif %}
+          <div class="lom-cart-shipping__bar">
+            <div class="lom-cart-shipping__fill" style="width: {{ progress }}%"></div>
+          </div>
+        </div>
+
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
@@ -572,7 +596,7 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            Checkout — {{ cart.total_price | money }}
           </button>
         </div>
         <div class="lom-cart-trust" aria-label="Trust badges">

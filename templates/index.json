@@ -376,6 +376,7 @@
         "menthol": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_27_feb_2026_14_11_48.png",
             "icon_type": "snowflake",
             "icon": "",
             "name": "Menthol",
@@ -386,6 +387,7 @@
         "camphor": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_27_feb_2026_14_20_47.png",
             "icon_type": "flower",
             "icon": "",
             "name": "Camphor",
@@ -396,6 +398,7 @@
         "borneol": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_27_feb_2026_14_23_04.png",
             "icon_type": "diamond",
             "icon": "",
             "name": "Borneol",
@@ -406,6 +409,7 @@
         "eucalyptus": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_27_feb_2026_14_26_11.png",
             "icon_type": "leaf",
             "icon": "",
             "name": "Eucalyptus Oil",
@@ -416,6 +420,7 @@
         "lemon": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_27_feb_2026_14_25_46.png",
             "icon_type": "droplet",
             "icon": "",
             "name": "Lemon Oil",
