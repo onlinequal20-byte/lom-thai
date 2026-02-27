@@ -1959,12 +1959,17 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .lom-ingredient-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 100px;
+  height: auto;
+  border-radius: 0;
+  object-fit: contain;
   margin: 0 auto 16px;
   display: block;
+}
+@media (max-width: 768px) {
+  .lom-ingredient-img {
+    width: 80px;
+  }
 }
 
 .lom-ingredient-icon {
