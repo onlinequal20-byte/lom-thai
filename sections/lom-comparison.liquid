@@ -42,7 +42,7 @@
                 {% assign bv = block.settings.brand_value %}
                 {% if bv contains '✓' %}
                   <span class="lom-compare__icon lom-compare__icon--yes">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z" opacity="0.9"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </span>
                 {% endif %}
                 <span class="lom-compare__val">{{ bv | remove: '✓' | remove: '✗' | strip }}</span>
@@ -54,11 +54,11 @@
                   <td class="lom-compare__td lom-compare__td--comp {% if val contains '✗' %}lom-compare__td--fail{% elsif val contains '✓' %}lom-compare__td--pass{% endif %}">
                     {% if val contains '✗' %}
                       <span class="lom-compare__icon lom-compare__icon--no">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z"/><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                       </span>
                     {% elsif val contains '✓' %}
                       <span class="lom-compare__icon lom-compare__icon--partial">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M12 2C12 2 14 6 14 8C14 10 16 10 18 8C18 8 16 14 16 16C16 18 18 20 18 20C18 20 15 19 12 22C9 19 6 20 6 20C6 20 8 18 8 16C8 14 6 8 6 8C8 10 10 10 10 8C10 6 12 2 12 2Z"/></svg>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                       </span>
                     {% endif %}
                     <span>{{ val | remove: '✓' | remove: '✗' | strip }}</span>
@@ -71,42 +71,94 @@
       </table>
     </div>
 
-    {%- comment -%} MOBILE: Premium Winner Column {%- endcomment -%}
+    {%- comment -%} MOBILE: Compact two-column rows {%- endcomment -%}
     <div class="lom-compare__mobile lom-fade-in">
-      <div class="lom-compare__m-card">
-        <div class="lom-compare__m-head">
-          <div class="lom-compare__m-head-brand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg>
-            <span>Lom Thai</span>
-          </div>
-          <span class="lom-compare__m-head-vs">vs</span>
-          <span class="lom-compare__m-head-other">Others</span>
-        </div>
-        <div class="lom-compare__m-body">
-          {% for block in row_blocks %}
-            {% assign bv = block.settings.brand_value | remove: '✓' | remove: '✗' | strip %}
-            <div class="lom-compare__m-row" {{ block.shopify_attributes }}>
-              <div class="lom-compare__m-feature">{{ block.settings.feature }}</div>
-              <div class="lom-compare__m-vals">
-                <span class="lom-compare__m-brand-val">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  {{ bv }}
-                </span>
-                <span class="lom-compare__m-other-val">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </span>
-              </div>
+      {% for block in row_blocks %}
+        {% assign bv = block.settings.brand_value | remove: '✓' | remove: '✗' | strip %}
+        {% assign cv = block.settings.competitor_1 | remove: '✓' | remove: '✗' | strip %}
+        <div class="lom-compare__m-row" {{ block.shopify_attributes }}>
+          <div class="lom-compare__m-label">{{ block.settings.feature }}</div>
+          <div class="lom-compare__m-cols">
+            <div class="lom-compare__m-win">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--lt-emerald)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>{% if bv != blank %}{{ bv }}{% else %}Yes{% endif %}</span>
             </div>
-          {% endfor %}
+            <div class="lom-compare__m-lose">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>{% if cv != blank %}{{ cv }}{% else %}No{% endif %}</span>
+            </div>
+          </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
 
     <div class="lom-compare__cta lom-fade-in">
-      <a href="{{ section.settings.cta_url | default: '#lom-product-form' }}" class="lom-btn-primary lom-btn-large">{{ section.settings.cta_button | default: 'Try Lom Thai Risk-Free →' }}</a>
+      <a href="{{ section.settings.cta_url | default: '#lom-product-form' }}" class="lom-btn-primary lom-btn-large">{{ section.settings.cta_button | default: 'Try Lom Thai Risk-Free' }}</a>
     </div>
   </div>
 </section>
+
+<style>
+  /* ===== MOBILE COMPARISON — Compact rows ===== */
+  .lom-compare__mobile { display: none; }
+
+  @media (max-width: 768px) {
+    .lom-compare__desktop { display: none !important; }
+    .lom-compare__mobile { display: block; }
+
+    .lom-compare__m-row {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--lt-border);
+    }
+    .lom-compare__m-row:last-child {
+      border-bottom: none;
+    }
+    .lom-compare__m-label {
+      font-family: var(--lt-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--lt-brown-black);
+      margin-bottom: 10px;
+    }
+    .lom-compare__m-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .lom-compare__m-win {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--lt-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--lt-emerald-dark);
+      background: rgba(122,138,90,0.08);
+      border: 1px solid rgba(122,138,90,0.15);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .lom-compare__m-win svg {
+      flex-shrink: 0;
+    }
+    .lom-compare__m-lose {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--lt-sans);
+      font-size: 13px;
+      color: var(--lt-warm-gray);
+      background: rgba(42,37,32,0.03);
+      border: 1px solid rgba(42,37,32,0.06);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .lom-compare__m-lose svg {
+      flex-shrink: 0;
+      stroke: rgba(184,92,85,0.5);
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -146,7 +198,7 @@
       "type": "text",
       "id": "cta_button",
       "label": "CTA button text",
-      "default": "Try Lom Thai Risk-Free →"
+      "default": "Try Lom Thai Risk-Free"
     },
     {
       "type": "url",
@@ -226,12 +278,10 @@
         { "type": "competitor", "settings": { "name": "Amazon Generics", "enemy_copy": "Mass-produced. Unknown ingredients. No heritage. No guarantee." } },
         { "type": "row", "settings": { "feature": "Works instantly", "brand_value": "✓ Seconds", "competitor_1": "✗ 15-30 min", "competitor_2": "✗ 5-10 min", "competitor_3": "✗ 20-45 min", "competitor_4": "✗ Varies" } },
         { "type": "row", "settings": { "feature": "100% Natural", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✓ Yes", "competitor_4": "✗ Unknown" } },
-        { "type": "row", "settings": { "feature": "No crash or side effects", "brand_value": "✓ None", "competitor_1": "✗ Crash + jitters", "competitor_2": "✗ Rebound congestion", "competitor_3": "✗ Anxiety + crash", "competitor_4": "✗ Unknown" } },
+        { "type": "row", "settings": { "feature": "No crash or jitters", "brand_value": "✓ None", "competitor_1": "✗ Crash + jitters", "competitor_2": "✗ Rebound congestion", "competitor_3": "✗ Anxiety + crash", "competitor_4": "✗ Unknown" } },
         { "type": "row", "settings": { "feature": "Headache comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No", "competitor_4": "✗ Unverified" } },
-        { "type": "row", "settings": { "feature": "Respiratory comfort", "brand_value": "✓ Traditional use", "competitor_1": "✗ No", "competitor_2": "✓ Temporarily", "competitor_3": "✗ No", "competitor_4": "✗ Unverified" } },
         { "type": "row", "settings": { "feature": "Portable & TSA-friendly", "brand_value": "✓ Yes", "competitor_1": "✗ No", "competitor_2": "✓ Yes", "competitor_3": "✗ No", "competitor_4": "✓ Yes" } },
-        { "type": "row", "settings": { "feature": "Months of daily relief", "brand_value": "✓ One $8 stick lasts months", "competitor_1": "✗ $60-120/mo", "competitor_2": "✗ $15-30/mo", "competitor_3": "✗ $90-180/mo", "competitor_4": "✗ Varies" } },
-        { "type": "row", "settings": { "feature": "Money-back guarantee", "brand_value": "✓ 30 days", "competitor_1": "✗ No", "competitor_2": "✗ No", "competitor_3": "✗ No", "competitor_4": "✗ No" } }
+        { "type": "row", "settings": { "feature": "Monthly cost", "brand_value": "✓ One $8 stick lasts months", "competitor_1": "✗ $60-120/mo", "competitor_2": "✗ $15-30/mo", "competitor_3": "✗ $90-180/mo", "competitor_4": "✗ Varies" } }
       ]
     }
   ]
