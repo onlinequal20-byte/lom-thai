@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lom Thai — Redesign v4 — Warm Ivory & Charcoal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LOM THAI — REDESIGN v4.0
+   Warm Ivory & Charcoal — Aesop / Le Labo editorial luxury
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --lt-ivory: #f5f0ea;
+  --lt-ivory-dark: #ece6dd;
+  --lt-ivory-mid: #e2dbd0;
+  --lt-sand: #d6cec3;
+  --lt-warm-gray: #9a8e82;
+  --lt-charcoal: #3d3630;
+  --lt-brown-black: #2a2520;
+  --lt-black: #1a1714;
+
+  /* Accent */
+  --lt-terracotta: #c47a5a;
+  --lt-terracotta-light: #d4927a;
+  --lt-terracotta-dark: #a86545;
+  --lt-terracotta-glow: rgba(196,122,90,0.15);
+
+  /* Status */
+  --lt-olive: #7a8a5a;
+  --lt-olive-light: #94a472;
+  --lt-danger: #b85c55;
+
+  /* Functional */
+  --lt-border: rgba(42,37,32,0.10);
+  --lt-border-dark: rgba(42,37,32,0.18);
+  --lt-glass: rgba(42,37,32,0.04);
+  --lt-glass-hover: rgba(42,37,32,0.07);
+
+  /* Fonts */
+  --lt-serif: 'Cormorant Garamond', Georgia, serif;
+  --lt-sans: 'DM Sans', -apple-system, sans-serif;
+
+  /* Spacing */
+  --lt-section-pad: 100px;
+  --lt-section-pad-mobile: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--lt-sans);
+  background: var(--lt-ivory);
+  color: var(--lt-charcoal);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+::selection { background: var(--lt-terracotta); color: #fff; }
+a { color: var(--lt-terracotta); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--lt-terracotta-dark); }
+
+.lom-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.lom-container--wide { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--lt-serif);
+  color: var(--lt-brown-black);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.lom-heading {
+  font-family: var(--lt-serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--lt-brown-black);
+  text-align: center;
+  margin: 0 0 14px;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.lom-heading-subtitle {
+  font-family: var(--lt-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lt-warm-gray);
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 56px;
+}
+
+.lt-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--lt-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  color: var(--lt-terracotta);
+  margin-bottom: 14px;
+}
+.lt-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--lt-terracotta);
+  opacity: 0.5;
+}
+
+/* Buttons */
+.lom-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--lt-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 18px 40px;
+  background: var(--lt-brown-black);
+  color: var(--lt-ivory);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.lom-btn-primary:hover {
+  background: var(--lt-charcoal);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(42,37,32,0.15);
+}
+.lom-btn-primary:hover a, .lom-btn-primary a { color: var(--lt-ivory); }
+
+.lom-btn-large { font-size: 14px; padding: 20px 48px; }
+.lom-btn-full { width: 100%; display: flex; text-align: center; }
+
+.lom-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lt-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--lt-brown-black);
+  border: 1px solid var(--lt-border-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.lom-btn-secondary:hover {
+  background: var(--lt-brown-black);
+  color: var(--lt-ivory);
+  border-color: var(--lt-brown-black);
+}
+
+/* Star system */
+.lom-star {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: var(--lt-terracotta);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* ============================================================
+   ANNOUNCEMENT BAR
+   ============================================================ */
+.lom-announce {
+  background: var(--lt-brown-black);
+  padding: 10px 0;
+  text-align: center;
+}
+.lom-announce__text {
+  color: var(--lt-ivory-dark);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.lom-header {
+  background: var(--lt-ivory);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--lt-border);
+}
+.lom-header__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lom-header__nav { display: flex; gap: 40px; }
+.lom-header__link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: var(--lt-warm-gray);
+}
+.lom-header__link:hover { color: var(--lt-brown-black); }
+.lom-header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.lom-header__logo-text {
+  font-family: var(--lt-serif);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--lt-brown-black);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.lom-header__actions { display: flex; gap: 20px; align-items: center; }
+.lom-header__icon {
+  color: var(--lt-warm-gray);
+  transition: color 0.3s;
+  position: relative;
+}
+.lom-header__icon:hover { color: var(--lt-brown-black); }
+.lom-header__cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--lt-terracotta);
+  color: #fff;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ============================================================
+   PRODUCT HERO
+   ============================================================ */
+.lom-product-hero {
+  padding: 40px 0 80px;
+  background: var(--lt-ivory);
+}
+.lom-product-hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.lom-product-hero__gallery { position: sticky; top: 100px; }
+.lom-product-hero__main-image {
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: var(--lt-ivory-dark);
+  border: 1px solid var(--lt-border);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lom-product-hero__main-image .placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--lt-ivory-dark) 0%, var(--lt-ivory-mid) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lt-warm-gray);
+  font-family: var(--lt-serif);
+  font-size: 24px;
+}
+.lom-product-hero__thumbs { display: flex; gap: 8px; }
+.lom-product-hero__thumb {
+  flex: 0 0 68px;
+  width: 68px;
+  height: 68px;
+  border-radius: 4px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-ivory-dark);
+  cursor: pointer;
+  transition: border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--lt-warm-gray);
+}
+.lom-product-hero__thumb.is-active { border-color: var(--lt-brown-black); }
+
+.lom-product-hero__info { font-family: var(--lt-sans); }
+.lom-product-hero__breadcrumb {
+  font-size: 11px;
+  color: var(--lt-warm-gray);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.lom-product-hero__breadcrumb a { color: var(--lt-warm-gray); }
+.lom-product-hero__breadcrumb a:hover { color: var(--lt-terracotta); }
+
+.lom-product-hero__proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--lt-charcoal);
+}
+
+.lom-product-hero__title {
+  font-family: var(--lt-serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  color: var(--lt-brown-black);
+  margin: 0 0 10px;
+  line-height: 1.12;
+}
+
+.lom-product-hero__subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lt-warm-gray);
+  margin: 0 0 24px;
+}
+
+/* Urgency */
+.lom-urgency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background: rgba(196,122,90,0.06);
+  border: 1px solid rgba(196,122,90,0.12);
+}
+.lom-urgency__icon { color: var(--lt-terracotta); display: flex; }
+.lom-urgency__text { font-size: 13px; font-weight: 600; color: var(--lt-terracotta); }
+
+/* Price */
+.lom-product-hero__price {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.lom-product-hero__price-current {
+  font-family: var(--lt-serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--lt-brown-black);
+}
+.lom-product-hero__price-compare {
+  font-size: 18px;
+  color: var(--lt-warm-gray);
+  text-decoration: line-through;
+}
+.lom-product-hero__price-save {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lt-olive);
+  background: rgba(122,138,90,0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bundles */
+.lom-product-hero__bundles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.lom-product-hero__bundle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--lt-border);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  background: transparent;
+  border-radius: 4px;
+}
+.lom-product-hero__bundle:hover {
+  border-color: var(--lt-border-dark);
+  background: var(--lt-glass);
+}
+.lom-product-hero__bundle.is-active {
+  border-color: var(--lt-brown-black);
+  background: rgba(42,37,32,0.03);
+}
+.lom-product-hero__bundle-badge {
+  position: absolute;
+  top: -9px;
+  right: 12px;
+  background: var(--lt-brown-black);
+  color: var(--lt-ivory);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.lom-product-hero__bundle-badge--value {
+  background: var(--lt-terracotta);
+  color: #fff;
+}
+.lom-product-hero__bundle-radio {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--lt-sand);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.3s;
+}
+.lom-product-hero__bundle.is-active .lom-product-hero__bundle-radio {
+  border-color: var(--lt-brown-black);
+  background: var(--lt-brown-black);
+}
+.lom-product-hero__bundle.is-active .lom-product-hero__bundle-radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: var(--lt-ivory);
+  border-radius: 50%;
+}
+.lom-product-hero__bundle-info { flex: 1; }
+.lom-product-hero__bundle-info strong {
+  font-size: 15px;
+  color: var(--lt-brown-black);
+  display: block;
+  margin-bottom: 1px;
+}
+.lom-product-hero__bundle-info span { font-size: 13px; color: var(--lt-warm-gray); }
+.lom-product-hero__bundle-price {
+  text-align: right;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lt-brown-black);
+  font-family: var(--lt-serif);
+  flex-shrink: 0;
+}
+.lom-product-hero__bundle-was {
+  font-size: 12px;
+  color: var(--lt-warm-gray);
+  text-decoration: line-through;
+  font-weight: 400;
+  margin-right: 4px;
+  font-family: var(--lt-sans);
+}
+
+/* Guarantee badges */
+.lom-product-hero__guarantees {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.lom-product-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--lt-glass);
+  border: 1px solid var(--lt-border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--lt-charcoal);
+  flex: 1;
+  min-width: 130px;
+  justify-content: center;
+}
+.lom-product-hero__guarantee svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--lt-terracotta);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ATC */
+.lom-product-hero__atc {
+  font-size: 14px;
+  padding: 20px 32px;
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+/* Buyers */
+.lom-hero-buyers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--lt-border);
+}
+.lom-hero-buyers__avatars { display: flex; }
+.lom-hero-buyers__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  border: 2px solid var(--lt-ivory);
+  margin-left: -6px;
+}
+.lom-hero-buyers__avatar:first-child { margin-left: 0; }
+.lom-hero-buyers__text { font-size: 12px; font-weight: 500; color: var(--lt-warm-gray); }
+
+/* Payments */
+.lom-hero-payments { margin-bottom: 10px; }
+.lom-hero-payments__track { display: flex; gap: 5px; }
+.lom-hero-payments__icon {
+  height: 26px;
+  background: var(--lt-glass);
+  border: 1px solid var(--lt-border);
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: var(--lt-warm-gray);
+  font-weight: 500;
+}
+
+/* Trust row */
+.lom-hero-trust-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--lt-border);
+}
+.lom-hero-trust-row__item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--lt-warm-gray);
+}
+.lom-hero-trust-row__item svg { color: var(--lt-terracotta); width: 14px; height: 14px; }
+
+/* Review carousel */
+.lom-hero-review-carousel { margin-bottom: 10px; }
+.lom-hero-review-card {
+  background: var(--lt-ivory-dark);
+  border: 1px solid var(--lt-border);
+  border-radius: 6px;
+  padding: 20px;
+}
+.lom-hero-review-card__inner { display: flex; gap: 14px; align-items: flex-start; }
+.lom-hero-review-card__avatar {
+  width: 44px;
+  height: 44px;
+  background: rgba(196,122,90,0.1);
+  border: 1px solid rgba(196,122,90,0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lt-serif);
+  font-size: 18px;
+  color: var(--lt-terracotta);
+  flex-shrink: 0;
+}
+.lom-hero-review-card__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lt-brown-black);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lom-hero-review-card__verified {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  background: var(--lt-olive);
+  color: #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.lom-hero-review-card__location { font-size: 12px; color: var(--lt-warm-gray); margin-top: 1px; }
+.lom-hero-review-card__stars { margin-top: 4px; display: flex; gap: 2px; }
+.lom-hero-review-card__text { font-size: 14px; line-height: 1.6; color: var(--lt-charcoal); margin: 6px 0 0; }
+
+/* Review nav */
+.lom-hero-review-nav { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.lom-hero-review-nav strong { font-size: 14px; color: var(--lt-brown-black); }
+.lom-hero-review-nav > span { font-size: 12px; color: var(--lt-warm-gray); }
+.lom-hero-review-dots { display: flex; gap: 5px; margin-left: auto; }
+.lom-hero-review-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lt-sand); }
+.lom-hero-review-dot.is-active { background: var(--lt-terracotta); }
+
+/* Accordions */
+.lom-hero-accordions { border-top: 1px solid var(--lt-border); }
+.lom-hero-accordion { border-bottom: 1px solid var(--lt-border); }
+.lom-hero-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--lt-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lt-brown-black);
+  text-align: left;
+}
+.lom-hero-accordion__icon { font-size: 18px; color: var(--lt-terracotta); transition: transform 0.3s; }
+.lom-hero-accordion.is-open .lom-hero-accordion__icon { transform: rotate(45deg); }
+.lom-hero-accordion__content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.lom-hero-accordion.is-open .lom-hero-accordion__content { max-height: 400px; }
+.lom-hero-accordion__body { padding: 0 0 18px; font-size: 14px; line-height: 1.65; color: var(--lt-warm-gray); }
+
+/* Loss aversion (kept for reuse) */
+.lom-product-hero__loss-aversion {
+  margin: 20px 0 0;
+  padding: 14px 18px;
+  background: var(--lt-glass);
+  border-left: 2px solid var(--lt-terracotta);
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--lt-warm-gray);
+  line-height: 1.6;
+}
+.lom-fda-disclaimer {
+  max-width: 640px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--lt-warm-gray);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   STEPS
+   ============================================================ */
+.lom-steps {
+  padding: var(--lt-section-pad) 0;
+  background: #fff;
+  position: relative;
+}
+.lom-steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lt-border-dark), transparent);
+}
+.lom-steps-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.lom-step { text-align: center; padding: 0 24px; position: relative; }
+.lom-step__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+.lom-step-number {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  color: var(--lt-terracotta);
+  border: 1.5px solid rgba(196,122,90,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lt-serif);
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+.lom-step-connector {
+  position: absolute;
+  left: calc(50% + 28px);
+  right: calc(-50% + -28px);
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,122,90,0.3), rgba(196,122,90,0.06));
+  z-index: 1;
+}
+.lom-step h3 {
+  font-family: var(--lt-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--lt-brown-black);
+  margin: 0 0 8px;
+}
+.lom-step p { font-size: 14px; line-height: 1.65; color: var(--lt-warm-gray); margin: 0; }
+.lom-steps-transition {
+  text-align: center;
+  font-family: var(--lt-sans);
+  font-size: 14px;
+  color: var(--lt-charcoal);
+  margin: 40px auto 0;
+  max-width: 560px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   COMPARISON
+   ============================================================ */
+.lom-compare {
+  padding: var(--lt-section-pad) 0;
+  background: var(--lt-ivory-dark);
+  position: relative;
+}
+.lom-compare__header { text-align: center; margin-bottom: 48px; }
+.lom-compare__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  color: var(--lt-terracotta);
+  margin-bottom: 14px;
+}
+.lom-compare__table-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid var(--lt-border-dark);
+  background: #fff;
+  overflow: hidden;
+}
+.lom-compare__table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.lom-compare__th {
+  padding: 20px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--lt-warm-gray);
+  border-bottom: 1px solid var(--lt-border);
+  background: var(--lt-ivory);
+  text-align: center;
+}
+.lom-compare__th--feature { text-align: left; width: 24%; }
+.lom-compare__th--brand {
+  background: rgba(196,122,90,0.06);
+  color: var(--lt-terracotta);
+  border-bottom: 2px solid rgba(196,122,90,0.3);
+  position: relative;
+  width: 20%;
+}
+.lom-compare__th--brand::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--lt-terracotta), transparent);
+}
+.lom-compare__th--comp { width: 14%; }
+.lom-compare__brand-badge { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.lom-compare__brand-badge span { font-size: 13px; letter-spacing: 2px; font-weight: 700; }
+.lom-compare__crown { color: var(--lt-terracotta); width: 18px; height: 18px; }
+
+.lom-compare__tr { transition: background 0.2s; }
+.lom-compare__tr:hover { background: rgba(42,37,32,0.02); }
+.lom-compare__tr:nth-child(even) { background: var(--lt-ivory); }
+.lom-compare__tr:nth-child(even):hover { background: rgba(42,37,32,0.03); }
+
+.lom-compare__td {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--lt-warm-gray);
+  border-bottom: 1px solid var(--lt-border);
+  text-align: center;
+}
+.lom-compare__td--feature { text-align: left; font-weight: 600; color: var(--lt-brown-black); }
+.lom-compare__td--brand { background: rgba(196,122,90,0.03); color: var(--lt-terracotta); font-weight: 600; }
+.lom-compare__td--fail { color: rgba(184,92,85,0.55); }
+.lom-compare__td--pass { color: var(--lt-olive); }
+.lom-compare__val { display: block; text-align: center; }
+.lom-compare__cta { text-align: center; margin-top: 48px; }
+
+/* Mobile comparison */
+.lom-compare__mobile { display: none; }
+.lom-compare__m-card { background: #fff; border: 1px solid var(--lt-border-dark); border-radius: 6px; overflow: hidden; }
+.lom-compare__m-head {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  padding: 14px 18px; background: rgba(196,122,90,0.04); border-bottom: 1px solid var(--lt-border);
+}
+.lom-compare__m-head-brand { display: flex; align-items: center; gap: 6px; color: var(--lt-terracotta); font-family: var(--lt-serif); font-size: 16px; font-weight: 500; }
+.lom-compare__m-head-vs { font-size: 11px; color: var(--lt-warm-gray); opacity: 0.4; }
+.lom-compare__m-head-other { font-size: 12px; color: var(--lt-warm-gray); opacity: 0.5; }
+.lom-compare__m-row { padding: 12px 18px; border-bottom: 1px solid var(--lt-border); }
+.lom-compare__m-row:last-child { border-bottom: none; }
+.lom-compare__m-row:nth-child(even) { background: var(--lt-ivory); }
+.lom-compare__m-feature { font-size: 13px; font-weight: 500; color: var(--lt-brown-black); margin-bottom: 6px; }
+.lom-compare__m-vals { display: flex; align-items: center; justify-content: space-between; }
+.lom-compare__m-brand-val {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500;
+  color: var(--lt-olive); background: rgba(122,138,90,0.08); border: 1px solid rgba(122,138,90,0.15);
+  border-radius: 4px; padding: 3px 10px;
+}
+.lom-compare__m-brand-val svg { stroke: var(--lt-olive); flex-shrink: 0; }
+.lom-compare__m-other-val {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(42,37,32,0.04); border: 1px solid var(--lt-border);
+  display: flex; align-items: center; justify-content: center;
+}
+.lom-compare__m-other-val svg { stroke: var(--lt-sand); }
+
+/* ============================================================
+   INGREDIENTS
+   ============================================================ */
+.lom-ingredients { padding: var(--lt-section-pad) 0; background: #fff; }
+.lom-ingredients-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.lom-ingredient-card {
+  background: var(--lt-ivory);
+  border: 1px solid var(--lt-border);
+  border-radius: 8px;
+  padding: 28px 16px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.lom-ingredient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(42,37,32,0.08);
+  border-color: var(--lt-border-dark);
+}
+.lom-ingredient-icon {
+  width: 52px; height: 52px; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(196,122,90,0.08); border-radius: 50%;
+  border: 1px solid rgba(196,122,90,0.12);
+}
+.lom-ingredient-icon svg { width: 22px; height: 22px; stroke: var(--lt-terracotta); fill: none; stroke-width: 1.5; }
+.lom-ingredient-name { font-family: var(--lt-serif); font-size: 16px; font-weight: 500; color: var(--lt-brown-black); margin: 0 0 6px; }
+.lom-ingredient-benefit { font-size: 12px; line-height: 1.55; color: var(--lt-warm-gray); }
+.lom-ingredient-sourcing { font-size: 10px; color: var(--lt-terracotta); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 10px; }
+
+.lom-ingredients-badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 40px auto 0; }
+.lom-badge-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--lt-charcoal); font-weight: 500; }
+.lom-badge-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: rgba(122,138,90,0.08); border: 1px solid rgba(122,138,90,0.15);
+  display: flex; align-items: center; justify-content: center;
+}
+.lom-badge-icon svg { width: 13px; height: 13px; stroke: var(--lt-olive); fill: none; stroke-width: 1.5; }
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+.lom-reviews { padding: var(--lt-section-pad) 0; background: var(--lt-ivory); position: relative; }
+.lom-reviews::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lt-border-dark), transparent);
+}
+.lom-reviews-stats-bar {
+  display: flex; align-items: center; justify-content: center; gap: 32px;
+  margin-bottom: 48px; padding: 20px 36px; max-width: 540px;
+  margin-left: auto; margin-right: auto;
+  background: #fff; border: 1px solid var(--lt-border); border-radius: 60px;
+}
+.lom-reviews-stats-bar__item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.lom-reviews-stats-bar__number { font-family: var(--lt-serif); font-size: 32px; font-weight: 500; color: var(--lt-brown-black); line-height: 1; }
+.lom-reviews-stats-bar__stars { display: flex; gap: 2px; }
+.lom-reviews-stats-bar__label { font-size: 10px; color: var(--lt-warm-gray); text-transform: uppercase; letter-spacing: 1.5px; }
+.lom-reviews-stats-bar__divider { width: 1px; height: 40px; background: var(--lt-border); }
+
+.lom-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.lom-review-card {
+  background: #fff;
+  border: 1px solid var(--lt-border);
+  border-radius: 8px;
+  padding: 28px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.lom-review-card::before {
+  content: '\201C';
+  position: absolute; top: -6px; left: 18px;
+  font-family: var(--lt-serif); font-size: 100px; line-height: 1;
+  color: rgba(196,122,90,0.06); pointer-events: none;
+}
+.lom-review-card:nth-child(2) { transform: translateY(24px); }
+.lom-review-card:hover { box-shadow: 0 8px 24px rgba(42,37,32,0.06); border-color: var(--lt-border-dark); }
+
+.lom-review-stars { display: flex; gap: 2px; margin-bottom: 16px; position: relative; z-index: 1; }
+.lom-review-text {
+  font-size: 15px; line-height: 1.65; color: var(--lt-charcoal);
+  margin: 0 0 20px; font-family: var(--lt-serif); font-style: italic; position: relative; z-index: 1;
+}
+.lom-review-author {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 16px; border-top: 1px solid var(--lt-border); position: relative; z-index: 1;
+}
+.lom-review-avatar {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(196,122,90,0.08); border: 1px solid rgba(196,122,90,0.12);
+  color: var(--lt-terracotta); display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.lom-review-author-info strong { font-size: 13px; font-weight: 600; color: var(--lt-brown-black); display: block; }
+.lom-review-author-info span { font-size: 11px; color: var(--lt-warm-gray); display: block; }
+.lom-review-verified { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 600; color: var(--lt-olive); margin-top: 2px; }
+
+/* ============================================================
+   GUARANTEE
+   ============================================================ */
+.lom-guarantee { padding: 60px 0; background: #fff; }
+.lom-guarantee__inner {
+  display: flex; align-items: center; gap: 28px;
+  max-width: 720px; margin: 0 auto; padding: 32px;
+  background: var(--lt-ivory); border-radius: 6px; border: 1px solid var(--lt-border);
+}
+.lom-guarantee__badge {
+  flex-shrink: 0; width: 76px; height: 76px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--lt-terracotta);
+  background: rgba(196,122,90,0.06); border: 1px solid rgba(196,122,90,0.15); border-radius: 50%;
+}
+.lom-guarantee__shield svg { width: 22px; height: 22px; stroke: var(--lt-terracotta); fill: none; stroke-width: 1.5; }
+.lom-guarantee__badge-number { font-family: var(--lt-serif); font-size: 20px; font-weight: 500; line-height: 1; }
+.lom-guarantee__badge-text { font-size: 7px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 1px; }
+.lom-guarantee__content h2 { font-family: var(--lt-serif); font-size: clamp(20px, 2.5vw, 26px); color: var(--lt-brown-black); margin: 0 0 10px; font-weight: 400; }
+.lom-guarantee__content p { font-size: 14px; line-height: 1.65; color: var(--lt-warm-gray); margin: 0; }
+.lom-guarantee__loss-aversion { margin-top: 10px !important; color: var(--lt-terracotta); font-weight: 500; font-style: italic; }
+.lom-guarantee__faq-link { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--lt-warm-gray); }
+.lom-guarantee__faq-link:hover { color: var(--lt-terracotta); }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.lom-faq { padding: var(--lt-section-pad) 0; background: var(--lt-ivory); }
+.lom-faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.lom-faq-item {
+  background: #fff;
+  border: 1px solid var(--lt-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.lom-faq-item:hover { border-color: var(--lt-border-dark); }
+.lom-faq-item.active { border-color: rgba(196,122,90,0.2); box-shadow: 0 4px 16px rgba(42,37,32,0.04); }
+.lom-faq-question {
+  width: 100%; font-family: var(--lt-sans); font-size: 15px; font-weight: 500;
+  color: var(--lt-brown-black); text-align: left; padding: 20px 52px 20px 24px;
+  background: none; border: none; cursor: pointer; position: relative;
+}
+.lom-faq-question:hover { color: var(--lt-terracotta); }
+.lom-faq-toggle {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 16px; color: var(--lt-terracotta); transition: transform 0.3s;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  background: rgba(196,122,90,0.06); border-radius: 6px;
+}
+.lom-faq-item.active .lom-faq-toggle { transform: translateY(-50%) rotate(45deg); }
+.lom-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.lom-faq-item.active .lom-faq-answer { max-height: 400px; }
+.lom-faq-answer p { font-size: 14px; line-height: 1.7; color: var(--lt-warm-gray); padding: 0 24px 20px; margin: 0; }
+
+/* ============================================================
+   SOCIAL PROOF STRIP
+   ============================================================ */
+.lom-proof-strip {
+  padding: 0;
+  background: var(--lt-brown-black);
+}
+.lom-proof-strip__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 28px 24px;
+}
+.lom-proof-strip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.lom-proof-strip__number {
+  font-family: var(--lt-serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--lt-ivory);
+  line-height: 1;
+}
+.lom-proof-strip__label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--lt-warm-gray);
+  font-weight: 500;
+}
+.lom-proof-strip__divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ============================================================
+   WHO USES IT
+   ============================================================ */
+.lom-who {
+  padding: var(--lt-section-pad) 0;
+  background: var(--lt-ivory);
+  text-align: center;
+}
+.lom-who__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.lom-who__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 16px;
+  background: #fff;
+  border: 1px solid var(--lt-border);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.lom-who__item:hover {
+  border-color: var(--lt-border-dark);
+  box-shadow: 0 4px 16px rgba(42,37,32,0.06);
+}
+.lom-who__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(196,122,90,0.06);
+  border: 1px solid rgba(196,122,90,0.12);
+  border-radius: 50%;
+  color: var(--lt-terracotta);
+}
+.lom-who__item strong {
+  font-size: 15px;
+  font-family: var(--lt-serif);
+  color: var(--lt-brown-black);
+  font-weight: 500;
+}
+.lom-who__item span:last-child {
+  font-size: 13px;
+  color: var(--lt-warm-gray);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.lom-final-cta { padding: var(--lt-section-pad) 0; background: var(--lt-ivory-dark); }
+.lom-final-cta__inner {
+  display: flex; align-items: center; gap: 48px;
+  max-width: 860px; margin: 0 auto; padding: 56px 48px;
+  background: #fff; border: 1px solid var(--lt-border); border-radius: 8px;
+}
+.lom-final-cta__image {
+  width: 220px; height: 220px; flex-shrink: 0;
+  background: var(--lt-ivory-dark);
+  border-radius: 8px; border: 1px solid var(--lt-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lt-warm-gray); font-family: var(--lt-serif);
+}
+.lom-final-cta__text { flex: 1; }
+.lom-final-cta__text h2 { font-family: var(--lt-serif); font-size: clamp(26px, 3.5vw, 34px); color: var(--lt-brown-black); margin: 0 0 14px; font-weight: 400; }
+.lom-final-cta__text p { font-size: 14px; color: var(--lt-warm-gray); line-height: 1.7; margin: 0 0 16px; }
+.lom-final-cta__trust {
+  display: flex; gap: 20px; margin-bottom: 24px;
+}
+.lom-final-cta__trust span {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: var(--lt-charcoal);
+}
+.lom-final-cta__trust svg { color: var(--lt-terracotta); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.lom-footer { background: var(--lt-brown-black); color: var(--lt-sand); padding: 56px 0 28px; }
+.lom-footer__brand { text-align: center; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.lom-footer__tagline { font-family: var(--lt-serif); font-size: clamp(24px, 3.5vw, 36px); color: var(--lt-ivory-dark); font-weight: 400; }
+.lom-footer__tagline-sub { font-size: 13px; color: var(--lt-warm-gray); margin-top: 6px; }
+.lom-footer__bottom { text-align: center; padding-top: 28px; font-size: 12px; color: var(--lt-warm-gray); }
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .lom-container, .lom-container--wide { padding: 0 16px; }
+  .lom-heading { font-size: clamp(28px, 7vw, 38px); margin-bottom: 10px; }
+  .lom-heading-subtitle { font-size: 14px; margin-bottom: 32px; }
+  .lom-product-hero__grid { grid-template-columns: 1fr; gap: 28px; }
+  .lom-product-hero__gallery { position: static; }
+  .lom-product-hero__guarantees { flex-direction: column; }
+
+  /* Proof strip mobile */
+  .lom-proof-strip__inner { flex-wrap: wrap; gap: 20px; padding: 24px 16px; }
+  .lom-proof-strip__item { flex: 1; min-width: 80px; }
+  .lom-proof-strip__number { font-size: 22px; }
+  .lom-proof-strip__label { font-size: 9px; letter-spacing: 1.5px; }
+  .lom-proof-strip__divider { display: none; }
+
+  /* Who uses it mobile */
+  .lom-who { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-who__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .lom-who__item { padding: 20px 12px; }
+  .lom-who__icon { width: 40px; height: 40px; }
+  .lom-who__item strong { font-size: 14px; }
+  .lom-who__item span:last-child { font-size: 12px; }
+
+  .lom-steps { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-steps-container { grid-template-columns: 1fr; }
+  .lom-step { text-align: left; padding: 16px 0; display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; border-bottom: 1px solid var(--lt-border); }
+  .lom-step:last-child { border-bottom: none; }
+  .lom-step__top { margin-bottom: 0; justify-content: flex-start; }
+  .lom-step-number { width: 36px; height: 36px; font-size: 16px; }
+  .lom-step-connector { display: none; }
+  .lom-step h3 { font-size: 17px; margin-bottom: 4px; }
+  .lom-step p { font-size: 13px; }
+  .lom-compare { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-compare__desktop { display: none !important; }
+  .lom-compare__mobile { display: block !important; }
+  .lom-compare__cta { margin-top: 20px; }
+  .lom-ingredients { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-ingredients-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .lom-reviews { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-reviews-grid { grid-template-columns: 1fr; }
+  .lom-review-card:nth-child(2) { transform: none; }
+  .lom-reviews-stats-bar { gap: 16px; padding: 16px 20px; border-radius: 16px; }
+  .lom-reviews-stats-bar__number { font-size: 24px; }
+  .lom-guarantee { padding: 36px 0; }
+  .lom-guarantee__inner { padding: 20px 16px; gap: 14px; }
+  .lom-guarantee__badge { width: 52px; height: 52px; }
+  .lom-guarantee__shield svg { width: 18px; height: 18px; }
+  .lom-guarantee__badge-number { font-size: 15px; }
+  .lom-guarantee__badge-text { font-size: 6px; }
+  .lom-faq { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-final-cta { padding: var(--lt-section-pad-mobile) 0; }
+  .lom-final-cta__inner { flex-direction: column; text-align: center; padding: 32px 20px; gap: 24px; }
+  .lom-final-cta__image { width: 140px; height: 140px; }
+  .lom-final-cta__trust { justify-content: center; }
+  .lom-btn-primary, .lom-btn-large, .lom-btn-secondary {
+    width: 100%; display: flex; text-align: center; justify-content: center; min-height: 52px;
+  }
+  .lom-header__nav { display: none; }
+}
+.lom-compare__desktop { display: block; }
+.lom-compare__mobile { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="lom-announce">
+  <span class="lom-announce__text">Free Shipping on All Orders &mdash; 30-Day Money-Back Guarantee</span>
+</div>
+
+<!-- HEADER -->
+<header class="lom-header">
+  <div class="lom-header__inner">
+    <nav class="lom-header__nav">
+      <a href="#" class="lom-header__link">Shop</a>
+      <a href="#" class="lom-header__link">About</a>
+    </nav>
+    <a href="#" class="lom-header__logo">
+      <span class="lom-header__logo-text">Lom Thai</span>
+    </a>
+    <div class="lom-header__actions">
+      <a href="#" class="lom-header__link">FAQ</a>
+      <a href="#" class="lom-header__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="lom-header__cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- PRODUCT HERO -->
+<section class="lom-product-hero">
+  <div class="lom-container--wide">
+    <div class="lom-product-hero__grid">
+      <div class="lom-product-hero__gallery">
+        <div class="lom-product-hero__main-image">
+          <div class="placeholder">Product Image</div>
+        </div>
+        <div class="lom-product-hero__thumbs">
+          <div class="lom-product-hero__thumb is-active">1</div>
+          <div class="lom-product-hero__thumb">2</div>
+          <div class="lom-product-hero__thumb">3</div>
+          <div class="lom-product-hero__thumb">4</div>
+        </div>
+      </div>
+      <div class="lom-product-hero__info">
+        <div class="lom-product-hero__breadcrumb">
+          <a href="#">Home</a> / <a href="#">Shop</a> / <span>Lom Thai</span>
+        </div>
+        <div class="lom-product-hero__proof">
+          <span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span></span>
+          <span>2,847 Reviews</span>
+        </div>
+        <h1 class="lom-product-hero__title">Traditional Herbal Support for Headaches, Fatigue & Congestion</h1>
+        <p class="lom-product-hero__subtitle">2-in-1 Nasal Inhaler & Roller — Traditional Thai herbal support for everyday comfort</p>
+        <div class="lom-urgency">
+          <span class="lom-urgency__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="lom-urgency__text">Limited batch — ships within 24 hours</span>
+        </div>
+        <div class="lom-product-hero__price">
+          <span class="lom-product-hero__price-compare">$12.99</span>
+          <span class="lom-product-hero__price-current">$7.99</span>
+          <span class="lom-product-hero__price-save">Save 38%</span>
+        </div>
+        <div class="lom-product-hero__bundles">
+          <div class="lom-product-hero__bundle is-active">
+            <div class="lom-product-hero__bundle-radio"></div>
+            <div class="lom-product-hero__bundle-info"><strong>Try It</strong><span>See what the hype is about</span></div>
+            <div class="lom-product-hero__bundle-price">$7.99</div>
+          </div>
+          <div class="lom-product-hero__bundle">
+            <span class="lom-product-hero__bundle-badge">Most Popular</span>
+            <div class="lom-product-hero__bundle-radio"></div>
+            <div class="lom-product-hero__bundle-info"><strong>Relief Pack</strong><span>One for home. One for work. One for the gym.</span></div>
+            <div class="lom-product-hero__bundle-price"><small class="lom-product-hero__bundle-was">$23.97</small> $19.17</div>
+          </div>
+          <div class="lom-product-hero__bundle">
+            <span class="lom-product-hero__bundle-badge lom-product-hero__bundle-badge--value">Best Value</span>
+            <div class="lom-product-hero__bundle-radio"></div>
+            <div class="lom-product-hero__bundle-info"><strong>Never Run Out</strong><span>Best price. Stock up for the year.</span></div>
+            <div class="lom-product-hero__bundle-price"><small class="lom-product-hero__bundle-was">$39.95</small> $27.96</div>
+          </div>
+        </div>
+        <div class="lom-product-hero__guarantees">
+          <div class="lom-product-hero__guarantee"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>30-Day Guarantee</span></div>
+          <div class="lom-product-hero__guarantee"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Free Shipping</span></div>
+          <div class="lom-product-hero__guarantee"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span>Secure Checkout</span></div>
+        </div>
+        <button class="lom-btn-primary lom-btn-full lom-product-hero__atc">Add to Cart — $7.99</button>
+        <div class="lom-hero-buyers">
+          <div class="lom-hero-buyers__avatars">
+            <span class="lom-hero-buyers__avatar" style="background:var(--lt-terracotta);z-index:4">S</span>
+            <span class="lom-hero-buyers__avatar" style="background:var(--lt-olive);z-index:3">M</span>
+            <span class="lom-hero-buyers__avatar" style="background:var(--lt-charcoal);z-index:2">J</span>
+          </div>
+          <span class="lom-hero-buyers__text">Sarah and 89 people this week</span>
+        </div>
+        <div class="lom-hero-payments">
+          <div class="lom-hero-payments__track">
+            <span class="lom-hero-payments__icon">Visa</span>
+            <span class="lom-hero-payments__icon">MC</span>
+            <span class="lom-hero-payments__icon">Amex</span>
+            <span class="lom-hero-payments__icon">PayPal</span>
+            <span class="lom-hero-payments__icon">Shop Pay</span>
+          </div>
+        </div>
+        <div class="lom-hero-accordions">
+          <div class="lom-hero-accordion">
+            <button class="lom-hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Description</span><span class="lom-hero-accordion__icon">+</span></button>
+            <div class="lom-hero-accordion__content"><div class="lom-hero-accordion__body"><p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Traditionally used in Thailand for over a century.</p></div></div>
+          </div>
+          <div class="lom-hero-accordion">
+            <button class="lom-hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Most Common Questions</span><span class="lom-hero-accordion__icon">+</span></button>
+            <div class="lom-hero-accordion__content"><div class="lom-hero-accordion__body"><p><strong>Is this a drug?</strong> No — 100% natural herbal aromatherapy.<br><strong>Is it TSA-friendly?</strong> Yes — solid stick, pocket-sized, flight-safe.</p></div></div>
+          </div>
+          <div class="lom-hero-accordion">
+            <button class="lom-hero-accordion__trigger" onclick="this.parentElement.classList.toggle('is-open')"><span>Processing & Shipping</span><span class="lom-hero-accordion__icon">+</span></button>
+            <div class="lom-hero-accordion__content"><div class="lom-hero-accordion__body"><p>Orders ship within 24 hours. Free shipping to US & EU. 30-day money-back guarantee.</p></div></div>
+          </div>
+        </div>
+        <p class="lom-fda-disclaimer">* These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<section class="lom-proof-strip">
+  <div class="lom-container--wide">
+    <div class="lom-proof-strip__inner">
+      <div class="lom-proof-strip__item"><span class="lom-proof-strip__number">50,000+</span><span class="lom-proof-strip__label">Happy Customers</span></div>
+      <div class="lom-proof-strip__divider"></div>
+      <div class="lom-proof-strip__item"><span class="lom-proof-strip__number">4.8</span><span class="lom-proof-strip__label">Average Rating</span></div>
+      <div class="lom-proof-strip__divider"></div>
+      <div class="lom-proof-strip__item"><span class="lom-proof-strip__number">100%</span><span class="lom-proof-strip__label">Natural Ingredients</span></div>
+      <div class="lom-proof-strip__divider"></div>
+      <div class="lom-proof-strip__item"><span class="lom-proof-strip__number">100+</span><span class="lom-proof-strip__label">Years of Thai Tradition</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO USES IT -->
+<section class="lom-who">
+  <div class="lom-container">
+    <span class="lt-eyebrow">Trusted By</span>
+    <h2 class="lom-heading">Nurses. Athletes. Students. Truck Drivers.</h2>
+    <p class="lom-heading-subtitle">Anyone who needs natural, instant relief without the chemicals or crash.</p>
+    <div class="lom-who__grid">
+      <div class="lom-who__item"><span class="lom-who__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><strong>Healthcare Workers</strong><span>12-hour shifts, no crash</span></div>
+      <div class="lom-who__item"><span class="lom-who__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><strong>Athletes</strong><span>Pre-workout focus, naturally</span></div>
+      <div class="lom-who__item"><span class="lom-who__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span><strong>Students</strong><span>Study sessions without jitters</span></div>
+      <div class="lom-who__item"><span class="lom-who__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><strong>Truck Drivers</strong><span>Stay alert on the road</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="lom-steps">
+  <div class="lom-container">
+    <h2 class="lom-heading">How to Use</h2>
+    <div class="lom-steps-container">
+      <div class="lom-step"><div class="lom-step__top"><span class="lom-step-number">1</span><span class="lom-step-connector"></span></div><div class="lom-step__text"><h3>Choose Your Experience</h3><p>Inhaler for a refreshing aromatic sensation. Roller for soothing comfort.</p></div></div>
+      <div class="lom-step"><div class="lom-step__top"><span class="lom-step-number">2</span><span class="lom-step-connector"></span></div><div class="lom-step__text"><h3>Inhale or Apply</h3><p>Breathe deeply through the inhaler, or roll onto temples and neck.</p></div></div>
+      <div class="lom-step"><div class="lom-step__top"><span class="lom-step-number">3</span></div><div class="lom-step__text"><h3>Feel the Difference</h3><p>The aromatic herbal blend is noticeable immediately. A century-old Thai tradition, now in your pocket.</p></div></div>
+    </div>
+    <p class="lom-steps-transition">That's it. No water needed. No waiting. No side effects. No crash.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="lom-compare">
+  <div class="lom-container">
+    <div class="lom-compare__header">
+      <span class="lom-compare__eyebrow">The Clear Winner</span>
+      <h2 class="lom-heading">Why Lom Thai?</h2>
+      <p class="lom-heading-subtitle">See how we stack up against the alternatives</p>
+    </div>
+    <div class="lom-compare__table-wrap lom-compare__desktop">
+      <table class="lom-compare__table">
+        <thead><tr>
+          <th class="lom-compare__th lom-compare__th--feature"></th>
+          <th class="lom-compare__th lom-compare__th--brand"><div class="lom-compare__brand-badge"><svg class="lom-compare__crown" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg><span>LOM THAI</span></div></th>
+          <th class="lom-compare__th lom-compare__th--comp">Energy Drinks</th>
+          <th class="lom-compare__th lom-compare__th--comp">Pharmacy Sprays</th>
+          <th class="lom-compare__th lom-compare__th--comp">Coffee</th>
+        </tr></thead>
+        <tbody>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">Works instantly</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">Seconds</span></td><td class="lom-compare__td lom-compare__td--fail">15-30 min</td><td class="lom-compare__td lom-compare__td--fail">5-10 min</td><td class="lom-compare__td lom-compare__td--fail">20-45 min</td></tr>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">100% Natural</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">Yes</span></td><td class="lom-compare__td lom-compare__td--fail">No</td><td class="lom-compare__td lom-compare__td--fail">No</td><td class="lom-compare__td lom-compare__td--pass">Yes</td></tr>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">No crash or jitters</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">None</span></td><td class="lom-compare__td lom-compare__td--fail">Crash + jitters</td><td class="lom-compare__td lom-compare__td--pass">Yes</td><td class="lom-compare__td lom-compare__td--fail">Anxiety + crash</td></tr>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">Headache comfort</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">Traditional use</span></td><td class="lom-compare__td lom-compare__td--fail">No</td><td class="lom-compare__td lom-compare__td--fail">No</td><td class="lom-compare__td lom-compare__td--fail">No</td></tr>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">Portable & TSA-friendly</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">Yes</span></td><td class="lom-compare__td lom-compare__td--fail">No</td><td class="lom-compare__td lom-compare__td--pass">Yes</td><td class="lom-compare__td lom-compare__td--fail">No</td></tr>
+          <tr class="lom-compare__tr"><td class="lom-compare__td lom-compare__td--feature">Monthly cost</td><td class="lom-compare__td lom-compare__td--brand"><span class="lom-compare__val">$8 lasts months</span></td><td class="lom-compare__td lom-compare__td--fail">$60-120/mo</td><td class="lom-compare__td lom-compare__td--fail">$15-30/mo</td><td class="lom-compare__td lom-compare__td--fail">$90-180/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="lom-compare__mobile">
+      <div class="lom-compare__m-card">
+        <div class="lom-compare__m-head"><span class="lom-compare__m-head-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg> Lom Thai</span><span class="lom-compare__m-head-vs">vs</span><span class="lom-compare__m-head-other">Others</span></div>
+        <div class="lom-compare__m-body">
+          <div class="lom-compare__m-row"><div class="lom-compare__m-feature">Works instantly</div><div class="lom-compare__m-vals"><span class="lom-compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Seconds</span><span class="lom-compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="lom-compare__m-row"><div class="lom-compare__m-feature">100% Natural</div><div class="lom-compare__m-vals"><span class="lom-compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Yes</span><span class="lom-compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="lom-compare__m-row"><div class="lom-compare__m-feature">No crash or jitters</div><div class="lom-compare__m-vals"><span class="lom-compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> None</span><span class="lom-compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="lom-compare__m-row"><div class="lom-compare__m-feature">Headache comfort</div><div class="lom-compare__m-vals"><span class="lom-compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Traditional use</span><span class="lom-compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+          <div class="lom-compare__m-row"><div class="lom-compare__m-feature">Monthly cost</div><div class="lom-compare__m-vals"><span class="lom-compare__m-brand-val"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> $8 lasts months</span><span class="lom-compare__m-other-val"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="lom-compare__cta"><a href="#" class="lom-btn-primary lom-btn-large">Try Lom Thai Risk-Free</a></div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="lom-ingredients">
+  <div class="lom-container">
+    <h2 class="lom-heading">What's Inside</h2>
+    <p class="lom-heading-subtitle">Five powerful natural ingredients, perfected over a century</p>
+    <div class="lom-ingredients-grid">
+      <div class="lom-ingredient-card"><div class="lom-ingredient-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><polyline points="9 4 12 2 15 4"/><polyline points="9 20 12 22 15 20"/></svg></div><h3 class="lom-ingredient-name">Menthol</h3><p class="lom-ingredient-benefit">Promotes clear breathing and invigorating sensation</p><p class="lom-ingredient-sourcing">40% concentration</p></div>
+      <div class="lom-ingredient-card"><div class="lom-ingredient-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M12 12C12 12 7 10 5 6c0 0 3.5 1 7 1s7-1 7-1c-2 4-7 6-7 6z"/></svg></div><h3 class="lom-ingredient-name">Camphor</h3><p class="lom-ingredient-benefit">Soothes tension and promotes comfort</p><p class="lom-ingredient-sourcing">Steam-distilled</p></div>
+      <div class="lom-ingredient-card"><div class="lom-ingredient-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="2" x2="12" y2="22"/></svg></div><h3 class="lom-ingredient-name">Borneol</h3><p class="lom-ingredient-benefit">Focus and mental clarity</p><p class="lom-ingredient-sourcing">Southern Thailand</p></div>
+      <div class="lom-ingredient-card"><div class="lom-ingredient-icon"><svg viewBox="0 0 24 24"><path d="M6 21c3-3 5-8 5-14"/><path d="M11 7C11 7 14 3 20 3c0 6-4 9.5-9 11"/></svg></div><h3 class="lom-ingredient-name">Eucalyptus Oil</h3><p class="lom-ingredient-benefit">Respiratory comfort</p><p class="lom-ingredient-sourcing">Pure leaf oil</p></div>
+      <div class="lom-ingredient-card"><div class="lom-ingredient-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><line x1="12" y1="3" x2="12" y2="8.5"/></svg></div><h3 class="lom-ingredient-name">Lemon Oil</h3><p class="lom-ingredient-benefit">Uplifts mood</p><p class="lom-ingredient-sourcing">Cold-pressed Thai peel</p></div>
+    </div>
+    <div class="lom-ingredients-badges">
+      <div class="lom-badge-item"><span class="lom-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>GMP-Certified</span></div>
+      <div class="lom-badge-item"><span class="lom-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><span>Lab Tested</span></div>
+      <div class="lom-badge-item"><span class="lom-badge-icon"><svg viewBox="0 0 24 24"><path d="M6 21c3-3 5-8 5-14"/><path d="M11 7C11 7 14 3 20 3c0 6-4 9.5-9 11"/></svg></span><span>100% Natural</span></div>
+      <div class="lom-badge-item"><span class="lom-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></span><span>Made in Thailand</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="lom-reviews">
+  <div class="lom-container">
+    <h2 class="lom-heading">Real Results From Real People</h2>
+    <div class="lom-reviews-stats-bar">
+      <div class="lom-reviews-stats-bar__item"><span class="lom-reviews-stats-bar__number">4.8</span><span class="lom-reviews-stats-bar__stars"><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span></span><span class="lom-reviews-stats-bar__label">Average Rating</span></div>
+      <div class="lom-reviews-stats-bar__divider"></div>
+      <div class="lom-reviews-stats-bar__item"><span class="lom-reviews-stats-bar__number">1,200+</span><span class="lom-reviews-stats-bar__label">Verified Reviews</span></div>
+      <div class="lom-reviews-stats-bar__divider"></div>
+      <div class="lom-reviews-stats-bar__item"><span class="lom-reviews-stats-bar__number">97%</span><span class="lom-reviews-stats-bar__label">Would Recommend</span></div>
+    </div>
+    <div class="lom-reviews-grid">
+      <div class="lom-review-card"><div class="lom-review-stars"><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span></div><p class="lom-review-text">"This thing is magic. Instant relief from my sinus headaches. I carry it everywhere."</p><div class="lom-review-author"><div class="lom-review-avatar">JK</div><div class="lom-review-author-info"><strong>James K.</strong><span>New York, USA</span><span class="lom-review-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified Purchase</span></div></div></div>
+      <div class="lom-review-card"><div class="lom-review-stars"><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span></div><p class="lom-review-text">"My whole family uses these. Best natural remedy we've found."</p><div class="lom-review-author"><div class="lom-review-avatar">AP</div><div class="lom-review-author-info"><strong>Anna P.</strong><span>Netherlands</span><span class="lom-review-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified Purchase</span></div></div></div>
+      <div class="lom-review-card"><div class="lom-review-stars"><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span><span class="lom-star"></span></div><p class="lom-review-text">"As a nurse working 12-hour shifts, this keeps me going. Natural, portable, and actually works."</p><div class="lom-review-author"><div class="lom-review-avatar">MT</div><div class="lom-review-author-info"><strong>Michelle T.</strong><span>Texas, USA</span><span class="lom-review-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified Purchase</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="lom-guarantee">
+  <div class="lom-container">
+    <div class="lom-guarantee__inner">
+      <div class="lom-guarantee__badge"><div class="lom-guarantee__shield"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="lom-guarantee__badge-number">30</span><span class="lom-guarantee__badge-text">Day Guarantee</span></div>
+      <div class="lom-guarantee__content"><h2>Try It Risk-Free for 30 Days</h2><p>Full 30-day money-back guarantee. No questions asked, no hassle.</p><p class="lom-guarantee__loss-aversion"><em>The only risk is spending another month reaching for chemicals.</em></p><a href="#" class="lom-guarantee__faq-link">FAQ &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="lom-faq">
+  <div class="lom-container">
+    <h2 class="lom-heading">Frequently Asked Questions</h2>
+    <div class="lom-faq-list">
+      <div class="lom-faq-item"><button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">Is this a drug or medication?<span class="lom-faq-toggle">+</span></button><div class="lom-faq-answer"><p>No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils.</p></div></div>
+      <div class="lom-faq-item"><button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">Is it TSA / airport safe?<span class="lom-faq-toggle">+</span></button><div class="lom-faq-answer"><p>Yes! Solid aromatherapy stick well under liquid limits. Pocket-sized and flight-friendly.</p></div></div>
+      <div class="lom-faq-item"><button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">How long does one stick last?<span class="lom-faq-toggle">+</span></button><div class="lom-faq-answer"><p>Several months with daily use. One $8 stick outlasts a month's worth of energy drinks.</p></div></div>
+      <div class="lom-faq-item"><button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">How fast does it work?<span class="lom-faq-toggle">+</span></button><div class="lom-faq-answer"><p>Seconds. Immediate upon inhaling. Rollerball provides relief within 60 seconds.</p></div></div>
+      <div class="lom-faq-item"><button class="lom-faq-question" onclick="this.parentElement.classList.toggle('active')">Do you ship internationally?<span class="lom-faq-toggle">+</span></button><div class="lom-faq-answer"><p>Free shipping to the US and EU. 5-10 business days. 30-day money-back guarantee.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="lom-final-cta">
+  <div class="lom-container">
+    <div class="lom-final-cta__inner">
+      <div class="lom-final-cta__image">Product</div>
+      <div class="lom-final-cta__text">
+        <span class="lt-eyebrow">Don't Wait</span>
+        <h2>Still Thinking?</h2>
+        <p>50,000+ people already made the switch. Free shipping. 30-day guarantee. No risk.</p>
+        <div class="lom-final-cta__trust">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30-Day Guarantee</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free Shipping</span>
+        </div>
+        <a href="#" class="lom-btn-primary lom-btn-large">Add to Cart — $7.99</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lom-footer">
+  <div class="lom-container">
+    <div class="lom-footer__brand"><div class="lom-footer__tagline">Lom Thai</div><p class="lom-footer__tagline-sub">Natural relief. Century-old tradition. Thai-made.</p></div>
+    <div class="lom-footer__bottom"><p>&copy; 2026 Lom Thai. All rights reserved.</p></div>
+  </div>
+</footer>
+
+</body>
+</html>
