@@ -56,9 +56,48 @@
         "headline": "Headaches. Brain Fog. Congestion. You Shouldn't Have to Push Through the Day Like This.",
         "subhead": "One inhale of this century-old Thai herbal stick and the fog lifts in seconds — no pills, no caffeine crash, no chemicals.",
         "primary_cta_text": "Get Instant Relief — Free US Shipping",
-        "primary_cta_url": "/products/lom-thai-authentic-muay-thai-oil",
+        "primary_cta_url": "shopify://products/thai-herbal-nasal-inhaler",
         "price_line": "Starting at $8 — Free US Shipping",
         "secondary_cta_text": "See How It Works ↓"
+      }
+    },
+    "trust_strip": {
+      "type": "lom-trust-strip",
+      "blocks": {
+        "ts1": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "10,000+ Sticks Sold"
+          }
+        },
+        "ts2": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Trusted by Nurses & Athletes"
+          }
+        },
+        "ts3": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "100% Natural"
+          }
+        },
+        "ts4": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Made in Thailand"
+          }
+        }
+      },
+      "block_order": [
+        "ts1",
+        "ts2",
+        "ts3",
+        "ts4"
+      ],
+      "settings": {
+        "eyebrow": "Trusted By 10,000+ People",
+        "background_color": "light"
       }
     },
     "pain_agitate": {
@@ -451,6 +490,7 @@
       "type": "lom-guarantee",
       "settings": {
         "heading": "Try It for 30 Days. If It Doesn't Change How You Handle Your Worst Days, We'll Refund Every Penny.",
+        "heading_short": "30-Day Money-Back Guarantee",
         "text": "No forms. No fine print. No 'restocking fees.' Just email us and we send your money back. We can afford to do this because 97% of people never ask.",
         "loss_aversion_text": "The only risk is spending another month reaching for chemicals."
       }
@@ -522,32 +562,6 @@
         "image": "shopify://shop_images/6e952ae16c0f013ce9b3_thai_1.png",
         "button_text": "Shop Lom Thai",
         "button_url": "/products/lom-thai-authentic-muay-thai-oil"
-      }
-    },
-    "trust_strip": {
-      "type": "lom-trust-strip",
-      "blocks": {
-        "ts1": {
-          "type": "trust_badge",
-          "settings": { "text": "10,000+ Sticks Sold" }
-        },
-        "ts2": {
-          "type": "trust_badge",
-          "settings": { "text": "Trusted by Nurses & Athletes" }
-        },
-        "ts3": {
-          "type": "trust_badge",
-          "settings": { "text": "100% Natural" }
-        },
-        "ts4": {
-          "type": "trust_badge",
-          "settings": { "text": "Made in Thailand" }
-        }
-      },
-      "block_order": ["ts1", "ts2", "ts3", "ts4"],
-      "settings": {
-        "eyebrow": "Trusted By 10,000+ People",
-        "background_color": "light"
       }
     },
     "sticky_cta": {
