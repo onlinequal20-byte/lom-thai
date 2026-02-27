@@ -62,11 +62,11 @@
               <div class="lom-about__value-icon">
                 {% case block.settings.icon %}
                   {% when 'leaf' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 18c4-2 7-4 10-8"/><path d="M2 2s7.5.5 11.5 4.5c3 3 4.5 7 4.5 7"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21c3-5 7-9 14-9-1 7-5 11-9 14-3-2-5-5-5-5z"/><path d="M6 21c0 0-2-3-2-7"/></svg>
                   {% when 'clock' %}
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   {% when 'globe' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                   {% when 'shield' %}
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                   {% when 'heart' %}
@@ -293,26 +293,28 @@
     text-align: center;
   }
   .lom-about__value-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     margin: 0 auto 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: rgba(196,122,90,0.08);
-    border: 1px solid rgba(196,122,90,0.15);
-    color: var(--lt-gold);
+    border-radius: 14px;
+    background: var(--lt-white, #fff);
+    border: 1px solid var(--lt-border);
+    color: var(--lt-charcoal);
+    box-shadow: 0 2px 8px rgba(42,37,32,0.06);
   }
   .lom-about__value-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.5;
   }
   .lom-about__value-label {
     font-family: var(--lt-sans);
     font-size: 14px;
     font-weight: 600;
-    color: var(--lt-cream);
+    color: var(--lt-brown-black);
     margin: 0 0 6px;
     letter-spacing: 0.3px;
   }
@@ -320,7 +322,7 @@
     font-family: var(--lt-sans);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--lt-text-muted);
+    color: var(--lt-warm-gray);
     margin: 0;
   }
 

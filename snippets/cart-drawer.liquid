@@ -15,6 +15,29 @@
   .drawer {
     visibility: hidden;
   }
+  .lom-shipping-bar {
+    padding: 16px 20px;
+    background: var(--lt-ivory-dark, #f5f0ea);
+    border-bottom: 1px solid var(--lt-border, #e5e0d8);
+  }
+  .lom-shipping-bar__text {
+    font-family: var(--lt-sans, sans-serif);
+    font-size: 13px;
+    color: var(--lt-charcoal, #2c2c2c);
+    margin: 0 0 8px;
+  }
+  .lom-shipping-bar__track {
+    height: 6px;
+    background: var(--lt-sand, #e8e0d4);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .lom-shipping-bar__fill {
+    height: 100%;
+    background: var(--lt-emerald, #4a7c59);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -74,6 +97,25 @@
           </span>
         </button>
       </div>
+      {%- comment -%} Free shipping progress bar {%- endcomment -%}
+      {%- assign shipping_threshold = 1600 -%}
+      {%- if cart.total_price > 0 -%}
+        <div class="lom-shipping-bar">
+          {%- if cart.total_price >= shipping_threshold -%}
+            <p class="lom-shipping-bar__text">&#10003; You qualify for <strong>FREE shipping!</strong></p>
+            <div class="lom-shipping-bar__track">
+              <div class="lom-shipping-bar__fill" style="width:100%"></div>
+            </div>
+          {%- else -%}
+            {%- assign remaining = shipping_threshold | minus: cart.total_price -%}
+            {%- assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold -%}
+            <p class="lom-shipping-bar__text">You're <strong>{{ remaining | money }}</strong> away from <strong>FREE shipping!</strong></p>
+            <div class="lom-shipping-bar__track">
+              <div class="lom-shipping-bar__fill" style="width:{{ progress }}%"></div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"

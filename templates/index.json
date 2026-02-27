@@ -56,7 +56,7 @@
         "headline": "Headaches. Brain Fog. Congestion. You Shouldn't Have to Push Through the Day Like This.",
         "subhead": "One inhale of this century-old Thai herbal stick and the fog lifts in seconds — no pills, no caffeine crash, no chemicals.",
         "primary_cta_text": "Get Instant Relief — Free US Shipping",
-        "primary_cta_url": "/collections/all",
+        "primary_cta_url": "/products/lom-thai-authentic-muay-thai-oil",
         "price_line": "Starting at $8 — Free US Shipping",
         "secondary_cta_text": "See How It Works ↓"
       }
@@ -131,11 +131,11 @@
         "b3"
       ],
       "settings": {
-        "heading": "This Is What Nurses, Athletes & Truck Drivers Carry Instead",
+        "heading": "This Is What 10,000+ Nurses, Athletes & Travelers Carry Instead",
         "subhead": "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief.",
         "identity_callout": "People who carry Lom Thai don't wait for relief. They choose it.",
         "button_text": "Try It Risk-Free →",
-        "button_url": "/collections/all"
+        "button_url": "/products/lom-thai-authentic-muay-thai-oil"
       }
     },
     "steps": {
@@ -191,9 +191,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
+            "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
-            "title": "Truck Driver",
+            "title": "Frequent Traveler",
             "location": "Ohio"
           }
         },
@@ -469,6 +469,7 @@
             "badge": "",
             "highlighted": false,
             "cta_text": "Add to Cart",
+            "quantity": 1,
             "url": ""
           }
         },
@@ -483,6 +484,7 @@
             "badge": "Most Popular",
             "highlighted": true,
             "cta_text": "Add to Cart",
+            "quantity": 3,
             "url": ""
           }
         },
@@ -497,6 +499,7 @@
             "badge": "Best Value",
             "highlighted": false,
             "cta_text": "Add to Cart",
+            "quantity": 5,
             "url": ""
           }
         }
@@ -521,16 +524,43 @@
         "button_url": "/products/lom-thai-authentic-muay-thai-oil"
       }
     },
+    "trust_strip": {
+      "type": "lom-trust-strip",
+      "blocks": {
+        "ts1": {
+          "type": "trust_badge",
+          "settings": { "text": "10,000+ Sticks Sold" }
+        },
+        "ts2": {
+          "type": "trust_badge",
+          "settings": { "text": "Trusted by Nurses & Athletes" }
+        },
+        "ts3": {
+          "type": "trust_badge",
+          "settings": { "text": "100% Natural" }
+        },
+        "ts4": {
+          "type": "trust_badge",
+          "settings": { "text": "Made in Thailand" }
+        }
+      },
+      "block_order": ["ts1", "ts2", "ts3", "ts4"],
+      "settings": {
+        "eyebrow": "Trusted By 10,000+ People",
+        "background_color": "light"
+      }
+    },
     "sticky_cta": {
       "type": "lom-sticky-cta",
       "settings": {
         "cta_text": "Get Instant Relief — Free Shipping",
-        "cta_url": "/collections/all"
+        "cta_url": "/products/lom-thai-authentic-muay-thai-oil"
       }
     }
   },
   "order": [
     "hero_authority",
+    "trust_strip",
     "pain_agitate",
     "showcase",
     "steps",

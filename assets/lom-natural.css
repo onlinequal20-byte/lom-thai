@@ -4,9 +4,76 @@
    ============================================================ */
 
 /* ============================================================
-   FONTS — Cormorant Garamond (elegant serif) + DM Sans (modern body)
+   FONTS — Self-hosted Cormorant Garamond + DM Sans
+   Upload .woff2 files to Shopify Assets before these will work.
    ============================================================ */
-/* Fonts loaded via theme.liquid <link> tag for better performance */
+
+/* Cormorant Garamond */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('CormorantGaramond-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('CormorantGaramond-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('CormorantGaramond-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('CormorantGaramond-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('CormorantGaramond-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* DM Sans */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('DMSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('DMSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('DMSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('DMSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ============================================================
    CSS VARIABLES — Warm Ivory & Charcoal palette
@@ -3116,6 +3183,13 @@ h1, h2, h3, h4, h5, h6,
   margin-right: 4px;
   font-family: var(--lt-sans);
 }
+.lom-product-hero__bundle-unit {
+  font-size: 12px;
+  color: var(--lt-emerald-dark);
+  font-weight: 600;
+  display: block;
+  margin-top: 2px;
+}
 
 .lom-product-hero__atc {
   font-size: 15px;
@@ -3135,6 +3209,31 @@ h1, h2, h3, h4, h5, h6,
 .lom-product-hero__atc:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.lom-product-hero__express-sep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 10px;
+  font-size: 12px;
+  color: var(--lt-warm-gray);
+  text-align: center;
+}
+.lom-product-hero__express-sep::before,
+.lom-product-hero__express-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--lt-border);
+}
+.shopify-payment-button .shopify-payment-button__button {
+  border-radius: 10px;
+  min-height: 52px;
+}
+.shopify-payment-button .shopify-payment-button__button--unbranded {
+  background: var(--lt-charcoal);
+  color: var(--lt-ivory);
 }
 
 .lom-product-hero__trust {

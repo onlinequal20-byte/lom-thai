@@ -48,7 +48,7 @@
             "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "name": "Marco V.",
             "location": "Ohio",
-            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash."
+            "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash."
           }
         },
         "review_3": {
@@ -112,14 +112,14 @@
         "accordion_warranty"
       ],
       "settings": {
-        "headline_override": "Traditional Herbal Support for Headaches, Fatigue & Congestion — Without Chemicals, Caffeine, or Crashes",
-        "subtitle": "The century-old Thai herbal stick that 10,000+ nurses, athletes & professionals carry daily",
+        "headline_override": "Natural Relief in Seconds",
+        "subtitle": "The century-old Thai herbal stick for headaches, fatigue & congestion — no chemicals, no caffeine, no crash. Trusted by 10,000+ nurses, athletes & professionals.",
         "review_count": "1,200+",
-        "atc_text": "Try Lom Thai Now",
+        "atc_text": "Get Instant Relief",
         "show_bundle": true,
         "show_urgency": true,
-        "urgency_text": "Sale ends in",
-        "urgency_subtext": "Order now to lock in this price + free shipping",
+        "urgency_text": "Limited batch — ships within 24 hours",
+        "urgency_subtext": "Free shipping on every US & EU order",
         "buyers_text": "Sarah and 89 people this week",
         "avatar_1": "shopify://shop_images/1.png",
         "avatar_2": "shopify://shop_images/2.png",
@@ -142,14 +142,14 @@
           "type": "competitor",
           "settings": {
             "name": "Pharmacy Sprays",
-            "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price."
+            "enemy_copy": "Oxymetazoline addiction is real. Google 'rebound congestion.'"
           }
         },
         "comp3": {
           "type": "competitor",
           "settings": {
             "name": "Coffee",
-            "enemy_copy": "Caffeine + sugar + taurine. Your heart pays the price."
+            "enemy_copy": "Anxiety, acid reflux, stained teeth, and you're still tired by 2pm."
           }
         },
         "row1": {
@@ -354,9 +354,9 @@
           "settings": {
             "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "stars": 5,
-            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
+            "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
-            "title": "Truck Drive",
+            "title": "Frequent Traveler",
             "location": "Ohio"
           }
         },

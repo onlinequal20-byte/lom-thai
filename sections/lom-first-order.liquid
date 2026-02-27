@@ -2,21 +2,185 @@
 
 <div id="lom-first-order-banner" class="lom-first-order" style="display:none;" role="complementary" aria-label="First order discount">
   <div class="lom-first-order__inner">
-    <p class="lom-first-order__text">
-      {{ section.settings.text }} <span class="lom-first-order__code">{{ section.settings.code }}</span> {{ section.settings.suffix }}
-    </p>
-    <button class="lom-first-order__dismiss" aria-label="Dismiss" onclick="document.getElementById('lom-first-order-banner').classList.remove('lom-first-order--visible');localStorage.setItem('lom_first_order_dismissed','1');var sc=document.getElementById('lom-sticky-cta');if(sc&&window.scrollY>600)sc.classList.add('lom-sticky-cta--visible');">✕</button>
+    <button class="lom-first-order__dismiss" aria-label="Dismiss" onclick="lomFirstOrderDismiss()">✕</button>
+
+    {%- comment -%} Step 1: Email capture form {%- endcomment -%}
+    <div id="lom-first-order-form" class="lom-first-order__step">
+      <p class="lom-first-order__headline">{{ section.settings.headline }}</p>
+      <p class="lom-first-order__subtext">{{ section.settings.subtext }}</p>
+      {% form 'customer', id: 'lom-email-capture-form' %}
+        <input type="hidden" name="contact[tags]" value="first-order-popup">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+        <div class="lom-first-order__input-row">
+          <input
+            type="email"
+            name="contact[email]"
+            id="lom-email-input"
+            class="lom-first-order__email"
+            placeholder="Enter your email for {{ section.settings.discount_amount }} off"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="lom-first-order__submit">{{ section.settings.cta_text }}</button>
+        </div>
+        <p id="lom-email-error" class="lom-first-order__error" style="display:none;"></p>
+      {% endform %}
+    </div>
+
+    {%- comment -%} Step 2: Discount code reveal {%- endcomment -%}
+    <div id="lom-first-order-success" class="lom-first-order__step" style="display:none;">
+      <p class="lom-first-order__headline">🎉 {{ section.settings.success_headline }}</p>
+      <p class="lom-first-order__text">
+        Use code <span class="lom-first-order__code">{{ section.settings.code }}</span> at checkout
+      </p>
+      <p class="lom-first-order__subtext">{{ section.settings.success_subtext }}</p>
+    </div>
   </div>
 </div>
 
+<style>
+  .lom-first-order {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .lom-first-order--visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .lom-first-order__inner {
+    background: var(--lt-brown-black, #2a2520);
+    color: var(--lt-ivory, #f5f0ea);
+    padding: 24px 20px;
+    position: relative;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    border-radius: 14px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+  }
+  .lom-first-order__dismiss {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--lt-warm-gray, #9a8e82);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+  }
+  .lom-first-order__headline {
+    font-family: var(--lt-serif, 'Cormorant Garamond', serif);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--lt-ivory, #f5f0ea);
+  }
+  .lom-first-order__subtext {
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 13px;
+    color: var(--lt-warm-gray, #9a8e82);
+    margin: 0 0 16px;
+  }
+  .lom-first-order__input-row {
+    display: flex;
+    gap: 8px;
+  }
+  .lom-first-order__email {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid rgba(245,240,234,0.15);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: var(--lt-ivory, #f5f0ea);
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 14px;
+    outline: none;
+  }
+  .lom-first-order__email::placeholder {
+    color: var(--lt-warm-gray, #9a8e82);
+  }
+  .lom-first-order__email:focus {
+    border-color: var(--lt-terracotta, #c4704b);
+  }
+  .lom-first-order__submit {
+    padding: 12px 20px;
+    background: var(--lt-terracotta, #c4704b);
+    color: var(--lt-ivory, #f5f0ea);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .lom-first-order__submit:hover {
+    background: var(--lt-terracotta-dark, #a85d3d);
+  }
+  .lom-first-order__error {
+    font-size: 12px;
+    color: #e57373;
+    margin: 8px 0 0;
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+  }
+  .lom-first-order__text {
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 15px;
+    margin: 0 0 6px;
+    color: var(--lt-ivory, #f5f0ea);
+  }
+  .lom-first-order__code {
+    display: inline-block;
+    background: var(--lt-terracotta, #c4704b);
+    color: var(--lt-ivory, #f5f0ea);
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    letter-spacing: 1.5px;
+    font-size: 16px;
+  }
+
+  /* Mobile: full-width bottom sheet */
+  @media (max-width: 600px) {
+    .lom-first-order__inner {
+      max-width: 100%;
+      margin: 0;
+      border-radius: 14px 14px 0 0;
+    }
+    .lom-first-order__input-row {
+      flex-direction: column;
+    }
+    .lom-first-order__submit {
+      width: 100%;
+    }
+  }
+</style>
+
 <script>
+  function lomFirstOrderDismiss() {
+    var banner = document.getElementById('lom-first-order-banner');
+    banner.classList.remove('lom-first-order--visible');
+    sessionStorage.setItem('lom_first_order_dismissed', '1');
+  }
+
   (function() {
-    if (localStorage.getItem('lom_first_order_dismissed') === '1') return;
+    if (sessionStorage.getItem('lom_first_order_dismissed') === '1') return;
     if (window.Shopify && window.Shopify.designMode) return;
 
     var banner = document.getElementById('lom-first-order-banner');
+    var form = document.getElementById('lom-email-capture-form');
     var shown = false;
-    var delay = {{ section.settings.delay | default: 15 }} * 1000;
+    var delay = {{ section.settings.delay | default: 8 }} * 1000;
     var scrollPct = {{ section.settings.scroll_trigger | default: 50 }};
 
     function show() {
@@ -30,10 +194,8 @@
       });
     }
 
-    // Time trigger
     setTimeout(show, delay);
 
-    // Scroll trigger
     window.addEventListener('scroll', function onScroll() {
       var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
       if (scrolled >= scrollPct) {
@@ -41,6 +203,46 @@
         window.removeEventListener('scroll', onScroll);
       }
     }, { passive: true });
+
+    // Email form submission via AJAX
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailInput = document.getElementById('lom-email-input');
+        var errorEl = document.getElementById('lom-email-error');
+        var submitBtn = form.querySelector('.lom-first-order__submit');
+        var email = emailInput.value.trim();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = '';
+          return;
+        }
+
+        errorEl.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        var formData = new FormData(form);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function() {
+          // Show success state regardless (Shopify may return 200 or redirect)
+          document.getElementById('lom-first-order-form').style.display = 'none';
+          document.getElementById('lom-first-order-success').style.display = '';
+          sessionStorage.setItem('lom_first_order_submitted', '1');
+        })
+        .catch(function() {
+          // Still show the code — email may have gone through
+          document.getElementById('lom-first-order-form').style.display = 'none';
+          document.getElementById('lom-first-order-success').style.display = '';
+        });
+      });
+    }
   })();
 </script>
 
@@ -50,30 +252,54 @@
   "settings": [
     {
       "type": "text",
-      "id": "text",
-      "label": "Banner text",
-      "default": "First time? Use code"
+      "id": "headline",
+      "label": "Headline",
+      "default": "Get 10% Off Your First Order"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Join 10,000+ people who chose natural relief."
+    },
+    {
+      "type": "text",
+      "id": "discount_amount",
+      "label": "Discount amount text",
+      "default": "10%"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Get My Discount"
     },
     {
       "type": "text",
       "id": "code",
       "label": "Discount code",
-      "default": "FIRSTTRY"
+      "default": "WELCOME10"
     },
     {
       "type": "text",
-      "id": "suffix",
-      "label": "Text after code",
-      "default": "for 10% off your first order"
+      "id": "success_headline",
+      "label": "Success headline",
+      "default": "You're In!"
+    },
+    {
+      "type": "text",
+      "id": "success_subtext",
+      "label": "Success subtext",
+      "default": "Applied automatically — or paste at checkout."
     },
     {
       "type": "range",
       "id": "delay",
       "label": "Show after (seconds)",
-      "min": 5,
-      "max": 60,
-      "step": 5,
-      "default": 15,
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "default": 8,
       "unit": "s"
     },
     {

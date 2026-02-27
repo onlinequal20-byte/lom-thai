@@ -1,5 +1,40 @@
 {{ 'lom-natural.css' | asset_url | stylesheet_tag }}
 
+<style>
+  .lom-hero-authority__grid {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    align-items: center;
+    gap: 24px;
+  }
+  .lom-hero-authority__product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lom-hero-authority__product-image img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+  }
+  @media (max-width: 768px) {
+    .lom-hero-authority__grid {
+      grid-template-columns: 1fr;
+    }
+    .lom-hero-authority__product-image {
+      order: 2;
+      max-width: 260px;
+      margin: 24px auto;
+    }
+    .lom-hero-authority__content {
+      order: 1;
+    }
+    .lom-hero-authority__ctas {
+      order: 3;
+    }
+  }
+</style>
+
 <section class="lom-hero-authority" id="hero">
   <div class="lom-hero-authority__bg">
     {% if section.settings.background_image != blank %}
@@ -14,21 +49,49 @@
   </div>
 
   <div class="lom-container">
-    <div class="lom-hero-authority__content lom-fade-in">
-      <h1 class="lom-hero-authority__headline">{{ section.settings.headline }}</h1>
-      <p class="lom-hero-authority__subhead">{{ section.settings.subhead }}</p>
+    <div class="lom-hero-authority__grid">
+      <div class="lom-hero-authority__content lom-fade-in">
+        <h1 class="lom-hero-authority__headline">{{ section.settings.headline }}</h1>
+        <p class="lom-hero-authority__subhead">{{ section.settings.subhead }}</p>
 
-      <div class="lom-hero-authority__ctas">
-        <a href="{{ section.settings.primary_cta_url }}" class="lom-cta-btn lom-cta-btn--hero">
-          {{ section.settings.primary_cta_text }}
-        </a>
-        {% if section.settings.price_line != blank %}
-          <p class="lom-hero-authority__price-line">{{ section.settings.price_line }}</p>
+        {% if section.settings.product_image != blank %}
+          <div class="lom-hero-authority__product-image lom-hero-authority__product-image--mobile">
+            <img
+              src="{{ section.settings.product_image | image_url: width: 520 }}"
+              alt="{{ section.settings.headline | escape }}"
+              loading="eager"
+              fetchpriority="high"
+              width="260"
+              height="260"
+            >
+          </div>
         {% endif %}
-        <a href="#how-it-works" class="lom-hero-authority__secondary-cta">
-          {{ section.settings.secondary_cta_text }}
-        </a>
+
+        <div class="lom-hero-authority__ctas">
+          <a href="{{ section.settings.primary_cta_url }}" class="lom-cta-btn lom-cta-btn--hero">
+            {{ section.settings.primary_cta_text }}
+          </a>
+          {% if section.settings.price_line != blank %}
+            <p class="lom-hero-authority__price-line">{{ section.settings.price_line }}</p>
+          {% endif %}
+          <a href="#how-it-works" class="lom-hero-authority__secondary-cta">
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        </div>
       </div>
+
+      {% if section.settings.product_image != blank %}
+        <div class="lom-hero-authority__product-image lom-hero-authority__product-image--desktop">
+          <img
+            src="{{ section.settings.product_image | image_url: width: 800 }}"
+            alt="{{ section.settings.headline | escape }}"
+            loading="eager"
+            fetchpriority="high"
+            width="400"
+            height="400"
+          >
+        </div>
+      {% endif %}
     </div>
 
     <div class="lom-hero-authority__trust-strip lom-fade-in">
@@ -55,6 +118,22 @@
   </div>
 </section>
 
+<style>
+  .lom-hero-authority__product-image--mobile {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .lom-hero-authority__product-image--desktop {
+      display: none;
+    }
+    .lom-hero-authority__product-image--mobile {
+      display: flex;
+      max-width: 260px;
+      margin: 24px auto;
+    }
+  }
+</style>
+
 {% schema %}
 {
   "name": "Lom Hero Authority",
@@ -63,6 +142,11 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image (floating)"
     },
     {
       "type": "textarea",

@@ -65,15 +65,10 @@
           </div>
         {% endif %}
 
-        <div class="lom-product-hero__price">
-          {% if product.compare_at_price > product.price %}
-            <span class="lom-product-hero__price-compare">{{ product.compare_at_price | money }}</span>
-          {% endif %}
-          <span class="lom-product-hero__price-current">{{ product.price | money }}</span>
-          {% if product.compare_at_price > product.price %}
-            {% assign savings = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
-            <span class="lom-product-hero__price-save">Save {{ savings }}%</span>
-          {% endif %}
+        <div class="lom-product-hero__price" id="lom-price-display">
+          <span class="lom-product-hero__price-compare" id="lom-price-compare">{{ product.price | times: 3 | money }}</span>
+          <span class="lom-product-hero__price-current" id="lom-price-current">{{ price_3 | money }}</span>
+          <span class="lom-product-hero__price-save" id="lom-price-save">Save 20%</span>
         </div>
 
         {%- comment -%} Variant picker {%- endcomment -%}
@@ -90,13 +85,15 @@
           {% endfor %}
         {% endif %}
 
+        {%- comment -%} Bundle pricing (calculated outside conditional so ATC can use it) {%- endcomment -%}
+        {% assign price_1 = product.price %}
+        {% assign price_3 = product.price | times: 3 | times: 80 | divided_by: 100 %}
+        {% assign price_5 = product.price | times: 5 | times: 70 | divided_by: 100 %}
+
         {%- comment -%} Bundle offer {%- endcomment -%}
         {% if section.settings.show_bundle %}
           <div class="lom-product-hero__bundles">
-            {% assign price_1 = product.price %}
-            {% assign price_3 = product.price | times: 3 | times: 80 | divided_by: 100 %}
-            {% assign price_5 = product.price | times: 5 | times: 70 | divided_by: 100 %}
-            <button type="button" class="lom-product-hero__bundle is-active" data-quantity="1" data-bundle-price="{{ price_1 | money }}" data-bundle-name="Try It">
+            <button type="button" class="lom-product-hero__bundle" data-quantity="1" data-bundle-price="{{ price_1 | money }}" data-bundle-name="Try It">
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
                 <strong>Try It</strong>
@@ -104,7 +101,7 @@
               </div>
               <div class="lom-product-hero__bundle-price">{{ price_1 | money }}</div>
             </button>
-            <button type="button" class="lom-product-hero__bundle lom-product-hero__bundle--popular" data-quantity="3" data-bundle-price="{{ price_3 | money }}" data-bundle-name="Relief Pack">
+            <button type="button" class="lom-product-hero__bundle lom-product-hero__bundle--popular is-active" data-quantity="3" data-bundle-price="{{ price_3 | money }}" data-bundle-name="Relief Pack">
               <span class="lom-product-hero__bundle-badge">Most Popular</span>
               <div class="lom-product-hero__bundle-radio"></div>
               <div class="lom-product-hero__bundle-info">
@@ -114,6 +111,7 @@
               <div class="lom-product-hero__bundle-price">
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 3 | money }}</small>
                 {{ price_3 | money }}
+                <span class="lom-product-hero__bundle-unit">{{ price_3 | divided_by: 3 | money }}/stick</span>
               </div>
             </button>
             <button type="button" class="lom-product-hero__bundle" data-quantity="5" data-bundle-price="{{ price_5 | money }}" data-bundle-name="Never Run Out">
@@ -126,6 +124,7 @@
               <div class="lom-product-hero__bundle-price">
                 <small class="lom-product-hero__bundle-was">{{ product.price | times: 5 | money }}</small>
                 {{ price_5 | money }}
+                <span class="lom-product-hero__bundle-unit">{{ price_5 | divided_by: 5 | money }}/stick</span>
               </div>
             </button>
           </div>
@@ -150,15 +149,18 @@
         {%- comment -%} Add to Cart {%- endcomment -%}
         {% form 'product', product, id: 'lom-product-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <input type="hidden" name="quantity" value="1" id="lom-bundle-qty">
+          <input type="hidden" name="quantity" value="3" id="lom-bundle-qty">
           <button type="submit" class="lom-btn-primary lom-btn-full lom-product-hero__atc" {% unless product.available %}disabled{% endunless %}
             data-atc-text="{{ section.settings.atc_text | default: 'Add to Cart' }}">
             {% if product.available %}
-              {{ section.settings.atc_text | default: 'Add to Cart' }} — {{ product.price | money }}
+              {{ section.settings.atc_text | default: 'Add to Cart' }} — {{ price_3 | money }}
             {% else %}
               Sold Out
             {% endif %}
           </button>
+
+          <div class="lom-product-hero__express-sep"><span>or checkout faster with</span></div>
+          {{ form | payment_button }}
         {% endform %}
 
         {%- comment -%} Social proof buyers bar {%- endcomment -%}
@@ -295,7 +297,19 @@
 </div>
 
 <script>
-  // Bundle selector — updates quantity, CTA text, and sticky bar
+  // Bundle pricing data
+  var lomUnitPrice = {{ product.price }};
+  var lomBundleData = {
+    '1': { price: lomUnitPrice, compare: 0, save: 0 },
+    '3': { price: Math.round(lomUnitPrice * 3 * 0.8), compare: lomUnitPrice * 3, save: 20 },
+    '5': { price: Math.round(lomUnitPrice * 5 * 0.7), compare: lomUnitPrice * 5, save: 30 }
+  };
+
+  function lomFormatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  // Bundle selector — updates quantity, CTA text, price display, and sticky bar
   document.querySelectorAll('.lom-product-hero__bundle').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('.lom-product-hero__bundle').forEach(function(x){x.classList.remove('is-active')});
@@ -316,6 +330,25 @@
 
       if (stickyBtn) stickyBtn.textContent = 'Add to Cart — ' + price;
       if (stickyPrice) stickyPrice.innerHTML = price;
+
+      // Update price display
+      var data = lomBundleData[qty];
+      var priceCompare = document.getElementById('lom-price-compare');
+      var priceCurrent = document.getElementById('lom-price-current');
+      var priceSave = document.getElementById('lom-price-save');
+
+      if (data && priceCurrent) {
+        priceCurrent.textContent = lomFormatMoney(data.price);
+        if (data.compare > 0) {
+          priceCompare.textContent = lomFormatMoney(data.compare);
+          priceCompare.style.display = '';
+          priceSave.textContent = 'Save ' + data.save + '%';
+          priceSave.style.display = '';
+        } else {
+          priceCompare.style.display = 'none';
+          priceSave.style.display = 'none';
+        }
+      }
     });
   });
 

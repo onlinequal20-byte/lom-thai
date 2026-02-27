@@ -1,0 +1,143 @@
+<style>
+  .lom-trust-strip {
+    padding: 28px 0;
+  }
+  .lom-trust-strip--light {
+    background: var(--lt-ivory-dark, #f5f0e8);
+  }
+  .lom-trust-strip--dark {
+    background: var(--lt-brown-black, #1a1612);
+  }
+  .lom-trust-strip__eyebrow {
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--lt-warm-gray, #8a8178);
+    text-align: center;
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+  .lom-trust-strip--dark .lom-trust-strip__eyebrow {
+    color: var(--lt-warm-gray, #8a8178);
+  }
+  .lom-trust-strip__row {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .lom-trust-strip__item {
+    display: flex;
+    align-items: center;
+  }
+  .lom-trust-strip__item span {
+    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--lt-warm-gray, #8a8178);
+    font-weight: 600;
+  }
+  .lom-trust-strip--dark .lom-trust-strip__item span {
+    color: var(--lt-warm-gray, #8a8178);
+  }
+  .lom-trust-strip__item img {
+    height: 24px;
+    width: auto;
+    opacity: 0.4;
+    filter: grayscale(100%);
+    transition: opacity 0.3s, filter 0.3s;
+  }
+  .lom-trust-strip__item img:hover {
+    opacity: 0.8;
+    filter: grayscale(0);
+  }
+  @media (max-width: 768px) {
+    .lom-trust-strip__row {
+      gap: 24px 32px;
+    }
+  }
+</style>
+
+<section class="lom-trust-strip lom-trust-strip--{{ section.settings.background_color }}">
+  <div class="lom-container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="lom-trust-strip__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <div class="lom-trust-strip__row">
+      {%- for block in section.blocks -%}
+        <div class="lom-trust-strip__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <img
+              src="{{ block.settings.icon | image_url: width: 120 }}"
+              alt="{{ block.settings.text | escape }}"
+              width="120"
+              height="24"
+              loading="lazy"
+            >
+          {%- else -%}
+            <span>{{ block.settings.text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Strip",
+  "tag": "section",
+  "class": "lom-trust-strip-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Trusted By 10,000+ People"
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background",
+      "options": [
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark" }
+      ],
+      "default": "light"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Logo / icon (optional)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text (fallback if no image)",
+          "default": "10,000+ Sold"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Strip",
+      "blocks": [
+        { "type": "trust_badge", "settings": { "text": "10,000+ Sticks Sold" } },
+        { "type": "trust_badge", "settings": { "text": "Trusted by Nurses & Athletes" } },
+        { "type": "trust_badge", "settings": { "text": "100% Natural" } },
+        { "type": "trust_badge", "settings": { "text": "Made in Thailand" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

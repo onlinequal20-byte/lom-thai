@@ -21,9 +21,18 @@
               <span class="lom-offer-card__savings">{{ block.settings.savings }}</span>
             {%- endif -%}
           </div>
-          <a href="{{ block.settings.url | default: '/collections/all' }}" class="lom-cta-btn lom-offer-card__cta{% if block.settings.highlighted %} lom-cta-btn--primary{% else %} lom-cta-btn--outline{% endif %}">
+          <button
+            type="button"
+            class="lom-cta-btn lom-offer-card__cta{% if block.settings.highlighted %} lom-cta-btn--primary{% else %} lom-cta-btn--outline{% endif %} lom-offer-atc"
+            data-quantity="{{ block.settings.quantity | default: 1 }}"
+          >
             {{ block.settings.cta_text | default: 'Add to Cart' }}
-          </a>
+          </button>
+          <noscript>
+            <a href="{{ block.settings.url | default: '/collections/all' }}" class="lom-cta-btn lom-offer-card__cta{% if block.settings.highlighted %} lom-cta-btn--primary{% else %} lom-cta-btn--outline{% endif %}">
+              {{ block.settings.cta_text | default: 'Add to Cart' }}
+            </a>
+          </noscript>
         </div>
       {%- endfor -%}
     </div>
@@ -33,19 +42,96 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var els = document.querySelectorAll('.lom-offer-stack .lom-reveal');
-    if (!els.length) return;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+  (function() {
+    var variantId = null;
+    var productHandle = 'lom-thai-authentic-muay-thai-oil';
+
+    fetch('/products/' + productHandle + '.js')
+      .then(function(r) { return r.json(); })
+      .then(function(product) {
+        if (product.variants && product.variants.length > 0) {
+          variantId = product.variants[0].id;
         }
+      })
+      .catch(function() {});
+
+    document.querySelectorAll('.lom-offer-stack .lom-offer-atc').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (!variantId) {
+          window.location = '/products/' + productHandle;
+          return;
+        }
+
+        var qty = parseInt(btn.getAttribute('data-quantity')) || 1;
+        var originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Adding...';
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: qty })
+        })
+        .then(function(r) {
+          if (!r.ok) throw new Error('Add to cart failed');
+          return r.json();
+        })
+        .then(function() {
+          btn.textContent = 'Added ✓';
+          var drawer = document.querySelector('cart-drawer');
+          if (drawer && typeof drawer.open === 'function') {
+            drawer.open();
+          } else {
+            // Try Dawn's cart drawer approach
+            var drawerEl = document.querySelector('cart-drawer');
+            if (drawerEl) {
+              drawerEl.classList.add('is-empty');
+              drawerEl.classList.remove('is-empty');
+              // Trigger section rendering refresh
+              fetch('/cart?sections=cart-drawer')
+                .then(function(r) { return r.json(); })
+                .then(function(sections) {
+                  if (drawerEl.querySelector('.drawer__inner')) {
+                    drawerEl.querySelector('.drawer__inner').innerHTML =
+                      new DOMParser().parseFromString(sections['cart-drawer'], 'text/html')
+                        .querySelector('.drawer__inner').innerHTML;
+                  }
+                  drawerEl.open ? drawerEl.open() : (drawerEl.style.display = '');
+                  drawerEl.setAttribute('open', '');
+                })
+                .catch(function() {
+                  window.location = '/cart';
+                });
+            } else {
+              window.location = '/cart';
+            }
+          }
+          setTimeout(function() {
+            btn.disabled = false;
+            btn.textContent = originalText;
+          }, 2000);
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = originalText;
+        });
       });
-    }, { threshold: 0.15 });
-    els.forEach(function (el) { observer.observe(el); });
-  });
+    });
+
+    // Reveal animation
+    var els = document.querySelectorAll('.lom-offer-stack .lom-reveal');
+    if (els.length) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      els.forEach(function(el) { observer.observe(el); });
+    }
+  })();
 </script>
 
 {% schema %}
@@ -116,9 +202,18 @@
           "default": "Add to Cart"
         },
         {
+          "type": "range",
+          "id": "quantity",
+          "label": "Quantity to add",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 1
+        },
+        {
           "type": "url",
           "id": "url",
-          "label": "Button Link"
+          "label": "Fallback Link (noscript)"
         }
       ]
     }
@@ -134,7 +229,8 @@
             "tagline": "See what the hype is about",
             "price": "$8",
             "highlighted": false,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "quantity": 1
           }
         },
         {
@@ -147,7 +243,8 @@
             "savings": "Save 20%",
             "badge": "Most Popular",
             "highlighted": true,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "quantity": 3
           }
         },
         {
@@ -160,7 +257,8 @@
             "savings": "Save 30%",
             "badge": "Best Value",
             "highlighted": false,
-            "cta_text": "Add to Cart"
+            "cta_text": "Add to Cart",
+            "quantity": 5
           }
         }
       ]
