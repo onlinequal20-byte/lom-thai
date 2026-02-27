@@ -54,6 +54,7 @@
         "review_3": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
             "name": "Anna P.",
             "location": "Portland",
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house."
@@ -62,6 +63,7 @@
         "review_4": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq.png",
             "name": "Michelle T.",
             "location": "Texas",
             "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. 10/10."
