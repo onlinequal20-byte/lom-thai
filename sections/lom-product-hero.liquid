@@ -159,9 +159,21 @@
         {%- comment -%} Social proof buyers bar {%- endcomment -%}
         <div class="lom-hero-buyers">
           <div class="lom-hero-buyers__avatars">
-            <span class="lom-hero-buyers__avatar" style="background:#c5d9c7;z-index:4">S</span>
-            <span class="lom-hero-buyers__avatar" style="background:#e8c9b8;z-index:3">M</span>
-            <span class="lom-hero-buyers__avatar" style="background:#b8cfe8;z-index:2">J</span>
+            {% if section.settings.avatar_1 != blank %}
+              <img class="lom-hero-buyers__avatar" src="{{ section.settings.avatar_1 | image_url: width: 80 }}" alt="Customer" style="z-index:4" loading="lazy">
+            {% else %}
+              <span class="lom-hero-buyers__avatar" style="background:#c5d9c7;z-index:4">S</span>
+            {% endif %}
+            {% if section.settings.avatar_2 != blank %}
+              <img class="lom-hero-buyers__avatar" src="{{ section.settings.avatar_2 | image_url: width: 80 }}" alt="Customer" style="z-index:3" loading="lazy">
+            {% else %}
+              <span class="lom-hero-buyers__avatar" style="background:#e8c9b8;z-index:3">M</span>
+            {% endif %}
+            {% if section.settings.avatar_3 != blank %}
+              <img class="lom-hero-buyers__avatar" src="{{ section.settings.avatar_3 | image_url: width: 80 }}" alt="Customer" style="z-index:2" loading="lazy">
+            {% else %}
+              <span class="lom-hero-buyers__avatar" style="background:#b8cfe8;z-index:2">J</span>
+            {% endif %}
           </div>
           <span class="lom-hero-buyers__text">{{ section.settings.buyers_text | default: 'Sarah and 438 people purchased' }}</span>
         </div>
@@ -376,6 +388,21 @@
       "id": "buyers_text",
       "label": "Buyers social proof text",
       "default": "Sarah and 89 people this week"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Buyer avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Buyer avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Buyer avatar 3"
     },
     {
       "type": "text",

@@ -3347,6 +3347,7 @@ h1, h2, h3, h4, h5, h6,
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3354,7 +3355,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 11px;
   font-weight: 700;
   color: var(--lt-ivory);
-  border: 2px solid var(--lt-dark);
+  border: 2px solid var(--lt-ivory);
   margin-left: -8px;
   position: relative;
   background: var(--lt-brown-black);
@@ -3390,15 +3391,17 @@ h1, h2, h3, h4, h5, h6,
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  height: 30px;
-  background: var(--lt-glass);
-  border: 1px solid var(--lt-border);
-  padding: 3px 6px;
+  height: 32px;
+  background: var(--lt-white);
+  border: 1.5px solid var(--lt-border-light);
+  border-radius: 6px;
+  padding: 3px 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 
 .lom-hero-payments__icon svg {
   display: block;
-  height: 24px;
+  height: 22px;
   width: auto;
 }
 
