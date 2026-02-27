@@ -120,22 +120,42 @@
 
 .lom-header__nav {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 28px;
 }
 
 .lom-header__link {
   font-family: var(--lom-body);
-  font-size: 11px;
+  font-size: 12.5px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.6px;
   font-weight: 500;
   color: var(--lom-charcoal);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  opacity: 0.72;
+  position: relative;
+  padding: 4px 0;
+}
+
+.lom-header__link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
 }
 
 .lom-header__link:hover {
-  color: var(--lom-sage);
+  color: var(--lom-charcoal);
+  opacity: 1;
+}
+
+.lom-header__link:hover::after {
+  width: 100%;
 }
 
 .lom-header__logo {
