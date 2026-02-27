@@ -71,25 +71,36 @@
       </table>
     </div>
 
-    {%- comment -%} MOBILE: Compact two-column rows {%- endcomment -%}
+    {%- comment -%} MOBILE: Premium card with brand vs others {%- endcomment -%}
     <div class="lom-compare__mobile lom-fade-in">
-      {% for block in row_blocks %}
-        {% assign bv = block.settings.brand_value | remove: '✓' | remove: '✗' | strip %}
-        {% assign cv = block.settings.competitor_1 | remove: '✓' | remove: '✗' | strip %}
-        <div class="lom-compare__m-row" {{ block.shopify_attributes }}>
-          <div class="lom-compare__m-label">{{ block.settings.feature }}</div>
-          <div class="lom-compare__m-cols">
-            <div class="lom-compare__m-win">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--lt-emerald)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>{% if bv != blank %}{{ bv }}{% else %}Yes{% endif %}</span>
-            </div>
-            <div class="lom-compare__m-lose">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              <span>{% if cv != blank %}{{ cv }}{% else %}No{% endif %}</span>
-            </div>
+      <div class="lom-compare__m-card">
+        <div class="lom-compare__m-head">
+          <div class="lom-compare__m-head-brand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/><rect x="5" y="17" width="14" height="2" rx="1"/></svg>
+            <span>{{ section.settings.brand_name }}</span>
           </div>
+          <span class="lom-compare__m-head-vs">vs</span>
+          <span class="lom-compare__m-head-other">Others</span>
         </div>
-      {% endfor %}
+        <div class="lom-compare__m-body">
+          {% for block in row_blocks %}
+            {% assign bv = block.settings.brand_value | remove: '✓' | remove: '✗' | strip %}
+            {% assign cv = block.settings.competitor_1 | remove: '✓' | remove: '✗' | strip %}
+            <div class="lom-compare__m-row" {{ block.shopify_attributes }}>
+              <div class="lom-compare__m-feature">{{ block.settings.feature }}</div>
+              <div class="lom-compare__m-vals">
+                <span class="lom-compare__m-brand-val">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {% if bv != blank %}{{ bv }}{% else %}Yes{% endif %}
+                </span>
+                <span class="lom-compare__m-other-val">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
     <div class="lom-compare__cta lom-fade-in">
@@ -97,68 +108,6 @@
     </div>
   </div>
 </section>
-
-<style>
-  /* ===== MOBILE COMPARISON — Compact rows ===== */
-  .lom-compare__mobile { display: none; }
-
-  @media (max-width: 768px) {
-    .lom-compare__desktop { display: none !important; }
-    .lom-compare__mobile { display: block; }
-
-    .lom-compare__m-row {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--lt-border);
-    }
-    .lom-compare__m-row:last-child {
-      border-bottom: none;
-    }
-    .lom-compare__m-label {
-      font-family: var(--lt-sans);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--lt-brown-black);
-      margin-bottom: 10px;
-    }
-    .lom-compare__m-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .lom-compare__m-win {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--lt-sans);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--lt-emerald-dark);
-      background: rgba(122,138,90,0.08);
-      border: 1px solid rgba(122,138,90,0.15);
-      border-radius: 8px;
-      padding: 8px 12px;
-    }
-    .lom-compare__m-win svg {
-      flex-shrink: 0;
-    }
-    .lom-compare__m-lose {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--lt-sans);
-      font-size: 13px;
-      color: var(--lt-warm-gray);
-      background: rgba(42,37,32,0.03);
-      border: 1px solid rgba(42,37,32,0.06);
-      border-radius: 8px;
-      padding: 8px 12px;
-    }
-    .lom-compare__m-lose svg {
-      flex-shrink: 0;
-      stroke: rgba(184,92,85,0.5);
-    }
-  }
-</style>
 
 {% schema %}
 {

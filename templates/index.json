@@ -67,28 +67,22 @@
         "p1": {
           "type": "pain_card",
           "settings": {
-            "icon_type": "coffee",
-            "icon": "",
             "title": "Energy drinks & coffee",
-            "text": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue. Your heart races. Your hands shake. And you're still exhausted."
+            "text": "20-minute jolt, then a crash worse than the fatigue"
           }
         },
         "p2": {
           "type": "pain_card",
           "settings": {
-            "icon_type": "pill",
-            "icon": "",
             "title": "Pharmacy sprays & pills",
-            "text": "Chemicals you can't pronounce. Side effects longer than the relief. And that foggy, medicated feeling that makes you wonder if the cure is worse."
+            "text": "Chemicals you can't pronounce, side effects longer than the relief"
           }
         },
         "p3": {
           "type": "pain_card",
           "settings": {
-            "icon_type": "fatigue",
-            "icon": "",
             "title": "Just pushing through",
-            "text": "White-knuckling through headaches. Blinking hard to stay awake during your shift. Telling yourself 'I'll feel better tomorrow.' You won't."
+            "text": "White-knuckling headaches, blinking to stay awake during your shift"
           }
         }
       },

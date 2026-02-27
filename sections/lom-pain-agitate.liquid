@@ -1,38 +1,137 @@
 {{ 'lom-natural.css' | asset_url | stylesheet_tag }}
 
-<section class="lom-pain-agitate">
+<section class="lom-pain">
   <div class="lom-container">
-    <p class="lom-pain-eyebrow lom-fade-in">{{ section.settings.eyebrow }}</p>
-    <h2 class="lom-heading lom-fade-in">{{ section.settings.heading }}</h2>
+    <div class="lom-pain__inner">
+      {% if section.settings.eyebrow != blank %}
+        <span class="lom-pain__eyebrow lom-fade-in">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+      <h2 class="lom-pain__heading lom-fade-in">{{ section.settings.heading }}</h2>
 
-    <div class="lom-pain-grid">
-      {% for block in section.blocks %}
-        <div class="lom-pain-card lom-fade-in" {{ block.shopify_attributes }}>
-          <div class="lom-pain-card__icon">
-            <span class="lt-icon lt-icon--gold">
-              {% case block.settings.icon_type %}
-                {% when 'coffee' %}
-                  <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
-                {% when 'pill' %}
-                  <svg viewBox="0 0 24 24"><path d="M10.5 1.5H8a6.5 6.5 0 100 13h8a6.5 6.5 0 000-13h-2.5" transform="rotate(45 12 12)"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
-                {% when 'fatigue' %}
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                {% else %}
-                  <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              {% endcase %}
+      <div class="lom-pain__list">
+        {% for block in section.blocks %}
+          <div class="lom-pain__row lom-fade-in" {{ block.shopify_attributes }}>
+            <span class="lom-pain__x">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </span>
+            <div class="lom-pain__text">
+              <strong>{{ block.settings.title }}</strong>
+              <span>— {{ block.settings.text }}</span>
+            </div>
           </div>
-          <h3 class="lom-pain-card__title">{{ block.settings.title }}</h3>
-          <p class="lom-pain-card__text">{{ block.settings.text }}</p>
-        </div>
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
 
-    {% if section.settings.transition_line != blank %}
-      <p class="lom-pain-transition lom-fade-in">{{ section.settings.transition_line }}</p>
-    {% endif %}
+      {% if section.settings.transition_line != blank %}
+        <p class="lom-pain__transition lom-fade-in">{{ section.settings.transition_line }}</p>
+      {% endif %}
+    </div>
   </div>
 </section>
+
+<style>
+  .lom-pain {
+    padding: 80px 0;
+    background: var(--lt-ivory);
+  }
+  .lom-pain__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .lom-pain__eyebrow {
+    display: block;
+    font-family: var(--lt-sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--lt-terracotta);
+    margin-bottom: 16px;
+  }
+  .lom-pain__heading {
+    font-family: var(--lt-serif);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--lt-brown-black);
+    margin: 0 0 48px;
+  }
+  .lom-pain__list {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .lom-pain__row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--lt-border);
+  }
+  .lom-pain__row:first-child {
+    border-top: 1px solid var(--lt-border);
+  }
+  .lom-pain__x {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--lt-white);
+    border: 1px solid var(--lt-border);
+    color: var(--lt-warm-gray);
+    position: relative;
+    top: 2px;
+    box-shadow: 0 1px 3px rgba(42,37,32,0.04);
+  }
+  .lom-pain__x svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 2;
+  }
+  .lom-pain__text {
+    font-family: var(--lt-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--lt-warm-gray);
+  }
+  .lom-pain__text strong {
+    color: var(--lt-brown-black);
+    font-weight: 600;
+  }
+  .lom-pain__transition {
+    margin-top: 40px;
+    font-family: var(--lt-serif);
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--lt-emerald-dark);
+  }
+
+  @media (max-width: 768px) {
+    .lom-pain {
+      padding: 48px 0;
+    }
+    .lom-pain__heading {
+      margin-bottom: 32px;
+    }
+    .lom-pain__row {
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .lom-pain__text {
+      font-size: 14px;
+    }
+    .lom-pain__transition {
+      margin-top: 28px;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -53,43 +152,26 @@
     {
       "type": "textarea",
       "id": "transition_line",
-      "label": "Transition line (below cards)",
+      "label": "Transition line (below list)",
       "default": "What if relief didn't come with a tradeoff?"
     }
   ],
   "blocks": [
     {
       "type": "pain_card",
-      "name": "Pain Card",
+      "name": "Pain point",
       "settings": [
-        {
-          "type": "select",
-          "id": "icon_type",
-          "label": "Icon",
-          "options": [
-            { "value": "coffee", "label": "Coffee cup" },
-            { "value": "pill", "label": "Pill" },
-            { "value": "fatigue", "label": "Fatigue" },
-            { "value": "warning", "label": "Warning" }
-          ],
-          "default": "coffee"
-        },
-        {
-          "type": "text",
-          "id": "icon",
-          "label": "Legacy icon (unused)"
-        },
         {
           "type": "text",
           "id": "title",
-          "label": "Card title",
+          "label": "Pain point",
           "default": "Energy drinks & coffee"
         },
         {
-          "type": "textarea",
+          "type": "text",
           "id": "text",
-          "label": "Pain description",
-          "default": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue."
+          "label": "One-line consequence",
+          "default": "20-minute jolt, then a crash worse than the fatigue"
         }
       ]
     }
@@ -101,25 +183,22 @@
         {
           "type": "pain_card",
           "settings": {
-            "icon_type": "coffee",
             "title": "Energy drinks & coffee",
-            "text": "The jolt lasts 20 minutes. Then the crash hits harder than the fatigue. Your heart races. Your hands shake. And you're still exhausted."
+            "text": "20-minute jolt, then a crash worse than the fatigue"
           }
         },
         {
           "type": "pain_card",
           "settings": {
-            "icon_type": "pill",
             "title": "Pharmacy sprays & pills",
-            "text": "Chemicals you can't pronounce. Side effects longer than the relief. And that foggy, medicated feeling that makes you wonder if the cure is worse."
+            "text": "Chemicals you can't pronounce, side effects longer than the relief"
           }
         },
         {
           "type": "pain_card",
           "settings": {
-            "icon_type": "fatigue",
             "title": "Just pushing through",
-            "text": "White-knuckling through headaches. Blinking hard to stay awake during your shift. Telling yourself 'I'll feel better tomorrow.' You won't."
+            "text": "White-knuckling headaches and blinking to stay awake during your shift"
           }
         }
       ]
