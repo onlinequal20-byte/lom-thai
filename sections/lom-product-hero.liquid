@@ -217,9 +217,13 @@
             {% for block in review_blocks %}
               <div class="lom-hero-review-card {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
                 <div class="lom-hero-review-card__inner">
-                  <div class="lom-hero-review-card__avatar">
-                    {{ block.settings.name | truncate: 1, '' | upcase }}
-                  </div>
+                  {% if block.settings.avatar != blank %}
+                    <img class="lom-hero-review-card__avatar" src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name }}" loading="lazy">
+                  {% else %}
+                    <div class="lom-hero-review-card__avatar">
+                      {{ block.settings.name | truncate: 1, '' | upcase }}
+                    </div>
+                  {% endif %}
                   <div class="lom-hero-review-card__info">
                     <div class="lom-hero-review-card__name">
                       {{ block.settings.name }}
@@ -440,6 +444,11 @@
       "type": "review",
       "name": "Featured review",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
         {
           "type": "text",
           "id": "name",
