@@ -33,7 +33,11 @@
           </div>
           <p class="lom-review-text">"{{ block.settings.text }}"</p>
           <div class="lom-review-author">
-            <div class="lom-review-avatar">{{ block.settings.name | truncate: 2, '' | upcase }}</div>
+            {% if block.settings.avatar != blank %}
+              <img class="lom-review-avatar lom-review-avatar--img" src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name }}" loading="lazy">
+            {% else %}
+              <div class="lom-review-avatar">{{ block.settings.name | truncate: 2, '' | upcase }}</div>
+            {% endif %}
             <div class="lom-review-author-info">
               <strong>{{ block.settings.name }}</strong>
               {% if block.settings.title != blank %}
@@ -85,6 +89,11 @@
       "type": "review",
       "name": "Review",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
         {
           "type": "range",
           "id": "stars",
