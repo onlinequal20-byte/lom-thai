@@ -1958,6 +1958,15 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 20px 60px rgba(42,37,32,0.08), 0 0 30px rgba(122,138,90,0.1);
 }
 
+.lom-ingredient-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  display: block;
+}
+
 .lom-ingredient-icon {
   width: 52px;
   height: 52px;

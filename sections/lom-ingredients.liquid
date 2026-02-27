@@ -10,6 +10,9 @@
       {% for block in section.blocks %}
         <div class="lom-ingredient-card lom-fade-in" {{ block.shopify_attributes }}>
           <div class="lom-ingredient-icon">
+            {% if block.settings.image != blank %}
+              <img class="lom-ingredient-img" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.name }}" loading="lazy">
+            {% else %}
             <span class="lt-icon lt-icon--lg lt-icon--circle">
               {% case block.settings.icon_type %}
                 {% when 'snowflake' %}
@@ -66,6 +69,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>
               {% endcase %}
             </span>
+            {% endif %}
           </div>
           <h3 class="lom-ingredient-name">{{ block.settings.name }}</h3>
           <p class="lom-ingredient-benefit">{{ block.settings.benefit }}</p>
@@ -144,6 +148,11 @@
       "type": "ingredient",
       "name": "Ingredient",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient image"
+        },
         {
           "type": "select",
           "id": "icon_type",
