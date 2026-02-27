@@ -45,7 +45,7 @@
         "review_2": {
           "type": "review",
           "settings": {
-            "avatar": "shopify://shop_images/4.png",
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "name": "Marco V.",
             "location": "Ohio",
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash."
@@ -336,6 +336,7 @@
         "r1": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq.png",
             "stars": 5,
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
             "name": "Sarah M.",
@@ -346,11 +347,12 @@
         "r2": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "stars": 5,
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
-            "title": "Nurse",
-            "location": "Truck Driver, Ohio"
+            "title": "Truck Drive",
+            "location": "Ohio"
           }
         },
         "r3": {
