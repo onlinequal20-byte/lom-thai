@@ -36,6 +36,7 @@
         "review_1": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/4.png",
             "name": "Sarah M.",
             "location": "Texas",
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me."
@@ -120,7 +121,7 @@
         "buyers_text": "Sarah and 89 people this week",
         "avatar_1": "shopify://shop_images/1.png",
         "avatar_2": "shopify://shop_images/2.png",
-        "avatar_3": "shopify://shop_images/4.png",
+        "avatar_3": "shopify://shop_images/3.png",
         "loss_aversion_text": "Still thinking? Every day without this is another day reaching for chemicals that don't actually solve the problem.",
         "fda_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
