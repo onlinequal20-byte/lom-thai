@@ -44,6 +44,7 @@
         "review_2": {
           "type": "review",
           "settings": {
+            "avatar": "shopify://shop_images/4.png",
             "name": "Marco V.",
             "location": "Ohio",
             "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash."
