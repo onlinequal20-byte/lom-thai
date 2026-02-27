@@ -30,6 +30,12 @@
             "text": "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
           }
         },
+        "mission": {
+          "type": "mission",
+          "settings": {
+            "text": "Our mission is simple: bring a century of Thai herbal wisdom to every pocket, every purse, every home — without changing a single ingredient."
+          }
+        },
         "value_1": {
           "type": "value_pillar",
           "settings": {
@@ -62,6 +68,34 @@
             "text": "Third-party tested for purity and potency"
           }
         },
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "number": "50,000+",
+            "label": "Customers"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "number": "4.8 ★",
+            "label": "Avg Rating"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Natural"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "number": "100+",
+            "label": "Years of Tradition"
+          }
+        },
         "founder": {
           "type": "founder",
           "settings": {
@@ -71,10 +105,13 @@
             "story": "I first discovered ya dom in a Bangkok pharmacy in 2019. One inhale and I understood why every Thai person carries one. I spent two years working with traditional herbalists to bring this exact formula to the West."
           }
         },
-        "closing": {
-          "type": "closing",
+        "final_cta": {
+          "type": "final_cta",
           "settings": {
-            "text": "We're not a wellness startup. We're a bridge between ancient Thai relief and modern Western lives."
+            "eyebrow": "Don't Wait",
+            "heading": "Ready to Try Lom Thai?",
+            "body": "Join thousands who've made the switch to natural relief. Free shipping on every order. 30-day money-back guarantee.",
+            "button_text": "Try Lom Thai Risk-Free"
           }
         }
       },
@@ -82,12 +119,17 @@
         "narrative_1",
         "narrative_2",
         "narrative_3",
+        "mission",
         "value_1",
         "value_2",
         "value_3",
         "value_4",
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
         "founder",
-        "closing"
+        "final_cta"
       ],
       "settings": {
         "eyebrow": "Our Story",
