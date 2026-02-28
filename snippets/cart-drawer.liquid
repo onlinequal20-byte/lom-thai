@@ -15,8 +15,9 @@
   .drawer {
     visibility: hidden;
   }
+  /* ── Shipping progress bar ── */
   .lom-shipping-bar {
-    padding: 16px 20px;
+    padding: 14px 20px;
     background: var(--lt-ivory-dark, #f5f0ea);
     border-bottom: 1px solid var(--lt-border, #e5e0d8);
   }
@@ -25,6 +26,14 @@
     font-size: 13px;
     color: var(--lt-charcoal, #2c2c2c);
     margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lom-shipping-bar__text svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
   .lom-shipping-bar__track {
     height: 6px;
@@ -37,6 +46,92 @@
     background: var(--lt-emerald, #4a7c59);
     border-radius: 3px;
     transition: width 0.3s ease;
+  }
+
+  /* ── Hide PRODUCT/TOTAL table headers ── */
+  .cart-drawer .cart-items thead {
+    display: none !important;
+  }
+
+  /* ── Checkout CTA ── */
+  .cart-drawer .cart__checkout-button {
+    height: 56px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+  .cart-drawer .cart__checkout-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .cart-drawer .cart__checkout-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  /* ── Urgency / delivery estimate ── */
+  .lom-cart-urgency {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 0;
+    font-family: var(--lt-sans, sans-serif);
+    font-size: 12px;
+    color: var(--lt-emerald, #4a7c59);
+    font-weight: 600;
+  }
+  .lom-cart-urgency svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── Savings callout ── */
+  .lom-cart-savings {
+    text-align: center;
+    font-family: var(--lt-sans, sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--lt-emerald, #4a7c59);
+    padding: 4px 0 0;
+    margin: 0;
+  }
+
+  /* ── Trust badges upgrade ── */
+  .lom-cart-trust {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px 0 4px;
+    border-top: 1px solid var(--lt-border, #e5e0d8);
+    margin-top: 12px;
+  }
+  .lom-cart-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--lt-sans, sans-serif);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--lt-charcoal-muted, #6b6560);
+    letter-spacing: 0.2px;
+  }
+  .lom-cart-trust__item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--lt-emerald, #4a7c59);
+  }
+
+  /* ── Remove bottom shipping duplicate ── */
+  .lom-cart-shipping {
+    display: none !important;
   }
 </style>
 
@@ -97,19 +192,25 @@
           </span>
         </button>
       </div>
-      {%- comment -%} Free shipping progress bar {%- endcomment -%}
-      {%- assign shipping_threshold = 1600 -%}
+      {%- comment -%} Free shipping progress bar — single source of truth {%- endcomment -%}
+      {%- assign shipping_threshold = 5000 -%}
       {%- if cart.total_price > 0 -%}
         <div class="lom-shipping-bar">
           {%- if cart.total_price >= shipping_threshold -%}
-            <p class="lom-shipping-bar__text">&#10003; You qualify for <strong>FREE shipping!</strong></p>
+            <p class="lom-shipping-bar__text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              You qualify for <strong>FREE shipping!</strong>
+            </p>
             <div class="lom-shipping-bar__track">
               <div class="lom-shipping-bar__fill" style="width:100%"></div>
             </div>
           {%- else -%}
             {%- assign remaining = shipping_threshold | minus: cart.total_price -%}
             {%- assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold -%}
-            <p class="lom-shipping-bar__text">You're <strong>{{ remaining | money }}</strong> away from <strong>FREE shipping!</strong></p>
+            <p class="lom-shipping-bar__text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l4 4v6a2 2 0 0 1-2 2h-1"/><path d="M3 7v10a2 2 0 0 0 2 2h2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
+              Add <strong>{{ remaining | money }}</strong> for <strong>FREE shipping</strong>
+            </p>
             <div class="lom-shipping-bar__track">
               <div class="lom-shipping-bar__fill" style="width:{{ progress }}%"></div>
             </div>
@@ -625,8 +726,25 @@
           </div>
         </div>
 
-        <!-- CTAs -->
+        {%- comment -%} Savings callout {%- endcomment -%}
+        {%- assign total_savings = 0 -%}
+        {%- for item in cart.items -%}
+          {%- if item.original_line_price > item.final_line_price -%}
+            {%- assign item_savings = item.original_line_price | minus: item.final_line_price -%}
+            {%- assign total_savings = total_savings | plus: item_savings -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if total_savings > 0 -%}
+          <p class="lom-cart-savings">You're saving {{ total_savings | money }}!</p>
+        {%- endif -%}
 
+        <!-- Urgency: delivery estimate -->
+        <div class="lom-cart-urgency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Order now — ships within 24 hours
+        </div>
+
+        <!-- CTAs -->
         <div class="cart__ctas" {{ block.shopify_attributes }}>
           <button
             type="submit"
