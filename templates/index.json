@@ -662,6 +662,96 @@
         "cta_text": "Get Instant Relief — Free Shipping",
         "cta_url": "/products/lom-thai-authentic-muay-thai-oil"
       }
+    },
+    "lom_reviews_loox_igfFbw": {
+      "type": "lom-reviews-loox",
+      "blocks": {
+        "review_MAakiK": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "Goodbye Advil",
+            "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
+            "name": "Sarah M.",
+            "location": "Texas",
+            "date": "2 weeks ago"
+          }
+        },
+        "review_69MKqD": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "Essential for long drives",
+            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
+            "name": "Marco V.",
+            "location": "Ohio",
+            "date": "1 week ago"
+          }
+        },
+        "review_9nfpTK": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "Bought it as a joke...",
+            "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
+            "name": "Anna P.",
+            "location": "Portland",
+            "date": "3 days ago"
+          }
+        },
+        "review_QtW4qg": {
+          "type": "review",
+          "settings": {
+            "stars": 4,
+            "review_title": "Works great, wish it lasted longer",
+            "text": "The instant relief is real. I use it every day at work. Only reason for 4 stars is I wish the scent lasted a bit longer.",
+            "name": "David R.",
+            "location": "Chicago",
+            "date": "5 days ago"
+          }
+        },
+        "review_N4tEGp": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "12-hour shifts? No problem",
+            "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. Already ordered 3 more for my colleagues.",
+            "name": "Michelle T.",
+            "location": "Houston",
+            "date": "1 week ago"
+          }
+        },
+        "review_wb3cnn": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "My whole family uses these",
+            "text": "My whole family uses these now. Best natural remedy we've found. My dad carries one in his shirt pocket everywhere.",
+            "name": "James K.",
+            "location": "New York",
+            "date": "4 days ago"
+          }
+        }
+      },
+      "block_order": [
+        "review_MAakiK",
+        "review_69MKqD",
+        "review_9nfpTK",
+        "review_QtW4qg",
+        "review_N4tEGp",
+        "review_wb3cnn"
+      ],
+      "name": "Loox Reviews",
+      "settings": {
+        "heading": "Real Reviews From Real People",
+        "subheading": "See why 10,000+ people made the switch to natural relief",
+        "avg_rating": "4.8",
+        "total_reviews": "1,200+",
+        "recommend_pct": "97",
+        "show_distribution": true,
+        "show_photos": true,
+        "show_form": true
+      }
     }
   },
   "order": [
@@ -677,6 +767,7 @@
     "guarantee",
     "offer_stack",
     "final_cta",
-    "sticky_cta"
+    "sticky_cta",
+    "lom_reviews_loox_igfFbw"
   ]
 }
