@@ -1,25 +1,22 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
 <style>
   .lom-certified {
-    padding: 80px 0;
-    background: var(--lt-brown-black, #2a2520);
+    padding: var(--lt-section-pad, 100px) 0;
+    background: #fff;
     position: relative;
     overflow: hidden;
   }
   .lom-certified::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(245,240,232,0.03) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(196,122,90,0.05) 0%, transparent 60%);
     pointer-events: none;
-  }
-  .lom-certified .lom-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
   }
 
   /* Header */
@@ -28,26 +25,26 @@
     margin-bottom: 56px;
   }
   .lom-certified__eyebrow {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: rgba(245,240,232,0.4);
+    color: var(--lt-terracotta);
     font-weight: 600;
     margin-bottom: 16px;
   }
   .lom-certified__title {
-    font-family: var(--lt-serif, 'Cormorant Garamond', serif);
+    font-family: var(--lt-serif);
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 400;
-    color: var(--lt-ivory, #f5f0e8);
+    color: var(--lt-charcoal);
     line-height: 1.1;
     margin: 0 0 16px;
   }
   .lom-certified__subtitle {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 15px;
-    color: rgba(245,240,232,0.5);
+    color: var(--lt-warm-gray);
     line-height: 1.6;
     max-width: 560px;
     margin: 0 auto;
@@ -61,16 +58,28 @@
     margin-bottom: 48px;
   }
   .lom-certified__card {
-    background: rgba(245,240,232,0.03);
-    border: 1px solid rgba(245,240,232,0.06);
-    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(196,122,90,0.12);
+    border-radius: 6px;
     padding: 32px 24px;
     text-align: center;
-    transition: border-color 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .lom-certified__card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196,122,90,0.25), transparent);
+    pointer-events: none;
   }
   .lom-certified__card:hover {
-    border-color: rgba(245,240,232,0.12);
-    background: rgba(245,240,232,0.05);
+    border-color: rgba(196,122,90,0.2);
+    box-shadow: 0 4px 24px rgba(42,37,32,0.06);
   }
   .lom-certified__badge {
     width: 56px;
@@ -80,34 +89,34 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(245,240,232,0.05);
-    border: 1px solid rgba(245,240,232,0.08);
+    background: rgba(196,122,90,0.06);
+    border: 1px solid rgba(196,122,90,0.15);
   }
   .lom-certified__badge svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
   .lom-certified__card-label {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
-    color: rgba(245,240,232,0.35);
+    color: var(--lt-warm-gray);
     font-weight: 600;
     margin-bottom: 8px;
   }
   .lom-certified__card-title {
-    font-family: var(--lt-serif, 'Cormorant Garamond', serif);
+    font-family: var(--lt-serif);
     font-size: 20px;
     font-weight: 500;
-    color: var(--lt-ivory, #f5f0e8);
+    color: var(--lt-charcoal);
     line-height: 1.2;
     margin-bottom: 8px;
   }
   .lom-certified__card-ref {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 11px;
-    color: rgba(245,240,232,0.3);
+    color: var(--lt-warm-gray);
     letter-spacing: 0.5px;
     font-variant-numeric: tabular-nums;
   }
@@ -119,7 +128,7 @@
     gap: 32px;
     flex-wrap: wrap;
     padding-top: 32px;
-    border-top: 1px solid rgba(245,240,232,0.06);
+    border-top: 1px solid var(--lt-border);
     margin-bottom: 40px;
   }
   .lom-certified__secondary-item {
@@ -140,9 +149,9 @@
     height: 18px;
   }
   .lom-certified__secondary-text {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 13px;
-    color: rgba(245,240,232,0.5);
+    color: var(--lt-charcoal);
     font-weight: 500;
   }
 
@@ -155,28 +164,24 @@
     align-items: center;
     gap: 8px;
     background: none;
-    border: 1.5px solid rgba(245,240,232,0.12);
+    border: 1.5px solid var(--lt-border-light);
     border-radius: 10px;
     padding: 12px 28px;
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 13px;
     font-weight: 600;
-    color: rgba(245,240,232,0.6);
+    color: var(--lt-charcoal);
     cursor: pointer;
     transition: all 0.2s ease;
   }
   .lom-certified__expand-btn:hover {
-    border-color: rgba(245,240,232,0.25);
-    color: var(--lt-ivory, #f5f0e8);
-    background: rgba(245,240,232,0.04);
+    border-color: var(--lt-terracotta);
+    color: var(--lt-terracotta);
+    background: rgba(196,122,90,0.04);
   }
   .lom-certified__expand-arrow {
     transition: transform 0.3s ease;
     display: flex;
-  }
-  .lom-certified__detail.is-open + .lom-certified__expand .lom-certified__expand-arrow,
-  .lom-certified__expand.is-open .lom-certified__expand-arrow {
-    transform: rotate(180deg);
   }
   .lom-certified__detail {
     max-height: 0;
@@ -190,16 +195,16 @@
     margin-top: 32px;
   }
   .lom-certified__detail-inner {
-    background: rgba(245,240,232,0.03);
-    border: 1px solid rgba(245,240,232,0.06);
-    border-radius: 12px;
+    background: var(--lt-ivory);
+    border: 1px solid var(--lt-border);
+    border-radius: 6px;
     padding: 32px;
   }
   .lom-certified__detail-title {
-    font-family: var(--lt-serif, 'Cormorant Garamond', serif);
+    font-family: var(--lt-serif);
     font-size: 22px;
     font-weight: 500;
-    color: var(--lt-ivory, #f5f0e8);
+    color: var(--lt-charcoal);
     margin-bottom: 20px;
   }
   .lom-certified__detail-grid {
@@ -218,7 +223,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba(130,180,130,0.15);
+    background: rgba(122,138,90,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,20 +234,20 @@
     height: 12px;
   }
   .lom-certified__detail-label {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
+    font-family: var(--lt-sans);
     font-size: 14px;
-    color: rgba(245,240,232,0.7);
+    color: var(--lt-charcoal);
     line-height: 1.5;
   }
   .lom-certified__detail-label strong {
-    color: var(--lt-ivory, #f5f0e8);
+    color: var(--lt-brown-black);
     font-weight: 600;
   }
 
   /* Mobile */
   @media (max-width: 768px) {
     .lom-certified {
-      padding: 56px 0;
+      padding: var(--lt-section-pad-mobile, 56px) 0;
     }
     .lom-certified .lom-container {
       padding: 0 16px;
@@ -264,15 +269,15 @@
       gap: 0 16px;
       align-items: center;
     }
+    .lom-certified__card::before {
+      left: 0;
+      right: 0;
+    }
     .lom-certified__badge {
       grid-row: 1 / 4;
       width: 48px;
       height: 48px;
       margin: 0;
-    }
-    .lom-certified__badge svg {
-      width: 24px;
-      height: 24px;
     }
     .lom-certified__card-label {
       margin-bottom: 2px;
@@ -320,29 +325,29 @@
             <div class="lom-certified__badge">
               {% case block.settings.icon %}
                 {% when 'eu' %}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M12 6l1 2h2l-1.5 1.5.5 2L12 10.5 10 11.5l.5-2L9 8h2z"/>
                     <path d="M8 14.5l.5 1h1l-.75.75.25 1-.75-.5L7.5 17.25l.25-1L7 15.5h1z"/>
                     <path d="M16 14.5l.5 1h1l-.75.75.25 1-.75-.5-.75.5.25-1L15 15.5h1z"/>
                   </svg>
                 {% when 'fda' %}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     <polyline points="9 12 11 14 15 10"/>
                   </svg>
                 {% when 'msds' %}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                     <polyline points="9 15 11 17 15 13"/>
                   </svg>
                 {% when 'shield' %}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   </svg>
                 {% else %}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     <polyline points="9 12 11 14 15 10"/>
                   </svg>
@@ -365,7 +370,7 @@
         {% for block in badge_blocks %}
           <div class="lom-certified__secondary-item" {{ block.shopify_attributes }}>
             <span class="lom-certified__secondary-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(130,180,130,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-emerald)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
             </span>
@@ -385,7 +390,7 @@
             {% for block in detail_blocks %}
               <div class="lom-certified__detail-row" {{ block.shopify_attributes }}>
                 <span class="lom-certified__detail-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(130,180,130,0.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--lt-emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </span>
