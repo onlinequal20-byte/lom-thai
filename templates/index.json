@@ -870,14 +870,14 @@
         "text": "Join 10,000+ people who switched to natural relief. Free shipping on all US & EU orders. 30-day money-back guarantee.",
         "image": "shopify://shop_images/6e952ae16c0f013ce9b3_thai_1.png",
         "button_text": "Shop Siam Lom",
-        "button_url": "/products/lom-thai-authentic-muay-thai-oil"
+        "button_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "sticky_cta": {
       "type": "lom-sticky-cta",
       "settings": {
         "cta_text": "Get Instant Relief — Free Shipping",
-        "cta_url": "/products/lom-thai-authentic-muay-thai-oil"
+        "cta_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "lom_reviews_loox_igfFbw": {
