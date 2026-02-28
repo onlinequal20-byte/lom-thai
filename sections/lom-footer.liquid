@@ -7,6 +7,7 @@
       <div class="lom-footer__main-grid">
         {%- comment -%} Brand column {%- endcomment -%}
         <div class="lom-footer__brand">
+          <a href="/" class="lom-footer__logo">{{ shop.name }}</a>
           <h2 class="lom-footer__tagline">{{ section.settings.tagline }}</h2>
           <p class="lom-footer__tagline-sub">{{ section.settings.tagline_sub }}</p>
           <div class="lom-footer__social">
@@ -156,6 +157,17 @@
   }
 
   /* Brand */
+  .lom-footer__logo {
+    font-family: var(--lt-serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--lt-ivory);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+  }
   .lom-footer__tagline {
     font-family: var(--lt-serif);
     font-size: clamp(20px, 2.2vw, 26px);
