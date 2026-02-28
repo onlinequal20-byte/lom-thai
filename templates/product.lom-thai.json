@@ -100,6 +100,7 @@
         "ugc_vid_1": {
           "type": "ugc_video",
           "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/89df06a8deae47b69473377a784ef85c.mp4",
             "name": "Sarah M.",
             "label": "Verified Buyer"
           }
@@ -107,6 +108,7 @@
         "ugc_vid_2": {
           "type": "ugc_video",
           "settings": {
+            "video_url": "",
             "name": "Marco V.",
             "label": "Verified Buyer"
           }
@@ -114,6 +116,7 @@
         "ugc_vid_3": {
           "type": "ugc_video",
           "settings": {
+            "video_url": "",
             "name": "Anna P.",
             "label": "Verified Buyer"
           }
