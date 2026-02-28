@@ -11,7 +11,6 @@
   "current": {
     "logo": "shopify://shop_images/lom-thai-header.png",
     "logo_width": 120,
-    "favicon": "shopify://shop_images/lom-thai-favicon.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -133,6 +132,20 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "scheme-1"
+        }
+      },
+      "lom-first-order": {
+        "type": "lom-first-order",
+        "settings": {
+          "headline": "Get 10% Off Your First Order",
+          "subtext": "Join 10,000+ people who chose natural relief.",
+          "discount_amount": "10%",
+          "cta_text": "Get My Discount",
+          "code": "WELCOME10",
+          "success_headline": "You're In!",
+          "success_subtext": "Applied automatically — or paste at checkout.",
+          "delay": 8,
+          "scroll_trigger": 50
         }
       }
     },
