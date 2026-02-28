@@ -27,7 +27,7 @@
         "narrative_3": {
           "type": "narrative",
           "settings": {
-            "text": "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
+            "text": "Every Siam Lom stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
           }
         },
         "mission": {
@@ -101,7 +101,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_cf7vgvcf7vgvcf7v.png",
             "name": "Anya Kaur",
-            "role": "Founder, Lom Thai",
+            "role": "Founder, Siam Lom",
             "story": "I first discovered ya dom in a Bangkok pharmacy in 2019. One inhale and I understood why every Thai person carries one. I spent two years working with traditional herbalists to bring this exact formula to the West."
           }
         },
@@ -109,9 +109,9 @@
           "type": "final_cta",
           "settings": {
             "eyebrow": "Don't Wait",
-            "heading": "Ready to Try Lom Thai?",
+            "heading": "Ready to Try Siam Lom?",
             "body": "Join thousands who've made the switch to natural relief. Free shipping on every order. 30-day money-back guarantee.",
-            "button_text": "Try Lom Thai Risk-Free"
+            "button_text": "Try Siam Lom Risk-Free"
           }
         }
       },

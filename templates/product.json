@@ -69,7 +69,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Description",
-            "content": "<p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Traditionally used in Thailand for over a century to promote comfort and well-being.</p>"
+            "content": "<p>Siam Lom is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Traditionally used in Thailand for over a century to promote comfort and well-being.</p>"
           }
         },
         "acc2": {
@@ -249,10 +249,10 @@
       ],
       "settings": {
         "eyebrow": "The Clear Winner",
-        "heading": "Why Lom Thai?",
+        "heading": "Why Siam Lom?",
         "subtitle": "See how we stack up against the alternatives",
-        "brand_name": "Lom Thai",
-        "cta_button": "Try Lom Thai Risk-Free"
+        "brand_name": "Siam Lom",
+        "cta_button": "Try Siam Lom Risk-Free"
       }
     },
     "ingredients": {
@@ -434,7 +434,7 @@
           "type": "question",
           "settings": {
             "question": "Is this a drug or medication?",
-            "answer": "No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils."
+            "answer": "No. Siam Lom is a 100% natural herbal aromatherapy product made from essential oils."
           }
         },
         "q2": {
@@ -498,7 +498,7 @@
       "type": "lom-guarantee",
       "settings": {
         "heading": "Try It Risk-Free for 30 Days",
-        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
+        "text": "We're so confident you'll love Siam Lom that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
       }
     }
   },

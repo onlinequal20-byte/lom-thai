@@ -73,14 +73,14 @@
           "type": "accordion",
           "settings": {
             "heading": "Description",
-            "content": "<p>When you need a moment of comfort during a long day — one roll on your temples and you feel the soothing herbal blend. No water needed. No waiting.</p><p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs. Traditionally used in Thailand for over a century to promote comfort and well-being.</p>"
+            "content": "<p>When you need a moment of comfort during a long day — one roll on your temples and you feel the soothing herbal blend. No water needed. No waiting.</p><p>Siam Lom is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs. Traditionally used in Thailand for over a century to promote comfort and well-being.</p>"
           }
         },
         "accordion_faq": {
           "type": "accordion",
           "settings": {
             "heading": "Common Questions",
-            "content": "<p><strong>Is this just a Vicks knockoff?</strong><br>Vicks is petroleum-based with synthetic menthol made in a factory. Lom Thai uses pure plant extracts in a century-old Thai formula passed down through generations of herbalists. Different heritage. Different ingredients. Different universe.</p><p><strong>What if I don't like it?</strong><br>Email us. Full refund. No forms. No shipping it back. No restocking fee. We can afford this because 97% of people keep it.</p>"
+            "content": "<p><strong>Is this just a Vicks knockoff?</strong><br>Vicks is petroleum-based with synthetic menthol made in a factory. Siam Lom uses pure plant extracts in a century-old Thai formula passed down through generations of herbalists. Different heritage. Different ingredients. Different universe.</p><p><strong>What if I don't like it?</strong><br>Email us. Full refund. No forms. No shipping it back. No restocking fee. We can afford this because 97% of people keep it.</p>"
           }
         },
         "accordion_shipping": {
@@ -94,7 +94,7 @@
           "type": "accordion",
           "settings": {
             "heading": "1-Year Quality Guarantee",
-            "content": "<p>If your Lom Thai stick dries out within 12 months, we replace it free. No receipt needed, no fine print — just email us and we'll send a fresh one.</p>"
+            "content": "<p>If your Siam Lom stick dries out within 12 months, we replace it free. No receipt needed, no fine print — just email us and we'll send a fresh one.</p>"
           }
         }
       },
@@ -244,11 +244,11 @@
       ],
       "settings": {
         "eyebrow": "The Clear Winner",
-        "heading": "Why Lom Thai?",
+        "heading": "Why Siam Lom?",
         "subtitle": "See how we stack up against the alternatives",
-        "brand_name": "Lom Thai",
+        "brand_name": "Siam Lom",
         "brand_tagline": "5 natural ingredients. Century-old Thai formula. Works in seconds. Lasts months per stick. 30-day guarantee.",
-        "cta_button": "Try Lom Thai Risk-Free",
+        "cta_button": "Try Siam Lom Risk-Free",
         "cta_url": ""
       }
     },
@@ -519,7 +519,7 @@
       "settings": {
         "heading": "Try It Risk-Free for 30 Days",
         "heading_short": "30-Day Money-Back Guarantee",
-        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle.",
+        "text": "We're so confident you'll love Siam Lom that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle.",
         "loss_aversion_text": "The only risk is spending another month reaching for chemicals."
       }
     },
@@ -530,14 +530,14 @@
           "type": "question",
           "settings": {
             "question": "Is this a drug or medication?",
-            "answer": "No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils (menthol, camphor, eucalyptus, borneol, lemon). It's not a drug, medication, or supplement."
+            "answer": "No. Siam Lom is a 100% natural herbal aromatherapy product made from essential oils (menthol, camphor, eucalyptus, borneol, lemon). It's not a drug, medication, or supplement."
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "Is it TSA / airport safe?",
-            "answer": "Yes! Lom Thai is a solid aromatherapy stick well under liquid limits. Thousands of our customers travel with it — it's pocket-sized and flight-friendly."
+            "answer": "Yes! Siam Lom is a solid aromatherapy stick well under liquid limits. Thousands of our customers travel with it — it's pocket-sized and flight-friendly."
           }
         },
         "q3": {
@@ -558,7 +558,7 @@
           "type": "question",
           "settings": {
             "question": "Can my kids use it?",
-            "answer": "We recommend Lom Thai for ages 12+. The menthol concentration is designed for adults and teens. For younger children, consult your pediatrician first."
+            "answer": "We recommend Siam Lom for ages 12+. The menthol concentration is designed for adults and teens. For younger children, consult your pediatrician first."
           }
         },
         "q6": {

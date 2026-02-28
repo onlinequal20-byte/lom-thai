@@ -293,11 +293,11 @@ to:
 
 ### Task 4.3 — Improve Product Page ATC Button Copy ✅
 
-**What's wrong:** "Try Lom Thai Now" is product-name-first. Benefit-first CTAs convert better.
+**What's wrong:** "Try Siam Lom Now" is product-name-first. Benefit-first CTAs convert better.
 
 **Prompt:**
 ```
-In templates/product.lom-thai.json, change the main section's atc_text from "Try Lom Thai Now" to "Get Instant Relief".
+In templates/product.lom-thai.json, change the main section's atc_text from "Try Siam Lom Now" to "Get Instant Relief".
 
 In templates/product.json, change the product_hero section's atc_text from "Add to Cart" to "Get Instant Relief".
 
@@ -367,7 +367,7 @@ Read sections/lom-first-order.liquid to understand the current first-order disco
    - Mobile: full-width, stacks vertically
    - Desktop: centered card, max-width 480px
 
-3. Style to match Lom Thai:
+3. Style to match Siam Lom:
    - Background: var(--lt-brown-black)
    - Text: var(--lt-ivory)
    - Accent: var(--lt-terracotta) on CTA button
@@ -386,9 +386,9 @@ Read sections/lom-first-order.liquid to understand the current first-order disco
 | 6.1 | Fix currency to USD for US market | Settings → Markets | CRITICAL |
 | 6.2 | Create Shipping Policy page | Settings → Policies | HIGH |
 | 6.3 | Create Refund Policy page | Settings → Policies | HIGH |
-| 6.4 | Fix compare-at price (remove $50 anchor or set to $12) | Products → Lom Thai → Pricing | HIGH |
+| 6.4 | Fix compare-at price (remove $50 anchor or set to $12) | Products → Siam Lom → Pricing | HIGH |
 | 6.5 | Install Judge.me for real reviews | Apps → Judge.me | MEDIUM |
-| 6.6 | Upload product-in-hand & packaging photos | Products → Lom Thai → Media | MEDIUM |
+| 6.6 | Upload product-in-hand & packaging photos | Products → Siam Lom → Media | MEDIUM |
 | 6.7 | Upload founder photo for About page | Theme Editor → About page → Founder block | MEDIUM |
 | 6.8 | Upload product image for homepage hero | Theme Editor → Homepage → Hero → Product image | MEDIUM (after Task 1.2) |
 | 6.9 | Upload self-hosted font .woff2 files to assets | Theme → Assets | LOW (after Task 5.1) |

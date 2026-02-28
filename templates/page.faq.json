@@ -14,15 +14,15 @@
       "settings": {
         "eyebrow": "Help Center",
         "heading": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about Lom Thai — from ingredients to shipping to how it works.",
+        "subtitle": "Everything you need to know about Siam Lom — from ingredients to shipping to how it works.",
         "cta_heading": "Still Have Questions?",
         "cta_text": "Our team typically responds within a few hours. We're happy to help with anything.",
         "cta_button": "Contact Us",
         "cta_url": "/pages/contact"
       },
       "blocks": {
-        "q1": { "type": "question", "settings": { "category": "Product & Safety", "question": "Is Lom Thai actually safe?", "answer": "5 ingredients. All plant-based. Used by millions in Thailand for over a century. It's not a drug, medication, or supplement — it's a natural herbal aromatherapy stick used through inhalation and topical application. As with any product, discontinue use if irritation occurs." } },
-        "q2": { "type": "question", "settings": { "category": "Product & Safety", "question": "How is this different from Vicks?", "answer": "Vicks is petroleum-based with synthetic menthol. Lom Thai uses pure plant extracts — menthol, camphor, eucalyptus, borneol, and lemon — in a century-old Thai formula. Different universe. Thai herbalists perfected this blend generations before Vicks existed." } },
+        "q1": { "type": "question", "settings": { "category": "Product & Safety", "question": "Is Siam Lom actually safe?", "answer": "5 ingredients. All plant-based. Used by millions in Thailand for over a century. It's not a drug, medication, or supplement — it's a natural herbal aromatherapy stick used through inhalation and topical application. As with any product, discontinue use if irritation occurs." } },
+        "q2": { "type": "question", "settings": { "category": "Product & Safety", "question": "How is this different from Vicks?", "answer": "Vicks is petroleum-based with synthetic menthol. Siam Lom uses pure plant extracts — menthol, camphor, eucalyptus, borneol, and lemon — in a century-old Thai formula. Different universe. Thai herbalists perfected this blend generations before Vicks existed." } },
         "q3": { "type": "question", "settings": { "category": "Product & Safety", "question": "What are the ingredients?", "answer": "Menthol (40% concentration — 3x industry standard), camphor, eucalyptus oil, borneol, and lemon oil. All plant-based, all naturally sourced. Nothing synthetic, nothing artificial, nothing you can't pronounce." } },
         "q4": { "type": "question", "settings": { "category": "Product & Safety", "question": "Is it TSA / airport safe?", "answer": "Yes. It's a solid stick, well under any liquid limits. Thousands of our customers fly with it. Pocket-sized, flight-friendly, and the only thing you'll actually want to pack." } },
         "q5": { "type": "question", "settings": { "category": "How to Use", "question": "How do I use it?", "answer": "Two ways: Top end is a nasal inhaler — breathe in the aromatic herbal blend for a refreshing sensation. Bottom end is a rollerball applicator — roll onto temples, neck, or under your nose. Two tools, one pocket-sized stick." } },
@@ -32,7 +32,7 @@
         "q9": { "type": "question", "settings": { "category": "Shipping & Returns", "question": "Do you ship internationally?", "answer": "Free US shipping (5-7 business days). Free EU shipping (5-10 business days). Ships within 24 hours. Every order is backed by our 30-day money-back guarantee, no matter where you are." } },
         "q10": { "type": "question", "settings": { "category": "Shipping & Returns", "question": "What if it doesn't work for me?", "answer": "Email us. Full refund. No forms, no shipping it back, no 'restocking fee.' 97% of people keep it — but if you're in the 3%, we'll make it right without a single question." } },
         "q11": { "type": "question", "settings": { "category": "Shipping & Returns", "question": "How do I track my order?", "answer": "You'll receive a tracking email as soon as your order ships (within 24 hours). You can also visit our Track Order page anytime to check your delivery status." } },
-        "q12": { "type": "question", "settings": { "category": "Shipping & Returns", "question": "What's your return policy?", "answer": "30-day money-back guarantee on every order. No forms, no shipping it back, no questions asked. Just email us and we'll refund you. We can afford this because 97% of people keep their Lom Thai." } }
+        "q12": { "type": "question", "settings": { "category": "Shipping & Returns", "question": "What's your return policy?", "answer": "30-day money-back guarantee on every order. No forms, no shipping it back, no questions asked. Just email us and we'll refund you. We can afford this because 97% of people keep their Siam Lom." } }
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12"]
     }

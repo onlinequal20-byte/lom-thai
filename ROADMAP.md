@@ -1,4 +1,4 @@
-# Lom Thai: Persuasion Architecture & CRO Rebuild — ROADMAP
+# Siam Lom: Persuasion Architecture & CRO Rebuild — ROADMAP
 
 ## Context
 
@@ -57,12 +57,12 @@ The store sells a product. It needs to sell a **transformation**. Every section 
 
 **Detailed spec — rewrite all copy:**
 - **Headline:** "This Is What Nurses, Athletes & Truck Drivers Carry Instead"
-- **Subhead:** "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief."
+- **Subhead:** "Siam Lom isn't a product. It's a decision to stop poisoning your body for relief."
 - **3 benefit-of-benefit blocks (replace current feature list):**
   1. Feature: "Opens airways instantly" → Benefit: "Clears congestion" → **Life impact:** "So you can breathe fully, think clearly, and actually be present — at work, at the gym, with your kids"
   2. Feature: "Menthol + camphor blend" → Benefit: "Relieves headaches on contact" → **Life impact:** "No more canceling plans, leaving work early, or lying in a dark room waiting for pills to kick in"
   3. Feature: "Pocket-sized, TSA-friendly" → Benefit: "Relief anywhere" → **Life impact:** "You're never trapped without an option again — flights, meetings, long drives, 3am shifts"
-- **Identity callout (bold, centered):** "People who carry Lom Thai don't wait for relief. They *choose* it."
+- **Identity callout (bold, centered):** "People who carry Siam Lom don't wait for relief. They *choose* it."
 - **CTA:** "Try It Risk-Free →"
 - Keep existing product image right / text left layout
 - **Psychology:** Identity formation → autonomy → control over suffering
@@ -111,9 +111,9 @@ The store sells a product. It needs to sell a **transformation**. Every section 
   - Pharmacy Sprays: "Oxymetazoline addiction is real. Google 'rebound congestion.'"
   - Coffee: "Anxiety, acid reflux, stained teeth, and you're still tired by 2pm."
   - **NEW 4th column — Amazon generics:** "Mass-produced. Unknown ingredients. No heritage. No guarantee."
-- **Lom Thai column:** "5 natural ingredients. Century-old Thai formula. Works in seconds. $0.03 per use. 30-day guarantee."
+- **Siam Lom column:** "5 natural ingredients. Century-old Thai formula. Works in seconds. $0.03 per use. 30-day guarantee."
 - Keep ✓/✗ grid below the emotional headers
-- **CTA:** "Try Lom Thai Risk-Free →"
+- **CTA:** "Try Siam Lom Risk-Free →"
 - **Psychology:** Enemy framing → fear of current choice → moral superiority of natural
 
 ---
@@ -168,8 +168,8 @@ The store sells a product. It needs to sell a **transformation**. Every section 
 
 **Detailed spec:**
 - **Headline:** "You Deserve Relief That Doesn't Come With a Tradeoff"
-- **Body:** "10,000+ people stopped reaching for chemicals and started carrying Lom Thai. The headaches still come. The long shifts don't stop. But now they have something that actually works — instantly, naturally, and for $0.03 a use."
-- **CTA button:** "Join Them — Try Lom Thai Risk-Free"
+- **Body:** "10,000+ people stopped reaching for chemicals and started carrying Siam Lom. The headaches still come. The long shifts don't stop. But now they have something that actually works — instantly, naturally, and for $0.03 a use."
+- **CTA button:** "Join Them — Try Siam Lom Risk-Free"
 - **Psychology:** Identity belonging → tribe → future self visualization
 
 ---
@@ -235,7 +235,7 @@ Remove any sections currently in index.json that aren't in this list.
 
 **FAQ rewrites:**
 - "Is this actually safe?" → "5 ingredients. All plant-based. Used by millions in Thailand for over a century. No side effects reported."
-- "How is this different from Vicks?" → "Vicks is petroleum-based with synthetic menthol. Lom Thai uses pure plant extracts in a century-old formula. Different universe."
+- "How is this different from Vicks?" → "Vicks is petroleum-based with synthetic menthol. Siam Lom uses pure plant extracts in a century-old formula. Different universe."
 - "What if it doesn't work for me?" → "Email us. Full refund. No forms, no shipping it back, no 'restocking fee.' 97% of people keep it."
 - "Do you ship internationally?" → "Free US shipping (3-5 days). Free EU shipping (5-10 days). Ships within 24 hours."
 
@@ -263,7 +263,7 @@ Remove any sections currently in index.json that aren't in this list.
 - **Narrative (3 blocks):**
   1. "In Thailand, these herbal sticks aren't alternative medicine. They're *the* medicine. Every taxi driver, every street vendor, every grandmother carries one."
   2. "We brought this formula to the West because we were tired of watching people choose between chemicals that don't work and coffee that makes them jittery."
-  3. "Every Lom Thai stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
+  3. "Every Siam Lom stick contains the same 5 ingredients Thai healers have used for a century. Nothing added. Nothing synthetic. Nothing to pronounce."
 - **Closing:** "We're not a wellness startup. We're a bridge between ancient Thai relief and modern Western lives."
 - Include image slots (Shopify schema) for lifestyle/sourcing imagery
 - **Psychology:** Origin story → authenticity → moral authority → trust

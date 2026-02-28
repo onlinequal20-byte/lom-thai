@@ -55,7 +55,7 @@
 ### 1.4 — Fix Compare-At Price Anchoring — REQUIRES SHOPIFY ADMIN
 - **Finding**: Product page shows €50 → €23.99 (52% off). For a nasal inhaler stick, a €50 anchor is unbelievable and signals inflated dropship pricing. Homepage shows $8 single stick.
 - **Fix**: Set compare-at price to something believable ($12 → $8 or remove entirely). The value should come from the copy, not fake anchoring.
-- **Where**: Shopify Admin → Products → Lom Thai → Pricing
+- **Where**: Shopify Admin → Products → Siam Lom → Pricing
 - **Est. recovery**: 0.3–0.7%
 
 ---
@@ -111,7 +111,7 @@
 - **Finding**: 5-column comparison table requires horizontal scrolling on mobile. Most users won't scroll right. The strongest persuasion section becomes invisible.
 - **Fix**: Redesign for mobile as:
   - (A) Stacked cards (one competitor per card, swipeable)
-  - (B) Two-column layout (Lom Thai vs one competitor at a time with tabs)
+  - (B) Two-column layout (Siam Lom vs one competitor at a time with tabs)
   - (C) Accordion with each competitor as expandable row
 - **File**: `sections/lom-comparison.liquid`
 - **Est. recovery**: 0.1–0.3%

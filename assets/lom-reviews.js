@@ -1,4 +1,4 @@
-/* Lom Thai Review System - Filter & Scroll Animations */
+/* Siam Lom Review System - Filter & Scroll Animations */
 (function() {
   'use strict';
 

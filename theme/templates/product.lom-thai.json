@@ -29,7 +29,7 @@
         "rv2": { "type": "review", "settings": { "name": "James M.", "location": "New York", "text": "As a truck driver, this is a lifesaver. One sniff and I'm alert again." } },
         "rv3": { "type": "review", "settings": { "name": "Anna P.", "location": "Netherlands", "text": "My whole family uses these. Best natural remedy we've found." } },
         "rv4": { "type": "review", "settings": { "name": "Michelle T.", "location": "Texas", "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works." } },
-        "acc1": { "type": "accordion", "settings": { "heading": "Description", "content": "<p>Lom Thai is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Instant relief for headaches, fatigue, congestion, and nausea.</p>" } },
+        "acc1": { "type": "accordion", "settings": { "heading": "Description", "content": "<p>Siam Lom is a 2-in-1 nasal inhaler and roller made from 5 natural Thai herbs: menthol, camphor, borneol, eucalyptus, and lemon oil. Instant relief for headaches, fatigue, congestion, and nausea.</p>" } },
         "acc2": { "type": "accordion", "settings": { "heading": "Most Common Questions", "content": "<p><strong>Is this a drug?</strong> No — 100% natural herbal aromatherapy.<br><strong>How fast does it work?</strong> Seconds. Instant effect upon inhaling.<br><strong>Is it TSA-friendly?</strong> Yes — solid stick, pocket-sized, flight-safe.</p>" } },
         "acc3": { "type": "accordion", "settings": { "heading": "Processing & Shipping", "content": "<p>Orders ship within 24 hours. Free shipping to US & EU. Delivery in 5-10 business days. 30-day money-back guarantee — no questions asked.</p>" } }
       },
@@ -49,9 +49,9 @@
     "story": {
       "type": "lom-story",
       "settings": {
-        "eyebrow": "Why Lom Thai",
+        "eyebrow": "Why Siam Lom",
         "heading": "A Century-Old Thai Tradition, Reimagined",
-        "text": "<p>For over 100 years, Thai families have relied on ya dom — aromatic herbal inhalers — for natural relief. Lom Thai brings this time-tested tradition to the world with a modern, premium design.</p><p>Five powerful plant-based ingredients: menthol, camphor, borneol, eucalyptus, and lemon oil — working together as nature intended.</p>",
+        "text": "<p>For over 100 years, Thai families have relied on ya dom — aromatic herbal inhalers — for natural relief. Siam Lom brings this time-tested tradition to the world with a modern, premium design.</p><p>Five powerful plant-based ingredients: menthol, camphor, borneol, eucalyptus, and lemon oil — working together as nature intended.</p>",
         "reverse": true,
         "background": "cream"
       }
@@ -72,11 +72,11 @@
       "type": "lom-comparison",
       "settings": {
         "eyebrow": "The Clear Winner",
-        "heading": "Why Lom Thai?",
+        "heading": "Why Siam Lom?",
         "subtitle": "See how we stack up against the alternatives",
-        "brand_name": "Lom Thai",
+        "brand_name": "Siam Lom",
         "cta_text": "Join 50,000+ people who chose the natural alternative",
-        "cta_button": "Try Lom Thai Risk-Free"
+        "cta_button": "Try Siam Lom Risk-Free"
       },
       "blocks": {
         "c1": { "type": "competitor", "settings": { "name": "Energy Drinks" } },
@@ -125,7 +125,7 @@
         "heading": "Frequently Asked Questions"
       },
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "Is this a drug or medication?", "answer": "No. Lom Thai is a 100% natural herbal aromatherapy product made from essential oils." } },
+        "q1": { "type": "question", "settings": { "question": "Is this a drug or medication?", "answer": "No. Siam Lom is a 100% natural herbal aromatherapy product made from essential oils." } },
         "q2": { "type": "question", "settings": { "question": "Is it TSA / airport safe?", "answer": "Yes! It's a solid aromatherapy stick well under liquid limits. Pocket-sized and flight-friendly." } },
         "q3": { "type": "question", "settings": { "question": "How long does one stick last?", "answer": "Several months with daily use. At $0.03 per use, it's incredibly cost-effective." } },
         "q4": { "type": "question", "settings": { "question": "How fast does it work?", "answer": "Seconds. The effect is immediate upon inhaling. The rollerball provides relief within 60 seconds." } },
@@ -160,7 +160,7 @@
       "type": "lom-guarantee",
       "settings": {
         "heading": "Try It Risk-Free for 30 Days",
-        "text": "We're so confident you'll love Lom Thai that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
+        "text": "We're so confident you'll love Siam Lom that we offer a full 30-day money-back guarantee. If you're not 100% satisfied, we'll refund every penny — no questions asked, no hassle."
       }
     }
   },
