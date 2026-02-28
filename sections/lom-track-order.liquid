@@ -395,6 +395,8 @@
 }
 </style>
 
+<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+
 <script>
 // Tab switching
 document.querySelectorAll('.lom-track__tab').forEach(function(tab) {
@@ -415,7 +417,10 @@ function lomOrderLookup(e) {
   window.location.href = '/account/orders/' + encodeURIComponent(order) + '?email=' + encodeURIComponent(email);
 }
 
-// Tracking number lookup
+// Loading spinner HTML
+var lomSpinnerHtml = '<div style="text-align:center;padding:32px;color:var(--lt-warm-gray);font-family:var(--lt-sans);font-size:14px;"><div style="margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:lom-spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>Looking up your shipment...</div><style>@keyframes lom-spin{to{transform:rotate(360deg)}}</style>';
+
+// Tracking number lookup via 17track
 function lomTrackOrder() {
   var num = document.getElementById('lom-tracking-input').value.trim();
   if (!num) {
@@ -423,12 +428,40 @@ function lomTrackOrder() {
     return;
   }
   var result = document.getElementById('lom-tracking-result');
-  result.innerHTML = '<div style="text-align:center;padding:32px;color:var(--lt-warm-gray);font-family:var(--lt-sans);font-size:14px;"><div style="margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--lt-terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:lom-spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>Looking up your shipment...</div><style>@keyframes lom-spin{to{transform:rotate(360deg)}}</style>';
-  if (typeof YQV5 !== 'undefined') {
-    YQV5.trackSingle({ YQ_ContainerId: 'lom-tracking-result', YQ_Height: 560, YQ_Fc: '0', YQ_Lang: 'en', YQ_Num: num });
-  } else {
-    result.innerHTML = '<div style="text-align:center;padding:32px;background:var(--lt-white);border-radius:10px;border:1px solid var(--lt-border);font-family:var(--lt-sans);"><p style="color:var(--lt-brown-black);font-size:15px;margin:0 0 8px;">Tracking: <strong>' + num + '</strong></p><p style="color:var(--lt-warm-gray);font-size:13px;margin:0;">Please check back shortly or <a href="/pages/contact" style="color:var(--lt-terracotta);">contact us</a> for updates.</p></div>';
+  result.innerHTML = lomSpinnerHtml;
+
+  function run17track() {
+    if (typeof YQV5 !== 'undefined') {
+      result.innerHTML = '';
+      YQV5.trackSingle({
+        YQ_ContainerId: 'lom-tracking-result',
+        YQ_Height: 560,
+        YQ_Fc: '0',
+        YQ_Lang: 'en',
+        YQ_Num: num
+      });
+    } else {
+      // 17track script not loaded yet — retry after a short delay
+      setTimeout(function() {
+        if (typeof YQV5 !== 'undefined') {
+          result.innerHTML = '';
+          YQV5.trackSingle({
+            YQ_ContainerId: 'lom-tracking-result',
+            YQ_Height: 560,
+            YQ_Fc: '0',
+            YQ_Lang: 'en',
+            YQ_Num: num
+          });
+        } else {
+          // Fallback: open 17track.net directly
+          window.open('https://www.17track.net/en/track#nums=' + encodeURIComponent(num), '_blank');
+          result.innerHTML = '';
+        }
+      }, 2000);
+    }
   }
+
+  run17track();
 }
 
 // Enter key support
@@ -436,8 +469,6 @@ document.getElementById('lom-tracking-input').addEventListener('keydown', functi
   if (e.key === 'Enter') lomTrackOrder();
 });
 </script>
-
-<script defer type="text/javascript" src="//www.17track.net/externalcall.js"></script>
 
 {% schema %}
 {
