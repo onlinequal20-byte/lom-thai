@@ -179,6 +179,136 @@
         "transition": "That's it. No water needed. No waiting. No side effects. No crash."
       }
     },
+    "lom_certified_safe_tAjMa9": {
+      "type": "lom-certified-safe",
+      "blocks": {
+        "certification_zm8AzG": {
+          "type": "certification",
+          "settings": {
+            "icon": "eu",
+            "label": "European Union",
+            "title": "CPNP Registered",
+            "reference": "Ref. #5492573"
+          }
+        },
+        "certification_JQqWY6": {
+          "type": "certification",
+          "settings": {
+            "icon": "fda",
+            "label": "United States",
+            "title": "FDA Registered",
+            "reference": "#53-321032-102019"
+          }
+        },
+        "certification_VNMUnp": {
+          "type": "certification",
+          "settings": {
+            "icon": "msds",
+            "label": "Safety Data",
+            "title": "MSDS Certified",
+            "reference": "GHS Rev.6 Compliant"
+          }
+        },
+        "badge_dE6mgQ": {
+          "type": "badge",
+          "settings": {
+            "text": "REACH Compliant"
+          }
+        },
+        "badge_yPecEw": {
+          "type": "badge",
+          "settings": {
+            "text": "California Prop 65 Clean"
+          }
+        },
+        "badge_qyqCgU": {
+          "type": "badge",
+          "settings": {
+            "text": "No Hazardous Classifications"
+          }
+        },
+        "badge_ncHX8z": {
+          "type": "badge",
+          "settings": {
+            "text": "Safe for Air Transport (IATA)"
+          }
+        },
+        "detail_3npzpT": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>No hazardous substances</strong> — Passes EU CLP Regulation (EC) No 1272/2008"
+          }
+        },
+        "detail_LYbYQP": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>No SVHC detected</strong> — REACH Regulation: zero substances of very high concern"
+          }
+        },
+        "detail_fXVYqH": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Prop 65 clean</strong> — No California Safe Drinking Water Act warning required"
+          }
+        },
+        "detail_6EKei6": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>TSCA listed</strong> — All components registered as commercially active"
+          }
+        },
+        "detail_fMrQrc": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Non-hazardous for transport</strong> — Cleared by DOT, IATA, IMDG, ADR classifications"
+          }
+        },
+        "detail_ik3zfk": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>GMP manufactured</strong> — Huizhou Tongxuan Biotechnology, inspected facility"
+          }
+        },
+        "detail_DpBHz6": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>100% natural composition</strong> — Menthol, grape seed oil, peppermint, rosemary, eucalyptol"
+          }
+        },
+        "detail_6qFpmp": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Not classified as dangerous goods</strong> — Safe under 2024 IATA DGR 65th Edition"
+          }
+        }
+      },
+      "block_order": [
+        "certification_zm8AzG",
+        "certification_JQqWY6",
+        "certification_VNMUnp",
+        "badge_dE6mgQ",
+        "badge_yPecEw",
+        "badge_qyqCgU",
+        "badge_ncHX8z",
+        "detail_3npzpT",
+        "detail_LYbYQP",
+        "detail_fXVYqH",
+        "detail_6EKei6",
+        "detail_fMrQrc",
+        "detail_ik3zfk",
+        "detail_DpBHz6",
+        "detail_6qFpmp"
+      ],
+      "name": "Certified Safe",
+      "settings": {
+        "eyebrow": "Independently Verified",
+        "title": "Tested. Certified. Safe.",
+        "subtitle": "Every batch is tested and registered with the world's strictest regulatory bodies. No shortcuts. No exceptions.",
+        "show_detail": true,
+        "detail_title": "Full Safety Profile",
+        "expand_text": "View Full Test Results"
+      }
+    },
     "reviews": {
       "type": "lom-reviews",
       "blocks": {
@@ -372,136 +502,6 @@
         "cta_url": ""
       }
     },
-    "lom_certified_safe_tAjMa9": {
-      "type": "lom-certified-safe",
-      "blocks": {
-        "certification_zm8AzG": {
-          "type": "certification",
-          "settings": {
-            "icon": "eu",
-            "label": "European Union",
-            "title": "CPNP Registered",
-            "reference": "Ref. #5492573"
-          }
-        },
-        "certification_JQqWY6": {
-          "type": "certification",
-          "settings": {
-            "icon": "fda",
-            "label": "United States",
-            "title": "FDA Registered",
-            "reference": "#53-321032-102019"
-          }
-        },
-        "certification_VNMUnp": {
-          "type": "certification",
-          "settings": {
-            "icon": "msds",
-            "label": "Safety Data",
-            "title": "MSDS Certified",
-            "reference": "GHS Rev.6 Compliant"
-          }
-        },
-        "badge_dE6mgQ": {
-          "type": "badge",
-          "settings": {
-            "text": "REACH Compliant"
-          }
-        },
-        "badge_yPecEw": {
-          "type": "badge",
-          "settings": {
-            "text": "California Prop 65 Clean"
-          }
-        },
-        "badge_qyqCgU": {
-          "type": "badge",
-          "settings": {
-            "text": "No Hazardous Classifications"
-          }
-        },
-        "badge_ncHX8z": {
-          "type": "badge",
-          "settings": {
-            "text": "Safe for Air Transport (IATA)"
-          }
-        },
-        "detail_3npzpT": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>No hazardous substances</strong> — Passes EU CLP Regulation (EC) No 1272/2008"
-          }
-        },
-        "detail_LYbYQP": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>No SVHC detected</strong> — REACH Regulation: zero substances of very high concern"
-          }
-        },
-        "detail_fXVYqH": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>Prop 65 clean</strong> — No California Safe Drinking Water Act warning required"
-          }
-        },
-        "detail_6EKei6": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>TSCA listed</strong> — All components registered as commercially active"
-          }
-        },
-        "detail_fMrQrc": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>Non-hazardous for transport</strong> — Cleared by DOT, IATA, IMDG, ADR classifications"
-          }
-        },
-        "detail_ik3zfk": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>GMP manufactured</strong> — Huizhou Tongxuan Biotechnology, inspected facility"
-          }
-        },
-        "detail_DpBHz6": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>100% natural composition</strong> — Menthol, grape seed oil, peppermint, rosemary, eucalyptol"
-          }
-        },
-        "detail_6qFpmp": {
-          "type": "detail",
-          "settings": {
-            "text": "<strong>Not classified as dangerous goods</strong> — Safe under 2024 IATA DGR 65th Edition"
-          }
-        }
-      },
-      "block_order": [
-        "certification_zm8AzG",
-        "certification_JQqWY6",
-        "certification_VNMUnp",
-        "badge_dE6mgQ",
-        "badge_yPecEw",
-        "badge_qyqCgU",
-        "badge_ncHX8z",
-        "detail_3npzpT",
-        "detail_LYbYQP",
-        "detail_fXVYqH",
-        "detail_6EKei6",
-        "detail_fMrQrc",
-        "detail_ik3zfk",
-        "detail_DpBHz6",
-        "detail_6qFpmp"
-      ],
-      "name": "Certified Safe",
-      "settings": {
-        "eyebrow": "Independently Verified",
-        "title": "Tested. Certified. Safe.",
-        "subtitle": "Every batch is tested and registered with the world's strictest regulatory bodies. No shortcuts. No exceptions.",
-        "show_detail": true,
-        "detail_title": "Full Safety Profile",
-        "expand_text": "View Full Test Results"
-      }
-    },
     "ingredients": {
       "type": "lom-ingredients",
       "blocks": {
@@ -627,8 +627,8 @@
     "showcase",
     "steps",
     "reviews",
-    "comparison",
     "lom_certified_safe_tAjMa9",
+    "comparison",
     "ingredients",
     "guarantee",
     "offer_stack",
