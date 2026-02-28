@@ -229,6 +229,39 @@
           {{ form | payment_button }}
         {% endform %}
 
+        {%- comment -%} UGC POV Videos {%- endcomment -%}
+        {% assign ugc_blocks = section.blocks | where: 'type', 'ugc_video' %}
+        {% if ugc_blocks.size > 0 %}
+          <div class="lom-hero-ugc">
+            <p class="lom-hero-ugc__label">See It in Action</p>
+            <div class="lom-hero-ugc__grid">
+              {% for block in ugc_blocks %}
+                <div class="lom-hero-ugc__card" {{ block.shopify_attributes }} data-ugc-card>
+                  {% if block.settings.poster != blank %}
+                    <img class="lom-hero-ugc__poster" src="{{ block.settings.poster | image_url: width: 480 }}" alt="{{ block.settings.name | default: 'UGC video' }}" loading="lazy">
+                  {% endif %}
+                  {% if block.settings.video_url != blank %}
+                    <video src="{{ block.settings.video_url }}" playsinline muted loop preload="none" data-ugc-video></video>
+                  {% elsif block.settings.shopify_video != blank %}
+                    {{ block.settings.shopify_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'none', data-ugc-video: '' }}
+                  {% endif %}
+                  <button type="button" class="lom-hero-ugc__play" aria-label="Play video" data-ugc-play>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg>
+                  </button>
+                  <div class="lom-hero-ugc__caption">
+                    {% if block.settings.name != blank %}
+                      <span class="lom-hero-ugc__name">{{ block.settings.name }}</span>
+                    {% endif %}
+                    {% if block.settings.label != blank %}
+                      <span class="lom-hero-ugc__tag">{{ block.settings.label }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
         {%- comment -%} Social proof buyers bar {%- endcomment -%}
         <div class="lom-hero-buyers">
           <div class="lom-hero-buyers__avatars">
@@ -335,39 +368,6 @@
                 </div>
               </div>
             {% endfor %}
-          </div>
-        {% endif %}
-
-        {%- comment -%} UGC POV Videos {%- endcomment -%}
-        {% assign ugc_blocks = section.blocks | where: 'type', 'ugc_video' %}
-        {% if ugc_blocks.size > 0 %}
-          <div class="lom-hero-ugc">
-            <p class="lom-hero-ugc__label">See It in Action</p>
-            <div class="lom-hero-ugc__grid">
-              {% for block in ugc_blocks %}
-                <div class="lom-hero-ugc__card" {{ block.shopify_attributes }} data-ugc-card>
-                  {% if block.settings.poster != blank %}
-                    <img class="lom-hero-ugc__poster" src="{{ block.settings.poster | image_url: width: 480 }}" alt="{{ block.settings.name | default: 'UGC video' }}" loading="lazy">
-                  {% endif %}
-                  {% if block.settings.video_url != blank %}
-                    <video src="{{ block.settings.video_url }}" playsinline muted loop preload="none" data-ugc-video></video>
-                  {% elsif block.settings.shopify_video != blank %}
-                    {{ block.settings.shopify_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'none', data-ugc-video: '' }}
-                  {% endif %}
-                  <button type="button" class="lom-hero-ugc__play" aria-label="Play video" data-ugc-play>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg>
-                  </button>
-                  <div class="lom-hero-ugc__caption">
-                    {% if block.settings.name != blank %}
-                      <span class="lom-hero-ugc__name">{{ block.settings.name }}</span>
-                    {% endif %}
-                    {% if block.settings.label != blank %}
-                      <span class="lom-hero-ugc__tag">{{ block.settings.label }}</span>
-                    {% endif %}
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
           </div>
         {% endif %}
 
