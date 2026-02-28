@@ -87,40 +87,42 @@
               var bar = document.getElementById('lom-urgency-progress');
               if (!el) return;
 
-              // Shipping cutoff: 3 PM EST (20:00 UTC) on weekdays
-              function getNextCutoff() {
-                var now = new Date();
-                var utc = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-                var cutoff = new Date(utc);
-                cutoff.setHours(15, 0, 0, 0); // 3 PM EST
-
-                // If past cutoff or weekend, move to next business day
-                if (utc >= cutoff || utc.getDay() === 0 || utc.getDay() === 6) {
-                  cutoff.setDate(cutoff.getDate() + 1);
-                  while (cutoff.getDay() === 0 || cutoff.getDay() === 6) {
-                    cutoff.setDate(cutoff.getDate() + 1);
-                  }
-                }
-                return cutoff;
+              // Get current hour/minute in EST using Intl
+              function getEST() {
+                var parts = {};
+                new Intl.DateTimeFormat('en-US', {
+                  timeZone: 'America/New_York',
+                  hour: 'numeric', minute: 'numeric', hour12: false,
+                  weekday: 'short'
+                }).formatToParts(new Date()).forEach(function(p) {
+                  parts[p.type] = p.value;
+                });
+                return {
+                  h: parseInt(parts.hour, 10),
+                  m: parseInt(parts.minute, 10),
+                  day: parts.weekday
+                };
               }
 
               function update() {
-                var now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-                var cutoff = getNextCutoff();
-                var diff = cutoff - now;
-                var h = Math.floor(diff / 3600000);
-                var m = Math.floor((diff % 3600000) / 60000);
+                var est = getEST();
+                var cutoffH = 15; // 3 PM EST
+                var isWeekend = est.day === 'Sat' || est.day === 'Sun';
+                var pastCutoff = est.h >= cutoffH;
 
-                var isToday = cutoff.getDate() === now.getDate();
-                var shipLabel = isToday ? 'to ship today' : 'to ship next business day';
-
-                el.innerHTML = 'Order in <strong>' + h + 'h ' + m + 'm</strong> ' + shipLabel;
-
-                // Progress bar: full day = 15h (midnight to 3pm)
-                var totalMs = 15 * 3600000;
-                var elapsed = isToday ? totalMs - diff : 0;
-                var pct = Math.max(0, Math.min(100, 100 - (elapsed / totalMs * 100)));
-                if (bar) bar.style.width = pct + '%';
+                if (isWeekend || pastCutoff) {
+                  el.innerHTML = 'Order now — <strong>ships next business day</strong>';
+                  if (bar) bar.style.width = '100%';
+                } else {
+                  var remainH = cutoffH - est.h - 1;
+                  var remainM = 60 - est.m;
+                  if (remainM === 60) { remainM = 0; remainH++; }
+                  el.innerHTML = 'Order in <strong>' + remainH + 'h ' + remainM + 'm</strong> to ship today';
+                  var totalMin = cutoffH * 60;
+                  var elapsedMin = est.h * 60 + est.m;
+                  var pct = Math.max(0, Math.round((1 - elapsedMin / totalMin) * 100));
+                  if (bar) bar.style.width = pct + '%';
+                }
               }
 
               update();
@@ -336,6 +338,39 @@
           </div>
         {% endif %}
 
+        {%- comment -%} UGC POV Videos {%- endcomment -%}
+        {% assign ugc_blocks = section.blocks | where: 'type', 'ugc_video' %}
+        {% if ugc_blocks.size > 0 %}
+          <div class="lom-hero-ugc">
+            <p class="lom-hero-ugc__label">See It in Action</p>
+            <div class="lom-hero-ugc__grid">
+              {% for block in ugc_blocks %}
+                <div class="lom-hero-ugc__card" {{ block.shopify_attributes }} data-ugc-card>
+                  {% if block.settings.poster != blank %}
+                    <img class="lom-hero-ugc__poster" src="{{ block.settings.poster | image_url: width: 480 }}" alt="{{ block.settings.name | default: 'UGC video' }}" loading="lazy">
+                  {% endif %}
+                  {% if block.settings.video_url != blank %}
+                    <video src="{{ block.settings.video_url }}" playsinline muted loop preload="none" data-ugc-video></video>
+                  {% elsif block.settings.shopify_video != blank %}
+                    {{ block.settings.shopify_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'none', data-ugc-video: '' }}
+                  {% endif %}
+                  <button type="button" class="lom-hero-ugc__play" aria-label="Play video" data-ugc-play>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg>
+                  </button>
+                  <div class="lom-hero-ugc__caption">
+                    {% if block.settings.name != blank %}
+                      <span class="lom-hero-ugc__name">{{ block.settings.name }}</span>
+                    {% endif %}
+                    {% if block.settings.label != blank %}
+                      <span class="lom-hero-ugc__tag">{{ block.settings.label }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
         {% if section.settings.loss_aversion_text != blank %}
           <p class="lom-product-hero__loss-aversion">{{ section.settings.loss_aversion_text }}</p>
         {% endif %}
@@ -434,6 +469,26 @@
     });
     setInterval(function(){ show((idx + 1) % cards.length); }, 5000);
   })();
+
+  // UGC video play/pause
+  document.querySelectorAll('[data-ugc-play]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var card = this.closest('[data-ugc-card]');
+      var video = card.querySelector('video');
+      if (!video) return;
+      document.querySelectorAll('[data-ugc-card].is-playing').forEach(function(o) {
+        if (o !== card) { o.classList.remove('is-playing'); var v = o.querySelector('video'); if (v) { v.pause(); v.currentTime = 0; } }
+      });
+      if (card.classList.contains('is-playing')) {
+        card.classList.remove('is-playing');
+        video.pause();
+      } else {
+        card.classList.add('is-playing');
+        video.muted = false;
+        video.play();
+      }
+    });
+  });
 
   // Sticky mobile ATC
   (function(){
@@ -602,6 +657,40 @@
           "id": "content",
           "label": "Content",
           "default": "<p>Accordion content here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "ugc_video",
+      "name": "UGC Video",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster / thumbnail image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (MP4 link)"
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Or upload a Shopify video"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Creator name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Caption",
+          "default": "Verified Buyer"
         }
       ]
     }

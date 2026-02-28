@@ -96,6 +96,27 @@
             "heading": "1-Year Quality Guarantee",
             "content": "<p>If your Siam Lom stick dries out within 12 months, we replace it free. No receipt needed, no fine print — just email us and we'll send a fresh one.</p>"
           }
+        },
+        "ugc_vid_1": {
+          "type": "ugc_video",
+          "settings": {
+            "name": "Sarah M.",
+            "label": "Verified Buyer"
+          }
+        },
+        "ugc_vid_2": {
+          "type": "ugc_video",
+          "settings": {
+            "name": "Marco V.",
+            "label": "Verified Buyer"
+          }
+        },
+        "ugc_vid_3": {
+          "type": "ugc_video",
+          "settings": {
+            "name": "Anna P.",
+            "label": "Verified Buyer"
+          }
         }
       },
       "block_order": [
@@ -109,7 +130,10 @@
         "accordion_description",
         "accordion_faq",
         "accordion_shipping",
-        "accordion_warranty"
+        "accordion_warranty",
+        "ugc_vid_1",
+        "ugc_vid_2",
+        "ugc_vid_3"
       ],
       "settings": {
         "headline_override": "Natural Relief in Seconds",

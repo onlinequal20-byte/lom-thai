@@ -1,0 +1,328 @@
+{{ 'lom-natural.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .lom-ugc {
+    background: var(--lt-ivory);
+    padding: var(--lt-section-pad, 100px) 0;
+  }
+  @media (max-width: 749px) {
+    .lom-ugc { padding: var(--lt-section-pad-mobile, 56px) 0; }
+  }
+
+  .lom-ugc__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .lom-ugc__eyebrow {
+    font-family: var(--lt-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lt-gold);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .lom-ugc__heading {
+    font-family: var(--lt-serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    color: var(--lt-charcoal);
+    text-align: center;
+    margin: 0 0 8px;
+    line-height: 1.15;
+  }
+
+  .lom-ugc__subtitle {
+    font-family: var(--lt-sans);
+    font-size: 15px;
+    color: var(--lt-warm-gray);
+    text-align: center;
+    margin: 0 0 48px;
+    line-height: 1.5;
+  }
+
+  .lom-ugc__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 749px) {
+    .lom-ugc__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  .lom-ugc__card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--lt-ivory-dark);
+    aspect-ratio: 9 / 16;
+    cursor: pointer;
+    box-shadow: 0 2px 16px rgba(42,37,32,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .lom-ugc__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(42,37,32,0.14);
+  }
+
+  .lom-ugc__card video,
+  .lom-ugc__card iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+  }
+
+  .lom-ugc__card-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+  .lom-ugc__card.is-playing .lom-ugc__card-poster {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .lom-ugc__play {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .lom-ugc__play:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: #fff;
+  }
+  .lom-ugc__card.is-playing .lom-ugc__play {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .lom-ugc__play svg {
+    margin-left: 3px;
+    color: var(--lt-charcoal);
+  }
+
+  .lom-ugc__card-caption {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 48px 16px 16px;
+    background: linear-gradient(to top, rgba(26,23,20,0.75) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .lom-ugc__card.is-playing .lom-ugc__card-caption {
+    opacity: 0;
+  }
+
+  .lom-ugc__card-name {
+    font-family: var(--lt-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lom-ugc__card-name svg {
+    color: var(--lt-gold-light);
+  }
+
+  .lom-ugc__card-label {
+    font-family: var(--lt-sans);
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+</style>
+
+<section class="lom-ugc">
+  <div class="lom-ugc__inner">
+    {% if section.settings.eyebrow != blank %}
+      <p class="lom-ugc__eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2 class="lom-ugc__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="lom-ugc__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    <div class="lom-ugc__grid">
+      {% for block in section.blocks %}
+        <div class="lom-ugc__card" {{ block.shopify_attributes }} data-ugc-card>
+          {% if block.settings.poster != blank %}
+            <img
+              class="lom-ugc__card-poster"
+              src="{{ block.settings.poster | image_url: width: 600 }}"
+              alt="{{ block.settings.name | default: 'UGC video' }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+          {% if block.settings.video_url != blank %}
+            <video
+              src="{{ block.settings.video_url }}"
+              playsinline
+              muted
+              loop
+              preload="none"
+              data-ugc-video
+            ></video>
+          {% elsif block.settings.shopify_video != blank %}
+            {{ block.settings.shopify_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'none', class: '', data-ugc-video: '' }}
+          {% endif %}
+
+          <button type="button" class="lom-ugc__play" aria-label="Play video" data-ugc-play>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <polygon points="6,3 20,12 6,21"/>
+            </svg>
+          </button>
+
+          <div class="lom-ugc__card-caption">
+            {% if block.settings.name != blank %}
+              <div class="lom-ugc__card-name">
+                {{ block.settings.name }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            {% endif %}
+            {% if block.settings.label != blank %}
+              <div class="lom-ugc__card-label">{{ block.settings.label }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    document.querySelectorAll('[data-ugc-play]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card = this.closest('[data-ugc-card]');
+        var video = card.querySelector('[data-ugc-video], video');
+        if (!video) return;
+
+        // Pause other playing videos
+        document.querySelectorAll('[data-ugc-card].is-playing').forEach(function(other) {
+          if (other !== card) {
+            other.classList.remove('is-playing');
+            var v = other.querySelector('video');
+            if (v) { v.pause(); v.currentTime = 0; }
+          }
+        });
+
+        if (card.classList.contains('is-playing')) {
+          card.classList.remove('is-playing');
+          video.pause();
+        } else {
+          card.classList.add('is-playing');
+          video.muted = false;
+          video.play();
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "UGC Videos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Real People. Real Results."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See It in Action"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Watch how people actually use Siam Lom in their daily routine"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "UGC Video",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster / thumbnail image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (MP4 link or Shopify file URL)"
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Or upload a Shopify video"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Creator name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Caption / label",
+          "default": "Verified Buyer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Videos",
+      "blocks": [
+        { "type": "video", "settings": { "name": "Sarah M.", "label": "Verified Buyer" } },
+        { "type": "video", "settings": { "name": "Marco V.", "label": "Verified Buyer" } },
+        { "type": "video", "settings": { "name": "Anna P.", "label": "Verified Buyer" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
