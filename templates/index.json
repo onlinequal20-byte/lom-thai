@@ -214,17 +214,18 @@
       }
     },
     "reviews": {
-      "type": "lom-reviews",
+      "type": "lom-reviews-loox",
       "blocks": {
         "r1": {
           "type": "review",
           "settings": {
             "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_40_12.png",
             "stars": 5,
+            "review_title": "Goodbye Advil",
             "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
             "name": "Sarah M.",
-            "title": "Nurse",
-            "location": "Texas"
+            "location": "Texas",
+            "date": "2 weeks ago"
           }
         },
         "r2": {
@@ -232,10 +233,11 @@
           "settings": {
             "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
             "stars": 5,
+            "review_title": "Essential for long drives",
             "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
             "name": "Marco V.",
-            "title": "Frequent Traveler",
-            "location": "Ohio"
+            "location": "Ohio",
+            "date": "1 week ago"
           }
         },
         "r3": {
@@ -243,23 +245,64 @@
           "settings": {
             "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
             "stars": 5,
+            "review_title": "Bought it as a joke...",
             "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
             "name": "Anna P.",
-            "title": "",
-            "location": "Portland"
+            "location": "Portland",
+            "date": "3 days ago"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "stars": 4,
+            "review_title": "Works great, wish it lasted longer",
+            "text": "The instant relief is real. I use it every day at work. Only reason for 4 stars is I wish the scent lasted a bit longer.",
+            "name": "David R.",
+            "location": "Chicago",
+            "date": "5 days ago"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "12-hour shifts? No problem",
+            "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. Already ordered 3 more for my colleagues.",
+            "name": "Michelle T.",
+            "location": "Houston",
+            "date": "1 week ago"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "My whole family uses these",
+            "text": "My whole family uses these now. Best natural remedy we've found. My dad carries one in his shirt pocket everywhere.",
+            "name": "James K.",
+            "location": "New York",
+            "date": "4 days ago"
           }
         }
       },
       "block_order": [
         "r1",
         "r2",
-        "r3"
+        "r3",
+        "r4",
+        "r5",
+        "r6"
       ],
       "settings": {
         "heading": "They Were Skeptical Too. Then They Tried It.",
+        "subheading": "See why 10,000+ people made the switch to natural relief",
         "avg_rating": "4.8",
         "total_reviews": "1,200+",
-        "recommend_pct": "97"
+        "recommend_pct": "97",
+        "show_distribution": true,
+        "show_photos": true,
+        "show_form": true
       }
     },
     "comparison": {

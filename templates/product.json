@@ -312,43 +312,92 @@
       }
     },
     "reviews": {
-      "type": "lom-reviews",
+      "type": "lom-reviews-loox",
       "blocks": {
         "rv1": {
           "type": "review",
           "settings": {
             "stars": 5,
+            "review_title": "Magic in a stick",
             "text": "This thing is magic. Instant relief from my sinus headaches. I carry it everywhere.",
             "name": "James K.",
-            "location": "New York, USA"
+            "location": "New York",
+            "date": "1 week ago"
           }
         },
         "rv2": {
           "type": "review",
           "settings": {
             "stars": 5,
+            "review_title": "Whole family is hooked",
             "text": "My whole family uses these. Best natural remedy we've found.",
             "name": "Anna P.",
-            "location": "Netherlands"
+            "location": "Netherlands",
+            "date": "3 days ago"
           }
         },
         "rv3": {
           "type": "review",
           "settings": {
             "stars": 5,
+            "review_title": "12-hour shifts? No problem",
             "text": "As a nurse working 12-hour shifts, this keeps me going. Natural, portable, and actually works.",
             "name": "Michelle T.",
-            "location": "Texas, USA"
+            "location": "Texas",
+            "date": "5 days ago"
+          }
+        },
+        "rv4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "Goodbye Advil",
+            "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
+            "name": "Sarah M.",
+            "location": "Texas",
+            "date": "2 weeks ago"
+          }
+        },
+        "rv5": {
+          "type": "review",
+          "settings": {
+            "stars": 4,
+            "review_title": "Great product, solid relief",
+            "text": "The instant relief is real. I use it every day at work. Only reason for 4 stars is I wish the scent lasted a bit longer.",
+            "name": "David R.",
+            "location": "Chicago",
+            "date": "4 days ago"
+          }
+        },
+        "rv6": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_title": "Essential for long drives",
+            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
+            "name": "Marco V.",
+            "location": "Ohio",
+            "date": "1 week ago"
           }
         }
       },
       "block_order": [
         "rv1",
         "rv2",
-        "rv3"
+        "rv3",
+        "rv4",
+        "rv5",
+        "rv6"
       ],
       "settings": {
-        "heading": "Real Results From Real People"
+        "heading": "Real Results From Real People",
+        "subheading": "Verified reviews from customers who made the switch",
+        "avg_rating": "4.8",
+        "total_reviews": "1,200+",
+        "recommend_pct": "97",
+        "show_distribution": true,
+        "show_photos": true,
+        "show_form": true
       }
     },
     "faq": {
