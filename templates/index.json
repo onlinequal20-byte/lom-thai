@@ -141,7 +141,7 @@
         "image": "shopify://shop_images/Gemini_Generated_Image_wofhvgwofhvgwofh.png",
         "identity_callout": "People who carry Siam Lom don't wait for relief. They choose it.",
         "button_text": "Try It Risk-Free →",
-        "button_url": "/products/lom-thai-authentic-muay-thai-oil"
+        "button_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "steps": {
@@ -877,7 +877,7 @@
       "type": "lom-sticky-cta",
       "settings": {
         "cta_text": "Get Instant Relief — Free Shipping",
-        "cta_url": "shopify://products/thai-herbal-nasal-inhaler"
+        "cta_url": "/products/lom-thai-authentic-muay-thai-oil"
       }
     },
     "lom_reviews_loox_igfFbw": {
