@@ -52,53 +52,19 @@
         "t4"
       ],
       "settings": {
+        "product": "",
+        "review_count": "1,200+ Reviews",
         "background_image": "shopify://shop_images/Gemini_Generated_Image_lhonkzlhonkzlhon.png",
         "headline": "Headaches. Brain Fog. Congestion. You Shouldn't Have to Push Through the Day Like This.",
         "subhead": "One inhale of this century-old Thai herbal stick and the fog lifts in seconds — no pills, no caffeine crash, no chemicals.",
         "primary_cta_text": "Get Instant Relief — Free US Shipping",
         "primary_cta_url": "shopify://products/thai-herbal-nasal-inhaler",
-        "price_line": "Starting at $8 — Free US Shipping",
         "secondary_cta_text": "See How It Works ↓"
       }
     },
     "trust_strip": {
       "type": "lom-trust-strip",
-      "blocks": {
-        "ts1": {
-          "type": "trust_badge",
-          "settings": {
-            "text": "10,000+ Sticks Sold"
-          }
-        },
-        "ts2": {
-          "type": "trust_badge",
-          "settings": {
-            "text": "Trusted by Nurses & Athletes"
-          }
-        },
-        "ts3": {
-          "type": "trust_badge",
-          "settings": {
-            "text": "100% Natural"
-          }
-        },
-        "ts4": {
-          "type": "trust_badge",
-          "settings": {
-            "text": "Made in Thailand"
-          }
-        }
-      },
-      "block_order": [
-        "ts1",
-        "ts2",
-        "ts3",
-        "ts4"
-      ],
-      "settings": {
-        "eyebrow": "Trusted By 10,000+ People",
-        "background_color": "light"
-      }
+      "settings": {}
     },
     "pain_agitate": {
       "type": "lom-pain-agitate",
@@ -172,6 +138,7 @@
       "settings": {
         "heading": "This Is What 10,000+ Nurses, Athletes & Travelers Carry Instead",
         "subhead": "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief.",
+        "image": "shopify://shop_images/Gemini_Generated_Image_wofhvgwofhvgwofh.png",
         "identity_callout": "People who carry Lom Thai don't wait for relief. They choose it.",
         "button_text": "Try It Risk-Free →",
         "button_url": "/products/lom-thai-authentic-muay-thai-oil"
@@ -303,6 +270,136 @@
         "show_distribution": true,
         "show_photos": true,
         "show_form": true
+      }
+    },
+    "lom_certified_safe_tAjMa9": {
+      "type": "lom-certified-safe",
+      "blocks": {
+        "certification_zm8AzG": {
+          "type": "certification",
+          "settings": {
+            "icon": "eu",
+            "label": "European Union",
+            "title": "CPNP Registered",
+            "reference": "Ref. #5492573"
+          }
+        },
+        "certification_JQqWY6": {
+          "type": "certification",
+          "settings": {
+            "icon": "fda",
+            "label": "United States",
+            "title": "FDA Registered",
+            "reference": "#53-321032-102019"
+          }
+        },
+        "certification_VNMUnp": {
+          "type": "certification",
+          "settings": {
+            "icon": "msds",
+            "label": "Safety Data",
+            "title": "MSDS Certified",
+            "reference": "GHS Rev.6 Compliant"
+          }
+        },
+        "badge_dE6mgQ": {
+          "type": "badge",
+          "settings": {
+            "text": "REACH Compliant"
+          }
+        },
+        "badge_yPecEw": {
+          "type": "badge",
+          "settings": {
+            "text": "California Prop 65 Clean"
+          }
+        },
+        "badge_qyqCgU": {
+          "type": "badge",
+          "settings": {
+            "text": "No Hazardous Classifications"
+          }
+        },
+        "badge_ncHX8z": {
+          "type": "badge",
+          "settings": {
+            "text": "Safe for Air Transport (IATA)"
+          }
+        },
+        "detail_3npzpT": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>No hazardous substances</strong> — Passes EU CLP Regulation (EC) No 1272/2008"
+          }
+        },
+        "detail_LYbYQP": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>No SVHC detected</strong> — REACH Regulation: zero substances of very high concern"
+          }
+        },
+        "detail_fXVYqH": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Prop 65 clean</strong> — No California Safe Drinking Water Act warning required"
+          }
+        },
+        "detail_6EKei6": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>TSCA listed</strong> — All components registered as commercially active"
+          }
+        },
+        "detail_fMrQrc": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Non-hazardous for transport</strong> — Cleared by DOT, IATA, IMDG, ADR classifications"
+          }
+        },
+        "detail_ik3zfk": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>GMP manufactured</strong> — Huizhou Tongxuan Biotechnology, inspected facility"
+          }
+        },
+        "detail_DpBHz6": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>100% natural composition</strong> — Menthol, grape seed oil, peppermint, rosemary, eucalyptol"
+          }
+        },
+        "detail_6qFpmp": {
+          "type": "detail",
+          "settings": {
+            "text": "<strong>Not classified as dangerous goods</strong> — Safe under 2024 IATA DGR 65th Edition"
+          }
+        }
+      },
+      "block_order": [
+        "certification_zm8AzG",
+        "certification_JQqWY6",
+        "certification_VNMUnp",
+        "badge_dE6mgQ",
+        "badge_yPecEw",
+        "badge_qyqCgU",
+        "badge_ncHX8z",
+        "detail_3npzpT",
+        "detail_LYbYQP",
+        "detail_fXVYqH",
+        "detail_6EKei6",
+        "detail_fMrQrc",
+        "detail_ik3zfk",
+        "detail_DpBHz6",
+        "detail_6qFpmp"
+      ],
+      "name": "Certified Safe",
+      "settings": {
+        "eyebrow": "Independently Verified",
+        "title": "Tested. Certified. Safe.",
+        "subtitle": "Every batch is tested and registered with the world's strictest regulatory bodies. No shortcuts. No exceptions.",
+        "show_detail": true,
+        "detail_title": "Full Safety Profile",
+        "expand_text": "View Full Test Results"
       }
     },
     "comparison": {
@@ -543,60 +640,9 @@
     },
     "offer_stack": {
       "type": "lom-offer-stack",
-      "blocks": {
-        "o1": {
-          "type": "offer",
-          "settings": {
-            "name": "Try It",
-            "tagline": "See what the hype is about",
-            "price": "$8",
-            "compare_price": "",
-            "savings": "",
-            "badge": "",
-            "highlighted": false,
-            "cta_text": "Add to Cart",
-            "quantity": 1,
-            "url": ""
-          }
-        },
-        "o2": {
-          "type": "offer",
-          "settings": {
-            "name": "Buy 2 Get 1 Free",
-            "tagline": "One for home. One for work. One free for your bag.",
-            "price": "$16",
-            "compare_price": "$24",
-            "savings": "1 Stick Free",
-            "badge": "Most Popular",
-            "highlighted": true,
-            "cta_text": "Add to Cart",
-            "quantity": 3,
-            "url": ""
-          }
-        },
-        "o3": {
-          "type": "offer",
-          "settings": {
-            "name": "Family Pack (5)",
-            "tagline": "Stock up and share. Best value per stick.",
-            "price": "$32",
-            "compare_price": "$40",
-            "savings": "2 Sticks Free",
-            "badge": "Best Value",
-            "highlighted": false,
-            "cta_text": "Add to Cart",
-            "quantity": 5,
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "o1",
-        "o2",
-        "o3"
-      ],
       "settings": {
         "heading": "Choose How You Want to Feel",
+        "product_handle": "thai-herbal-nasal-inhaler",
         "reassurance": "Every order ships free to the US. Every order is backed by our 30-day guarantee."
       }
     },
@@ -625,6 +671,7 @@
     "showcase",
     "steps",
     "reviews",
+    "lom_certified_safe_tAjMa9",
     "comparison",
     "ingredients",
     "guarantee",
