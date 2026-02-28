@@ -377,6 +377,7 @@
         "r2",
         "r3"
       ],
+      "disabled": true,
       "settings": {
         "heading": "They Were Skeptical Too. Then They Tried It.",
         "avg_rating": "4.8",
