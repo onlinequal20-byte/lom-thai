@@ -845,12 +845,18 @@
 
 /* --- Reveal animation --- */
 .loox-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.loox-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loox-reveal.loox-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .loox-reveal.loox-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

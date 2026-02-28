@@ -289,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /* ── Reveal animation ── */
   var reveals = section.querySelectorAll('.loox-reveal');
   if ('IntersectionObserver' in window) {
+    reveals.forEach(function(el) { el.classList.add('loox-animate'); });
     var revealObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) {
@@ -298,8 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, { threshold: 0.15 });
     reveals.forEach(function(el) { revealObs.observe(el); });
-  } else {
-    reveals.forEach(function(el) { el.classList.add('is-visible'); });
   }
 
   /* ── Filter chips ── */
