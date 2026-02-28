@@ -470,10 +470,9 @@
     setInterval(function(){ show((idx + 1) % cards.length); }, 5000);
   })();
 
-  // UGC video play/pause
-  document.querySelectorAll('[data-ugc-play]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var card = this.closest('[data-ugc-card]');
+  // UGC video play/pause — whole card is clickable
+  document.querySelectorAll('[data-ugc-card]').forEach(function(card) {
+    card.addEventListener('click', function() {
       var video = card.querySelector('video');
       if (!video) return;
       document.querySelectorAll('[data-ugc-card].is-playing').forEach(function(o) {

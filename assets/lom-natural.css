@@ -3857,6 +3857,11 @@ h1, h2, h3, h4, h5, h6,
 .lom-hero-ugc__card.is-playing .lom-hero-ugc__play {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.lom-hero-ugc__card.is-playing:hover .lom-hero-ugc__play {
+  opacity: 0.85;
+  pointer-events: auto;
 }
 .lom-hero-ugc__caption {
   position: absolute;
