@@ -76,7 +76,7 @@
             {%- assign pct = 0 -%}
           {%- endif -%}
           <div class="loox-distribution__row" data-filter-star="{{ rev_i }}">
-            <span class="loox-distribution__label">{{ rev_i }} star{{ rev_i | pluralize: '', 's' }}</span>
+            <span class="loox-distribution__label">{{ rev_i }} star{% if rev_i != 1 %}s{% endif %}</span>
             <div class="loox-distribution__bar">
               <div class="loox-distribution__fill" style="width: {{ pct }}%"></div>
             </div>
