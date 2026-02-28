@@ -141,7 +141,7 @@
         "image": "shopify://shop_images/Gemini_Generated_Image_wofhvgwofhvgwofh.png",
         "identity_callout": "People who carry Siam Lom don't wait for relief. They choose it.",
         "button_text": "Try It Risk-Free →",
-        "button_url": "/products/lom-thai-authentic-muay-thai-oil"
+        "button_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "steps": {
@@ -760,7 +760,7 @@
         "brand_name": "Siam Lom",
         "brand_tagline": "5 natural ingredients. Century-old Thai formula. Works in seconds. Lasts months per stick. 30-day guarantee.",
         "cta_button": "Try Siam Lom Risk-Free →",
-        "cta_url": ""
+        "cta_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "ingredients": {
@@ -870,7 +870,7 @@
         "text": "Join 10,000+ people who switched to natural relief. Free shipping on all US & EU orders. 30-day money-back guarantee.",
         "image": "shopify://shop_images/6e952ae16c0f013ce9b3_thai_1.png",
         "button_text": "Shop Siam Lom",
-        "button_url": "/products/lom-thai-authentic-muay-thai-oil"
+        "button_url": "shopify://products/thai-herbal-nasal-inhaler"
       }
     },
     "sticky_cta": {
