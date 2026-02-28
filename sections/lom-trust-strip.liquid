@@ -1,85 +1,79 @@
 <style>
   .lom-trust-strip {
-    padding: 28px 0;
+    padding: 32px 0;
+    background: var(--lt-brown-black, #2a2520);
   }
-  .lom-trust-strip--light {
-    background: var(--lt-ivory-dark, #f5f0e8);
-  }
-  .lom-trust-strip--dark {
-    background: var(--lt-brown-black, #1a1612);
-  }
-  .lom-trust-strip__eyebrow {
-    font-family: var(--lt-sans, 'DM Sans', sans-serif);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--lt-warm-gray, #8a8178);
-    text-align: center;
-    margin: 0 0 16px;
-    font-weight: 600;
-  }
-  .lom-trust-strip--dark .lom-trust-strip__eyebrow {
-    color: var(--lt-warm-gray, #8a8178);
+  .lom-trust-strip .lom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
   .lom-trust-strip__row {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    text-align: center;
   }
   .lom-trust-strip__item {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    position: relative;
   }
-  .lom-trust-strip__item span {
+  .lom-trust-strip__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .lom-trust-strip__number {
+    font-family: var(--lt-serif, 'Cormorant Garamond', serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--lt-ivory, #f5f0e8);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .lom-trust-strip__label {
     font-family: var(--lt-sans, 'DM Sans', sans-serif);
-    font-size: 12px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--lt-warm-gray, #8a8178);
-    font-weight: 600;
-  }
-  .lom-trust-strip--dark .lom-trust-strip__item span {
-    color: var(--lt-warm-gray, #8a8178);
-  }
-  .lom-trust-strip__item img {
-    height: 24px;
-    width: auto;
-    opacity: 0.4;
-    filter: grayscale(100%);
-    transition: opacity 0.3s, filter 0.3s;
-  }
-  .lom-trust-strip__item img:hover {
-    opacity: 0.8;
-    filter: grayscale(0);
+    color: rgba(245,240,232,0.5);
+    font-weight: 500;
   }
   @media (max-width: 768px) {
+    .lom-trust-strip {
+      padding: 24px 0;
+    }
     .lom-trust-strip__row {
-      gap: 24px 32px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 0;
+    }
+    .lom-trust-strip__item:nth-child(2)::after {
+      display: none;
+    }
+    .lom-trust-strip__number {
+      font-size: 24px;
+    }
+    .lom-trust-strip__label {
+      font-size: 9px;
     }
   }
 </style>
 
-<section class="lom-trust-strip lom-trust-strip--{{ section.settings.background_color }}">
+<section class="lom-trust-strip">
   <div class="lom-container">
-    {%- if section.settings.eyebrow != blank -%}
-      <p class="lom-trust-strip__eyebrow">{{ section.settings.eyebrow }}</p>
-    {%- endif -%}
     <div class="lom-trust-strip__row">
       {%- for block in section.blocks -%}
         <div class="lom-trust-strip__item" {{ block.shopify_attributes }}>
-          {%- if block.settings.icon != blank -%}
-            <img
-              src="{{ block.settings.icon | image_url: width: 120 }}"
-              alt="{{ block.settings.text | escape }}"
-              width="120"
-              height="24"
-              loading="lazy"
-            >
-          {%- else -%}
-            <span>{{ block.settings.text }}</span>
-          {%- endif -%}
+          <span class="lom-trust-strip__number">{{ block.settings.number }}</span>
+          <span class="lom-trust-strip__label">{{ block.settings.label }}</span>
         </div>
       {%- endfor -%}
     </div>
@@ -91,39 +85,23 @@
   "name": "Trust Strip",
   "tag": "section",
   "class": "lom-trust-strip-section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow text",
-      "default": "Trusted By 10,000+ People"
-    },
-    {
-      "type": "select",
-      "id": "background_color",
-      "label": "Background",
-      "options": [
-        { "value": "light", "label": "Light" },
-        { "value": "dark", "label": "Dark" }
-      ],
-      "default": "light"
-    }
-  ],
+  "settings": [],
   "blocks": [
     {
-      "type": "trust_badge",
-      "name": "Badge",
+      "type": "stat",
+      "name": "Stat",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Logo / icon (optional)"
+          "type": "text",
+          "id": "number",
+          "label": "Number / value",
+          "default": "10,000+"
         },
         {
           "type": "text",
-          "id": "text",
-          "label": "Text (fallback if no image)",
-          "default": "10,000+ Sold"
+          "id": "label",
+          "label": "Label",
+          "default": "Sticks Sold"
         }
       ]
     }
@@ -132,10 +110,10 @@
     {
       "name": "Trust Strip",
       "blocks": [
-        { "type": "trust_badge", "settings": { "text": "10,000+ Sticks Sold" } },
-        { "type": "trust_badge", "settings": { "text": "Trusted by Nurses & Athletes" } },
-        { "type": "trust_badge", "settings": { "text": "100% Natural" } },
-        { "type": "trust_badge", "settings": { "text": "Made in Thailand" } }
+        { "type": "stat", "settings": { "number": "10,000+", "label": "Sticks Sold" } },
+        { "type": "stat", "settings": { "number": "4.8 ★", "label": "Avg Rating" } },
+        { "type": "stat", "settings": { "number": "100%", "label": "Natural" } },
+        { "type": "stat", "settings": { "number": "30-Day", "label": "Guarantee" } }
       ]
     }
   ]

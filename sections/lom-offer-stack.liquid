@@ -1,40 +1,68 @@
 {{ 'lom-natural.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%} Pull product for dynamic pricing — same logic as product page {%- endcomment -%}
+{%- assign offer_product = all_products[section.settings.product_handle] -%}
+{%- if offer_product != blank -%}
+  {%- assign base_price = offer_product.price -%}
+{%- else -%}
+  {%- assign base_price = 799 -%}
+{%- endif -%}
+{%- assign price_1 = base_price -%}
+{%- assign price_3 = base_price | times: 3 | times: 80 | divided_by: 100 -%}
+{%- assign price_5 = base_price | times: 5 | times: 70 | divided_by: 100 -%}
+{%- assign compare_3 = base_price | times: 3 -%}
+{%- assign compare_5 = base_price | times: 5 -%}
+{%- assign unit_3 = price_3 | divided_by: 3 -%}
+{%- assign unit_5 = price_5 | divided_by: 5 -%}
+
 <section class="lom-offer-stack">
   <div class="lom-container">
     <h2 class="lom-heading lom-reveal">{{ section.settings.heading }}</h2>
 
     <div class="lom-offer-grid lom-reveal">
-      {%- for block in section.blocks -%}
-        <div class="lom-offer-card{% if block.settings.highlighted %} lom-offer-card--highlighted{% endif %}" {{ block.shopify_attributes }}>
-          {%- if block.settings.badge != blank -%}
-            <span class="lom-offer-card__badge{% if block.settings.highlighted %} lom-offer-card__badge--popular{% endif %}">{{ block.settings.badge }}</span>
-          {%- endif -%}
-          <h3 class="lom-offer-card__name">{{ block.settings.name }}</h3>
-          <p class="lom-offer-card__tagline">{{ block.settings.tagline }}</p>
-          <div class="lom-offer-card__pricing">
-            {%- if block.settings.compare_price != blank -%}
-              <span class="lom-offer-card__compare">{{ block.settings.compare_price }}</span>
-            {%- endif -%}
-            <span class="lom-offer-card__price">{{ block.settings.price }}</span>
-            {%- if block.settings.savings != blank -%}
-              <span class="lom-offer-card__savings">{{ block.settings.savings }}</span>
-            {%- endif -%}
-          </div>
-          <button
-            type="button"
-            class="lom-cta-btn lom-offer-card__cta{% if block.settings.highlighted %} lom-cta-btn--primary{% else %} lom-cta-btn--outline{% endif %} lom-offer-atc"
-            data-quantity="{{ block.settings.quantity | default: 1 }}"
-          >
-            {{ block.settings.cta_text | default: 'Add to Cart' }}
-          </button>
-          <noscript>
-            <a href="{{ block.settings.url | default: '/collections/all' }}" class="lom-cta-btn lom-offer-card__cta{% if block.settings.highlighted %} lom-cta-btn--primary{% else %} lom-cta-btn--outline{% endif %}">
-              {{ block.settings.cta_text | default: 'Add to Cart' }}
-            </a>
-          </noscript>
+      {%- comment -%} Try It — 1 stick {%- endcomment -%}
+      <div class="lom-offer-card">
+        <h3 class="lom-offer-card__name">Try It</h3>
+        <p class="lom-offer-card__tagline">See what the hype is about</p>
+        <div class="lom-offer-card__pricing">
+          <span class="lom-offer-card__price">{{ price_1 | money }}</span>
         </div>
-      {%- endfor -%}
+        <button type="button" class="lom-cta-btn lom-offer-card__cta lom-cta-btn--outline lom-offer-atc" data-quantity="1">
+          Add to Cart — {{ price_1 | money }}
+        </button>
+      </div>
+
+      {%- comment -%} Relief Pack — 3 sticks, 20% off {%- endcomment -%}
+      <div class="lom-offer-card lom-offer-card--highlighted">
+        <span class="lom-offer-card__badge lom-offer-card__badge--popular">Most Popular</span>
+        <h3 class="lom-offer-card__name">Relief Pack</h3>
+        <p class="lom-offer-card__tagline">One for home. One for work. One for the gym.</p>
+        <div class="lom-offer-card__pricing">
+          <span class="lom-offer-card__compare">{{ compare_3 | money }}</span>
+          <span class="lom-offer-card__price">{{ price_3 | money }}</span>
+          <span class="lom-offer-card__savings">Save 20%</span>
+        </div>
+        <span class="lom-offer-card__unit">{{ unit_3 | money }}/stick</span>
+        <button type="button" class="lom-cta-btn lom-offer-card__cta lom-cta-btn--primary lom-offer-atc" data-quantity="3">
+          Add to Cart — {{ price_3 | money }}
+        </button>
+      </div>
+
+      {%- comment -%} Never Run Out — 5 sticks, 30% off {%- endcomment -%}
+      <div class="lom-offer-card">
+        <span class="lom-offer-card__badge lom-offer-card__badge--value">Best Value</span>
+        <h3 class="lom-offer-card__name">Never Run Out</h3>
+        <p class="lom-offer-card__tagline">Best price. Stock up for the year.</p>
+        <div class="lom-offer-card__pricing">
+          <span class="lom-offer-card__compare">{{ compare_5 | money }}</span>
+          <span class="lom-offer-card__price">{{ price_5 | money }}</span>
+          <span class="lom-offer-card__savings">Save 30%</span>
+        </div>
+        <span class="lom-offer-card__unit">{{ unit_5 | money }}/stick</span>
+        <button type="button" class="lom-cta-btn lom-offer-card__cta lom-cta-btn--outline lom-offer-atc" data-quantity="5">
+          Add to Cart — {{ price_5 | money }}
+        </button>
+      </div>
     </div>
 
     <p class="lom-offer-stack__reassurance lom-reveal">{{ section.settings.reassurance }}</p>
@@ -145,123 +173,22 @@
       "default": "Choose How You Want to Feel"
     },
     {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product handle (URL slug)",
+      "default": "lom-thai-authentic-muay-thai-oil",
+      "info": "Used to fetch the product price. Prices auto-calculate: 1x = full price, 3x = 20% off, 5x = 30% off."
+    },
+    {
       "type": "textarea",
       "id": "reassurance",
       "label": "Reassurance Text",
       "default": "Every order ships free to the US. Every order is backed by our 30-day guarantee."
     }
   ],
-  "blocks": [
-    {
-      "type": "offer",
-      "name": "Offer Card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Offer Name",
-          "default": "Try It"
-        },
-        {
-          "type": "text",
-          "id": "tagline",
-          "label": "Tagline",
-          "default": "See what the hype is about"
-        },
-        {
-          "type": "text",
-          "id": "price",
-          "label": "Price",
-          "default": "$8"
-        },
-        {
-          "type": "text",
-          "id": "compare_price",
-          "label": "Compare Price (strikethrough)"
-        },
-        {
-          "type": "text",
-          "id": "savings",
-          "label": "Savings Text"
-        },
-        {
-          "type": "text",
-          "id": "badge",
-          "label": "Badge Text"
-        },
-        {
-          "type": "checkbox",
-          "id": "highlighted",
-          "label": "Highlight this card",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "cta_text",
-          "label": "Button Text",
-          "default": "Add to Cart"
-        },
-        {
-          "type": "range",
-          "id": "quantity",
-          "label": "Quantity to add",
-          "min": 1,
-          "max": 10,
-          "step": 1,
-          "default": 1
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Fallback Link (noscript)"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
-      "name": "Lom Offer Stack",
-      "blocks": [
-        {
-          "type": "offer",
-          "settings": {
-            "name": "Try It",
-            "tagline": "See what the hype is about",
-            "price": "$8",
-            "highlighted": false,
-            "cta_text": "Add to Cart",
-            "quantity": 1
-          }
-        },
-        {
-          "type": "offer",
-          "settings": {
-            "name": "Relief Pack",
-            "tagline": "One for home. One for work. One for the gym.",
-            "price": "$19.20",
-            "compare_price": "$24",
-            "savings": "Save 20%",
-            "badge": "Most Popular",
-            "highlighted": true,
-            "cta_text": "Add to Cart",
-            "quantity": 3
-          }
-        },
-        {
-          "type": "offer",
-          "settings": {
-            "name": "Never Run Out",
-            "tagline": "Best price. Stock up for the year.",
-            "price": "$28",
-            "compare_price": "$40",
-            "savings": "Save 30%",
-            "badge": "Best Value",
-            "highlighted": false,
-            "cta_text": "Add to Cart",
-            "quantity": 5
-          }
-        }
-      ]
+      "name": "Lom Offer Stack"
     }
   ]
 }

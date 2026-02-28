@@ -1,5 +1,15 @@
 {{ 'lom-natural.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%} Dynamic product pricing {%- endcomment -%}
+{%- assign hero_product = section.settings.product -%}
+{%- if hero_product != blank -%}
+  {%- assign hero_price = hero_product.price | money -%}
+  {%- assign hero_price_raw = hero_product.price -%}
+{%- else -%}
+  {%- assign hero_price = '$7.99' -%}
+  {%- assign hero_price_raw = 799 -%}
+{%- endif -%}
+
 <style>
   .lom-hero-authority__grid {
     display: grid;
@@ -51,6 +61,12 @@
   <div class="lom-container">
     <div class="lom-hero-authority__grid">
       <div class="lom-hero-authority__content lom-fade-in">
+        {% if section.settings.review_count != blank %}
+          <div class="lom-hero-authority__reviews-badge">
+            <span class="lom-hero-authority__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>{{ section.settings.review_count }}</span>
+          </div>
+        {% endif %}
         <h1 class="lom-hero-authority__headline">{{ section.settings.headline }}</h1>
         <p class="lom-hero-authority__subhead">{{ section.settings.subhead }}</p>
 
@@ -71,9 +87,7 @@
           <a href="{{ section.settings.primary_cta_url }}" class="lom-cta-btn lom-cta-btn--hero">
             {{ section.settings.primary_cta_text }}
           </a>
-          {% if section.settings.price_line != blank %}
-            <p class="lom-hero-authority__price-line">{{ section.settings.price_line }}</p>
-          {% endif %}
+          <p class="lom-hero-authority__price-line">Starting at {{ hero_price }} — Free US Shipping</p>
           <a href="#how-it-works" class="lom-hero-authority__secondary-cta">
             {{ section.settings.secondary_cta_text }}
           </a>
@@ -139,6 +153,17 @@
   "name": "Lom Hero Authority",
   "settings": [
     {
+      "type": "product",
+      "id": "product",
+      "label": "Product (for dynamic pricing)"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review count text (e.g. '1,200+ Reviews')",
+      "default": "1,200+ Reviews"
+    },
+    {
       "type": "image_picker",
       "id": "background_image",
       "label": "Background image"
@@ -171,12 +196,6 @@
       "id": "primary_cta_url",
       "label": "Primary CTA link",
       "default": "/collections/all"
-    },
-    {
-      "type": "text",
-      "id": "price_line",
-      "label": "Price line below CTA",
-      "default": "Starting at $8 — Free US Shipping"
     },
     {
       "type": "text",
