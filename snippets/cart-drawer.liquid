@@ -192,29 +192,16 @@
           </span>
         </button>
       </div>
-      {%- comment -%} Free shipping progress bar — single source of truth {%- endcomment -%}
-      {%- assign shipping_threshold = 5000 -%}
+      {%- comment -%} Free shipping — always included {%- endcomment -%}
       {%- if cart.total_price > 0 -%}
         <div class="lom-shipping-bar">
-          {%- if cart.total_price >= shipping_threshold -%}
-            <p class="lom-shipping-bar__text">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              You qualify for <strong>FREE shipping!</strong>
-            </p>
-            <div class="lom-shipping-bar__track">
-              <div class="lom-shipping-bar__fill" style="width:100%"></div>
-            </div>
-          {%- else -%}
-            {%- assign remaining = shipping_threshold | minus: cart.total_price -%}
-            {%- assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold -%}
-            <p class="lom-shipping-bar__text">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l4 4v6a2 2 0 0 1-2 2h-1"/><path d="M3 7v10a2 2 0 0 0 2 2h2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
-              Add <strong>{{ remaining | money }}</strong> for <strong>FREE shipping</strong>
-            </p>
-            <div class="lom-shipping-bar__track">
-              <div class="lom-shipping-bar__fill" style="width:{{ progress }}%"></div>
-            </div>
-          {%- endif -%}
+          <p class="lom-shipping-bar__text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            You qualify for <strong>FREE shipping!</strong>
+          </p>
+          <div class="lom-shipping-bar__track">
+            <div class="lom-shipping-bar__fill" style="width:100%"></div>
+          </div>
         </div>
       {%- endif -%}
       <cart-drawer-items

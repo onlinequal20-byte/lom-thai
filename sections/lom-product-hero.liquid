@@ -52,17 +52,81 @@
           <p class="lom-product-hero__subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
 
-        {%- comment -%} Scarcity / urgency line (static, no fake timer) {%- endcomment -%}
+        {%- comment -%} Live urgency banner {%- endcomment -%}
         {% if section.settings.show_urgency %}
-          <div class="lom-urgency">
-            <div class="lom-urgency__static">
-              <span class="lom-urgency__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold)" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
-              <span>{{ section.settings.urgency_text }}</span>
+          <div class="lom-urgency" id="lom-urgency-live">
+            <div class="lom-urgency__bar">
+              <div class="lom-urgency__progress" id="lom-urgency-progress" style="width:100%"></div>
             </div>
-            {% if section.settings.urgency_subtext != blank %}
-              <p class="lom-urgency__subtext">{{ section.settings.urgency_subtext }}</p>
-            {% endif %}
+
+            {%- comment -%} Row 1: Shipping countdown {%- endcomment -%}
+            <div class="lom-urgency__content">
+              <span class="lom-urgency__icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--lt-gold, #c4937a)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span class="lom-urgency__text" id="lom-ship-countdown">Order in <strong>--h --m</strong> to ship today</span>
+            </div>
+
+            {%- comment -%} Row 2: Live stock + free shipping {%- endcomment -%}
+            <div class="lom-urgency__meta">
+              <span class="lom-urgency__stock">
+                <span class="lom-urgency__dot"></span>
+                Selling fast — limited batch
+              </span>
+              <span class="lom-urgency__divider">·</span>
+              <span class="lom-urgency__free-ship">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Free shipping
+              </span>
+            </div>
           </div>
+
+          <script>
+            (function() {
+              var el = document.getElementById('lom-ship-countdown');
+              var bar = document.getElementById('lom-urgency-progress');
+              if (!el) return;
+
+              // Shipping cutoff: 3 PM EST (20:00 UTC) on weekdays
+              function getNextCutoff() {
+                var now = new Date();
+                var utc = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+                var cutoff = new Date(utc);
+                cutoff.setHours(15, 0, 0, 0); // 3 PM EST
+
+                // If past cutoff or weekend, move to next business day
+                if (utc >= cutoff || utc.getDay() === 0 || utc.getDay() === 6) {
+                  cutoff.setDate(cutoff.getDate() + 1);
+                  while (cutoff.getDay() === 0 || cutoff.getDay() === 6) {
+                    cutoff.setDate(cutoff.getDate() + 1);
+                  }
+                }
+                return cutoff;
+              }
+
+              function update() {
+                var now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+                var cutoff = getNextCutoff();
+                var diff = cutoff - now;
+                var h = Math.floor(diff / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+
+                var isToday = cutoff.getDate() === now.getDate();
+                var shipLabel = isToday ? 'to ship today' : 'to ship next business day';
+
+                el.innerHTML = 'Order in <strong>' + h + 'h ' + m + 'm</strong> ' + shipLabel;
+
+                // Progress bar: full day = 15h (midnight to 3pm)
+                var totalMs = 15 * 3600000;
+                var elapsed = isToday ? totalMs - diff : 0;
+                var pct = Math.max(0, Math.min(100, 100 - (elapsed / totalMs * 100)));
+                if (bar) bar.style.width = pct + '%';
+              }
+
+              update();
+              setInterval(update, 60000);
+            })();
+          </script>
         {% endif %}
 
         <div class="lom-product-hero__price" id="lom-price-display">

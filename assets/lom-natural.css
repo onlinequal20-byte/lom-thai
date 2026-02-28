@@ -3473,6 +3473,51 @@ h1, h2, h3, h4, h5, h6,
   flex-wrap: wrap;
 }
 
+/* Live urgency meta row */
+.lom-urgency__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-family: var(--lt-sans);
+  font-size: 11px;
+  color: var(--lt-warm-gray);
+}
+.lom-urgency__stock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  color: var(--lt-brown-black, #3a3530);
+}
+.lom-urgency__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lt-emerald, #4a7c59);
+  animation: lomDotPulse 1.5s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes lomDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.lom-urgency__divider {
+  color: var(--lt-border, #e5e0d8);
+  font-weight: 400;
+}
+.lom-urgency__free-ship {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--lt-emerald, #4a7c59);
+  font-weight: 600;
+}
+.lom-urgency__free-ship svg {
+  flex-shrink: 0;
+}
+
 /* ============================================================
    PAYMENT / TRUST / BUYERS — Product Hero sub-components
    ============================================================ */
