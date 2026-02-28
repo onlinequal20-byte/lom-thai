@@ -146,6 +146,11 @@
       {%- endfor -%}
     </div>
 
+    <!-- Load More Button -->
+    <div class="loox-load-more" data-loox-load-more style="text-align:center;margin-top:2rem;display:none;">
+      <button class="loox-load-more__btn" type="button">Load More Reviews</button>
+    </div>
+
   </div>
 </section>
 
@@ -229,6 +234,7 @@
 </div>
 {% endif %}
 
+<script src="{{ 'lom-reviews-data.js' | asset_url }}"></script>
 <script>
 (function() {
   var STORAGE_KEY = 'loox_reviews';
@@ -509,8 +515,66 @@
     }
   }
 
+  /* ── Extra reviews from data file ── */
+  var extraPage = 0;
+  var EXTRA_PER_PAGE = 12;
+  var extraData = (typeof extraReviewsData !== 'undefined') ? extraReviewsData : [];
+  var loadMoreWrap = section.querySelector('[data-loox-load-more]');
+  var loadMoreBtn = loadMoreWrap ? loadMoreWrap.querySelector('button') : null;
+
+  function renderExtraPage() {
+    var start = extraPage * EXTRA_PER_PAGE;
+    var end = Math.min(start + EXTRA_PER_PAGE, extraData.length);
+    var dates = ['1 day ago','2 days ago','3 days ago','4 days ago','5 days ago','6 days ago','1 week ago','2 weeks ago','3 weeks ago','1 month ago','2 months ago','3 months ago'];
+    var frag = document.createDocumentFragment();
+    for (var i = start; i < end; i++) {
+      var r = extraData[i];
+      var starsHTML = '';
+      for (var j = 1; j <= 5; j++) starsHTML += j <= r.s ? starSVG : starEmptySVG;
+      var initials = r.n.substring(0, 2).toUpperCase();
+      var dateStr = dates[i % dates.length];
+      var div = document.createElement('div');
+      div.className = 'loox-card';
+      div.setAttribute('data-stars', r.s);
+      div.setAttribute('data-has-photo', 'false');
+      div.setAttribute('data-ts', '0');
+      div.innerHTML =
+        '<div class="loox-card__top"><div class="loox-card__stars">' + starsHTML + '</div>' +
+        '<span class="loox-card__date">' + dateStr + '</span></div>' +
+        '<h3 class="loox-card__title">' + esc(r.t) + '</h3>' +
+        '<p class="loox-card__text">"' + esc(r.b) + '"</p>' +
+        '<div class="loox-card__author">' +
+        '<div class="loox-card__avatar">' + esc(initials) + '</div>' +
+        '<div class="loox-card__author-info">' +
+        '<span class="loox-card__name">' + esc(r.n) + '</span>' +
+        (r.l ? '<span class="loox-card__location">' + esc(r.l) + '</span>' : '') +
+        '<div class="loox-card__meta"><span class="loox-card__verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></div>' +
+        '</div></div>';
+      frag.appendChild(div);
+    }
+    grid.appendChild(frag);
+    extraPage++;
+    if (extraPage * EXTRA_PER_PAGE >= extraData.length) {
+      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+    }
+  }
+
+  function initExtraReviews() {
+    if (extraData.length === 0) return;
+    renderExtraPage();
+    if (extraData.length > EXTRA_PER_PAGE && loadMoreWrap) {
+      loadMoreWrap.style.display = '';
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+          renderExtraPage();
+        });
+      }
+    }
+  }
+
   /* ── Init ── */
   renderSavedReviews();
+  initExtraReviews();
 
 })();
 </script>

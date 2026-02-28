@@ -869,3 +869,23 @@
     transform: translateY(0);
   }
 }
+
+/* --- Load More Button --- */
+.loox-load-more {
+  display: block;
+  margin: 32px auto 0;
+  padding: 14px 40px;
+  font-family: var(--lt-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lt-charcoal);
+  background: transparent;
+  border: 1.5px solid var(--lt-charcoal);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.loox-load-more:hover {
+  background: var(--lt-charcoal);
+  color: var(--lt-ivory);
+}
