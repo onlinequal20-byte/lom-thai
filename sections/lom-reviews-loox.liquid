@@ -1,36 +1,23 @@
 {{ 'lom-reviews-loox.css' | asset_url | stylesheet_tag }}
 
-{% comment %} ── SVG star helper ── {% endcomment %}
-{%- capture star_filled -%}<svg class="loox-star" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
-{%- capture star_empty -%}<svg class="loox-star loox-star--empty" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
-{%- capture star_filled_small -%}<svg class="loox-star loox-star--small" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
+{%- comment -%} SVG star templates {%- endcomment -%}
+{%- capture star_svg -%}<svg class="loox-star" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
+{%- capture star_empty_svg -%}<svg class="loox-star loox-star--empty" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
+{%- capture star_small_svg -%}<svg class="loox-star loox-star--small" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
+{%- capture star_small_empty -%}<svg class="loox-star loox-star--small loox-star--empty" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>{%- endcapture -%}
 
-{%- comment -%} Count reviews per star rating {%- endcomment -%}
-{%- assign total_blocks = 0 -%}
-{%- assign star5 = 0 -%}
-{%- assign star4 = 0 -%}
-{%- assign star3 = 0 -%}
-{%- assign star2 = 0 -%}
-{%- assign star1 = 0 -%}
-{%- assign photo_blocks = '' -%}
+{%- comment -%} Count block reviews {%- endcomment -%}
+{%- assign block_count = 0 -%}
 {%- for block in section.blocks -%}
   {%- if block.type == 'review' -%}
-    {%- assign total_blocks = total_blocks | plus: 1 -%}
-    {%- case block.settings.stars -%}
-      {%- when 5 -%}{%- assign star5 = star5 | plus: 1 -%}
-      {%- when 4 -%}{%- assign star4 = star4 | plus: 1 -%}
-      {%- when 3 -%}{%- assign star3 = star3 | plus: 1 -%}
-      {%- when 2 -%}{%- assign star2 = star2 | plus: 1 -%}
-      {%- when 1 -%}{%- assign star1 = star1 | plus: 1 -%}
-    {%- endcase -%}
+    {%- assign block_count = block_count | plus: 1 -%}
   {%- endif -%}
 {%- endfor -%}
 
-<section id="loox-reviews" class="loox-reviews">
+<section id="loox-reviews-{{ section.id }}" class="loox-reviews" data-section-id="{{ section.id }}">
   <div class="loox-reviews__container">
 
-    <!-- Header -->
-    <div class="loox-reviews__header loox-reveal">
+    <div class="loox-reviews__header">
       <h2 class="loox-reviews__heading">{{ section.settings.heading }}</h2>
       {% if section.settings.subheading != blank %}
         <p class="loox-reviews__subheading">{{ section.settings.subheading }}</p>
@@ -38,49 +25,37 @@
     </div>
 
     <!-- Stats bar -->
-    <div class="loox-stats loox-reveal">
+    <div class="loox-stats" data-loox-stats>
       <div class="loox-stats__block">
-        <span class="loox-stats__number">{{ section.settings.avg_rating | default: '4.8' }}</span>
+        <span class="loox-stats__number" data-loox-avg>{{ section.settings.avg_rating | default: '4.8' }}</span>
         <div class="loox-stats__stars">
-          {{ star_filled }}{{ star_filled }}{{ star_filled }}{{ star_filled }}{{ star_filled }}
+          {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
         </div>
         <span class="loox-stats__label">Average Rating</span>
       </div>
       <div class="loox-stats__divider"></div>
       <div class="loox-stats__block">
-        <span class="loox-stats__number">{{ section.settings.total_reviews | default: '1,200+' }}</span>
+        <span class="loox-stats__number" data-loox-total>{{ section.settings.total_reviews | default: '1,200+' }}</span>
         <span class="loox-stats__label">Verified Reviews</span>
       </div>
       <div class="loox-stats__divider"></div>
       <div class="loox-stats__block">
-        <span class="loox-stats__number">{{ section.settings.recommend_pct | default: '97' }}%</span>
+        <span class="loox-stats__number" data-loox-pct>{{ section.settings.recommend_pct | default: '97' }}%</span>
         <span class="loox-stats__label">Would Recommend</span>
       </div>
     </div>
 
     <!-- Star distribution -->
     {% if section.settings.show_distribution %}
-      <div class="loox-distribution loox-reveal" data-loox-distribution>
+      <div class="loox-distribution" data-loox-distribution>
         {%- for i in (1..5) -%}
           {%- assign rev_i = 6 | minus: i -%}
-          {%- case rev_i -%}
-            {%- when 5 -%}{%- assign count = star5 -%}
-            {%- when 4 -%}{%- assign count = star4 -%}
-            {%- when 3 -%}{%- assign count = star3 -%}
-            {%- when 2 -%}{%- assign count = star2 -%}
-            {%- when 1 -%}{%- assign count = star1 -%}
-          {%- endcase -%}
-          {%- if total_blocks > 0 -%}
-            {%- assign pct = count | times: 100 | divided_by: total_blocks -%}
-          {%- else -%}
-            {%- assign pct = 0 -%}
-          {%- endif -%}
           <div class="loox-distribution__row" data-filter-star="{{ rev_i }}">
             <span class="loox-distribution__label">{{ rev_i }} star{% if rev_i != 1 %}s{% endif %}</span>
             <div class="loox-distribution__bar">
-              <div class="loox-distribution__fill" style="width: {{ pct }}%"></div>
+              <div class="loox-distribution__fill" data-dist-bar="{{ rev_i }}" style="width: 0%"></div>
             </div>
-            <span class="loox-distribution__count">{{ count }}</span>
+            <span class="loox-distribution__count" data-dist-count="{{ rev_i }}">0</span>
           </div>
         {%- endfor -%}
       </div>
@@ -88,30 +63,13 @@
 
     <!-- Photo gallery -->
     {% if section.settings.show_photos %}
-      {%- assign has_photos = false -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'review' and block.settings.photo != blank -%}
-          {%- assign has_photos = true -%}
-          {%- break -%}
-        {%- endif -%}
-      {%- endfor -%}
-      {% if has_photos %}
-        <div class="loox-photos loox-reveal">
-          <div class="loox-photos__track">
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'review' and block.settings.photo != blank -%}
-                <div class="loox-photos__item" data-loox-lightbox="{{ block.settings.photo | image_url: width: 1200 }}">
-                  <img src="{{ block.settings.photo | image_url: width: 240 }}" alt="Review photo by {{ block.settings.name }}" loading="lazy">
-                </div>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        </div>
-      {% endif %}
+      <div class="loox-photos" data-loox-photos style="display:none;">
+        <div class="loox-photos__track" data-loox-photos-track></div>
+      </div>
     {% endif %}
 
     <!-- Toolbar -->
-    <div class="loox-toolbar loox-reveal">
+    <div class="loox-toolbar">
       <div class="loox-toolbar__filters">
         <button class="loox-filter-chip is-active" data-filter="all">All</button>
         <button class="loox-filter-chip" data-filter="5">5 Star</button>
@@ -135,38 +93,33 @@
       </div>
     </div>
 
-    <!-- Review cards -->
+    <!-- Review cards grid -->
     <div class="loox-grid" data-loox-grid>
+      <!-- User-submitted reviews injected here by JS (prepended) -->
+
+      <!-- Curated reviews from theme editor blocks -->
       {%- for block in section.blocks -%}
         {%- if block.type == 'review' -%}
-          <div class="loox-card loox-reveal" data-stars="{{ block.settings.stars }}" data-has-photo="{% if block.settings.photo != blank %}true{% else %}false{% endif %}" {{ block.shopify_attributes }}>
+          <div class="loox-card" data-stars="{{ block.settings.stars }}" data-has-photo="{% if block.settings.photo != blank %}true{% else %}false{% endif %}" data-ts="0" {{ block.shopify_attributes }}>
             <div class="loox-card__top">
               <div class="loox-card__stars">
                 {%- for i in (1..5) -%}
-                  {%- if i <= block.settings.stars -%}
-                    {{ star_filled_small }}
-                  {%- else -%}
-                    {{ star_empty }}
-                  {%- endif -%}
+                  {%- if i <= block.settings.stars -%}{{ star_small_svg }}{%- else -%}{{ star_small_empty }}{%- endif -%}
                 {%- endfor -%}
               </div>
               {% if block.settings.date != blank %}
                 <span class="loox-card__date">{{ block.settings.date }}</span>
               {% endif %}
             </div>
-
             {% if block.settings.review_title != blank %}
               <h3 class="loox-card__title">{{ block.settings.review_title }}</h3>
             {% endif %}
-
             {% if block.settings.photo != blank %}
               <div class="loox-card__photo" data-loox-lightbox="{{ block.settings.photo | image_url: width: 1200 }}">
                 <img src="{{ block.settings.photo | image_url: width: 600 }}" alt="Review photo by {{ block.settings.name }}" loading="lazy">
               </div>
             {% endif %}
-
             <p class="loox-card__text">"{{ block.settings.text }}"</p>
-
             <div class="loox-card__author">
               {% if block.settings.avatar != blank %}
                 <div class="loox-card__avatar">
@@ -207,12 +160,7 @@
     <div data-loox-form-content>
       <h3 class="loox-modal__title">Write a Review</h3>
 
-      <form method="post" action="/contact#loox-review-form" id="loox-review-form" data-loox-form>
-        <input type="hidden" name="form_type" value="contact">
-        <input type="hidden" name="utf8" value="✓">
-        <input type="hidden" name="contact[tags]" value="review">
-        <input type="hidden" name="contact[review_rating]" value="" data-loox-rating-value>
-
+      <form id="loox-review-form-{{ section.id }}" data-loox-form>
         <!-- Star rating -->
         <div class="loox-form__group">
           <span class="loox-star-input__label">Your Rating</span>
@@ -225,17 +173,17 @@
 
         <!-- Review title -->
         <div class="loox-form__group">
-          <label class="loox-form__label" for="loox-title">Review Title</label>
-          <input class="loox-form__input" type="text" id="loox-title" name="contact[review_title]" placeholder="Sum it up in a few words" required>
+          <label class="loox-form__label" for="loox-title-{{ section.id }}">Review Title</label>
+          <input class="loox-form__input" type="text" id="loox-title-{{ section.id }}" data-field="title" placeholder="Sum it up in a few words" required>
         </div>
 
         <!-- Review body -->
         <div class="loox-form__group">
-          <label class="loox-form__label" for="loox-body">Your Review</label>
-          <textarea class="loox-form__textarea" id="loox-body" name="contact[body]" placeholder="What did you like or dislike? How do you use the product?" required></textarea>
+          <label class="loox-form__label" for="loox-body-{{ section.id }}">Your Review</label>
+          <textarea class="loox-form__textarea" id="loox-body-{{ section.id }}" data-field="body" placeholder="What did you like or dislike? How do you use the product?" required></textarea>
         </div>
 
-        <!-- Photo upload (preview only — not sent via contact form) -->
+        <!-- Photo upload -->
         <div class="loox-form__group">
           <label class="loox-form__label">Add a Photo (optional)</label>
           <div class="loox-form__upload">
@@ -250,14 +198,14 @@
 
         <!-- Name -->
         <div class="loox-form__group">
-          <label class="loox-form__label" for="loox-name">Your Name</label>
-          <input class="loox-form__input" type="text" id="loox-name" name="contact[name]" placeholder="Jane D." required>
+          <label class="loox-form__label" for="loox-name-{{ section.id }}">Your Name</label>
+          <input class="loox-form__input" type="text" id="loox-name-{{ section.id }}" data-field="name" placeholder="Jane D." required>
         </div>
 
         <!-- Email -->
         <div class="loox-form__group">
-          <label class="loox-form__label" for="loox-email">Email</label>
-          <input class="loox-form__input" type="email" id="loox-email" name="contact[email]" placeholder="jane@example.com" required>
+          <label class="loox-form__label" for="loox-email-{{ section.id }}">Email (won't be displayed)</label>
+          <input class="loox-form__input" type="email" id="loox-email-{{ section.id }}" data-field="email" placeholder="jane@example.com" required>
         </div>
 
         <button type="submit" class="loox-form__submit">Submit Review</button>
@@ -269,7 +217,7 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h4 class="loox-form__success-title">Thank you!</h4>
-      <p class="loox-form__success-text">Your review has been submitted and is being verified. It will appear on the site once approved.</p>
+      <p class="loox-form__success-text">Your review has been posted and is now visible on the site.</p>
     </div>
   </div>
 </div>
@@ -282,41 +230,134 @@
 {% endif %}
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var section = document.getElementById('loox-reviews');
+(function() {
+  var STORAGE_KEY = 'loox_reviews';
+  var section = document.querySelector('[data-section-id="{{ section.id }}"]');
   if (!section) return;
 
-  /* ── Reveal animation ── */
-  var reveals = section.querySelectorAll('.loox-reveal');
-  if ('IntersectionObserver' in window) {
-    reveals.forEach(function(el) { el.classList.add('loox-animate'); });
-    var revealObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(function(el) { revealObs.observe(el); });
+  var grid = section.querySelector('[data-loox-grid]');
+  var photosWrap = section.querySelector('[data-loox-photos]');
+  var photosTrack = section.querySelector('[data-loox-photos-track]');
+
+  /* ── SVG templates ── */
+  var starSVG = '<svg class="loox-star loox-star--small" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>';
+  var starEmptySVG = '<svg class="loox-star loox-star--small loox-star--empty" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.3l2.39 6.18h6.11l-4.95 3.64 1.89 6.18L10 13.64 4.56 17.3l1.89-6.18L1.5 7.48h6.11z"/></svg>';
+
+  /* ── localStorage helpers ── */
+  function getReviews() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e) { return []; }
+  }
+  function saveReview(review) {
+    var reviews = getReviews();
+    reviews.unshift(review);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  }
+
+  /* ── Time ago helper ── */
+  function timeAgo(ts) {
+    var diff = Math.floor((Date.now() - ts) / 1000);
+    if (diff < 60) return 'Just now';
+    if (diff < 3600) return Math.floor(diff / 60) + ' min ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + ' hours ago';
+    if (diff < 604800) return Math.floor(diff / 86400) + ' days ago';
+    return Math.floor(diff / 604800) + ' weeks ago';
+  }
+
+  /* ── Escape HTML ── */
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  /* ── Build a review card HTML ── */
+  function buildCard(r) {
+    var starsHTML = '';
+    for (var i = 1; i <= 5; i++) {
+      starsHTML += i <= r.stars ? starSVG : starEmptySVG;
+    }
+    var initials = (r.name || 'A').substring(0, 2).toUpperCase();
+    var photoHTML = '';
+    if (r.photo) {
+      photoHTML = '<div class="loox-card__photo" data-loox-lightbox="' + r.photo + '"><img src="' + r.photo + '" alt="Review photo" loading="lazy"></div>';
+    }
+    return '<div class="loox-card loox-card--new" data-stars="' + r.stars + '" data-has-photo="' + (r.photo ? 'true' : 'false') + '" data-ts="' + r.ts + '">' +
+      '<div class="loox-card__top"><div class="loox-card__stars">' + starsHTML + '</div>' +
+      '<span class="loox-card__date">' + timeAgo(r.ts) + '</span></div>' +
+      (r.title ? '<h3 class="loox-card__title">' + esc(r.title) + '</h3>' : '') +
+      photoHTML +
+      '<p class="loox-card__text">"' + esc(r.body) + '"</p>' +
+      '<div class="loox-card__author">' +
+      '<div class="loox-card__avatar">' + esc(initials) + '</div>' +
+      '<div class="loox-card__author-info">' +
+      '<span class="loox-card__name">' + esc(r.name) + '</span>' +
+      '<div class="loox-card__meta"><span class="loox-card__verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></div>' +
+      '</div></div></div>';
+  }
+
+  /* ── Render saved reviews into grid ── */
+  function renderSavedReviews() {
+    var reviews = getReviews();
+    reviews.forEach(function(r) {
+      grid.insertAdjacentHTML('afterbegin', buildCard(r));
+    });
+    updateDistribution();
+    updatePhotoGallery();
+    bindLightbox();
+  }
+
+  /* ── Update distribution bars ── */
+  function updateDistribution() {
+    var cards = grid.querySelectorAll('.loox-card');
+    var counts = {5:0, 4:0, 3:0, 2:0, 1:0};
+    var total = cards.length;
+    cards.forEach(function(c) {
+      var s = parseInt(c.getAttribute('data-stars'));
+      if (counts[s] !== undefined) counts[s]++;
+    });
+    for (var star = 1; star <= 5; star++) {
+      var bar = section.querySelector('[data-dist-bar="' + star + '"]');
+      var countEl = section.querySelector('[data-dist-count="' + star + '"]');
+      if (bar) bar.style.width = (total > 0 ? Math.round(counts[star] / total * 100) : 0) + '%';
+      if (countEl) countEl.textContent = counts[star];
+    }
+  }
+
+  /* ── Update photo gallery ── */
+  function updatePhotoGallery() {
+    if (!photosTrack || !photosWrap) return;
+    photosTrack.innerHTML = '';
+    var hasPhotos = false;
+    /* From localStorage reviews */
+    getReviews().forEach(function(r) {
+      if (r.photo) {
+        hasPhotos = true;
+        photosTrack.insertAdjacentHTML('beforeend',
+          '<div class="loox-photos__item" data-loox-lightbox="' + r.photo + '"><img src="' + r.photo + '" alt="Review photo" loading="lazy"></div>');
+      }
+    });
+    /* From block reviews with photos */
+    grid.querySelectorAll('.loox-card:not(.loox-card--new) [data-loox-lightbox]').forEach(function(el) {
+      hasPhotos = true;
+      var src = el.getAttribute('data-loox-lightbox');
+      photosTrack.insertAdjacentHTML('beforeend',
+        '<div class="loox-photos__item" data-loox-lightbox="' + src + '"><img src="' + src + '" alt="Review photo" loading="lazy"></div>');
+    });
+    photosWrap.style.display = hasPhotos ? '' : 'none';
   }
 
   /* ── Filter chips ── */
   var chips = section.querySelectorAll('.loox-filter-chip');
-  var cards = section.querySelectorAll('.loox-card');
   chips.forEach(function(chip) {
     chip.addEventListener('click', function() {
       chips.forEach(function(c) { c.classList.remove('is-active'); });
       chip.classList.add('is-active');
       var filter = chip.getAttribute('data-filter');
-      cards.forEach(function(card) {
-        if (filter === 'all') {
-          card.style.display = '';
-        } else if (filter === 'photo') {
-          card.style.display = card.getAttribute('data-has-photo') === 'true' ? '' : 'none';
-        } else {
-          card.style.display = card.getAttribute('data-stars') === filter ? '' : 'none';
-        }
+      grid.querySelectorAll('.loox-card').forEach(function(card) {
+        if (filter === 'all') card.style.display = '';
+        else if (filter === 'photo') card.style.display = card.getAttribute('data-has-photo') === 'true' ? '' : 'none';
+        else card.style.display = card.getAttribute('data-stars') === filter ? '' : 'none';
       });
     });
   });
@@ -325,15 +366,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var sortSelect = section.querySelector('[data-loox-sort]');
   if (sortSelect) {
     sortSelect.addEventListener('change', function() {
-      var grid = section.querySelector('[data-loox-grid]');
       var items = Array.from(grid.querySelectorAll('.loox-card'));
       items.sort(function(a, b) {
         var sa = parseInt(a.getAttribute('data-stars')), sb = parseInt(b.getAttribute('data-stars'));
+        var ta = parseInt(a.getAttribute('data-ts') || 0), tb = parseInt(b.getAttribute('data-ts') || 0);
         switch(sortSelect.value) {
           case 'highest': return sb - sa;
           case 'lowest': return sa - sb;
-          case 'oldest': return 1; /* keep original */
-          default: return -1; /* newest = reverse */
+          case 'oldest': return ta - tb;
+          default: return tb - ta;
         }
       });
       items.forEach(function(item) { grid.appendChild(item); });
@@ -342,93 +383,136 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* ── Modal ── */
   var overlay = document.querySelector('[data-loox-modal]');
+  var formContent = overlay ? overlay.querySelector('[data-loox-form-content]') : null;
+  var successEl = overlay ? overlay.querySelector('[data-loox-success]') : null;
   if (overlay) {
-    var openBtns = document.querySelectorAll('[data-loox-open-modal]');
-    var closeBtns = document.querySelectorAll('[data-loox-close-modal]');
-    function openModal() { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-    function closeModal() { overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
-    openBtns.forEach(function(b) { b.addEventListener('click', openModal); });
-    closeBtns.forEach(function(b) { b.addEventListener('click', closeModal); });
+    function openModal() {
+      if (formContent) formContent.style.display = '';
+      if (successEl) successEl.classList.remove('is-visible');
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-loox-open-modal]').forEach(function(b) { b.addEventListener('click', openModal); });
+    document.querySelectorAll('[data-loox-close-modal]').forEach(function(b) { b.addEventListener('click', closeModal); });
     overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
   }
 
   /* ── Star rating input ── */
   var starInput = document.querySelector('[data-loox-star-input]');
-  var ratingVal = document.querySelector('[data-loox-rating-value]');
+  var currentRating = 0;
   if (starInput) {
-    var stars = starInput.querySelectorAll('.loox-star-input__star');
-    var currentRating = 0;
-    function setStars(n) {
-      stars.forEach(function(s, i) {
-        s.classList.toggle('is-active', i < n);
-      });
+    var starBtns = starInput.querySelectorAll('.loox-star-input__star');
+    function setInputStars(n) {
+      starBtns.forEach(function(s, i) { s.classList.toggle('is-active', i < n); });
     }
-    stars.forEach(function(s) {
-      s.addEventListener('mouseenter', function() { setStars(parseInt(s.getAttribute('data-star'))); });
-      s.addEventListener('click', function() {
-        currentRating = parseInt(s.getAttribute('data-star'));
-        if (ratingVal) ratingVal.value = currentRating;
-      });
+    starBtns.forEach(function(s) {
+      s.addEventListener('mouseenter', function() { setInputStars(parseInt(s.getAttribute('data-star'))); });
+      s.addEventListener('click', function() { currentRating = parseInt(s.getAttribute('data-star')); });
     });
-    starInput.addEventListener('mouseleave', function() { setStars(currentRating); });
+    starInput.addEventListener('mouseleave', function() { setInputStars(currentRating); });
   }
 
   /* ── Photo upload preview ── */
   var photoInput = document.querySelector('[data-loox-photo-input]');
   var photoPreview = document.querySelector('[data-loox-photo-preview]');
-  if (photoInput && photoPreview) {
+  var uploadedPhoto = null;
+  if (photoInput) {
     photoInput.addEventListener('change', function() {
-      photoPreview.innerHTML = '';
-      Array.from(photoInput.files).forEach(function(file) {
+      if (photoPreview) photoPreview.innerHTML = '';
+      uploadedPhoto = null;
+      if (photoInput.files && photoInput.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-          var img = document.createElement('img');
-          img.src = e.target.result;
-          img.className = 'loox-form__upload-thumb';
-          photoPreview.appendChild(img);
+          uploadedPhoto = e.target.result;
+          if (photoPreview) {
+            var img = document.createElement('img');
+            img.src = uploadedPhoto;
+            img.className = 'loox-form__upload-thumb';
+            photoPreview.appendChild(img);
+          }
         };
-        reader.readAsDataURL(file);
-      });
+        reader.readAsDataURL(photoInput.files[0]);
+      }
     });
   }
 
-  /* ── Form submit ── */
+  /* ── Form submit → save to localStorage + inject card instantly ── */
   var form = document.querySelector('[data-loox-form]');
-  var formContent = document.querySelector('[data-loox-form-content]');
-  var successMsg = document.querySelector('[data-loox-success]');
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var data = new FormData(form);
-      fetch('/contact', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function() {
-        formContent.style.display = 'none';
-        successMsg.classList.add('is-visible');
-      }).catch(function() {
-        formContent.style.display = 'none';
-        successMsg.classList.add('is-visible');
-      });
+      if (currentRating < 1) { alert('Please select a star rating.'); return; }
+
+      var review = {
+        stars: currentRating,
+        title: form.querySelector('[data-field="title"]').value.trim(),
+        body: form.querySelector('[data-field="body"]').value.trim(),
+        name: form.querySelector('[data-field="name"]').value.trim(),
+        email: form.querySelector('[data-field="email"]').value.trim(),
+        photo: uploadedPhoto || null,
+        ts: Date.now()
+      };
+
+      /* Save to localStorage */
+      saveReview(review);
+
+      /* Inject card at top of grid */
+      grid.insertAdjacentHTML('afterbegin', buildCard(review));
+      updateDistribution();
+      updatePhotoGallery();
+      bindLightbox();
+
+      /* Show success */
+      if (formContent) formContent.style.display = 'none';
+      if (successEl) successEl.classList.add('is-visible');
+
+      /* Reset form */
+      form.reset();
+      currentRating = 0;
+      if (starInput) setInputStars(0);
+      uploadedPhoto = null;
+      if (photoPreview) photoPreview.innerHTML = '';
+
+      /* Close modal after 2s */
+      setTimeout(function() {
+        if (overlay) {
+          overlay.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      }, 2000);
     });
   }
 
-  /* ── Photo lightbox ── */
-  var lightbox = document.querySelector('[data-loox-lightbox-overlay]');
-  if (lightbox) {
-    var lbImg = lightbox.querySelector('img');
-    var lbClose = lightbox.querySelector('[data-loox-lightbox-close]');
+  /* ── Lightbox ── */
+  function bindLightbox() {
+    var lb = document.querySelector('[data-loox-lightbox-overlay]');
+    if (!lb) return;
+    var lbImg = lb.querySelector('img');
+    var lbClose = lb.querySelector('[data-loox-lightbox-close]');
     document.querySelectorAll('[data-loox-lightbox]').forEach(function(el) {
+      if (el._looxBound) return;
+      el._looxBound = true;
+      el.style.cursor = 'pointer';
       el.addEventListener('click', function() {
         lbImg.src = el.getAttribute('data-loox-lightbox');
-        lightbox.classList.add('is-open');
+        lb.classList.add('is-open');
       });
     });
-    if (lbClose) lbClose.addEventListener('click', function() { lightbox.classList.remove('is-open'); });
-    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) lightbox.classList.remove('is-open'); });
+    if (lbClose && !lbClose._looxBound) {
+      lbClose._looxBound = true;
+      lbClose.addEventListener('click', function() { lb.classList.remove('is-open'); });
+      lb.addEventListener('click', function(e) { if (e.target === lb) lb.classList.remove('is-open'); });
+    }
   }
-});
+
+  /* ── Init ── */
+  renderSavedReviews();
+
+})();
 </script>
 
 {% schema %}
@@ -544,72 +628,12 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "name": "Loox Reviews",
       "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "review_title": "Goodbye Advil",
-            "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
-            "name": "Sarah M.",
-            "location": "Texas",
-            "date": "2 weeks ago"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "review_title": "Essential for long drives",
-            "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
-            "name": "Marco V.",
-            "location": "Ohio",
-            "date": "1 week ago"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "review_title": "Bought it as a joke...",
-            "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
-            "name": "Anna P.",
-            "location": "Portland",
-            "date": "3 days ago"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "stars": 4,
-            "review_title": "Works great, wish it lasted longer",
-            "text": "The instant relief is real. I use it every day at work. Only reason for 4 stars is I wish the scent lasted a bit longer.",
-            "name": "David R.",
-            "location": "Chicago",
-            "date": "5 days ago"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "review_title": "12-hour shifts? No problem",
-            "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. Already ordered 3 more for my colleagues.",
-            "name": "Michelle T.",
-            "location": "Houston",
-            "date": "1 week ago"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "review_title": "My whole family uses these",
-            "text": "My whole family uses these now. Best natural remedy we've found. My dad carries one in his shirt pocket everywhere.",
-            "name": "James K.",
-            "location": "New York",
-            "date": "4 days ago"
-          }
-        }
+        { "type": "review", "settings": { "stars": 5, "review_title": "Goodbye Advil", "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.", "name": "Sarah M.", "location": "Texas", "date": "2 weeks ago" } },
+        { "type": "review", "settings": { "stars": 5, "review_title": "Essential for long drives", "text": "I drive 11 hours a day. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.", "name": "Marco V.", "location": "Ohio", "date": "1 week ago" } },
+        { "type": "review", "settings": { "stars": 5, "review_title": "Bought it as a joke...", "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.", "name": "Anna P.", "location": "Portland", "date": "3 days ago" } },
+        { "type": "review", "settings": { "stars": 4, "review_title": "Works great, wish it lasted longer", "text": "The instant relief is real. I use it every day at work. Only reason for 4 stars is I wish the scent lasted a bit longer.", "name": "David R.", "location": "Chicago", "date": "5 days ago" } },
+        { "type": "review", "settings": { "stars": 5, "review_title": "12-hour shifts? No problem", "text": "Working 12-hour nursing shifts, this keeps me going. Natural and it actually works. Already ordered 3 more for my colleagues.", "name": "Michelle T.", "location": "Houston", "date": "1 week ago" } },
+        { "type": "review", "settings": { "stars": 5, "review_title": "My whole family uses these", "text": "My whole family uses these now. Best natural remedy we've found. My dad carries one in his shirt pocket everywhere.", "name": "James K.", "location": "New York", "date": "4 days ago" } }
       ]
     }
   ]
