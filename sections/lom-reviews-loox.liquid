@@ -516,18 +516,17 @@
   }
 
   /* ── Extra reviews from data file ── */
-  var extraPage = 0;
   var EXTRA_PER_PAGE = 12;
   var extraData = (typeof extraReviewsData !== 'undefined') ? extraReviewsData : [];
   var loadMoreWrap = section.querySelector('[data-loox-load-more]');
   var loadMoreBtn = loadMoreWrap ? loadMoreWrap.querySelector('button') : null;
 
-  function renderExtraPage() {
-    var start = extraPage * EXTRA_PER_PAGE;
-    var end = Math.min(start + EXTRA_PER_PAGE, extraData.length);
+  function initExtraReviews() {
+    if (extraData.length === 0) return;
+    /* Render all extra reviews into the grid at once */
     var dates = ['1 day ago','2 days ago','3 days ago','4 days ago','5 days ago','6 days ago','1 week ago','2 weeks ago','3 weeks ago','1 month ago','2 months ago','3 months ago'];
     var frag = document.createDocumentFragment();
-    for (var i = start; i < end; i++) {
+    for (var i = 0; i < extraData.length; i++) {
       var r = extraData[i];
       var starsHTML = '';
       for (var j = 1; j <= 5; j++) starsHTML += j <= r.s ? starSVG : starEmptySVG;
@@ -538,6 +537,7 @@
       div.setAttribute('data-stars', r.s);
       div.setAttribute('data-has-photo', 'false');
       div.setAttribute('data-ts', '0');
+      if (i >= EXTRA_PER_PAGE) div.style.display = 'none';
       div.innerHTML =
         '<div class="loox-card__top"><div class="loox-card__stars">' + starsHTML + '</div>' +
         '<span class="loox-card__date">' + dateStr + '</span></div>' +
@@ -553,20 +553,22 @@
       frag.appendChild(div);
     }
     grid.appendChild(frag);
-    extraPage++;
-    if (extraPage * EXTRA_PER_PAGE >= extraData.length) {
-      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
-    }
-  }
+    updateDistribution();
 
-  function initExtraReviews() {
-    if (extraData.length === 0) return;
-    renderExtraPage();
+    /* Load more: reveal next batch */
+    var extraShown = EXTRA_PER_PAGE;
     if (extraData.length > EXTRA_PER_PAGE && loadMoreWrap) {
       loadMoreWrap.style.display = '';
       if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', function() {
-          renderExtraPage();
+          var cards = grid.querySelectorAll('.loox-card');
+          var blockCount = cards.length - extraData.length;
+          var nextEnd = Math.min(extraShown + EXTRA_PER_PAGE, extraData.length);
+          for (var k = extraShown; k < nextEnd; k++) {
+            cards[blockCount + k].style.display = '';
+          }
+          extraShown = nextEnd;
+          if (extraShown >= extraData.length) loadMoreWrap.style.display = 'none';
         });
       }
     }
