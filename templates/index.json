@@ -138,6 +138,7 @@
       "settings": {
         "heading": "This Is What 10,000+ Nurses, Athletes & Travelers Carry Instead",
         "subhead": "Lom Thai isn't a product. It's a decision to stop poisoning your body for relief.",
+        "image": "shopify://shop_images/Gemini_Generated_Image_wofhvgwofhvgwofh.png",
         "identity_callout": "People who carry Lom Thai don't wait for relief. They choose it.",
         "button_text": "Try It Risk-Free →",
         "button_url": "/products/lom-thai-authentic-muay-thai-oil"
@@ -177,6 +178,55 @@
         "heading": "How It Works",
         "subtitle": "Simple. Natural. Instant.",
         "transition": "That's it. No water needed. No waiting. No side effects. No crash."
+      }
+    },
+    "reviews": {
+      "type": "lom-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_40_12.png",
+            "stars": 5,
+            "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
+            "name": "Sarah M.",
+            "title": "Nurse",
+            "location": "Texas"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
+            "stars": 5,
+            "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
+            "name": "Marco V.",
+            "title": "Frequent Traveler",
+            "location": "Ohio"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
+            "stars": 5,
+            "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
+            "name": "Anna P.",
+            "title": "",
+            "location": "Portland"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "heading": "They Were Skeptical Too. Then They Tried It.",
+        "avg_rating": "4.8",
+        "total_reviews": "1,200+",
+        "recommend_pct": "97"
       }
     },
     "lom_certified_safe_tAjMa9": {
@@ -307,55 +357,6 @@
         "show_detail": true,
         "detail_title": "Full Safety Profile",
         "expand_text": "View Full Test Results"
-      }
-    },
-    "reviews": {
-      "type": "lom-reviews",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_40_12.png",
-            "stars": 5,
-            "text": "I was popping 4 Advil a day for my migraines. Now I just reach for this stick. My liver thanks me.",
-            "name": "Sarah M.",
-            "title": "Nurse",
-            "location": "Texas"
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "avatar": "shopify://shop_images/ChatGPT_Image_27_feb_2026_13_38_52.png",
-            "stars": 5,
-            "text": "I travel 200+ days a year. Energy drinks were destroying my stomach. This thing keeps me sharp without the crash.",
-            "name": "Marco V.",
-            "title": "Frequent Traveler",
-            "location": "Ohio"
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "avatar": "shopify://shop_images/Gemini_Generated_Image_wrvqclwrvqclwrvq_1.png",
-            "stars": 5,
-            "text": "I bought it as a joke for my husband. He now panics if he can't find it before leaving the house.",
-            "name": "Anna P.",
-            "title": "",
-            "location": "Portland"
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "heading": "They Were Skeptical Too. Then They Tried It.",
-        "avg_rating": "4.8",
-        "total_reviews": "1,200+",
-        "recommend_pct": "97"
       }
     },
     "comparison": {
